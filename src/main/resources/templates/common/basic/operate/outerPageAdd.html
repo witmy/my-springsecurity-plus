@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../../admin/css/pearCommon.css" />
+    <link rel="stylesheet" href="../../../../component/layui/css/layui.css" />
+</head>
+<body>
+    <form class="layui-form" action="">
+        <div class="mainBox">
+            <div class="main-container">
+                <div class="main-container">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">任务名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="taskName" lay-verify="title" autocomplete="off" placeholder="请输入任务名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">任务描述</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="taskInfo" lay-verify="title" autocomplete="off" placeholder="请输入任务描述" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">执行人</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="realName" lay-verify="title" autocomplete="off" placeholder="请输入执行人" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="button-container">
+                <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="task-save">
+                    <i class="layui-icon layui-icon-ok"></i>
+                    提交
+                </button>
+                <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                    <i class="layui-icon layui-icon-refresh"></i>
+                    重置
+                </button>
+            </div>
+        </div>
+    </form>
+    <script src="../../../../component/layui/layui.js"></script>
+    <script>
+        layui.use(['form', 'jquery'], function () {
+            let form = layui.form;
+            let $ = layui.jquery;
+
+            form.on('submit(task-save)', function (data) {
+                // 以下仅做示例，实现方式及实现位置可多种
+                // 遮罩层
+                // $.ajax({
+                //     url:'...',
+                //     data:JSON.stringify(data.field),
+                //     dataType:'json',
+                //     contentType:'application/json',
+                //     type:'post',
+                //     success:function(result){
+                //         if(result.success){
+                //             layer.msg("successful", {
+                //                 icon: 1,
+                //                 time: 1000
+                //             }, function () {
+                //                 var index = parent.layer.getFrameIndex(window.name);
+
+                //                 //方式一：直接弹窗内寻找源头页面完成操作
+                //                 //let parentWindow = parent.layui.$(".layui-body .layui-tab-content .layui-show")[0].children[0].contentWindow;
+
+                //                 //方式二：通过index.html页中window.selectedWindow()函数寻找源头页面
+                //                 let parentWindow = parent.selectedWindow().window;
+
+                //                 parentWindow.outerPageAddCallBack(index);
+                //             });
+                //         } else{
+                //             layer.msg(result.msg,{icon:2,time:1000});
+                //         }
+                //     }
+                // });
+
+                // 方便测试效果
+                layer.msg("successful", {
+                    icon: 1,
+                    time: 1000
+                }, function () {
+                    var index = parent.layer.getFrameIndex(window.name);
+
+                    //方式一：直接弹窗内寻找源头页面完成操作
+                    //let parentWindow = parent.layui.$(".layui-body .layui-tab-content .layui-show")[0].children[0].contentWindow;
+                    
+                    //方式二：通过index.html页中window.selectedWindow()函数寻找源头页面
+                    let parentWindow = parent.selectedWindow().window;
+
+                    parentWindow.outerPageAddCallBack(index);
+                });
+
+                return false;
+            });
+        })
+    </script>
+</body>
+</html>

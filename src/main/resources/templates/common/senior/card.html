@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../../../component/layui/css/layui.css" rel="stylesheet" />
+		<link href="../../../admin/css/pearCommon.css" rel="stylesheet" />
+		<style>
+			.project-list-item {
+			    background-color: #fff;
+			    border-radius: 4px;
+			    cursor: pointer;
+			    transition: all .2s;
+			}
+			.project-list-item:hover{
+				    box-shadow: 2px 0 4px rgba(0, 21, 41, .35);
+			}
+			.project-list-item .project-list-item-cover {
+			    width: 100%;
+			    height: 220px;
+			    display: block;
+			    border-top-left-radius: 4px;
+			    border-top-right-radius: 4px;
+			}
+			.project-list-item-body {
+			    padding: 20px;
+				border: 1px solid #e8e8e8;
+			}
+			.project-list-item .project-list-item-body > h2 {
+			    font-size: 18px;
+			    color: #333;
+			    margin-bottom: 12px;
+			}
+			.project-list-item .project-list-item-text {
+			    height: 44px;
+			    overflow: hidden;
+			    margin-bottom: 12px;
+			}
+			.project-list-item .project-list-item-desc {
+			    position: relative;
+			}
+			.project-list-item .project-list-item-desc .time {
+			    color: #999;
+			    font-size: 12px;
+			}
+			.project-list-item .project-list-item-desc .ew-head-list {
+			    position: absolute;
+			    right: 0;
+			    top: 0;
+			}
+			.ew-head-list .ew-head-list-item:first-child {
+			    margin-left: 0;
+			}
+			.ew-head-list .ew-head-list-item {
+			    width: 22px;
+			    height: 22px;
+			    border-radius: 50%;
+			    border: 1px solid #fff;
+			    margin-left: -10px;
+			}
+			.ew-head-list .ew-head-list-item {
+			    width: 22px;
+			    height: 22px;
+			    border-radius: 50%;
+			    border: 1px solid #fff;
+			    margin-left: -10px;
+			}
+			.pear-card{
+				padding:20px;
+			}
+			.pear-card .layui-laypage .layui-laypage-curr .layui-laypage-em {
+			    border-radius:0px !important;
+			}
+		</style>
+	</head>
+	<body>
+		<body class="pear-container">
+		    <div class="layui-card">
+		        <div class="layui-card-body">
+		            <form class="layui-form" action="">
+		                <div class="layui-form-item">
+		                    <label class="layui-form-label">卡片标题</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="realName" placeholder="" class="layui-input">
+		                    </div>
+		                    <label class="layui-form-label">卡片名称</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="username" placeholder="" class="layui-input">
+		                    </div>
+							
+		                    <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="user-query">
+		                        <i class="layui-icon layui-icon-search"></i>
+		                        查询
+		                    </button>
+		                    <button type="reset" class="pear-btn pear-btn-md">
+		                        <i class="layui-icon layui-icon-refresh"></i>
+		                        重置
+		                    </button>
+		                </div>
+		            </form>
+		        </div>
+		    </div>
+		    <div class="layui-card">
+				<div class="layui-card-header">
+					卡片列表
+				</div>
+		        <div class="layui-card-body">
+		            <table id="user-table" lay-filter="user-table"></table>
+		        </div>
+		    </div>
+		</body>
+
+		<script type="text/html" id="user-toolbar">
+		    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+		        <i class="layui-icon layui-icon-add-1"></i>
+		        新增
+		    </button>
+		    <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+		        <i class="layui-icon layui-icon-delete"></i>
+		        删除
+		    </button>
+		</script>
+		
+		<script type="text/html" id="user-bar">
+		    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
+		    <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
+		</script>
+		
+		<script type="text/html" id="user-enable">
+		    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-enable" {{ d.enable == 0 ? 'checked' : '' }}>
+		</script>
+		
+		<script type="text/html" id="user-sex">
+		    {{#if (d.sex == 1) { }}
+		    <span>男</span>
+		    {{# }else if(d.sex == 2){ }}
+		    <span>女</span>
+		    {{# } }}
+		</script>
+		
+		<script type="text/html" id="user-login">
+		    {{#if (d.login == 0) { }}
+		    <span>在线</span>
+		    {{# }else if(d.sex == 1){ }}
+		    <span>离线</span>
+		    {{# } }}
+		</script>
+		
+		<script type="text/html" id="user-createTime">
+		    {{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}
+		</script>
+		
+		<script src="../../../component/layui/layui.js"></script>
+		<script>
+		    layui.use(['table','form','jquery','pearCard'],function () {
+		        let table = layui.table;
+		        let form = layui.form;
+		        let $ = layui.jquery;
+				let pearCard = layui.pearCard;
+		
+		        let MODULE_PATH = "/system/user/";
+		
+		        pearCard.render({
+					elem:'#user-table',
+					url:'../../../admin/data/card.json',
+				})
+		
+		    })
+		</script>
+	</body>
+</html>

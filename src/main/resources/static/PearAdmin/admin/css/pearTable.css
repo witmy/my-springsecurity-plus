@@ -1,0 +1,60 @@
+.layui-table-view {
+	border-radius: 5px;
+}
+
+.layui-table th {
+	background-color: whitesmoke;
+}
+
+.layui-table-tool {
+	background-color: whitesmoke;
+}
+
+.layui-table-tool .layui-inline[lay-event] {
+	width: 32px !important;
+	height: 32px !important;
+	line-height: 20px !important;
+	border-radius: 2px;
+}
+
+.layui-inline i {
+	font-size: 18px;
+}
+
+.layui-table-tool-panel {
+	margin-top: 8px;
+	border-radius: 4px !important;
+}
+
+.layui-table-page .layui-laypage .layui-laypage-curr .layui-laypage-em {
+	border-radius: 50px;
+	background-color: #5FB878;
+}
+
+.layui-table-cell {
+	height: 34px;
+	line-height: 34px;
+}
+
+.layui-table-page {
+	height: 45px;
+	font-size: 18px;
+	padding-top: 9px;
+}
+
+.layui-laypage-skip input {
+
+	height: 26px !important;
+	line-height: 26px !important;
+}
+
+.layui-laypage-limits {
+	position: absolute !important;
+	right: 10px !important;
+}
+
+.layui-laypage-limits select {
+	height: 20px !important;
+	border-radius: 2px;
+	color: dimgray;
+}

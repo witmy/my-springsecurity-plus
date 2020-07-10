@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../../../component/layui/css/layui.css" />
+	</head>
+	<body>
+		<div class="layui-card">
+			<div class="layui-card-header"></div>
+			<div class="layui-card-body">
+				<div id="demo1"></div>
+			</div>
+		</div>
+		
+		
+		<script src="../../../component/layui/layui.js"></script>
+		<script>
+			layui.use(['pearSelect'],function(){
+				var pearSelect = layui.pearSelect;
+				
+				//渲染多选
+				pearSelect.render({
+					el: '#demo1', 
+					data: [
+						{name: '张三', value: 1},
+						{name: '李四', value: 2},
+						{name: '王五', value: 3},
+						]
+				})
+			})
+		</script>
+	</body>
+</html>

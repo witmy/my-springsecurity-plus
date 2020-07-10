@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
+		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}" />
+		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearButton.css}" />
+		<link rel="stylesheet" th:href="@{/PearAdmin/assets/console2.css}" />
+		<style>
+			.pear-container {
+				margin: 10px;
+				background-color: whitesmoke;
+			}
+		</style>
+	</head>
+	<body class="pear-container">
+		
+		<div class="layui-card">
+			<div class="layui-card-header">
+				编辑
+			</div>
+			<div class="layui-card-body">
+				<form>
+					<textarea class="layui-input layui-textarea" placeholder="你 应 该 讲 些 什 么"></textarea>
+					
+					<button class="layui-btn layui-btn-normal layui-btn-sm" style="margin-top: 10px;">评 论</button>
+				</form>
+			</div>
+		</div>
+		<div class="layui-card">
+			<div class="layui-card-header">留言</div>
+			<div class="layui-card-body">
+				<ul class="pear-card-status layuiadmin-home2-usernote">
+					<li>
+						<h3>就眠仪式</h3>
+						<p>夏天真的来了，尽管它还有些犹豫。</p>
+						<span>4月30日 22:43</span>
+						<a href="javascript:;" data-id="1" class="layui-btn layui-btn-normal layui-btn-sm pear-reply">回复</a>
+					</li>
+					<li>
+						<h3>就眠仪式</h3>
+						<p>我们一起爬上屋顶。</p>
+						<span>9月13日 11:23</span>
+						<a href="javascript:;" data-id="1" class="layui-btn layui-btn-normal layui-btn-sm pear-reply">回复</a>
+					</li>
+					<li>
+						<h3>就眠仪式</h3>
+						<p>因为我明白，在这场爱意的迸发中，我才自己是那个最大的受益人，而对你的付出只不过是水到渠成般的自然而然。我的爱意终究会反哺我。</p>
+						<span>9月13日 11:23</span>
+						<a href="javascript:;" data-id="1" class="layui-btn layui-btn-normal layui-btn-sm pear-reply">回复</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+			
+		<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+		<script>
+			layui.use(['util', 'layer', 'pearAuth', 'form'], function() {
+
+
+				var util = layui.util;
+
+				var pearAuth = layui.pearAuth;
+				var form = layui.form;
+
+
+			});
+		</script>
+	</body>
+</html>

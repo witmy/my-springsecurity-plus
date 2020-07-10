@@ -1,0 +1,248 @@
+/**
+~   Copyright [就眠仪式] [Pear Admin Layui of copyright owner]
+~
+~   Licensed under the Apache License, Version 2.0 (the "License");
+~   you may not use this file except in compliance with the License.
+~   You may obtain a copy of the License at
+~
+~       http://www.apache.org/licenses/LICENSE-2.0
+~
+~   Unless required by applicable law or agreed to in writing, software
+~   distributed under the License is distributed on an "AS IS" BASIS,
+~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~   See the License for the specific language governing permissions and
+~   limitations under the License.
+~ 
+ */
+.pear-admin .layui-header,
+.pear-admin .layui-body,
+.pear-admin .layui-logo,
+.pear-admin .layui-side {
+	transition: all .3s;
+}
+.pear-admin .layui-logo .title {
+	font-size: 20px;
+}
+.layui-header .layui-nav-more {
+	display: none !important;
+}
+.pe-collaspe {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #5FB878;
+	z-index: 9999;
+	right: 40px;
+	bottom: 25px;
+	border-radius: 50px;
+	text-align: center;
+	color: white;
+	box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+}
+
+/** 亮色侧边风格 */
+.light-theme .layui-logo {
+	background-color: white !important;
+	color: black !important;
+}
+.light-theme .layui-side-scroll {
+	background-color: white !important;
+	color: black !important;
+}
+.light-theme .bottom-nav {
+	background-color: white !important;
+	box-shadow: none;
+	border-top: whitesmoke 1px solid;
+}
+.light-theme .bottom-nav * {
+	color: dimgray;
+}
+
+/** 通 用 框 架 布 局 */
+.pear-admin .layui-header {
+	left: 220px;
+	width: calc(100% - 220px);
+	background-color: white;
+	border-bottom: 1px solid whitesmoke;
+}
+.pear-admin .layui-header .layui-nav-img {
+	width: 30px;
+	height: 30px;
+}
+.pear-admin .layui-layout-control {
+	left: 120px;
+	position: absolute;
+}
+.pear-admin .layui-logo {
+	width: 220px;
+	height: 60px;
+	position: relative;
+	background-color: #28333E;
+
+}
+.pear-admin .layui-logo img {
+	width: 36px;
+	height: 36px;
+}
+.pear-admin .layui-logo .title {
+	font-size: 21px;
+	font-weight: 550;
+	color: #5FB878;
+	position: relative;
+	top: 5px;
+	margin-left: 5px;
+}
+.pear-admin .layui-logo .logo {
+	display: none;
+}
+.pear-mini .layui-logo .title {
+	display: none;
+}
+.pear-mini .layui-logo .logo {
+	display: inline-block;
+}
+.pear-admin .layui-side {
+	top: 0px;
+	width: 220px;
+	box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+	z-index: 9999;
+}
+.pear-admin .layui-side-scroll::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+}
+.pear-admin .layui-side-scroll {
+	height: calc(100% - 60px);
+	background-color: #28333E;
+
+}
+.pear-admin .layui-header .layui-nav .layui-nav-item>a {
+	color: black;
+	font-size: 15px;
+}
+.pear-admin .layui-body {
+	left: 220px;
+	bottom: 0px;
+}
+.pear-admin .layui-layout-left {
+	left: 0px;
+
+}
+
+/** 隐 藏 布 局 样 式 */
+.pear-mini .layui-side {
+	width: 60px;
+}
+.pear-mini .layui-header {
+	left: 60px;
+	width: calc(100% - 60px);
+}
+.pear-mini .layui-body {
+	left: 60px;
+}
+.pear-mini .layui-logo {
+	width: 60px;
+}
+.pear-mini .layui-nav-tree .layui-nav-item span {
+	display: none;
+}
+.pear-mini .bottom-nav li {
+	width: 100% !important;
+}
+.pear-mini .layui-side-scroll {
+	height: calc(100% - 60px);
+}
+
+
+
+/** 顶 部 菜 单 样 式 */
+.pear-admin .layui-header .layui-nav .layui-nav-bar {
+	top: 0px !important;
+	height: 2px !important;
+	background-color: #5FB878;
+}
+.pear-admin .layui-header .layui-nav .layui-this:after {
+	display: none;
+}
+
+/** 新增兼容 */
+@media screen and (max-width:768px) {
+	.pear-mini .bottom-nav {
+		display: none;
+	}
+	.pear-mini .layui-side-scroll {
+		height: calc(100% - 62px);
+	}
+	/** 隐 藏 布 局 样 式 */
+	.pear-mini .layui-side {
+		width: 0px;
+	}
+	.pear-mini .layui-header {
+		left: 0px;
+		width: 100%;
+	}
+	.pear-mini .layui-body {
+		left: 0px;
+	}
+	.pear-mini .layui-logo {
+		width: 0px;
+	}
+	.pear-admin .layui-body {
+		left: 0px;
+	}
+	.pear-admin .layui-header {
+		left: 0px;
+		width: 100%;
+	}
+	.pear-admin .pear-cover {
+		width: 100%;
+		height: 100%;
+		background-color: #1E1E1E;
+		display: block;
+		position: absolute;
+		z-index: 1000;
+		opacity: 0;
+		margin-top: -60px;
+	}
+	.pear-mini .pear-cover {
+		display: none;
+	}
+}
+
+
+@-webkit-keyframes am-horizontal-roll_show {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateX(2000px);
+		transform: translateX(2000px)
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0)
+	}
+}
+
+@keyframes am-horizontal-roll_show {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateX(800px);
+		-ms-transform: translateX(800px);
+		transform: translateX(800px)
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0)
+	}
+}
+
+.layer-anim-right {
+	-webkit-animation: am-horizontal-roll_show .6s ease-out;
+	animation: am-horizontal-roll_show .6s ease-out;
+
+}

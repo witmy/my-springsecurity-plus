@@ -1,0 +1,333 @@
+.pear-container {
+	margin: 10px;
+	background-color: whitesmoke;
+}
+.layui-form-item {
+	margin-bottom: 0px !important;
+	margin-top: 5px !important;
+}
+.layui-input {
+	height: 34px !important;
+	line-height: 34px !important;
+	border-radius: 3px !important;
+}
+.layui-form-label {
+	width: 60px !important;
+	padding-left: 0px !important;
+}
+.layui-table-tool-panel {
+	margin-top: 10px !important;
+}
+.layui-table-tool {
+	background-color: white !important;
+	border-bottom: none !important;
+	padding-bottom: 10px !important;
+}
+.layui-table-header,
+.layui-table-header th {
+	background-color: white !important;
+}
+.layui-table-view {
+	border: none !important;
+}
+.layui-table-cell {
+	height: 34px !important;
+	line-height: 34px !important;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+	border-radius: 50px !important;
+	background-color: #5FB878 !important;
+}
+.layui-table tr {
+	height: 34px !important;
+	line-height: 34px !important;
+}
+.layui-laypage-skip input{
+	
+	height: 26px!important;
+	line-height: 26px!important;
+}
+.layui-table-cell {
+	padding-top: 1px !important;
+}
+
+.layui-table-box * {
+	font-size: 13px !important;
+}
+
+.layui-table-box button {
+	font-size: 15px !important;
+}
+
+.layui-table-page {
+	height: 45px !important;
+	padding-top: 10px !important;
+}
+
+.layui-table-tool .layui-inline {
+	border-radius: 3px !important;
+	width: 30px !important;
+	height: 30px !important;
+	line-height: 20px !important;
+}
+
+.layui-table-view .layui-table[lay-skin=line] {
+	border: none !important;
+}
+
+.layui-elem-quote {
+	border-left: 5px solid #5FB878 !important;
+}
+
+body::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+}
+
+body::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+body::-webkit-scrollbar-track {
+	background: white;
+	border-radius: 2px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #E6E6E6;
+	border-radius: 2px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: #E6E6E6;
+}
+
+body::-webkit-scrollbar-corner {
+	background: #f6f6f6;
+}
+
+.pear-btn i{
+	font-size: 13px;
+}
+
+
+.pear-btn {
+	display: inline-block;
+	line-height: 38px;
+	white-space: nowrap;
+	cursor: pointer;
+	background-color: #fff;
+	border: 1px solid #dcdfe6;
+	color: #606266;
+	text-align: center;
+	box-sizing: border-box;
+	outline: none;
+	transition: 0.1s;
+	font-weight: 500;
+	padding: 0 18px;
+	height: 38px;
+	font-size: 14px;
+	border-radius: 3px;
+}
+
+.pear-btn:hover {
+	opacity: .8;
+	filter: alpha(opacity=80);
+	color: #409eff;
+	border-color: #c6e2ff;
+	background-color: #ECF5FF;
+}
+
+.pear-btn-danger,
+.pear-btn-warming,
+.pear-btn-success,
+.pear-btn-primary {
+	color: #fff !important
+}
+
+.pear-btn[dashed] {
+	border-style: dashed !important;
+}
+
+.pear-btn-primary {
+	background-color: #2D8CF0 !important;
+}
+
+.pear-btn-danger {
+	background-color: #f56c6c !important
+}
+
+.pear-btn-warming {
+	background-color: #e6a23c !important
+}
+
+.pear-btn-success {
+	background-color: #67c23a !important
+}
+
+.pear-btn[round] {
+	border-radius: 50px;
+}
+
+.pear-btn-primary[plain] {
+	color: #409eff !important;
+	background: #ecf5ff !important;
+	border-color: #b3d8ff !important;
+}
+
+.pear-btn-primary[plain]:hover {
+	color: #fff !important;
+	background-color: #2d8cf0 !important
+}
+
+.pear-btn-success[plain] {
+	color: #67c23a !important;
+	background: #f0f9eb !important;
+	border-color: #c2e7b0 !important;
+}
+
+.pear-btn-success[plain]:hover {
+	color: white !important;
+	background-color: #67c23a !important
+}
+
+.pear-btn-warming[plain] {
+	color: #e6a23c !important;
+	background: #fdf6ec !important;
+	border-color: #f5dab1 !important;
+}
+
+.pear-btn-warming[plain]:hover {
+	color: white !important;
+	background-color: #e6a23c !important
+}
+
+.pear-btn-danger[plain] {
+	color: #f56c6c !important;
+	background: #fef0f0 !important;
+	border-color: #fbc4c4 !important;
+}
+
+.pear-btn-danger[plain]:hover {
+	color: white !important;
+	background-color: #f56c6c !important
+}
+
+/** Button Size*/
+.pear-btn-sm {
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+	font-size: 12.5px;
+}
+
+.pear-btn-md {
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px;
+	font-size: 12.5px;
+}
+
+.pear-btn-xs {
+	height: 22px;
+	line-height: 22px;
+	padding: 0 5px;
+	font-size: 12px;
+}
+
+.pear-btn-lg {
+	height: 44px;
+	line-height: 44px;
+	padding: 0 25px;
+	font-size: 16px;
+}
+
+/** 滚动条样式 */
+body::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+
+body::-webkit-scrollbar-track {
+	background: white;
+	border-radius: 2px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #E6E6E6;
+	border-radius: 2px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: #E6E6E6;
+}
+
+body::-webkit-scrollbar-corner {
+	background: #f6f6f6;
+}
+
+
+.mainBox {
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 50px;
+	overflow: auto;
+}
+
+.bottom {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 45px;
+	line-height: 45px;
+	background-color: #F8F8F8;
+	border-top: 1px solid #eee;
+}
+
+.button-container {
+	position: absolute;
+	right: 15px;
+}
+
+.main-container {
+	margin: 15px;
+}
+
+.main-container .layui-form-item {
+	margin-bottom: 15px !important;
+	margin-top: 10px !important;
+}
+
+
+.treeTable-empty {
+	width: 20px;
+	display: inline-block;
+}
+
+.treeTable-icon {
+	cursor: pointer;
+}
+
+.treeTable-icon .layui-icon-triangle-d:before {
+	content: "\e623";
+}
+
+.treeTable-icon.open .layui-icon-triangle-d:before {
+	content: "\e625";
+	background-color: transparent;
+}
+
+/** treeTable 自定义图标 */
+/** 箭头未展开 */
+.treeTable .treeTable-icon .layui-icon-triangle-d:before {
+	content: "\e602";
+}
+
+/** 箭头展开 */
+.treeTable .treeTable-icon.open .layui-icon-triangle-d:before {
+	content: "\e61a";
+}
