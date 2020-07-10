@@ -1,4 +1,4 @@
-# my-springsecurity
+# my-springsecurity-plus
 #### 介绍
 这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统
 
