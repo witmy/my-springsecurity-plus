@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 10/07/2020 13:10:50
+ Date: 11/07/2020 15:20:03
 */
 
 SET NAMES utf8mb4;
@@ -38,13 +38,13 @@ CREATE TABLE `my_menu`  (
 -- ----------------------------
 -- Records of my_menu
 -- ----------------------------
-INSERT INTO `my_menu` VALUES (1, 0, '系统管理', NULL, NULL, NULL, 1, 1, '2020-07-10 09:33:00', '2020-07-10 09:33:03');
-INSERT INTO `my_menu` VALUES (2, 1, '用户管理', NULL, '/api/getPage?pageName=system/user/user-list', 'user:list', 2, 1, '2020-07-10 09:33:33', '2020-07-10 09:33:35');
-INSERT INTO `my_menu` VALUES (3, 1, '角色管理', NULL, '/api/getPage?pageName=system/role/role-list', 'role:list', 3, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
-INSERT INTO `my_menu` VALUES (4, 1, '菜单管理', NULL, '/api/getPage?pageName=system/permission/permission-list', 'menu:list', 4, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
-INSERT INTO `my_menu` VALUES (5, 0, '其他管理', NULL, NULL, NULL, 5, 1, '2020-07-10 09:35:20', '2020-07-10 09:35:22');
-INSERT INTO `my_menu` VALUES (6, 5, 'SQL监控', NULL, 'http://localhost:8080/druid/login.html', NULL, 6, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
-INSERT INTO `my_menu` VALUES (7, 5, 'Swagger文档', NULL, 'http://localhost:8080/swagger-ui.html', NULL, 7, 1, '2020-07-10 09:36:11', '2020-07-10 09:36:13');
+INSERT INTO `my_menu` VALUES (1, 0, '系统管理', 'layui-icon-set-fill', NULL, NULL, 1, 1, '2020-07-10 09:33:00', '2020-07-10 09:33:03');
+INSERT INTO `my_menu` VALUES (2, 1, '用户管理', 'layui-icon-username', '/api/user', 'user:list', 2, 1, '2020-07-10 09:33:33', '2020-07-10 09:33:35');
+INSERT INTO `my_menu` VALUES (3, 1, '角色管理', 'layui-icon-user', '/api/role', 'role:list', 3, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
+INSERT INTO `my_menu` VALUES (4, 1, '菜单管理', 'layui-icon-vercode', '/api/menu', 'menu:list', 4, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
+INSERT INTO `my_menu` VALUES (5, 0, '系统监控', 'layui-icon-console', NULL, NULL, 5, 1, '2020-07-10 09:35:20', '2020-07-10 09:35:22');
+INSERT INTO `my_menu` VALUES (6, 5, 'SQL监控', 'layui-icon-chart', '/durid/login', NULL, 6, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
+INSERT INTO `my_menu` VALUES (7, 5, '接口文档', 'layui-icon-chart', '/swagger/index', NULL, 7, 1, '2020-07-10 09:36:11', '2020-07-10 09:36:13');
 INSERT INTO `my_menu` VALUES (8, 2, '用户新增', NULL, NULL, 'user:add', 2, 2, '2020-07-10 09:36:41', '2020-07-10 09:36:44');
 INSERT INTO `my_menu` VALUES (9, 2, '用户编辑', NULL, NULL, 'user:edit', 2, 2, '2020-07-10 09:37:16', '2020-07-10 09:37:18');
 INSERT INTO `my_menu` VALUES (10, 2, '用户删除', NULL, NULL, 'user:del', 2, 2, '2020-07-10 09:37:38', '2020-07-10 09:37:40');
@@ -63,6 +63,7 @@ CREATE TABLE `my_role`  (
   `id` int(32) NOT NULL COMMENT 'id值',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `status` int(1) NOT NULL COMMENT '状态',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
@@ -71,8 +72,8 @@ CREATE TABLE `my_role`  (
 -- ----------------------------
 -- Records of my_role
 -- ----------------------------
-INSERT INTO `my_role` VALUES (1, 'ADMIN', '超级管理员，拥有所有权限', '2020-07-10 09:40:35', '2020-07-10 09:40:37');
-INSERT INTO `my_role` VALUES (2, 'USER', '普通用户', '2020-07-10 09:40:56', '2020-07-10 09:40:59');
+INSERT INTO `my_role` VALUES (1, 'ADMIN', '超级管理员，拥有所有权限', 1, '2020-07-10 09:40:35', '2020-07-10 09:40:37');
+INSERT INTO `my_role` VALUES (2, 'USER', '普通用户', 1, '2020-07-10 09:40:56', '2020-07-10 09:40:59');
 
 -- ----------------------------
 -- Table structure for my_role_menu
@@ -148,7 +149,7 @@ CREATE TABLE `my_user`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of my_user
