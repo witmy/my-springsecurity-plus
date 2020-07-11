@@ -14,12 +14,14 @@ public class MyRole extends BaseEntity<Integer>{
 
     private String name;
     private String description;
+    private Integer status;
 
     @Override
     public String toString() {
-        return "TbRole{" +
+        return "MyRole{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

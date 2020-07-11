@@ -33,6 +33,14 @@ public class Result<T> implements Serializable {
     //把构造方法私有
     private Result() {}
 
+    public static Result table_sucess() {
+        Result r = new Result();
+        r.setSuccess(true);
+        r.setCode(ResultCode.TABLE_SUCCESS);
+        r.setMsg("成功");
+        return r;
+    }
+
     //成功静态方法
     public static Result ok() {
         Result r = new Result();

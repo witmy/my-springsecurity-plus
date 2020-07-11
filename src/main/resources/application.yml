@@ -1,2 +1,59 @@
 server:
   port: 8080
+spring:
+  profiles:
+    active: dev
+  application:
+    name: my-springsecurity-plus
+  datasource:
+    driver:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my-springsecurity-plus?serverTimezone=Asia/Shanghai
+    username: root
+    password: 180430121
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始化配置
+      initial-size: 3
+      # 最小连接数
+      min-idle: 3
+      # 最大连接数
+      max-active: 15
+      # 获取连接超时时间
+      max-wait: 5000
+      # 连接有效性检测时间
+      time-between-eviction-runs-millis: 90000
+      # 最大空闲时间
+      min-evictable-idle-time-millis: 1800000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+      validation-query: select 1
+      # 配置监控统计拦截的filters
+      filters: stat
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      #StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true #是否启用StatViewServlet默认值true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: admin
+        login-password: admin
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.codermy.myspringsecurityplus.entity
+  mapper-locations: classpath:/mybatis-mappers/*
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  file:
+    path: src\main\resources\logger\ # logger文件夹需要提前生成
+

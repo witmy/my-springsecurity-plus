@@ -1,6 +1,6 @@
 package com.codermy.myspringsecurityplus.dao;
 
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @author codermy

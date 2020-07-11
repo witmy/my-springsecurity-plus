@@ -65,17 +65,15 @@
 </script>
 
 <script type="text/html" id="power-type">
-    {{#if (d.powerType == '0') { }}
-    <span>目录</span>
-    {{# }else if(d.powerType == '1'){ }}
+    {{#if (d.type == '1') { }}
     <span>菜单</span>
-    {{# }else if(d.powerType == '2'){ }}
+    {{# }else if(d.type == '2'){ }}
     <span>按钮</span>
     {{# } }}
 </script>
 
-<script type="text/html" id="power-enable">
-    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-enable" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
+<script type="text/html" id="power-status">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
 </script>
 
 <script type="text/html" id="icon">
@@ -103,15 +101,17 @@
                 treeDefaultClose: true,
                 toolbar:'#power-toolbar',
                 elem: '#power-table',
-                url: '/PearAdmin/admin/data/power.json',
+                url: '/api/menu',
                 page: false,
                 cols: [
                     [
                     {type: 'checkbox'},
-                    {field: 'powerName', minWidth: 200, title: '权限名称'},
+                    {field: 'name', minWidth: 200, title: '权限名称'},
                     {field: 'icon', title: '图标',templet:'#icon'},
-                    {field: 'powerType', title: '权限类型',templet:'#power-type'},
-                    {field: 'enable', title: '是否可用',templet:'#power-enable'},
+                    {field: 'type', title: '权限类型',templet:'#power-type'},
+                    {field: 'url', title: '路径'},
+                    {field: 'status', title: '是否可用',templet:'#power-status'},
+                    {field: 'permission', title: '权限标识'},
                     {field: 'sort', title: '排序'},
                     {title: '操作',templet: '#power-bar', width: 150, align: 'center'}
                     ]

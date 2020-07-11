@@ -13,11 +13,11 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-inline">
-							<input type="text" name="realName" placeholder="" class="layui-input">
+							<input type="text" name="nickName" placeholder="" class="layui-input">
 						</div>
 						<label class="layui-form-label">账号</label>
 						<div class="layui-input-inline">
-							<input type="text" name="username" placeholder="" class="layui-input">
+							<input type="text" name="userName" placeholder="" class="layui-input">
 						</div>
 						<label class="layui-form-label">地点</label>
 						<div class="layui-input-inline">
@@ -64,28 +64,13 @@
 		    <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 		</script>
 		
-		<script type="text/html" id="user-enable">
-		    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-enable" checked = "{{ d.enable == 0 ? 'true' : 'false' }}">
+		<script type="text/html" id="user-status">
+		    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.status == 0 ? 'true' : 'false' }}">
 		</script>
-		
-		<script type="text/html" id="user-sex">
-		    {{#if (d.sex == 1) { }}
-		    <span>男</span>
-		    {{# }else if(d.sex == 2){ }}
-		    <span>女</span>
-		    {{# } }}
-		</script>
-		
-		<script type="text/html" id="user-login">
-		    {{#if (d.login == 0) { }}
-		    <span>在线</span>
-		    {{# }else if(d.sex == 1){ }}
-		    <span>离线</span>
-		    {{# } }}
-		</script>
+
 		
 		<script type="text/html" id="user-createTime">
-		    {{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}
+		    {{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
 		</script>
 
 		<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
@@ -94,26 +79,23 @@
 		        let table = layui.table;
 		        let form = layui.form;
 		        let $ = layui.jquery;
-		
 		        let MODULE_PATH = "operate/";
-		
 		        let cols = [
 		            [
 		                {type:'checkbox'},
-		                {title: '账号', field: 'username', align:'center', width:100},
-		                {title: '姓名', field: 'realName', align:'center'},
-		                {title: '性别', field: 'sex', align:'center', width:80, templet:'#user-sex'},
+		                {title: '账号', field: 'userName', align:'center', width:100},
+		                {title: '姓名', field: 'nickName', align:'center'},
 		                {title: '电话', field: 'phone', align:'center'},
-		                {title: '启用', field: 'enable', align:'center', templet:'#user-enable'},
-		                {title: '登录', field: 'login', align:'center', templet:'#user-login'},
-		                {title: '注册', field: 'createTime', align:'center',templet:'#user-createTime'},
+						{title: '邮箱', field: 'email', align:'center'},
+		                {title: '启用', field: 'status', align:'center', templet:'#user-status'},
+		                {title: '创建时间', field: 'createTime', align:'center',templet:'#user-createTime'},
 		                {title: '操作', toolbar: '#user-bar', align:'center', width:130}
 		            ]
 		        ]
 		
 		        table.render({
 		            elem: '#user-table',
-		            url: '/PearAdmin/admin/data/user.json',
+		            url: '/api/user',
 		            page: true ,
 		            cols: cols ,
 		            skin: 'line',
@@ -147,7 +129,7 @@
 		            return false;
 		        });
 		
-		        form.on('switch(user-enable)', function(obj){
+		        form.on('switch(user-status)', function(obj){
 		            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
 		        });
 		
@@ -176,7 +158,7 @@
 		                layer.close(index);
 		                let loading = layer.load();
 		                $.ajax({
-		                    url: MODULE_PATH+"remove/"+obj.data['userId'],
+		                    url: MODULE_PATH+"remove/"+obj.data['id'],
 		                    dataType:'json',
 		                    type:'delete',
 		                    success:function(result){
@@ -201,7 +183,7 @@
 		            }
 		            let ids = "";
 		            for(let i = 0;i<data.length;i++){
-		                ids += data[i].userId+",";
+		                ids += data[i].id+",";
 		            }
 		            ids = ids.substr(0,ids.length-1);
 		            layer.confirm('确定要删除这些用户', {icon: 3, title:'提示'}, function(index){

@@ -65,8 +65,8 @@
 			<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 		</script>
 		
-		<script type="text/html" id="role-enable">
-			<input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-enable" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
+		<script type="text/html" id="role-status">
+			<input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
 		</script>
 
 		<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
@@ -81,17 +81,16 @@
 		        let cols = [
 		            [
 		                {type:'checkbox'},
-		                {title: '角色名', field: 'roleName', align:'center', width:100},
-		                {title: 'Key值', field: 'roleCode', align:'center'},
-		                {title: '描述', field: 'details', align:'center'},
-		                {title: '是否可用', field: 'enable', align:'center', templet:'#role-enable'},
+		                {title: '角色名', field: 'name', align:'center', width:100},
+		                {title: '描述', field: 'description', align:'center'},
+		                {title: '是否可用', field: 'status', align:'center', templet:'#role-status'},
 		                {title: '操作', toolbar: '#role-bar', align:'center', width:195}
 		            ]
 		        ]
 		
 		        table.render({
 		            elem: '#role-table',
-		            url: '/PearAdmin/admin/data/role.json',
+		            url: '/api/role',
 		            page: true ,
 		            cols: cols ,
 		            skin: 'line',
@@ -127,7 +126,7 @@
 		            return false;
 		        });
 		
-		        form.on('switch(role-enable)', function(obj){
+		        form.on('switch(role-status)', function(obj){
 		            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
 		        });
 		

@@ -30,7 +30,7 @@
 2、CSDN博客同步更新项目文档。
 
 #### 系列文章
-1、[SpringSecurity实战一—项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107249376)
+1、[SpringSecurity实战—一、项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107249376)
 
 #### 赞赏
 如果您觉得本项目对您有帮助的话，请予以支持，您的支持就是我的动力。

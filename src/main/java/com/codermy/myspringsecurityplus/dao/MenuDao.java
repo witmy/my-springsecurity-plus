@@ -1,6 +1,9 @@
 package com.codermy.myspringsecurityplus.dao;
 
-import org.mapstruct.Mapper;
+import com.codermy.myspringsecurityplus.entity.MyMenu;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * @author codermy
@@ -8,4 +11,6 @@ import org.mapstruct.Mapper;
  */
 @Mapper
 public interface MenuDao {
+    @Select("select * from my_menu t")
+    List<MyMenu> findAll();
 }
