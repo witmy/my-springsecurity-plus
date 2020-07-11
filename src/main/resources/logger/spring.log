@@ -1,0 +1,119 @@
+2020-07-11 13:47:11.932  INFO 13520 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; JSESSIONID=A71DCCCF5D3692FCB547B23186269376] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-11 13:47:11.939  INFO 13520 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-11 13:47:11.941  INFO 13520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-11 13:47:11.947  INFO 13520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-07-11 13:48:49.204  INFO 6504 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 6504 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-11 13:48:49.209  INFO 6504 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-11 13:48:49.286  INFO 6504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-11 13:48:49.287  INFO 6504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-11 13:48:50.463  INFO 6504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-11 13:48:50.466  INFO 6504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-11 13:48:50.496  INFO 6504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+2020-07-11 13:48:51.185  INFO 6504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-11 13:48:51.195  INFO 6504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-11 13:48:51.195  INFO 6504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-11 13:48:51.311  INFO 6504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-11 13:48:51.311  INFO 6504 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2024 ms
+2020-07-11 13:48:51.472  INFO 6504 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-11 13:48:52.494  INFO 6504 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-11 13:48:53.146  INFO 6504 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-11 13:48:53.334  INFO 6504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-11 13:48:53.380  INFO 6504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-11 13:48:53.419  INFO 6504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-11 13:48:54.361  INFO 6504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-11 13:48:54.363  INFO 6504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-11 13:48:54.399  INFO 6504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-11 13:48:54.468  INFO 6504 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; JSESSIONID=A71DCCCF5D3692FCB547B23186269376] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-11 13:48:54.484  INFO 6504 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-11 13:48:54.486  INFO 6504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-11 13:48:54.487  INFO 6504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-11 13:48:54.508  INFO 6504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2020-07-11 13:48:54.748  INFO 6504 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 6.121 seconds (JVM running for 7.385)
+2020-07-11 13:49:52.198  INFO 12916 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 12916 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-11 13:49:52.202  INFO 12916 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-11 13:49:52.261  INFO 12916 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-11 13:49:52.262  INFO 12916 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-11 13:49:53.640  INFO 12916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-11 13:49:53.643  INFO 12916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-11 13:49:53.669  INFO 12916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2020-07-11 13:49:54.582  INFO 12916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-11 13:49:54.592  INFO 12916 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-11 13:49:54.593  INFO 12916 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-11 13:49:54.720  INFO 12916 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-11 13:49:54.720  INFO 12916 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2458 ms
+2020-07-11 13:49:54.922  INFO 12916 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-11 13:49:56.191  INFO 12916 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-11 13:49:56.778  INFO 12916 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-11 13:49:56.919  INFO 12916 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-11 13:49:56.951  INFO 12916 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-11 13:49:57.009  INFO 12916 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-11 13:49:58.100  INFO 12916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-11 13:49:58.101  INFO 12916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-11 13:49:58.127  INFO 12916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-11 13:49:58.168  INFO 12916 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-11 13:49:58.292  INFO 12916 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 6.623 seconds (JVM running for 8.007)
+2020-07-11 13:49:59.992  INFO 12916 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; JSESSIONID=A71DCCCF5D3692FCB547B23186269376] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-11 13:50:00.021  INFO 12916 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-11 13:50:00.022  INFO 12916 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-11 13:50:00.028  INFO 12916 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-07-11 13:52:36.925  INFO 1408 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 1408 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-11 13:52:36.931  INFO 1408 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-11 13:52:37.138  INFO 1408 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-11 13:52:37.139  INFO 1408 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-11 13:52:41.998  INFO 1408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-11 13:52:42.005  INFO 1408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-11 13:52:42.081  INFO 1408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2020-07-11 13:52:44.880  INFO 1408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-11 13:52:44.900  INFO 1408 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-11 13:52:44.900  INFO 1408 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-11 13:52:45.150  INFO 1408 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-11 13:52:45.150  INFO 1408 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8010 ms
+2020-07-11 13:52:45.806  INFO 1408 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-11 13:52:47.844  INFO 1408 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-11 13:52:49.183  INFO 1408 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-11 13:52:49.631  INFO 1408 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-11 13:52:49.778  INFO 1408 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-11 13:52:49.912  INFO 1408 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-11 13:52:52.335  INFO 1408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-11 13:52:52.337  INFO 1408 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-11 13:52:52.425  INFO 1408 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-11 13:52:52.528  INFO 1408 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-11 13:52:53.105  INFO 1408 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-11 13:52:53.151  INFO 1408 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 17.799 seconds (JVM running for 20.816)
+2020-07-11 13:52:58.220  INFO 1408 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; JSESSIONID=A71DCCCF5D3692FCB547B23186269376] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-11 13:52:58.236  INFO 1408 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-11 13:52:58.237  INFO 1408 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-11 13:52:58.244  INFO 1408 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-07-11 14:22:27.538  INFO 128 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 128 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-11 14:22:27.544  INFO 128 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-11 14:22:27.632  INFO 128 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-11 14:22:27.633  INFO 128 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-11 14:22:29.971  INFO 128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-11 14:22:29.976  INFO 128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-11 14:22:30.031  INFO 128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2020-07-11 14:22:31.754  INFO 128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-11 14:22:31.768  INFO 128 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-11 14:22:31.769  INFO 128 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-11 14:22:31.914  INFO 128 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-11 14:22:31.914  INFO 128 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4281 ms
+2020-07-11 14:22:32.235  INFO 128 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-11 14:22:33.816  INFO 128 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-11 14:22:34.486  INFO 128 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-11 14:22:34.650  INFO 128 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-11 14:22:34.746  INFO 128 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-11 14:22:34.816  INFO 128 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-11 14:22:36.052  INFO 128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-11 14:22:36.054  INFO 128 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-11 14:22:36.098  INFO 128 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-11 14:22:36.145  INFO 128 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-11 14:22:36.505  INFO 128 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-11 14:22:36.538  INFO 128 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 9.958 seconds (JVM running for 12.023)
+2020-07-11 14:22:38.876  INFO 128 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; JSESSIONID=A71DCCCF5D3692FCB547B23186269376] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-11 14:22:38.898  INFO 128 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-11 14:22:38.899  INFO 128 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-11 14:22:38.914  INFO 128 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
