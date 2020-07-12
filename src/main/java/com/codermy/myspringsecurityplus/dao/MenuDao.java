@@ -11,6 +11,6 @@ import java.util.List;
  */
 @Mapper
 public interface MenuDao {
-    @Select("select * from my_menu t")
+    @Select("select t.id,t.parent_id,t.name,t.icon,t.url,t.permission,t.sort,t.type,t.create_time,t.update_time from my_menu t")
     List<MyMenu> findAll();
 }

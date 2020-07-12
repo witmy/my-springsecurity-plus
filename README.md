@@ -30,8 +30,8 @@
 2、CSDN博客同步更新项目文档。
 
 #### 系列文章
-1、[SpringSecurity实战—一、项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107249376)  
-2、[SpringSecurity实战—二、日志、接口文档等实现](https://blog.csdn.net/HYDCS/article/details/107284901)
+1、[SpringSecurity权限管理系统实战—一、项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107249376)  
+2、[SpringSecurity权限管理系统实战—二、日志、接口文档等实现](https://blog.csdn.net/HYDCS/article/details/107284901)
 
 #### 赞赏
 如果您觉得本项目对您有帮助的话，请予以支持，您的支持就是我的动力。
