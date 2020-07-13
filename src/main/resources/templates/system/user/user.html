@@ -144,12 +144,13 @@
 		        }
 		
 		        window.edit = function(obj){
+					var data = obj.data;
 		            layer.open({
 		                type: 2,
 		                title: '修改',
 		                shade: 0.1,
 		                area: ['500px', '400px'],
-		                content: MODULE_PATH + 'edit.html'
+		                content:  '/api/user/edit/?id='+data.id
 		            });
 		        }
 		

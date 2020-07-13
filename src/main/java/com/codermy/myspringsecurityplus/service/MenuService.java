@@ -1,5 +1,6 @@
 package com.codermy.myspringsecurityplus.service;
 
+import com.codermy.myspringsecurityplus.dto.MenuDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.utils.Result;
 
@@ -12,4 +13,14 @@ import java.util.List;
 public interface MenuService {
 
     List<MyMenu> getMenuAll();
+
+    MyMenu getMenuById(Integer id);
+
+    List<MenuDto> buildMenuAll();
+
+    Result updateMenu(MyMenu menu);
+
+    Result<MyMenu> save(MyMenu menu);
+
+    Result delete(Integer id);
 }

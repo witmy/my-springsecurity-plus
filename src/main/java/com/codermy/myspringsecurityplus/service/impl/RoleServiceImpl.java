@@ -21,4 +21,9 @@ public class RoleServiceImpl implements RoleService {
     public Result<MyRole> getAllRolesByPage(Integer startPosition, Integer limit) {
         return Result.ok().count(roleDao.countAllRoles().intValue()).data(roleDao.getAllRolesByPage(startPosition, limit)).code(ResultCode.TABLE_SUCCESS);
     }
+
+    @Override
+    public MyRole getRoleById(Integer id) {
+        return roleDao.getRoleById(id);
+    }
 }

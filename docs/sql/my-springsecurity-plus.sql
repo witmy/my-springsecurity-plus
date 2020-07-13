@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 11/07/2020 15:20:03
+ Date: 13/07/2020 10:01:58
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `my_menu`;
 CREATE TABLE `my_menu`  (
-  `id` int(32) NOT NULL COMMENT 'id值',
+  `id` int(32) NOT NULL AUTO_INCREMENT COMMENT 'id值',
   `parent_id` int(32) NOT NULL COMMENT '父级菜单id',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '菜单名称',
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单图标',
@@ -38,13 +38,13 @@ CREATE TABLE `my_menu`  (
 -- ----------------------------
 -- Records of my_menu
 -- ----------------------------
-INSERT INTO `my_menu` VALUES (1, 0, '系统管理', 'layui-icon-set-fill', NULL, NULL, 1, 1, '2020-07-10 09:33:00', '2020-07-10 09:33:03');
-INSERT INTO `my_menu` VALUES (2, 1, '用户管理', 'layui-icon-username', '/api/user', 'user:list', 2, 1, '2020-07-10 09:33:33', '2020-07-10 09:33:35');
-INSERT INTO `my_menu` VALUES (3, 1, '角色管理', 'layui-icon-user', '/api/role', 'role:list', 3, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
-INSERT INTO `my_menu` VALUES (4, 1, '菜单管理', 'layui-icon-vercode', '/api/menu', 'menu:list', 4, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
-INSERT INTO `my_menu` VALUES (5, 0, '系统监控', 'layui-icon-console', NULL, NULL, 5, 1, '2020-07-10 09:35:20', '2020-07-10 09:35:22');
+INSERT INTO `my_menu` VALUES (1, 0, '系统管理', 'layui-icon-set-fill', '', '', 1, 1, '2020-07-10 09:33:00', '2020-07-12 21:03:22');
+INSERT INTO `my_menu` VALUES (2, 1, '用户管理', 'layui-icon-username', '/api/user/index', 'user:list', 2, 1, '2020-07-10 09:33:33', '2020-07-13 09:30:12');
+INSERT INTO `my_menu` VALUES (3, 1, '角色管理', 'layui-icon-user', '/api/role/index', 'role:list', 3, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
+INSERT INTO `my_menu` VALUES (4, 1, '菜单管理', 'layui-icon-vercode', '/api/menu/index', 'menu:list', 4, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
+INSERT INTO `my_menu` VALUES (5, 0, '系统监控', 'layui-icon-console', '', '', 5, 1, '2020-07-10 09:35:20', '2020-07-12 20:58:31');
 INSERT INTO `my_menu` VALUES (6, 5, 'SQL监控', 'layui-icon-chart', '/durid/login', NULL, 6, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
-INSERT INTO `my_menu` VALUES (7, 5, '接口文档', 'layui-icon-chart', '/swagger/index', NULL, 7, 1, '2020-07-10 09:36:11', '2020-07-10 09:36:13');
+INSERT INTO `my_menu` VALUES (7, 5, '接口文档', 'layui-icon-chart', '/swagger/index', NULL, 7, 1, '2020-07-10 09:36:11', '2020-07-12 20:04:57');
 INSERT INTO `my_menu` VALUES (8, 2, '用户新增', NULL, NULL, 'user:add', 2, 2, '2020-07-10 09:36:41', '2020-07-10 09:36:44');
 INSERT INTO `my_menu` VALUES (9, 2, '用户编辑', NULL, NULL, 'user:edit', 2, 2, '2020-07-10 09:37:16', '2020-07-10 09:37:18');
 INSERT INTO `my_menu` VALUES (10, 2, '用户删除', NULL, NULL, 'user:del', 2, 2, '2020-07-10 09:37:38', '2020-07-10 09:37:40');

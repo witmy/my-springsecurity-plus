@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService {
 
         return Result.ok().count(userDao.countAllUser().intValue()).data(userDao.getAllUserByPage(startPosition,limit)).code(ResultCode.TABLE_SUCCESS);
     }
+
+    @Override
+    public MyUser getUserById(Integer id) {
+        return userDao.getUserById(id);
+    }
 }

@@ -146,25 +146,27 @@
                 title: '新增',
                 shade: 0.1,
                 area: ['450px', '500px'],
-                content: MODULE_PATH + 'add.html'
+                content: '/api/menu/add'
             });
         }
 
         window.edit = function(obj){
+            var data = obj.data;
             layer.open({
                 type: 2,
                 title: '修改',
                 shade: 0.1,
                 area: ['450px', '500px'],
-                content: MODULE_PATH + 'edit.html'
+                content: '/api/menu/edit/?id='+data.id
             });
         }
         window.remove = function(obj){
-            layer.confirm('确定要删除该权限', {icon: 3, title:'提示'}, function(index){
+            var data = obj.data;
+            layer.confirm('确定删除吗,如果存在下级节点则一并删除，此操作不能撤销！', {icon: 3, title:'提示'}, function(index){
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({
-                    url: MODULE_PATH+"remove/"+obj.data['powerId'],
+                    url: "/api/menu/?id=" + data.id,
                     dataType:'json',
                     type:'delete',
                     success:function(result){

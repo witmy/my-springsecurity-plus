@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author codermy
@@ -39,21 +38,22 @@ public class HelloController {
 
     @GetMapping(value = "/system/user")
     public String user(){
-        return "system/user";
+        return "system/user/user";
     }
 
     @GetMapping(value = "/system/role")
     public String role(){
-        return "system/role";
+        return "system/role/role";
     }
 
     @GetMapping(value = "/system/power")
     public String power(){
-        return "system/power";
+        return "system/menu/power";
     }
 
     @GetMapping(value = "/page/comment")
     public String comment(){
         return "page/comment";
     }
+
 }

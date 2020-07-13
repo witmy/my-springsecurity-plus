@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.service.impl;
 
 import com.codermy.myspringsecurityplus.dao.MenuDao;
+import com.codermy.myspringsecurityplus.dto.MenuDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import com.codermy.myspringsecurityplus.utils.Result;
@@ -20,5 +21,35 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MyMenu> getMenuAll() {
         return menuDao.findAll();
+    }
+
+    @Override
+    public MyMenu getMenuById(Integer id) {
+        return menuDao.getMenuById(id);
+    }
+
+    @Override
+    public List<MenuDto> buildMenuAll() {
+
+        return menuDao.buildAll();
+    }
+
+    @Override
+    public Result updateMenu(MyMenu menu) {
+        return (menuDao.update(menu) > 0) ? Result.ok().message("修改成功") : Result.error().message("修改失败");
+
+    }
+
+    @Override
+    public Result<MyMenu> save(MyMenu menu) {
+        return (menuDao.save(menu) > 0) ? Result.ok().message("添加成功") : Result.error().message("添加失败");
+
+    }
+
+    @Override
+    public Result delete(Integer id) {
+        int i = menuDao.deleteById(id);
+        int j = menuDao.deleteByParentId(id);
+        return Result.ok().message("删除成功");
     }
 }

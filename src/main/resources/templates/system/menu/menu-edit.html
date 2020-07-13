@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+                <input type="text" id="id" th:value="${myMenu.id}" name="id" style="display:none;" autocomplete="off" class="layui-input">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span style="color: red">*</span>菜单名
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${myMenu.name}" name="name" lay-verify="name" autocomplete="off" placeholder="请输入菜单名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图标</label>
+                    <div class="layui-input-block">
+                        <input type="text"  name="icon" th:value="${myMenu.icon}" autocomplete="off" placeholder="请输入图标名称" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">路径</label>
+                    <div class="layui-input-block">
+                        <input type="text"  name="url" th:value="${myMenu.url}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">权限标识</label>
+                    <div class="layui-input-block">
+                        <input type="text"  name="permission" th:value="${myMenu.permission}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span style="color: red">*</span>排序
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text"  name="sort" th:value="${myMenu.sort}" lay-verify="sort" autocomplete="off" placeholder="请输入排序值" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="type" value="1" title="菜单"  th:checked="${myMenu.type == 1}? 'true':'false'">
+                        <input type="radio" name="type" value="2" title="按钮" th:checked="${myMenu.type == 2}? 'true':'false'">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        上级菜单
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="number" id="parentId" th:value="${myMenu.parentId}" name="parentId"  lay-verify="parentId" style="display:none;width: 0px" autocomplete="off" class="layui-input">
+                        <ul id="dataTree" class="dtree" data-id="0" th:data-value="${myMenu.parentId}"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="user-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+<script type="text/javascript">
+
+    layui.use(['dtree','form','jquery'],function(){
+        let form = layui.form;
+        let $ = layui.jquery;
+        let dtree = layui.dtree;
+
+        // 初始化树
+        dtree.render({
+            elem: "#dataTree",
+            initLevel: "1",
+            width: "100%",
+            method: 'get',
+            dataStyle: "layuiStyle",  //使用layui风格的数据格式
+            response:{message:"msg",statusCode:200},  //修改response中返回数据的定义
+            url: "/api/menu/build",
+            dataFormat: "list",  //配置data的风格为list
+            select: true, //指定下拉树模式
+            selectTips: "不选默认是顶级目录",
+            selectCardHeight: "200"
+        });
+
+        form.verify({
+            name: function(value){
+                if(value.length < 2){
+                    return '菜单名至少2个字符';
+                }
+            },
+            sort:  [
+                /^[1-9]\d*$/
+            ,'只能是整数哦'
+        ]
+    });
+        form.on('submit(user-save)', function(data){
+            $.ajax({
+                url:'/api/menu',
+                data:JSON.stringify(data.field),
+                dataType:'json',
+                contentType:'application/json',
+                type:'post',
+                success:function(result){
+                    if(result.success){
+                        layer.msg(result.msg,{icon:1,time:1000},function(){
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.location.reload();//刷新页面
+                        });
+                    }else{
+                        layer.msg(result.msg,{icon:2,time:1000});
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+<script type="text/javascript">
+</script>
+</body>
+</html>

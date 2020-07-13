@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/api/user")
-@Api(tags = "用户相关接口")
+@Api(tags = "系统：用户管理")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -29,5 +30,11 @@ public class UserController {
     public Result<MyUser> index(PageTableRequest pageTableRequest){
         pageTableRequest.countOffset();
         return userService.getAllUsersByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit());
+    }
+    @GetMapping("edit")
+    @ApiOperation(value = "修改用户界面")
+    public String editUser(Model model, MyUser tbUser){
+        model.addAttribute("MyUser",userService.getUserById(tbUser.getId()));
+        return "/system/user/user-edit";
     }
 }

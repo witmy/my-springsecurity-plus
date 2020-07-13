@@ -9,4 +9,6 @@ import com.codermy.myspringsecurityplus.utils.Result;
  */
 public interface UserService {
     Result<MyUser> getAllUsersByPage(Integer startPosition, Integer limit);
+
+    MyUser getUserById(Integer id);
 }

@@ -11,5 +11,5 @@ public interface RoleService {
 
     Result<MyRole> getAllRolesByPage(Integer startPosition, Integer limit);
 
-
+    MyRole getRoleById(Integer id);
 }

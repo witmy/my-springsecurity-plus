@@ -16,6 +16,9 @@ public interface RoleDao {
     Long countAllRoles();
 
     //分页查询权限
-    @Select("select * from my_role t limit #{startPosition}, #{limit}")
+    @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t limit #{startPosition}, #{limit}")
     List<MyRole> getAllRolesByPage(@Param("startPosition")Integer startPosition, @Param("limit")Integer limit);
+
+    @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t where t.id = #{id}")
+    MyRole getRoleById(Integer id);
 }
