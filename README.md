@@ -31,7 +31,9 @@
 
 #### 系列文章
 1、[SpringSecurity权限管理系统实战—一、项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107249376)  
-2、[SpringSecurity权限管理系统实战—二、日志、接口文档等实现](https://blog.csdn.net/HYDCS/article/details/107284901)
+2、[SpringSecurity权限管理系统实战—二、日志、接口文档等实现](https://blog.csdn.net/HYDCS/article/details/107284901)  
+3、[SpringSecurity权限管理系统实战—三、主要页面及接口实现](https://blog.csdn.net/HYDCS/article/details/107342644)  
+
 
 #### 赞赏
 如果您觉得本项目对您有帮助的话，请予以支持，您的支持就是我的动力。
