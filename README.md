@@ -12,7 +12,7 @@
 8、Redis  
 9、JWT  
 10、[Pear Admin Layui](https://gitee.com/Jmysy/Pear-Admin-Layui)  
-等
+等等
 #### 快速使用
 
 - 下载maven项目
