@@ -5,6 +5,7 @@ import com.codermy.myspringsecurityplus.dto.MenuDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import com.codermy.myspringsecurityplus.utils.Result;
+import com.codermy.myspringsecurityplus.utils.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,9 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuDao menuDao;
     @Override
-    public List<MyMenu> getMenuAll() {
-        return menuDao.findAll();
+    public List<MyMenu> getMenuAll(String queryName,Integer queryType) {
+
+        return menuDao.getFuzzyMenu(queryName,queryType);
     }
 
     @Override
@@ -51,5 +53,13 @@ public class MenuServiceImpl implements MenuService {
         int i = menuDao.deleteById(id);
         int j = menuDao.deleteByParentId(id);
         return Result.ok().message("删除成功");
+    }
+
+    @Override
+    public List<MenuDto> buildMenuAllByRoleId(Integer roleId) {
+        List<MenuDto> listByRoleId = menuDao.listByRoleId(roleId);
+        List<MenuDto> permissionDtos = menuDao.buildAll();
+        List<MenuDto> tree = TreeUtil.tree(listByRoleId, permissionDtos);
+        return tree;
     }
 }

@@ -1,5 +1,6 @@
 package com.codermy.myspringsecurityplus.dao;
 
+import com.codermy.myspringsecurityplus.dto.RoleDto;
 import com.codermy.myspringsecurityplus.entity.MyRole;
 import org.apache.ibatis.annotations.*;
 
@@ -15,10 +16,19 @@ public interface RoleDao {
     @Select("select count(*) from my_role t")
     Long countAllRoles();
 
-    //分页查询权限
-    @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t limit #{startPosition}, #{limit}")
-    List<MyRole> getAllRolesByPage(@Param("startPosition")Integer startPosition, @Param("limit")Integer limit);
+    //分页模糊查询权限
+    List<MyRole> getFuzzyRolesByPage(@Param("startPosition")Integer startPosition, @Param("limit")Integer limit,@Param("queryName") String queryName);
 
     @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t where t.id = #{id}")
     MyRole getRoleById(Integer id);
+
+    int update(RoleDto roleDto);
+
+    int saveRole(RoleDto roleDto);
+
+    @Delete("delete from my_role where id = #{id}")
+    int delete(Integer id);
+
+    @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t")
+    List<MyRole> getAllRoles();
 }

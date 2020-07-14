@@ -100,7 +100,7 @@
             dataFormat: "list",  //配置data的风格为list
             select: true, //指定下拉树模式
             selectTips: "不选默认是顶级目录",
-            selectCardHeight: "200"
+            selectCardHeight: "200",
         });
 
         form.verify({
@@ -120,7 +120,7 @@
                 data:JSON.stringify(data.field),
                 dataType:'json',
                 contentType:'application/json',
-                type:'post',
+                type:'put',
                 success:function(result){
                     if(result.success){
                         layer.msg(result.msg,{icon:1,time:1000},function(){

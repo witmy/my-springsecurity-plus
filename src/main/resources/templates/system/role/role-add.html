@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -56,9 +56,8 @@
         let form = layui.form;
         let $ = layui.jquery;
         let dtree = layui.dtree;
-        let roleId = $("#id").val();
         let Dtree = null;
-        // 初始化树
+        let roleId = $("#id").val();
         Dtree = dtree.render({
             elem: "#dataTree",
             initLevel: "1",
@@ -66,7 +65,7 @@
             method: 'get',
             dataStyle: "layuiStyle",  //使用layui风格的数据格式
             response:{message:"msg",statusCode:200},  //修改response中返回数据的定义
-            url: "/api/menu/ebuild/"+roleId,
+            url: "/api/menu/build",
             dataFormat: "list",  //配置data的风格为list
             checkbar: true,  //开启复选框
             checkbarType: "p-casc"
@@ -84,23 +83,23 @@
                 layer.msg("请至少选择一个节点",{icon:2});
                 flag = false;
             }
+            // 获取复选框数组数据
             var paramJsonArr = Dtree.getCheckbarJsonArrParam();
             var ids = paramJsonArr["nodeId"]
             var datas = data.field
             datas['menuIds'] = ids
             datas['id'] = roleId
-
             $.ajax({
                 url:'/api/role',
                 data:JSON.stringify(datas),
                 dataType:'json',
                 contentType:'application/json',
-                type:'put',
+                type:'post',
                 success:function(result){
                     if(result.success){
                         layer.msg(result.msg,{icon:1,time:1000},function(){
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.location.reload();//刷新页面
+                            parent.location.reload();
                         });
                     }else{
                         layer.msg(result.msg,{icon:2,time:1000});

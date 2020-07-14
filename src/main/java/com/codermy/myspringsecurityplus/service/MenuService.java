@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface MenuService {
 
-    List<MyMenu> getMenuAll();
+    List<MyMenu> getMenuAll(String queryName,Integer queryType);
 
     MyMenu getMenuById(Integer id);
 
@@ -23,4 +23,6 @@ public interface MenuService {
     Result<MyMenu> save(MyMenu menu);
 
     Result delete(Integer id);
+
+    List<MenuDto> buildMenuAllByRoleId(Integer roleId);
 }

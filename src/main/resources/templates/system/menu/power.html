@@ -11,26 +11,19 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">权限名称</label>
+                <label class="layui-form-label">菜单标题</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="realName" placeholder="" class="layui-input">
+                    <input type="text" name="name" placeholder="请输入菜单标题" class="layui-input">
                 </div>
-                <label class="layui-form-label">权限标识</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="username" placeholder="" class="layui-input">
-                </div>
-				<label class="layui-form-label">地点</label>
+				<label class="layui-form-label">类型</label>
 				<div class="layui-input-inline">
-					<select name="city" lay-verify="required">
+					<select name="type">
 					        <option value=""></option>
-					        <option value="0">北京</option>
-					        <option value="1">上海</option>
-					        <option value="2">广州</option>
-					        <option value="3">深圳</option>
-					        <option value="4">杭州</option>
+					        <option value="1">菜单</option>
+					        <option value="2">按钮</option>
 					      </select>
 				</div>
-                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="user-query">
+                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="menu-query">
                     <i class="layui-icon layui-icon-search"></i>
                     查询
                 </button>
@@ -106,13 +99,14 @@
                 cols: [
                     [
                     {type: 'checkbox'},
-                    {field: 'name', minWidth: 200, title: '权限名称'},
+                    {field: 'name', minWidth: 200, title: '菜单标题'},
                     {field: 'icon', title: '图标',templet:'#icon'},
-                    {field: 'type', title: '权限类型',templet:'#power-type'},
+                    {field: 'type', title: '类型',templet:'#power-type'},
                     {field: 'url', title: '路径'},
                     {field: 'status', title: '是否可用',templet:'#power-status'},
                     {field: 'permission', title: '权限标识'},
                     {field: 'sort', title: '排序'},
+                    {field: 'createTime', title: '创建日期'},
                     {title: '操作',templet: '#power-bar', width: 150, align: 'center'}
                     ]
                 ]
@@ -140,6 +134,24 @@
             }
         });
 
+        form.on('submit(menu-query)', function(data){
+            var formData = data.field;
+            var name = formData.name;
+            var type = formData.type;
+            table.reload(('power-table'),{
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {//这里传参  向后台
+                    queryName: name,
+                    queryType: type
+                    //可传多个参数到后台...  ，分隔
+                }
+                , url: '/api/menu'//后台做模糊搜索接口路径
+                , method: 'get'
+            });
+            return false;
+        });
         window.add = function(){
             layer.open({
                 type: 2,

@@ -478,10 +478,10 @@ layui.define(['table', 'jquery', 'element', 'form', 'pearAuth', 'pearTab', 'pear
 				'<a class="more-menu-item" href="http://www.pearadmin.cn/doc/" target="_blank">' +
 				'<i class="layui-icon layui-icon-read" style="font-size: 19px;"></i> 开发文档' +
 				'</a>' +
-				'<a class="more-menu-item" href="https://gitee.com/Jmysy/Pear-Admin-Layui" target="_blank">' +
+				'<a class="more-menu-item" href="https://gitee.com/mydemy/my-springsecurity-plus" target="_blank">' +
 				'<i class="layui-icon layui-icon-tabs" style="font-size: 16px;"></i> 开源地址' +
 				'</a>' +
-				'<a class="more-menu-item" href="http://www.pearadmin.cn/" target="_blank">' +
+				'<a class="more-menu-item" href="https://gitee.com/mydemy/my-springsecurity-plus" target="_blank">' +
 				'<i class="layui-icon layui-icon-theme"></i> 官方网站' +
 				'</a>' +
 				'</div>';

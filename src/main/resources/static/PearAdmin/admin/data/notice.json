@@ -3,14 +3,14 @@
 		"title": "私信",
 		"children": [{
 			"id": 11,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
 			"time": "2019-02-15"
 		}, {
 			"id": 12,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条成功通知",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
@@ -22,14 +22,14 @@
 		"title": "消息",
 		"children": [{
 			"id": 11,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
 			"time": "2019-02-15"
 		}, {
 			"id": 12,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
@@ -37,14 +37,14 @@
 		},
 		{
 			"id": 11,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
 			"time": "2019-02-15"
 		}, {
 			"id": 12,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
@@ -52,14 +52,14 @@
 		},
 		{
 			"id": 11,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
 			"time": "2019-02-15"
 		}, {
 			"id": 12,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
@@ -71,14 +71,14 @@
 		"title": "通知",
 		"children": [{
 			"id": 11,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",
 			"time": "2019-02-15"
 		}, {
 			"id": 12,
-			"avatar":"admin/images/success.png",
+			"avatar":"PearAdmin/admin/images/success.png",
 			"title": "收到一条紧急任务",
 			"context": "这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容，这是消息内容",
 			"form": "就眠仪式",

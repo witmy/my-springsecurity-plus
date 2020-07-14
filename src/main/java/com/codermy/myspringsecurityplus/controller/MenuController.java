@@ -28,8 +28,8 @@ public class MenuController {
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "菜单列表")
-    public Result getMenuAll(){
-        return Result.ok().data(menuService.getMenuAll()).code(ResultCode.TABLE_SUCCESS);
+    public Result getMenuAll(String queryName,Integer queryType){
+        return Result.ok().data(menuService.getMenuAll(queryName,queryType)).code(ResultCode.TABLE_SUCCESS);
     }
 
     @GetMapping("/build")
@@ -40,6 +40,14 @@ public class MenuController {
         return Result.ok().data(menuAll);
     }
 
+    @GetMapping("/ebuild/{roleId}")
+    @ResponseBody
+    @ApiOperation(value = "通过id绘制菜单树")
+    public Result buildMenuAllByRoleId(@PathVariable Integer roleId){
+        List<MenuDto> menuAll =menuService.buildMenuAllByRoleId(roleId);
+        return Result.ok().data(menuAll);
+    }
+
     @GetMapping(value = "/edit")
     @ApiOperation(value = "修改菜单页面")
     public String editPermission(Model model, MyMenu myMenu) {
@@ -47,9 +55,9 @@ public class MenuController {
         return "system/menu/menu-edit";
     }
 
-    @PostMapping
+    @PutMapping
     @ResponseBody
-    @ApiOperation(value = "通修改菜单")
+    @ApiOperation(value = "修改菜单")
     public Result updateMenu(@RequestBody MyMenu menu) {
         return menuService.updateMenu(menu);
     }
@@ -62,7 +70,7 @@ public class MenuController {
         return "system/menu/menu-add";
     }
 
-    @PutMapping
+    @PostMapping
     @ResponseBody
     @ApiOperation(value = "添加菜单")
     public Result<MyMenu> savePermission(@RequestBody MyMenu myMenu) {

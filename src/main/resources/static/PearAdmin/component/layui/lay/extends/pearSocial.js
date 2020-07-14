@@ -29,7 +29,7 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 		var body  = '<div class="pear-social" style="display:none;">'+
 			'<div class="pear-social-side">'+
 				'<div class="pear-social-avatar">'+
-					'<img src="admin/images/avatar.jpg" />'+
+					'<img src="PearAdmin/admin/images/avatar.jpg" />'+
 				'</div>'+
 		
 				'<div class="pear-social-control">'+
@@ -53,10 +53,10 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 						'<div pear-id="1" class="body layui-side-scroll session">'+
 						
 							'<div class="body-item">'+
-								'<img class="body-item-avatar" src="admin/images/avatar.jpg"><span class="body-item-name">老大</span><span class="dot online"></span>'+
+								'<img class="body-item-avatar" src="PearAdmin/admin/images/avatar.jpg"><span class="body-item-name">老大</span><span class="dot online"></span>'+
 							'</div>'+
 							'<div class="body-item">'+
-								'<img class="body-item-avatar" src="admin/images/avatar.jpg"><span class="body-item-name">老二</span><span class="dot"></span>'+
+								'<img class="body-item-avatar" src="PearAdmin/admin/images/avatar.jpg"><span class="body-item-name">老二</span><span class="dot"></span>'+
 							'</div>'+
 							
 						
@@ -64,21 +64,21 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 						
 						'<div pear-id="2" class="body layui-side-scroll list" style="display: none;">'+
 						   ' <div class="body-item">'+
-						    	'<img class="body-item-avatar" src="admin/images/avatar.jpg"><span class="body-item-name">新的朋友</span>'+
+						    	'<img class="body-item-avatar" src="PearAdmin/admin/images/avatar.jpg"><span class="body-item-name">新的朋友</span>'+
 						    '</div>'+
 							'<div class="body-split">A</div>'+
 							'<div class="body-item">'+
-								'<img class="body-item-avatar" src="admin/images/avatar.jpg"><span class="body-item-name">老大</span><span class="dot online"></span>'+
+								'<img class="body-item-avatar" src="PearAdmin/admin/images/avatar.jpg"><span class="body-item-name">老大</span><span class="dot online"></span>'+
 							'</div>'+
 							'<div class="body-item">'+
-								'<img class="body-item-avatar" src="admin/images/avatar.jpg"><span class="body-item-name">老大</span><span class="dot online"></span>'+
+								'<img class="body-item-avatar" src="PearAdmin/admin/images/avatar.jpg"><span class="body-item-name">老大</span><span class="dot online"></span>'+
 							'</div>'+
 					
 						'</div>'+
 						
 						'<div pear-id="4" class="body layui-side-scroll" style="display: none;">'+
 						   ' <div class="body-item">'+
-								'<img class="body-item-avatar" src="admin/images/avatar.jpg"><span class="body-item-name">老大</span>'+
+								'<img class="body-item-avatar" src="PearAdmin/admin/images/avatar.jpg"><span class="body-item-name">老大</span>'+
 							'</div>'+
 						'</div>'+
 					'</div>'+
@@ -101,8 +101,8 @@ layui.define(['table', 'jquery', 'element'], function (exports) {
 					'<div class="pear-social-body-content-chat">'+
 		
 						'<ul class="content">'+
-							'<li class="me"><img src="admin/images/avatar.jpg" title="彩色系"><span>疾风知劲草，板荡识诚臣</span></li>'+
-							'<li class="other"><img src="admin/images/avatar.jpg" title="就眠仪式"><span>勇夫安知义，智者必怀仁</span></li>'+
+							'<li class="me"><img src="PearAdmin/admin/images/avatar.jpg" title="彩色系"><span>疾风知劲草，板荡识诚臣</span></li>'+
+							'<li class="other"><img src="PearAdmin/admin/images/avatar.jpg" title="就眠仪式"><span>勇夫安知义，智者必怀仁</span></li>'+
 						'</ul>'+
 					'</div>'+
 				

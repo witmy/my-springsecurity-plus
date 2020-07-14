@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codermy.myspringsecurityplus.dao.RoleDao">
+
+    <select id="getFuzzyRolesByPage" resultType="com.codermy.myspringsecurityplus.entity.MyRole">
+        select t.id,t.name,t.description,t.status,t.create_time,t.update_time
+        from my_role t
+        <where>
+            <if test="queryName != null and queryName != ''">
+                AND t.name like CONCAT('%', #{queryName}, '%')
+            </if>
+        </where>
+        limit #{startPosition}, #{limit}
+    </select>
+
+    <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">
+		insert into my_role(name, description, status, create_time, update_time)
+		values
+		(#{name}, #{description}, 1, now(), now())
+	</insert>
+
+    <update id="update">
+        update my_role t
+        <set>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+
+            update_time = #{updateTime}
+        </set>
+        where t.id = #{id}
+    </update>
+
+</mapper>

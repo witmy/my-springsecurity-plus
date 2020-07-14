@@ -15,21 +15,6 @@
 						<div class="layui-input-inline">
 							<input type="text" name="realName" placeholder="" class="layui-input">
 						</div>
-						<label class="layui-form-label">角色标识</label>
-						<div class="layui-input-inline">
-							<input type="text" name="username" placeholder="" class="layui-input">
-						</div>
-						<label class="layui-form-label">地点</label>
-						<div class="layui-input-inline">
-							<select name="city" lay-verify="required">
-							        <option value=""></option>
-							        <option value="0">北京</option>
-							        <option value="1">上海</option>
-							        <option value="2">广州</option>
-							        <option value="3">深圳</option>
-							        <option value="4">杭州</option>
-							      </select>
-						</div>
 						<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="role-query">
 							<i class="layui-icon layui-icon-search"></i>
 							查询
@@ -61,7 +46,6 @@
 		
 		<script type="text/html" id="role-bar">
 			<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
-			<button class="pear-btn pear-btn-warming pear-btn-sm" lay-event="power"><i class="layui-icon layui-icon-vercode"></i></button>
 			<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 		</script>
 		
@@ -87,8 +71,7 @@
 		                {title: '操作', toolbar: '#role-bar', align:'center', width:195}
 		            ]
 		        ]
-		
-		        table.render({
+				var tableIns = table.render({
 		            elem: '#role-table',
 		            url: '/api/role',
 		            page: true ,
@@ -106,8 +89,6 @@
 		                window.remove(obj);
 		            } else if(obj.event === 'edit'){
 		                window.edit(obj);
-		            } else if(obj.event === 'power'){
-		                window.power(obj);
 		            }
 		        });
 		
@@ -122,8 +103,20 @@
 		        });
 		
 		        form.on('submit(role-query)', function(data){
-		            table.reload('role-table',{where:data.field})
-		            return false;
+					var formData = data.field;
+					var realName = formData.realName;
+					tableIns.reload({
+						page: {
+							curr: 1 //重新从第 1 页开始
+						}
+						, where: {//这里传参  向后台
+							queryName: realName,
+							//可传多个参数到后台...  ，分隔
+						}
+						, url: '/api/role'//后台做模糊搜索接口路径
+						, method: 'get'
+					});
+					return false;
 		        });
 		
 		        form.on('switch(role-status)', function(obj){
@@ -136,20 +129,10 @@
 		                title: '新增',
 		                shade: 0.1,
 		                area: ['500px', '400px'],
-		                content: MODULE_PATH + 'add.html'
+		                content: '/api/role/add'
 		            });
 		        }
-		
-		        window.power = function(obj){
-		            layer.open({
-		                type: 2,
-		                title: '授权',
-		                shade: 0.1,
-		                area: ['320px', '400px'],
-		                content: MODULE_PATH + 'edit.html'
-		            });
-		        }
-		
+
 		        window.edit = function(obj){
 					var data = obj.data;
 		            layer.open({
@@ -162,12 +145,14 @@
 		        }
 		
 		        window.remove = function(obj){
+					var data = obj.data;
 		            layer.confirm('确定要删除该角色', {icon: 3, title:'提示'}, function(index){
 		                layer.close(index);
 		                let loading = layer.load();
 		                $.ajax({
-		                    url: MODULE_PATH+"remove/"+obj.data['roleId'],
+		                    url: '/api/role',
 		                    dataType:'json',
+							data:{id:data.id},
 		                    type:'delete',
 		                    success:function(result){
 		                        layer.close(loading);

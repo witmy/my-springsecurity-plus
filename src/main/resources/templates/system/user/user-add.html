@@ -17,14 +17,14 @@
                         <span style="color: red">*</span>用户名
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="userName" th:value="${MyUser.userName}" name="userName" lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" id="userName" th:value="${MyUser.userName}" name="userName" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span style="color: red">*</span>昵称</label>
                     <div class="layui-input-block">
-                        <input type="text" id="nickName" th:value="${MyUser.nickName}" name="nickName" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                        <input type="text" id="nickName" th:value="${MyUser.nickName}" name="nickName" required="" placeholder="请输入昵称" lay-verify="nikename" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -32,7 +32,7 @@
                         <span style="color: red">*</span>手机
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="phone" th:value="${MyUser.phone}" name="phone" required="" lay-verify="phone" autocomplete="off" class="layui-input">
+                        <input type="text" id="phone" th:value="${MyUser.phone}" name="phone" required="" lay-verify="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -40,15 +40,15 @@
                         <span style="color: red">*</span>邮箱
                     </label>
                     <div class="layui-input-block">
-                        <input type="text"  name="email" th:value="${MyUser.email}"lay-verify="email" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                        <input type="text"  name="email" th:value="${MyUser.email}"lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">类型</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="status" value="1" title="激活"  th:checked="${MyUser.status == 1}? 'true':'false'">
-                        <input type="radio" name="status" value="0" title="禁用" th:checked="${MyUser.status == 0}? 'true':'false'">
-                    </div>
+                        <input type="radio" name="status" value="1" title="激活" checked>
+                        <input type="radio" name="status" value="0" title="禁用">
+                </div>
                 </div>
                 <input type="text" id="roleId"  name="roleId" style="display:none;"/>
                 <div class="layui-form-item">
@@ -81,17 +81,29 @@
             layui.form.render('radio')
         });
         form.on('submit(user-save)', function(data){
+            var rolelRadio = $("[name=roleId]:checked");
+            if(rolelRadio == undefined || rolelRadio.length <= 0){
+                layer.alert("请给该用户设置角色");
+                return false;
+            }
+            let roleIds = "";
+            $('input[type=checkbox]:checked').each(function() {
+                roleIds += $(this).val()+",";
+            });
+            roleIds = roleIds.substr(0,roleIds.length-1);
+            data.field.roleIds = roleIds;
+
             $.ajax({
                 url:'/api/user',
                 data:JSON.stringify(data.field),
                 dataType:'json',
                 contentType:'application/json',
-                type:'put',
+                type:'post',
                 success:function(result){
                     if(result.success){
                         layer.msg(result.msg,{icon:1,time:1000},function(){
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.location.reload();//刷新页面
+                            parent.location.reload();
                         });
                     }else{
                         layer.msg(result.msg,{icon:2,time:1000});
@@ -111,7 +123,6 @@
             ,email: [/^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$|^1[3|4|5|7|8]\d{9}$/, '邮箱格式不对']
         });
     })
-
     function getAllRole(callback){
         $.ajax({
             url:"/api/role/all",
@@ -125,39 +136,7 @@
                             '<div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>'+result.data[i].name+'</div></div>';
                     }
                     $(".show-role-container").html(html);
-                    getCurrentUserRole(callback);
-                }
-            }
-        });
-    }
-    function getCurrentUserRole(callback){
-        var userId = $("#userId").val();
-        $.ajax({
-            url:"/api/roleuser",
-            type:"POST",
-            data:{
-                "userId" : userId
-            },
-            dataType:'json',
-            success:function(result){
-                if(result.code == 200){
-                    if(result.data){
-                        var str1 = JSON.stringify(result.data);
-                        if (str1 == "[]"){
-                            str1 = "[{'roleId': null}]"
-                        }
-                        var str = str1.substring(1,str1.length-1)
-                        var obj = eval('('+str+')');
-                        $("[name=roleId]").each(function () {
-                            if($(this).val() == obj.roleId){
-                                $(this).attr("checked","checked");
-                                return false;
-                            }
-                        })
-                    }
-                    if (callback){
-                        callback();
-                    }
+                    callback();
                 }
             }
         });

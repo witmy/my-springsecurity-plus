@@ -12,8 +12,7 @@ import java.util.List;
  */
 @Mapper
 public interface MenuDao {
-    @Select("select t.id,t.parent_id,t.name,t.icon,t.url,t.permission,t.sort,t.type,t.create_time,t.update_time from my_menu t")
-    List<MyMenu> findAll();
+    List<MyMenu> getFuzzyMenu(String queryName,Integer queryType);
 
     @Select("select t.id,t.parent_id,t.name,t.icon,t.url,t.permission,t.sort,t.type,t.create_time,t.update_time from my_menu t where t.id = #{id}")
     MyMenu getMenuById(Integer id);
@@ -33,4 +32,8 @@ public interface MenuDao {
 
     @Delete("delete from my_menu where parent_id = #{parentId}")
     int deleteByParentId(Integer parentId);
+
+    @Select("select p.id,p.parent_id,p.name from my_menu p inner join my_role_menu rp on p.id = rp.menu_id where rp.role_id = #{roleId}")
+    @Result(property = "title",column = "name")
+    List<MenuDto> listByRoleId(Integer roleId);
 }
