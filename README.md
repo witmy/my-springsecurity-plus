@@ -1,4 +1,5 @@
 # my-springsecurity-plus
+推荐国内用户使用[gitee](https://gitee.com/mydemy/my-springsecurity-plus)
 #### 介绍
 这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统
 
