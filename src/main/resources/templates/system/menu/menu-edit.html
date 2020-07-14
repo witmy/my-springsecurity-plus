@@ -25,7 +25,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">图标</label>
                     <div class="layui-input-block">
-                        <input type="text"  name="icon" th:value="${myMenu.icon}" autocomplete="off" placeholder="请输入图标名称" class="layui-input">
+                        <input type="text" id="iconPicker" name="icon" class="hide" th:value="${myMenu.icon}">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -83,11 +83,11 @@
 <script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 <script type="text/javascript">
 
-    layui.use(['dtree','form','jquery'],function(){
+    layui.use(['iconPicker','dtree','form','jquery'],function(){
         let form = layui.form;
         let $ = layui.jquery;
         let dtree = layui.dtree;
-
+        var iconPicker = layui.iconPicker;
         // 初始化树
         dtree.render({
             elem: "#dataTree",
@@ -102,7 +102,26 @@
             selectTips: "不选默认是顶级目录",
             selectCardHeight: "200",
         });
-
+        iconPicker.render({
+            // 选择器，推荐使用input
+            elem: '#iconPicker',
+            // 数据类型：fontClass/unicode，推荐使用fontClass
+            type: 'fontClass',
+            // 是否开启搜索：true/false，默认true
+            search: true,
+            // 是否开启分页：true/false，默认true
+            page: true,
+            // 每页显示数量，默认12
+            limit: 12,
+            // 点击回调
+            click: function (data) {
+                console.log(data);
+            },
+            // 渲染成功后的回调
+            success: function(d) {
+                console.log(d);
+            }
+        });
         form.verify({
             name: function(value){
                 if(value.length < 2){

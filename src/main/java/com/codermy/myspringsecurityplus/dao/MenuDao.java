@@ -12,6 +12,12 @@ import java.util.List;
  */
 @Mapper
 public interface MenuDao {
+    /**
+     *
+     * @param queryName 查询的表题
+     * @param queryType 查询类型
+     * @return
+     */
     List<MyMenu> getFuzzyMenu(String queryName,Integer queryType);
 
     @Select("select t.id,t.parent_id,t.name,t.icon,t.url,t.permission,t.sort,t.type,t.create_time,t.update_time from my_menu t where t.id = #{id}")

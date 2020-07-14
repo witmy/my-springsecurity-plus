@@ -11,6 +11,13 @@ import java.util.stream.Collectors;
  */
 public class TreeUtil {
     //todo 判断list是否为空
+
+    /**
+     *
+     * @param listByRoleId 通过角色id查询的menuid
+     * @param menuDtos 返回的menutree
+     * @return
+     */
     public static List<MenuDto> tree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos ){
         // if (listByRoleId == null & listByRoleId.size() ==0){
         //     throw

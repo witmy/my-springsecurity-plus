@@ -77,12 +77,13 @@ public class MenuController {
         return menuService.save(myMenu);
     }
 
-
+    //todo 批量删除
     @DeleteMapping
     @ResponseBody
     @ApiOperation(value = "删除菜单")
     public Result deleteMenu(Integer id) {
         return menuService.delete(id);
     }
+
 
 }

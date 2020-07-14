@@ -1,201 +1,197 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
-    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
-</head>
-<body class="pear-container">
-<div class="layui-card">
-    <div class="layui-card-body">
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <label class="layui-form-label">菜单标题</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="name" placeholder="请输入菜单标题" class="layui-input">
-                </div>
-				<label class="layui-form-label">类型</label>
-				<div class="layui-input-inline">
-					<select name="type">
-					        <option value=""></option>
-					        <option value="1">菜单</option>
-					        <option value="2">按钮</option>
-					      </select>
-				</div>
-                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="menu-query">
-                    <i class="layui-icon layui-icon-search"></i>
-                    查询
-                </button>
-                <button type="reset" class="pear-btn pear-btn-md">
-                    <i class="layui-icon layui-icon-refresh"></i>
-                    重置
-                </button>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
+        <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+    </head>
+    <body class="pear-container">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜单标题</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" placeholder="请输入菜单标题" class="layui-input">
+                        </div>
+                        <label class="layui-form-label">类型</label>
+                        <div class="layui-input-inline">
+                            <select name="type">
+                                <option value=""></option>
+                                <option value="1">菜单</option>
+                                <option value="2">按钮</option>
+                            </select>
+                        </div>
+                        <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="menu-query">
+                            <i class="layui-icon layui-icon-search"></i>
+                            查询
+                        </button>
+                        <button type="reset" class="pear-btn pear-btn-md">
+                            <i class="layui-icon layui-icon-refresh"></i>
+                            重置
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-<div class="layui-card">
-    <div class="layui-card-body">
-        <table id="power-table" lay-filter="power-table"></table>
-    </div>
-</div>
+        </div>
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <table id="power-table" lay-filter="power-table"></table>
+            </div>
+        </div>
 
-<script type="text/html" id="power-toolbar">
-    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
-        <i class="layui-icon layui-icon-add-1"></i>
-        新增
-    </button>
-    <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
-        <i class="layui-icon layui-icon-delete"></i>
-        删除
-    </button>
-</script>
+        <script type="text/html" id="power-toolbar">
+            <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+                <i class="layui-icon layui-icon-add-1"></i>
+                新增
+            </button>
+            <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+                <i class="layui-icon layui-icon-delete"></i>
+                删除
+            </button>
+        </script>
 
-<script type="text/html" id="power-bar">
-    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
-    <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
-</script>
+        <script type="text/html" id="power-bar">
+            <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
+            <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
+        </script>
 
-<script type="text/html" id="power-type">
-    {{#if (d.type == '1') { }}
-    <span>菜单</span>
-    {{# }else if(d.type == '2'){ }}
-    <span>按钮</span>
-    {{# } }}
-</script>
+        <script type="text/html" id="power-type">
+            {{#if (d.type == '1') { }}
+            <span>菜单</span>
+            {{# }else if(d.type == '2'){ }}
+            <span>按钮</span>
+            {{# } }}
+        </script>
 
-<script type="text/html" id="power-status">
-    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
-</script>
+        <script type="text/html" id="power-status">
+            <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
+        </script>
 
-<script type="text/html" id="icon">
-    <i class="layui-icon {{d.icon}}"></i>
-</script>
+        <script type="text/html" id="icon">
+            <i class="layui-icon {{d.icon}}"></i>
+        </script>
 
-<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
-<script>
-    layui.use(['table','form','jquery','treetable'],function () {
-        let table = layui.table;
-        let form = layui.form;
-        let $ = layui.jquery;
-        let treetable = layui.treetable;
+        <script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+        <script>
+            layui.use(['table','form','jquery','treetable'],function () {
+                let table = layui.table;
+                let form = layui.form;
+                let $ = layui.jquery;
+                let treetable = layui.treetable;
 
-        let MODULE_PATH = "operate/";
+                let MODULE_PATH = "operate/";
 
-        window.render = function(){
-            treetable.render({
-                treeColIndex: 1,
-                treeSpid: 0,
-                treeIdName: 'powerId',
-                treePidName: 'parentId',
-                skin:'line',
-                method:'post',
-                treeDefaultClose: true,
-                toolbar:'#power-toolbar',
-                elem: '#power-table',
-                url: '/api/menu',
-                page: false,
-                cols: [
-                    [
-                    {type: 'checkbox'},
-                    {field: 'name', minWidth: 200, title: '菜单标题'},
-                    {field: 'icon', title: '图标',templet:'#icon'},
-                    {field: 'type', title: '类型',templet:'#power-type'},
-                    {field: 'url', title: '路径'},
-                    {field: 'status', title: '是否可用',templet:'#power-status'},
-                    {field: 'permission', title: '权限标识'},
-                    {field: 'sort', title: '排序'},
-                    {field: 'createTime', title: '创建日期'},
-                    {title: '操作',templet: '#power-bar', width: 150, align: 'center'}
-                    ]
-                ]
-            });
-        }
-
-        render();
-
-        table.on('tool(power-table)',function(obj){
-            if (obj.event === 'remove') {
-                window.remove(obj);
-            } else if (obj.event === 'edit') {
-                window.edit(obj);
-            }
-        })
-
-
-        table.on('toolbar(power-table)', function(obj){
-            if(obj.event === 'add'){
-                window.add();
-            } else if(obj.event === 'refresh'){
-                window.refresh();
-            } else if(obj.event === 'batchRemove'){
-                window.batchRemove(obj);
-            }
-        });
-
-        form.on('submit(menu-query)', function(data){
-            var formData = data.field;
-            var name = formData.name;
-            var type = formData.type;
-            table.reload(('power-table'),{
-                page: {
-                    curr: 1 //重新从第 1 页开始
+                window.render = function(){
+                    treetable.render({
+                        treeColIndex: 1,
+                        treeSpid: 0,
+                        treeIdName: 'powerId',
+                        treePidName: 'parentId',
+                        skin:'line',
+                        method:'post',
+                        treeDefaultClose: true,
+                        toolbar:'#power-toolbar',
+                        elem: '#power-table',
+                        url: '/api/menu',
+                        page: false,
+                        cols: [
+                            [
+                                {type: 'checkbox'},
+                                {field: 'name', minWidth: 200, title: '菜单标题'},
+                                {field: 'icon', title: '图标',templet:'#icon'},
+                                {field: 'type', title: '类型',templet:'#power-type'},
+                                {field: 'url', title: '路径'},
+                                {field: 'status', title: '是否可用',templet:'#power-status'},
+                                {field: 'permission', title: '权限标识'},
+                                {field: 'sort', title: '排序'},
+                                {field: 'createTime', title: '创建日期'},
+                                {title: '操作',templet: '#power-bar', width: 150, align: 'center'}
+                            ]
+                        ]
+                    });
                 }
-                , where: {//这里传参  向后台
-                    queryName: name,
-                    queryType: type
-                    //可传多个参数到后台...  ，分隔
-                }
-                , url: '/api/menu'//后台做模糊搜索接口路径
-                , method: 'get'
-            });
-            return false;
-        });
-        window.add = function(){
-            layer.open({
-                type: 2,
-                title: '新增',
-                shade: 0.1,
-                area: ['450px', '500px'],
-                content: '/api/menu/add'
-            });
-        }
 
-        window.edit = function(obj){
-            var data = obj.data;
-            layer.open({
-                type: 2,
-                title: '修改',
-                shade: 0.1,
-                area: ['450px', '500px'],
-                content: '/api/menu/edit/?id='+data.id
-            });
-        }
-        window.remove = function(obj){
-            var data = obj.data;
-            layer.confirm('确定删除吗,如果存在下级节点则一并删除，此操作不能撤销！', {icon: 3, title:'提示'}, function(index){
-                layer.close(index);
-                let loading = layer.load();
-                $.ajax({
-                    url: "/api/menu/?id=" + data.id,
-                    dataType:'json',
-                    type:'delete',
-                    success:function(result){
-                        layer.close(loading);
-                        if(result.success){
-                            layer.msg(result.msg,{icon:1,time:1000},function(){
-                                obj.del();
-                            });
-                        }else{
-                            layer.msg(result.msg,{icon:2,time:1000});
-                        }
+                render();
+
+                table.on('tool(power-table)',function(obj){
+                    if (obj.event === 'remove') {
+                        window.remove(obj);
+                    } else if (obj.event === 'edit') {
+                        window.edit(obj);
                     }
                 })
-            });
-        }
 
-    })
-</script>
-</body>
+
+                table.on('toolbar(power-table)', function(obj){
+                    if(obj.event === 'add'){
+                        window.add();
+                    } else if(obj.event === 'refresh'){
+                        window.refresh();
+                    } else if(obj.event === 'batchRemove'){
+                        window.batchRemove(obj);
+                    }
+                });
+
+                form.on('submit(menu-query)', function(data){ //模糊查询方法
+                    var formData = data.field;
+                    var name = formData.name;
+                    var type = formData.type;
+                    table.reload(('power-table'),{ // table重载
+                        where: {//这里传参  向后台
+                            queryName: name,
+                            queryType: type
+                            //可传多个参数到后台...  ，分隔
+                        }
+                        , url: '/api/menu'//后台做模糊搜索接口路径
+                        , method: 'get'
+                    });
+                    return false;
+                });
+                window.add = function(){
+                    layer.open({
+                        type: 2,
+                        title: '新增',
+                        shade: 0.1,
+                        area: ['450px', '500px'],
+                        content: '/api/menu/add'
+                    });
+                }
+
+                window.edit = function(obj){
+                    var data = obj.data;
+                    layer.open({
+                        type: 2,
+                        title: '修改',
+                        shade: 0.1,
+                        area: ['450px', '500px'],
+                        content: '/api/menu/edit/?id='+data.id
+                    });
+                }
+                window.remove = function(obj){
+                    var data = obj.data;
+                    layer.confirm('确定删除吗,如果存在下级节点则一并删除，此操作不能撤销！', {icon: 3, title:'提示'}, function(index){
+                        layer.close(index);
+                        let loading = layer.load();
+                        $.ajax({
+                            url: "/api/menu/?id=" + data.id,
+                            dataType:'json',
+                            type:'delete',
+                            success:function(result){
+                                layer.close(loading);
+                                if(result.success){
+                                    layer.msg(result.msg,{icon:1,time:1000},function(){
+                                        obj.del();
+                                    });
+                                }else{
+                                    layer.msg(result.msg,{icon:2,time:1000});
+                                }
+                            }
+                        })
+                    });
+                }
+            })
+        </script>
+    </body>
 </html>
