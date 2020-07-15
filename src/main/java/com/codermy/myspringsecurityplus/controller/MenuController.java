@@ -1,6 +1,8 @@
 package com.codermy.myspringsecurityplus.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.codermy.myspringsecurityplus.dto.MenuDto;
+import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import com.codermy.myspringsecurityplus.utils.Result;
@@ -85,5 +87,10 @@ public class MenuController {
         return menuService.delete(id);
     }
 
-
+    @GetMapping(value = "/index")
+    @ResponseBody
+    @ApiOperation(value = "通过用户id获取菜单")
+    public List<MenuIndexDto> getMenu(Integer userId) {
+        return menuService.getMenu(userId);
+    }
 }

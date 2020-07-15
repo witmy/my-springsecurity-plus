@@ -17,6 +17,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Result error(Exception e){
+        log.error(e.getMessage());
         e.printStackTrace();
         return Result.error().message("执行了全局异常");
     }

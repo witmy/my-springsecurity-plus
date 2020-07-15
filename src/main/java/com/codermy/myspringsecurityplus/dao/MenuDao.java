@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.dao;
 
 import com.codermy.myspringsecurityplus.dto.MenuDto;
+import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import org.apache.ibatis.annotations.*;
 
@@ -42,4 +43,14 @@ public interface MenuDao {
     @Select("select p.id,p.parent_id,p.name from my_menu p inner join my_role_menu rp on p.id = rp.menu_id where rp.role_id = #{roleId}")
     @Result(property = "title",column = "name")
     List<MenuDto> listByRoleId(Integer roleId);
+
+    @Select("SELECT DISTINCT sp.id,sp.parent_id,sp.name,sp.icon,sp.url,sp.type  " +
+            "FROM my_role_user sru " +
+            "INNER JOIN my_role_menu srp ON srp.role_id = sru.role_id " +
+            "LEFT JOIN my_menu sp ON srp.menu_id = sp.id " +
+            "WHERE " +
+            "sru.user_id = #{userId}")
+    @Result(property = "title",column = "name")
+    @Result(property = "href",column = "url")
+    List<MenuIndexDto> listByUserId(@Param("userId")Integer userId);
 }

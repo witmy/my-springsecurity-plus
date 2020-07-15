@@ -1,21 +1,27 @@
 package com.codermy.myspringsecurityplus.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.codermy.myspringsecurityplus.dao.MenuDao;
 import com.codermy.myspringsecurityplus.dto.MenuDto;
+import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import com.codermy.myspringsecurityplus.utils.Result;
 import com.codermy.myspringsecurityplus.utils.TreeUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author codermy
  * @createTime 2020/7/10
  */
 @Service
+@Slf4j
 public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuDao menuDao;
@@ -62,5 +68,12 @@ public class MenuServiceImpl implements MenuService {
         List<MenuDto> permissionDtos = menuDao.buildAll();
         List<MenuDto> tree = TreeUtil.tree(listByRoleId, permissionDtos);
         return tree;
+    }
+
+    @Override
+    public List<MenuIndexDto> getMenu(Integer userId) {
+        List<MenuIndexDto> list = menuDao.listByUserId(userId);
+        List<MenuIndexDto> result = TreeUtil.parseMenuTree(list);
+        return result;
     }
 }

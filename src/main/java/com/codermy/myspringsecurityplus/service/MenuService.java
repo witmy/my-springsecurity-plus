@@ -1,6 +1,8 @@
 package com.codermy.myspringsecurityplus.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.codermy.myspringsecurityplus.dto.MenuDto;
+import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.utils.Result;
 
@@ -25,4 +27,6 @@ public interface MenuService {
     Result delete(Integer id);
 
     List<MenuDto> buildMenuAllByRoleId(Integer roleId);
+
+    List<MenuIndexDto> getMenu(Integer userId);
 }

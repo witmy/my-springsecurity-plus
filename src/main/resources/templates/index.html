@@ -33,7 +33,7 @@
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" class="pearson">个人信息</a></dd>
 							<dd><a href="javascript:;">安全配置</a></dd>
-							<dd><a href="login.html">注销登陆</a></dd>
+							<dd><a href="/logout">注销登陆</a></dd>
 						</dl>
 					</li>
 
@@ -80,7 +80,7 @@
 					control: false, // 是 否 开 启 多 系 统 菜 单 true 开启 false 关闭
 					theme: "dark-theme", // 默 认 主 题 样 式 dark-theme 默认主题 light-theme 亮主题
 					index: '/console/console1', // 默 认 加 载 主 页
-					data: 'PearAdmin/admin/data/menu.json', // 菜 单 数 据 加 载 地 址
+					data: '/api/menu/index/?userId=1', // 菜 单 数 据 加 载 地 址
 					select: '0', // 默 认 选 中 菜 单 项
 					notice: 'PearAdmin/admin/data/notice.json', // 消 息 列 表 数 据
 					auth: 'PearAdmin/admin/data/permission.json' // 前端权限限制，false 关闭该功能

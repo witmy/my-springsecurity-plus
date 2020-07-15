@@ -45,7 +45,6 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-
 #mybatis配置
 mybatis:
   type-aliases-package: com.codermy.myspringsecurityplus.entity
@@ -56,4 +55,5 @@ mybatis:
 logging:
   file:
     path: src\main\resources\logger\ # logger文件夹需要提前生成
+
 

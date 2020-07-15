@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 14/07/2020 17:25:39
+ Date: 15/07/2020 17:30:57
 */
 
 SET NAMES utf8mb4;
@@ -33,24 +33,24 @@ CREATE TABLE `my_menu`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of my_menu
 -- ----------------------------
-INSERT INTO `my_menu` VALUES (1, 0, '工作空间', 'layui-icon-console', '', '', 1, 1, '2020-07-13 20:14:26', '2020-07-14 14:38:28');
+INSERT INTO `my_menu` VALUES (1, 0, '工作空间', 'layui-icon layui-icon-console', '', '', 1, 0, '2020-07-13 20:14:26', '2020-07-14 14:38:28');
 INSERT INTO `my_menu` VALUES (2, 1, '控制后台', 'layui-icon layui-icon-console', 'console/console1', NULL, 2, 1, '2020-07-13 20:19:02', '2020-07-13 20:19:08');
-INSERT INTO `my_menu` VALUES (3, 0, '系统管理', 'layui-icon layui-icon-set-fill', '', '', 3, 1, '2020-07-10 09:33:00', '2020-07-12 21:03:22');
-INSERT INTO `my_menu` VALUES (4, 3, '用户管理', 'layui-icon layui-icon-username', '/api/user/index', 'user:list', 4, 1, '2020-07-10 09:33:33', '2020-07-13 09:30:12');
-INSERT INTO `my_menu` VALUES (5, 3, '角色管理', 'layui-icon layui-icon-user', '/api/role/index', 'role:list', 5, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
-INSERT INTO `my_menu` VALUES (6, 3, '菜单管理', 'layui-icon layui-icon-vercode', '/api/menu/index', 'menu:list', 6, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
-INSERT INTO `my_menu` VALUES (7, 0, '系统监控', 'layui-icon layui-icon-console', '', '', 7, 1, '2020-07-10 09:35:20', '2020-07-12 20:58:31');
-INSERT INTO `my_menu` VALUES (8, 7, 'SQL监控', 'layui-icon layui-icon-chart', '/durid/login', NULL, 8, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
-INSERT INTO `my_menu` VALUES (9, 7, '接口文档', 'layui-icon layui-icon-chart', '/swagger/index', NULL, 9, 1, '2020-07-10 09:36:11', '2020-07-12 20:04:57');
-INSERT INTO `my_menu` VALUES (10, 0, '错误页面', 'layui-icon layui-icon-auz', NULL, NULL, 10, 1, '2020-07-14 13:31:16', '2020-07-14 13:31:24');
-INSERT INTO `my_menu` VALUES (11, 10, '403', 'layui-icon layui-icon-face-smile', 'api/error/403', NULL, 11, 1, '2020-07-14 13:36:47', '2020-07-14 13:36:52');
-INSERT INTO `my_menu` VALUES (12, 10, '404', 'layui-icon layui-icon-face-cry', 'api/error/404', NULL, 12, 1, '2020-07-14 13:37:22', '2020-07-14 13:37:25');
-INSERT INTO `my_menu` VALUES (13, 10, '500', 'layui-icon layui-icon-face-cry', 'api/error/500', NULL, 13, 1, '2020-07-14 13:38:09', '2020-07-14 13:38:11');
+INSERT INTO `my_menu` VALUES (3, 0, '系统管理', 'layui-icon layui-icon-set-fill', '', '', 3, 0, '2020-07-10 09:33:00', '2020-07-12 21:03:22');
+INSERT INTO `my_menu` VALUES (4, 3, '用户管理', 'layui-icon layui-icon-username', '/api/user', 'user:list', 4, 1, '2020-07-10 09:33:33', '2020-07-13 09:30:12');
+INSERT INTO `my_menu` VALUES (5, 3, '角色管理', 'layui-icon layui-icon-user', '/api/role', 'role:list', 5, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
+INSERT INTO `my_menu` VALUES (6, 3, '菜单管理', 'layui-icon layui-icon-vercode', '/api/menu', 'menu:list', 6, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
+INSERT INTO `my_menu` VALUES (7, 0, '系统监控', 'layui-icon layui-icon-console', '', '', 7, 0, '2020-07-10 09:35:20', '2020-07-12 20:58:31');
+INSERT INTO `my_menu` VALUES (8, 7, 'SQL监控', 'layui-icon layui-icon-chart', '/api/durid', NULL, 8, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
+INSERT INTO `my_menu` VALUES (9, 7, '接口文档', 'layui-icon layui-icon-chart', '/api/swagger', NULL, 9, 1, '2020-07-10 09:36:11', '2020-07-12 20:04:57');
+INSERT INTO `my_menu` VALUES (10, 0, '错误页面', 'layui-icon layui-icon-auz', NULL, NULL, 10, 0, '2020-07-14 13:31:16', '2020-07-14 13:31:24');
+INSERT INTO `my_menu` VALUES (11, 10, '403', 'layui-icon layui-icon-face-smile', '/403', NULL, 11, 1, '2020-07-14 13:36:47', '2020-07-14 13:36:52');
+INSERT INTO `my_menu` VALUES (12, 10, '404', 'layui-icon layui-icon-face-cry', '/404', NULL, 12, 1, '2020-07-14 13:37:22', '2020-07-14 13:37:25');
+INSERT INTO `my_menu` VALUES (13, 10, '500', 'layui-icon layui-icon-face-cry', '/500', NULL, 13, 1, '2020-07-14 13:38:09', '2020-07-14 13:38:11');
 INSERT INTO `my_menu` VALUES (14, 4, '用户新增', NULL, NULL, 'user:add', 4, 2, '2020-07-10 09:36:41', '2020-07-10 09:36:44');
 INSERT INTO `my_menu` VALUES (15, 4, '用户编辑', NULL, NULL, 'user:edit', 4, 2, '2020-07-10 09:37:16', '2020-07-10 09:37:18');
 INSERT INTO `my_menu` VALUES (16, 4, '用户删除', NULL, NULL, 'user:del', 4, 2, '2020-07-10 09:37:38', '2020-07-10 09:37:40');
@@ -78,8 +78,8 @@ CREATE TABLE `my_role`  (
 -- ----------------------------
 -- Records of my_role
 -- ----------------------------
-INSERT INTO `my_role` VALUES (1, 'ADMIN', '超级管理员，拥有所有权限', 1, '2020-07-10 09:40:35', '2020-07-13 12:36:32');
-INSERT INTO `my_role` VALUES (2, 'USER', '普通用户', 1, '2020-07-10 09:40:56', '2020-07-13 20:34:27');
+INSERT INTO `my_role` VALUES (1, 'ADMIN', '超级管理员，拥有所有权限', 1, '2020-07-10 09:40:35', '2020-07-15 10:03:18');
+INSERT INTO `my_role` VALUES (2, 'USER', '普通用户', 1, '2020-07-10 09:40:56', '2020-07-15 10:03:57');
 
 -- ----------------------------
 -- Table structure for my_role_menu
@@ -112,8 +112,15 @@ INSERT INTO `my_role_menu` VALUES (1, 15);
 INSERT INTO `my_role_menu` VALUES (1, 16);
 INSERT INTO `my_role_menu` VALUES (1, 17);
 INSERT INTO `my_role_menu` VALUES (1, 18);
+INSERT INTO `my_role_menu` VALUES (1, 19);
 INSERT INTO `my_role_menu` VALUES (2, 1);
 INSERT INTO `my_role_menu` VALUES (2, 2);
+INSERT INTO `my_role_menu` VALUES (2, 3);
+INSERT INTO `my_role_menu` VALUES (2, 4);
+INSERT INTO `my_role_menu` VALUES (2, 10);
+INSERT INTO `my_role_menu` VALUES (2, 11);
+INSERT INTO `my_role_menu` VALUES (2, 12);
+INSERT INTO `my_role_menu` VALUES (2, 13);
 
 -- ----------------------------
 -- Table structure for my_role_user
@@ -152,7 +159,7 @@ CREATE TABLE `my_user`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of my_user

@@ -1,8 +1,12 @@
 package com.codermy.myspringsecurityplus.utils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.codermy.myspringsecurityplus.dto.MenuDto;
+import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
+import com.codermy.myspringsecurityplus.entity.MyMenu;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -33,5 +37,46 @@ public class TreeUtil {
             }
         }
         return menuDtos;
+    }
+
+    public static void setMenuTree(Integer parentId, List<MenuIndexDto> menusAll, JSONArray array) {
+        for (MenuIndexDto per : menusAll) {
+            if (per.getParentId().equals(parentId)) {
+                String string = JSONObject.toJSONString(per);
+                JSONObject parent = (JSONObject) JSONObject.parse(string);
+                array.add(parent);
+                if (menusAll.stream().filter(p -> p.getParentId().equals(per.getId())).findAny() != null) {
+                    JSONArray child = new JSONArray();
+                    parent.put("child", child);
+                    setMenuTree(per.getId(), menusAll, child);
+                }
+            }
+        }
+    }
+
+    public static List<MenuIndexDto> parseMenuTree(List<MenuIndexDto> list){
+        List<MenuIndexDto> result = new ArrayList<MenuIndexDto>();
+        // 1、获取第一级节点
+        for (MenuIndexDto menu : list) {
+            if(menu.getParentId() == 0) {
+                result.add(menu);
+            }
+        }
+        // 2、递归获取子节点
+        for (MenuIndexDto parent : result) {
+            parent = recursiveTree(parent, list);
+        }
+        return result;
+    }
+
+    public static MenuIndexDto recursiveTree(MenuIndexDto parent, List<MenuIndexDto> list) {
+        List<MenuIndexDto>children = new ArrayList<>();
+        for (MenuIndexDto menu : list) {
+            if (Objects.equals(parent.getId(), menu.getParentId())) {
+                children.add(menu);
+            }
+            parent.setChildren(children);
+        }
+        return parent;
     }
 }

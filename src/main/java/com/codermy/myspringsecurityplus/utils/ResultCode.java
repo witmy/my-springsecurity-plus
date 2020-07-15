@@ -9,15 +9,15 @@ public interface ResultCode {
     /**
      * 请求t成功
      */
-    public static Integer SUCCESS = 200;
+    public static final Integer SUCCESS = 200;
     /**
      * 请求table成功
      */
-    public static Integer TABLE_SUCCESS = 0;
+    public static final Integer TABLE_SUCCESS = 0;
     /**
      * 请求失败
      */
-    public static Integer ERROR = 201;
+    public static final Integer ERROR = 201;
 
     /**
      * 请求已经被接受
