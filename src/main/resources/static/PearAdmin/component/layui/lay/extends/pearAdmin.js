@@ -475,7 +475,7 @@ layui.define(['table', 'jquery', 'element', 'form', 'pearAuth', 'pearTab', 'pear
 
 
 			html += '<div class="more-menu-list">' +
-				'<a class="more-menu-item" href="http://www.pearadmin.cn/doc/" target="_blank">' +
+				'<a class="more-menu-item" href="https://blog.csdn.net/HYDCS/article/details/107282166" target="_blank">' +
 				'<i class="layui-icon layui-icon-read" style="font-size: 19px;"></i> 开发文档' +
 				'</a>' +
 				'<a class="more-menu-item" href="https://gitee.com/mydemy/my-springsecurity-plus" target="_blank">' +

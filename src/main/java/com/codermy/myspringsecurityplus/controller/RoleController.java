@@ -24,10 +24,14 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    @GetMapping("/index")
+    public String index(){
+        return "system/role/role";
+    }
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "分页返回角色列表")
-    public Result list(PageTableRequest request,String queryName) {
+    public Result roleList(PageTableRequest request,String queryName) {
         request.countOffset();
         return roleService.getFuzzyRolesByPage(request.getOffset(), request.getLimit(),queryName);
     }

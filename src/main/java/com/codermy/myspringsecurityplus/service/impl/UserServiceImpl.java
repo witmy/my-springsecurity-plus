@@ -77,4 +77,9 @@ public class UserServiceImpl implements UserService {
         roleUserDao.deleteRoleUserByUserId(id);
         return userDao.deleteUserById(id);
     }
+
+    @Override
+    public MyUser getUser(String userName) {
+        return userDao.getUser(userName);
+    }
 }

@@ -21,4 +21,6 @@ public interface UserService {
     Result<MyUser> save(UserDto userDto, Integer roleId);
 
     int deleteUser(Integer id);
+
+    MyUser getUser(String userName);
 }

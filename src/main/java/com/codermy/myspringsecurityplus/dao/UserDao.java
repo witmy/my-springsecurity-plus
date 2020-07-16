@@ -36,4 +36,8 @@ public interface UserDao {
 
     @Delete("delete from my_user where id = #{userId}")
     int deleteUserById(Integer id);
+
+    //根据用户名查询用户
+    @Select("select * from my_user t where t.user_name = #{userName}")
+    MyUser getUser(String userName);
 }

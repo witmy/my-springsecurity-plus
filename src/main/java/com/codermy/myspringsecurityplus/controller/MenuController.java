@@ -27,6 +27,10 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    @GetMapping("index")
+    public String index(){
+        return "system/menu/power";
+    }
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "菜单列表")
@@ -87,10 +91,4 @@ public class MenuController {
         return menuService.delete(id);
     }
 
-    @GetMapping(value = "/index")
-    @ResponseBody
-    @ApiOperation(value = "通过用户id获取菜单")
-    public List<MenuIndexDto> getMenu(Integer userId) {
-        return menuService.getMenu(userId);
-    }
 }

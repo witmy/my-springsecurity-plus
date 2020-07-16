@@ -25,10 +25,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/index")
+    public String index(){
+        return "system/user/user";
+    }
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "用户列表")
-    public Result<MyUser> index(PageTableRequest pageTableRequest, UserQueryDto userQueryDto){
+    public Result<MyUser> userList(PageTableRequest pageTableRequest, UserQueryDto userQueryDto){
         pageTableRequest.countOffset();
         return userService.getAllUsersByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),userQueryDto);
     }

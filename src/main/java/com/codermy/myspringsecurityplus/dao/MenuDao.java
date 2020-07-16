@@ -44,7 +44,7 @@ public interface MenuDao {
     @Result(property = "title",column = "name")
     List<MenuDto> listByRoleId(Integer roleId);
 
-    @Select("SELECT DISTINCT sp.id,sp.parent_id,sp.name,sp.icon,sp.url,sp.type  " +
+    @Select("SELECT DISTINCT sp.id,sp.parent_id,sp.name,sp.icon,sp.url,sp.type,sp.permission  " +
             "FROM my_role_user sru " +
             "INNER JOIN my_role_menu srp ON srp.role_id = sru.role_id " +
             "LEFT JOIN my_menu sp ON srp.menu_id = sp.id " +
