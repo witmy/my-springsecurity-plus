@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/api")
-@Api(tags = "系统：菜单管理")
+@Api(tags = "系统：菜单路由")
 public class AdminController {
     @Autowired
     private MenuService menuService;
@@ -30,14 +31,6 @@ public class AdminController {
         return menuService.getMenu(userId);
     }
 
-    @GetMapping("/druid")
-    public String druid(){
-        return "druid/login";
-    }
-    @GetMapping("/swagger")
-    public String swagger(){
-        return "swagger-ui";
-    }
 
     @GetMapping("/console")
     public String console(){
@@ -57,5 +50,10 @@ public class AdminController {
     @GetMapping("/500")
     public String error500(){
         return "error/500";
+    }
+
+    @PostMapping("/admin")
+    public String admin(){
+        return "index";
     }
 }

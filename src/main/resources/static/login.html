@@ -18,11 +18,16 @@
 				</div>
 			</div>
             <div class="layui-form-item">
-				<input id="username" name="username" placeholder="用户名 : " type="text" hover class="layui-input" />
+				<input id="username" name="username" placeholder="用 户 名 : " type="text" hover class="layui-input" />
 			</div>
 			<div class="layui-form-item">
-				<input d="password" name="password" placeholder="密 码 : " type="password"  hover class="layui-input" />
+				<input id="password" name="password" placeholder="密 码 : " type="password"  hover class="layui-input" />
 			</div>
+            <div class="layui-form-item">
+                <input id="captcha" name="captcha" placeholder="验 证 码:" type="text"  hover class="layui-verify" style="border: 1px solid #dcdfe6;">
+                <img src="/captcha" width="130px" height="44px" onclick="this.src=this.src+'?'+Math.random()" title="点击刷新"/>
+            </div>
+
 			<div class="layui-form-item">
 				<input type="checkbox" name="" title="记住密码" lay-skin="primary" checked>
 			</div>

@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.security.config;
 
 
+import com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author codermy
@@ -22,10 +24,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
-
+    @Autowired
+    private VerifyCodeFilter verifyCodeFilter;
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(12);
     }
 
     @Override
@@ -40,16 +43,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().sameOrigin();
+        http.addFilterBefore(verifyCodeFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
+                .antMatchers("/captcha").permitAll()//任何人都能访问这个请求
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login.html")//登录页面 不设限访问
                 .loginProcessingUrl("/login")//拦截的请求
+                .successForwardUrl("/api/admin")
                 .permitAll()
                 .and()
             .csrf().disable();//关闭csrf
     }
-
-
 }
