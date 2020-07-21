@@ -1,10 +1,15 @@
 package com.codermy.myspringsecurityplus.controller;
 
 import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
+import com.codermy.myspringsecurityplus.entity.MyUser;
+import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +32,9 @@ public class AdminController {
     @GetMapping(value = "/index")
     @ResponseBody
     @ApiOperation(value = "通过用户id获取菜单")
-    public List<MenuIndexDto> getMenu(Integer userId) {
+    public List<MenuIndexDto> getMenu() {
+        JwtUserDto jwtUserDto = (JwtUserDto)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Integer userId = jwtUserDto.getMyUser().getId();
         return menuService.getMenu(userId);
     }
 

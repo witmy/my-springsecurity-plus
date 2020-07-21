@@ -34,16 +34,15 @@ import java.util.stream.Collectors;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
-    @Autowired
-    private RoleService roleService;
+
     @Autowired
     private MenuDao menuDao;
     @Override
     public JwtUserDto loadUserByUsername(String userName) throws UsernameNotFoundException {
-        MyUser user = userService.getUser(userName);
+        MyUser user = userService.getUser(userName);//根据用户名获取用户
         if (user == null ){
-            throw new UsernameNotFoundException("用户名不存在");
-        }else if (user.getStatus() == MyUser.Status.LOCKED) {
+            throw new UsernameNotFoundException("用户名不存在");//这个异常一定要抛
+        }else if (user.getStatus().equals(MyUser.Status.LOCKED)) {
             throw new LockedException("用户被锁定,请联系管理员");
         }
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
@@ -54,9 +53,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority);
                 grantedAuthorities.add(grantedAuthority);
             }
-        }
+        }//将用户所拥有的权限加入GrantedAuthority集合中
         JwtUserDto loginUser =new JwtUserDto(user,grantedAuthorities);
         return loginUser;
+
     }
 
 }

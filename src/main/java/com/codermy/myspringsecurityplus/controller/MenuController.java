@@ -10,6 +10,7 @@ import com.codermy.myspringsecurityplus.utils.ResultCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,14 @@ public class MenuController {
     private MenuService menuService;
 
     @GetMapping("index")
+    @PreAuthorize("hasAnyAuthority('menu:list')")
     public String index(){
         return "system/menu/power";
     }
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "菜单列表")
+    @PreAuthorize("hasAnyAuthority('menu:list')")
     public Result getMenuAll(String queryName,Integer queryType){
         return Result.ok().data(menuService.getMenuAll(queryName,queryType)).code(ResultCode.TABLE_SUCCESS);
     }
@@ -41,6 +44,7 @@ public class MenuController {
     @GetMapping("/build")
     @ResponseBody
     @ApiOperation(value = "绘制菜单树")
+    @PreAuthorize("hasAnyAuthority('menu:add','menu:edit')")
     public Result buildMenuAll(){
         List<MenuDto> menuAll =menuService.buildMenuAll();
         return Result.ok().data(menuAll);
@@ -49,6 +53,7 @@ public class MenuController {
     @GetMapping("/ebuild/{roleId}")
     @ResponseBody
     @ApiOperation(value = "通过id绘制菜单树")
+    @PreAuthorize("hasAnyAuthority('role:add','role:edit')")
     public Result buildMenuAllByRoleId(@PathVariable Integer roleId){
         List<MenuDto> menuAll =menuService.buildMenuAllByRoleId(roleId);
         return Result.ok().data(menuAll);
@@ -56,6 +61,7 @@ public class MenuController {
 
     @GetMapping(value = "/edit")
     @ApiOperation(value = "修改菜单页面")
+    @PreAuthorize("hasAnyAuthority('menu:edit')")
     public String editPermission(Model model, MyMenu myMenu) {
         model.addAttribute("myMenu",menuService.getMenuById(myMenu.getId()));
         return "system/menu/menu-edit";
@@ -64,6 +70,7 @@ public class MenuController {
     @PutMapping
     @ResponseBody
     @ApiOperation(value = "修改菜单")
+    @PreAuthorize("hasAnyAuthority('menu:edit')")
     public Result updateMenu(@RequestBody MyMenu menu) {
         return menuService.updateMenu(menu);
     }
@@ -71,6 +78,7 @@ public class MenuController {
 
     @GetMapping(value = "/add")
     @ApiOperation(value = "添加菜单页面")
+    @PreAuthorize("hasAnyAuthority('menu:add')")
     public String addMenu(Model model) {
         model.addAttribute("myMenu",new MyMenu());
         return "system/menu/menu-add";
@@ -79,6 +87,7 @@ public class MenuController {
     @PostMapping
     @ResponseBody
     @ApiOperation(value = "添加菜单")
+    @PreAuthorize("hasAnyAuthority('menu:add')")
     public Result<MyMenu> savePermission(@RequestBody MyMenu myMenu) {
         return menuService.save(myMenu);
     }
@@ -87,6 +96,7 @@ public class MenuController {
     @DeleteMapping
     @ResponseBody
     @ApiOperation(value = "删除菜单")
+    @PreAuthorize("hasAnyAuthority('menu:del')")
     public Result deleteMenu(Integer id) {
         return menuService.delete(id);
     }
