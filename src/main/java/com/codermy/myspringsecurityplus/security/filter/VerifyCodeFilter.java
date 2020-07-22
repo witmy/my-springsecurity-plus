@@ -34,7 +34,6 @@ public class VerifyCodeFilter extends OncePerRequestFilter {
             if (!genCaptcha.toLowerCase().equals(requestCaptcha.toLowerCase())) {
                 session.removeAttribute("captcha");
                 throw new AuthenticationServiceException("验证码错误!");
-
             }
         }
         chain.doFilter(request, response);
