@@ -30,6 +30,8 @@ public class Result<T> implements Serializable {
     @ApiModelProperty(value = "返回数据")
     private List<T> data = new ArrayList<T>();
 
+    @ApiModelProperty(value = "token数据")
+    private String jwt;
     //把构造方法私有
     private Result() {}
 
@@ -81,6 +83,10 @@ public class Result<T> implements Serializable {
     }
     public Result count(Integer count){
         this.count = count;
+        return this;
+    }
+    public Result jwt(String jwt){
+        this.setJwt(jwt);
         return this;
     }
 }

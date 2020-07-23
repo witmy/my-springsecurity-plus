@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.security.config;
 
 
+import com.codermy.myspringsecurityplus.security.UserDetailsServiceImpl;
 import com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
     @Autowired
     private VerifyCodeFilter verifyCodeFilter;
 
