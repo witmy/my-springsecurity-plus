@@ -18,14 +18,7 @@ import java.util.stream.Collectors;
 class MySpringsecurityPlusApplicationTests {
     @Test
     void contextLoads() {
-        String token = Jwts.builder()
-                .setSubject("niceyoo")
-                .claim("authorities","admin")
 
-                .setExpiration(new Date(System.currentTimeMillis() + 7 * 60 * 1000))
-                .signWith(SignatureAlgorithm.HS512, "tmax")
-                .compact();
-        System.out.println(token);
     }
 
 }

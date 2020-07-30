@@ -1,46 +1,477 @@
-2020-07-23 16:27:53.174  INFO 5856 --- [main] c.m.MySpringsecurityPlusApplicationTests : Starting MySpringsecurityPlusApplicationTests on LAPTOP-DG87IRPQ with PID 5856 (started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
-2020-07-23 16:27:53.177  INFO 5856 --- [main] c.m.MySpringsecurityPlusApplicationTests : The following profiles are active: dev
-2020-07-23 16:27:54.604  INFO 5856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-07-23 16:27:54.609  INFO 5856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2020-07-23 16:27:54.657  INFO 5856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
-2020-07-23 16:27:55.605  INFO 5856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6a1d6ef2' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-07-23 16:27:55.621  INFO 5856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-07-23 16:27:55.861  INFO 5856 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-07-23 16:27:57.573  INFO 5856 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-07-23 16:27:59.089  INFO 5856 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-07-23 16:27:59.305  INFO 5856 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
-2020-07-23 16:27:59.490  INFO 5856 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@541d4d9f, org.springframework.security.web.context.SecurityContextPersistenceFilter@112c2930, org.springframework.security.web.header.HeaderWriterFilter@587f4f63, org.springframework.security.web.authentication.logout.LogoutFilter@4357524b, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@1a497286, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@216f01, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28e7bb31, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@661e279d, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@edb83f8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48dff674, org.springframework.security.web.session.SessionManagementFilter@6fb0261e, org.springframework.security.web.access.ExceptionTranslationFilter@532dacf5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ccc1026]
-2020-07-23 16:27:59.902  INFO 5856 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-07-23 16:27:59.999  INFO 5856 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-07-23 16:28:01.119  INFO 5856 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-07-23 16:28:01.152  INFO 5856 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-07-23 16:28:01.209  INFO 5856 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-07-23 16:28:01.785  INFO 5856 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
-2020-07-23 16:28:01.816  INFO 5856 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
-2020-07-23 16:28:01.869  INFO 5856 --- [main] c.m.MySpringsecurityPlusApplicationTests : Started MySpringsecurityPlusApplicationTests in 9.632 seconds (JVM running for 11.825)
-2020-07-23 16:28:02.278  INFO 5856 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-07-23 16:28:02.282  INFO 5856 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2020-07-23 16:28:02.292  INFO 5856 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2020-07-23 16:28:49.365  INFO 9840 --- [main] c.m.MySpringsecurityPlusApplicationTests : Starting MySpringsecurityPlusApplicationTests on LAPTOP-DG87IRPQ with PID 9840 (started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
-2020-07-23 16:28:49.369  INFO 9840 --- [main] c.m.MySpringsecurityPlusApplicationTests : The following profiles are active: dev
-2020-07-23 16:28:50.957  INFO 9840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-07-23 16:28:50.962  INFO 9840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2020-07-23 16:28:51.005  INFO 9840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
-2020-07-23 16:28:51.880  INFO 9840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2ecf5915' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-07-23 16:28:51.901  INFO 9840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-07-23 16:28:52.120  INFO 9840 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-07-23 16:28:54.022  INFO 9840 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-07-23 16:28:55.540  INFO 9840 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-07-23 16:28:55.756  INFO 9840 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
-2020-07-23 16:28:55.906  INFO 9840 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@edb83f8, org.springframework.security.web.context.SecurityContextPersistenceFilter@d6b532f, org.springframework.security.web.header.HeaderWriterFilter@da09250, org.springframework.security.web.authentication.logout.LogoutFilter@59d5a6fd, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@8b41ad, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4044589a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@112c2930, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f758e4f, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@79f5a6ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@541d4d9f, org.springframework.security.web.session.SessionManagementFilter@587f4f63, org.springframework.security.web.access.ExceptionTranslationFilter@34aa8b61, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@53cddaf8]
-2020-07-23 16:28:56.360  INFO 9840 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-07-23 16:28:56.459  INFO 9840 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-07-23 16:28:57.516  INFO 9840 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-07-23 16:28:57.549  INFO 9840 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-07-23 16:28:57.603  INFO 9840 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-07-23 16:28:58.179  INFO 9840 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
-2020-07-23 16:28:58.205  INFO 9840 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
-2020-07-23 16:28:58.250  INFO 9840 --- [main] c.m.MySpringsecurityPlusApplicationTests : Started MySpringsecurityPlusApplicationTests in 10.09 seconds (JVM running for 13.013)
-2020-07-23 16:28:58.609  INFO 9840 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-07-23 16:28:58.612  INFO 9840 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2020-07-23 16:28:58.622  INFO 9840 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-30 15:51:35.992  INFO 11580 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 11580 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 15:51:36.006  INFO 11580 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 15:51:36.112  INFO 11580 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-30 15:51:36.113  INFO 11580 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-30 15:51:40.142  INFO 11580 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 15:51:40.147  INFO 11580 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 15:51:40.226  INFO 11580 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26ms. Found 0 Redis repository interfaces.
+2020-07-30 15:51:40.737  INFO 11580 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@f516c06' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 15:51:40.742  INFO 11580 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 15:51:41.357  INFO 11580 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 15:51:41.373  INFO 11580 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 15:51:41.375  INFO 11580 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 15:51:41.584  INFO 11580 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 15:51:41.584  INFO 11580 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5469 ms
+2020-07-30 15:51:42.008  INFO 11580 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 15:51:44.033  INFO 11580 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-30 15:51:45.559  INFO 11580 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 15:51:45.855  INFO 11580 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 15:51:45.943  INFO 11580 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a78937d, org.springframework.security.web.context.SecurityContextPersistenceFilter@59d750b0, org.springframework.security.web.header.HeaderWriterFilter@f06c239, org.springframework.security.web.authentication.logout.LogoutFilter@93e91d0, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@6de2a658, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5c5330de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1882874, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6bdbc941, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@35ebd76d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66a781f7, org.springframework.security.web.session.SessionManagementFilter@45669813, org.springframework.security.web.access.ExceptionTranslationFilter@658c170, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@687cc1d1]
+2020-07-30 15:51:46.178  INFO 11580 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 15:51:46.244  INFO 11580 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 15:51:46.295  INFO 11580 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 15:51:48.131  INFO 11580 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 15:51:48.133  INFO 11580 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 15:51:48.162  INFO 11580 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 15:51:48.195  INFO 11580 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; Hm_lvt_d4f243693dbfd2a57c866295005663e3=1595746501,1595841163,1595901317,1595931258; remember-me=YWRtaW46MTU5NzIzNzQ4MzI0OTpiMTk3NTYxZjEyNTBiMTkwN2U4OWJiNDFiNDZlZDFjMQ] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-30 15:51:48.212  INFO 11580 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 15:51:48.213  INFO 11580 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 15:51:48.228  INFO 11580 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-07-30 15:51:48.240  INFO 11580 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 15:51:48.622  INFO 11580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 15:51:48.665  INFO 11580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 15:51:48.780  INFO 11580 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 13.907 seconds (JVM running for 16.456)
+2020-07-30 15:59:46.497  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 4720 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 15:59:46.505  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 15:59:46.572  INFO 4720 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-30 15:59:46.572  INFO 4720 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-30 15:59:48.858  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 15:59:48.867  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 15:59:48.912  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+2020-07-30 15:59:49.382  INFO 4720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@269b5f3f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 15:59:49.388  INFO 4720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 15:59:50.033  INFO 4720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 15:59:50.046  INFO 4720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 15:59:50.047  INFO 4720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 15:59:50.197  INFO 4720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 15:59:50.205  INFO 4720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3633 ms
+2020-07-30 15:59:50.466  INFO 4720 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 15:59:51.678  INFO 4720 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-30 15:59:52.728  INFO 4720 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 15:59:52.880  INFO 4720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 15:59:52.941  INFO 4720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a4ca596, org.springframework.security.web.context.SecurityContextPersistenceFilter@1986ba24, org.springframework.security.web.header.HeaderWriterFilter@490981ab, org.springframework.security.web.authentication.logout.LogoutFilter@56363e30, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@5a3f3ed7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2fba0ee, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31a9f3fb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48605f61, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@2765b35b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e72484b, org.springframework.security.web.session.SessionManagementFilter@4a9c741, org.springframework.security.web.access.ExceptionTranslationFilter@7e7f9501, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@369235ca]
+2020-07-30 15:59:53.087  INFO 4720 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 15:59:53.192  INFO 4720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 15:59:53.251  INFO 4720 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 15:59:53.930  INFO 4720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 15:59:53.935  INFO 4720 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 15:59:54.010  INFO 4720 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 15:59:54.078  INFO 4720 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 15:59:54.311  INFO 4720 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 15:59:54.329  INFO 4720 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 15:59:54.450  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 8.774 seconds (JVM running for 11.098)
+2020-07-30 15:59:58.436  INFO 4720 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; Hm_lvt_d4f243693dbfd2a57c866295005663e3=1595746501,1595841163,1595901317,1595931258; JSESSIONID=7F19BEFADA3C6B88F5FD1983EADB7F23; remember-me=YWRtaW46MTU5NzMwNTE5MDU3NTplY2M1ZTkwYjgzY2ZkMjk2OTY5NWZlNjRmNWZlNDRmOQ] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-30 15:59:58.450  INFO 4720 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 15:59:58.450  INFO 4720 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 15:59:58.465  INFO 4720 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-07-30 15:59:58.549 ERROR 4720 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: null
+	at com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter.doFilterInternal(VerifyCodeFilter.java:34) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2020-07-30 16:00:13.206 ERROR 4720 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+org.springframework.security.authentication.AuthenticationServiceException: 验证码错误!
+	at com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter.doFilterInternal(VerifyCodeFilter.java:36) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2020-07-30 16:31:40.697  INFO 4720 --- [Thread-224] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-30 16:31:40.715  INFO 4720 --- [Thread-224] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-30 16:31:40.740  INFO 4720 --- [Thread-224] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-30 16:31:41.170  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 4720 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 16:31:41.170  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 16:31:42.538  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 16:31:42.538  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 16:31:42.549  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2020-07-30 16:31:42.637  INFO 4720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2afbc60d' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 16:31:42.638  INFO 4720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 16:31:42.782  INFO 4720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 16:31:42.783  INFO 4720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 16:31:42.784  INFO 4720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 16:31:42.813  INFO 4720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 16:31:42.818  INFO 4720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1641 ms
+2020-07-30 16:31:42.906  INFO 4720 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 16:31:43.018  INFO 4720 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} inited
+2020-07-30 16:31:43.363  INFO 4720 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 16:31:43.395  INFO 4720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 16:31:43.431  INFO 4720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ba8ecdd, org.springframework.security.web.context.SecurityContextPersistenceFilter@755110a, org.springframework.security.web.header.HeaderWriterFilter@282eecc4, org.springframework.security.web.authentication.logout.LogoutFilter@4b58cf12, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@58b898f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@396359b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@52e1889c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@df606c8, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@7daffeaa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@106a74f7, org.springframework.security.web.session.SessionManagementFilter@179fc547, org.springframework.security.web.access.ExceptionTranslationFilter@7f254894, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@61bb057]
+2020-07-30 16:31:43.485  INFO 4720 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 16:31:43.497  INFO 4720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 16:31:43.508  INFO 4720 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 16:31:43.720  INFO 4720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 16:31:43.720  INFO 4720 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 16:31:43.722  INFO 4720 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 16:31:43.730  INFO 4720 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 16:31:43.791  INFO 4720 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 16:31:43.809  INFO 4720 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 16:31:43.827  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 2.731 seconds (JVM running for 1920.474)
+2020-07-30 16:31:43.830  INFO 4720 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-07-30 16:32:04.745  INFO 4720 --- [Thread-237] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-30 16:32:04.747  INFO 4720 --- [Thread-237] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closing ...
+2020-07-30 16:32:04.752  INFO 4720 --- [Thread-237] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2020-07-30 16:32:05.009  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 4720 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 16:32:05.010  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 16:32:05.543  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 16:32:05.543  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 16:32:05.551  INFO 4720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2020-07-30 16:32:05.656  INFO 4720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4094c91b' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 16:32:05.660  INFO 4720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 16:32:05.814  INFO 4720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 16:32:05.826  INFO 4720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 16:32:05.826  INFO 4720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 16:32:05.858  INFO 4720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 16:32:05.858  INFO 4720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 846 ms
+2020-07-30 16:32:05.941  INFO 4720 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 16:32:06.045  INFO 4720 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} inited
+2020-07-30 16:32:06.383  INFO 4720 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 16:32:06.416  INFO 4720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 16:32:06.440  INFO 4720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42d751aa, org.springframework.security.web.context.SecurityContextPersistenceFilter@3eea3b99, org.springframework.security.web.header.HeaderWriterFilter@668f17d6, org.springframework.security.web.authentication.logout.LogoutFilter@28d9962a, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@284a096f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69c6f1f9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67d0bb5e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79ff31d5, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@17830956, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@173998df, org.springframework.security.web.session.SessionManagementFilter@2862c47e, org.springframework.security.web.access.ExceptionTranslationFilter@7d4484ee, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3106de0b]
+2020-07-30 16:32:06.503  INFO 4720 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 16:32:06.505  INFO 4720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 16:32:06.526  INFO 4720 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 16:32:06.810  INFO 4720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 16:32:06.811  INFO 4720 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 16:32:06.812  INFO 4720 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 16:32:06.824  INFO 4720 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 16:32:06.914  INFO 4720 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 16:32:06.933  INFO 4720 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 16:32:06.955  INFO 4720 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 1.979 seconds (JVM running for 1943.603)
+2020-07-30 16:32:06.958  INFO 4720 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-07-30 16:39:28.117  INFO 4720 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 16:39:28.118  INFO 4720 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 16:39:28.124  INFO 4720 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-07-30 17:51:04.701  INFO 7856 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 7856 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 17:51:04.709  INFO 7856 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 17:51:04.768  INFO 7856 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-30 17:51:04.768  INFO 7856 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-30 17:51:07.204  INFO 7856 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 17:51:07.223  INFO 7856 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 17:51:07.265  INFO 7856 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+2020-07-30 17:51:07.800  INFO 7856 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@36b28339' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 17:51:07.808  INFO 7856 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 17:51:08.341  INFO 7856 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 17:51:08.362  INFO 7856 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 17:51:08.367  INFO 7856 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 17:51:08.523  INFO 7856 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 17:51:08.523  INFO 7856 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3755 ms
+2020-07-30 17:51:08.758  INFO 7856 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 17:51:10.008  INFO 7856 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-30 17:51:11.140  INFO 7856 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 17:51:11.292  INFO 7856 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 17:51:11.342  INFO 7856 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@36e6129b, org.springframework.security.web.context.SecurityContextPersistenceFilter@1379342e, org.springframework.security.web.header.HeaderWriterFilter@e01033a, org.springframework.security.web.authentication.logout.LogoutFilter@40edf6c1, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@62c0090c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@503e29a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@36fb200a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@50347ba0, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@7eaa4298, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b45a4a1, org.springframework.security.web.session.SessionManagementFilter@65ed95dd, org.springframework.security.web.access.ExceptionTranslationFilter@432b3cc0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@17d8e96f]
+2020-07-30 17:51:11.498  INFO 7856 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 17:51:11.558  INFO 7856 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 17:51:11.599  INFO 7856 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 17:51:12.409  INFO 7856 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 17:51:12.415  INFO 7856 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 17:51:12.443  INFO 7856 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 17:51:12.530  INFO 7856 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 17:51:12.773  INFO 7856 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 17:51:12.791  INFO 7856 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 17:51:12.873  INFO 7856 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 8.914 seconds (JVM running for 11.012)
+2020-07-30 17:51:18.416  INFO 7856 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; Hm_lvt_d4f243693dbfd2a57c866295005663e3=1595746501,1595841163,1595901317,1595931258; JSESSIONID=6DF4C241CD6EA02CE110171A9DE1B101; remember-me=YWRtaW46MTU5NzMwNTYyNzQ3NzphNGNiM2I3MzRjODQ0MTkxZTZlNjUyZWM4ZDM4NDcwZg] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-30 17:51:18.424  INFO 7856 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 17:51:18.424  INFO 7856 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 17:51:18.435  INFO 7856 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-07-30 20:32:52.377  INFO 14812 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 14812 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 20:32:52.380  INFO 14812 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 20:32:52.430  INFO 14812 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-30 20:32:52.431  INFO 14812 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-30 20:32:54.852  INFO 14812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 20:32:54.856  INFO 14812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 20:32:54.938  INFO 14812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
+2020-07-30 20:32:55.495  INFO 14812 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3e12dae5' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 20:32:55.506  INFO 14812 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 20:32:56.145  INFO 14812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 20:32:56.170  INFO 14812 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 20:32:56.171  INFO 14812 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 20:32:56.307  INFO 14812 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 20:32:56.308  INFO 14812 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3877 ms
+2020-07-30 20:32:56.567  INFO 14812 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 20:32:57.904  INFO 14812 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-30 20:32:58.778  INFO 14812 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 20:32:58.954  INFO 14812 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 20:32:59.005  INFO 14812 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@329717b9, org.springframework.security.web.context.SecurityContextPersistenceFilter@50aa66ff, org.springframework.security.web.header.HeaderWriterFilter@13ad6978, org.springframework.security.web.authentication.logout.LogoutFilter@6351c4f2, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@7c66a644, com.codermy.myspringsecurityplus.security.filter.JWTAuthenticationFilter@78bdbd36, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@570879c8, com.codermy.myspringsecurityplus.security.filter.JWTAuthorizationFilter@78c204dd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@275d5f42, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@157009c1, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@37f6f125, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ba436a7, org.springframework.security.web.session.SessionManagementFilter@5748cc57, org.springframework.security.web.access.ExceptionTranslationFilter@e910f3a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2351215]
+2020-07-30 20:32:59.146  INFO 14812 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 20:32:59.218  INFO 14812 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 20:32:59.269  INFO 14812 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 20:33:00.152  INFO 14812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 20:33:00.153  INFO 14812 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 20:33:00.176  INFO 14812 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 20:33:00.234  INFO 14812 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 20:33:00.464  INFO 14812 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 20:33:00.482  INFO 14812 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 20:33:00.527  INFO 14812 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 8.864 seconds (JVM running for 10.501)
+2020-07-30 20:33:07.260  INFO 14812 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; Hm_lvt_d4f243693dbfd2a57c866295005663e3=1595746501,1595841163,1595901317,1595931258; JSESSIONID=245EB0B66883F60382AFC58A3BEBD414; remember-me=YWRtaW46MTU5NzMxMjI4NTU0MzplNGI3OTEyNDgwMTBlYmIwMDYzNGUyYzY4MWNmYTQ1Yw] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-30 20:33:07.275  INFO 14812 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 20:33:07.275  INFO 14812 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 20:33:07.291  INFO 14812 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2020-07-30 20:37:00.727  INFO 15860 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 15860 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 20:37:00.730  INFO 15860 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 20:37:00.794  INFO 15860 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-30 20:37:00.794  INFO 15860 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-30 20:37:02.043  INFO 15860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 20:37:02.046  INFO 15860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 20:37:02.116  INFO 15860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+2020-07-30 20:37:02.500  INFO 15860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1f1d4ec4' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 20:37:02.505  INFO 15860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 20:37:02.877  INFO 15860 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 20:37:02.887  INFO 15860 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 20:37:02.887  INFO 15860 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 20:37:03.000  INFO 15860 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 20:37:03.001  INFO 15860 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2207 ms
+2020-07-30 20:37:03.185  INFO 15860 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 20:37:04.110  INFO 15860 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-30 20:37:04.799  INFO 15860 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 20:37:04.924  INFO 15860 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 20:37:04.972  INFO 15860 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31cb1ea2, org.springframework.security.web.context.SecurityContextPersistenceFilter@690d2831, org.springframework.security.web.header.HeaderWriterFilter@3696d17c, org.springframework.security.web.authentication.logout.LogoutFilter@14a8082c, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@255f8778, com.codermy.myspringsecurityplus.security.filter.JWTAuthenticationFilter@1b411cb2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@596e78c9, com.codermy.myspringsecurityplus.security.filter.JWTAuthorizationFilter@1d7b13a8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61c4dcea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1954a131, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@73beb052, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@25c95c0d, org.springframework.security.web.session.SessionManagementFilter@369063b3, org.springframework.security.web.access.ExceptionTranslationFilter@6aef5d8a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5be55841]
+2020-07-30 20:37:05.108  INFO 15860 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 20:37:05.140  INFO 15860 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 20:37:05.194  INFO 15860 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 20:37:05.791  INFO 15860 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 20:37:05.792  INFO 15860 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 20:37:05.810  INFO 15860 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 20:37:05.851  INFO 15860 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 20:37:06.070  INFO 15860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 20:37:06.088  INFO 15860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 20:37:06.125  INFO 15860 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 5.956 seconds (JVM running for 7.185)
+2020-07-30 20:37:10.557  INFO 15860 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; Hm_lvt_d4f243693dbfd2a57c866295005663e3=1595746501,1595841163,1595901317,1595931258; JSESSIONID=0F4E305A084198BB8A68D0BEF026CDCA] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-30 20:37:10.569  INFO 15860 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 20:37:10.569  INFO 15860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 20:37:10.583  INFO 15860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2020-07-30 20:37:10.668 ERROR 15860 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: null
+	at com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter.doFilterInternal(VerifyCodeFilter.java:34) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2020-07-30 20:49:11.407  INFO 4356 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 4356 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2020-07-30 20:49:11.410  INFO 4356 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2020-07-30 20:49:11.479  INFO 4356 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-30 20:49:11.480  INFO 4356 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-30 20:49:12.733  INFO 4356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-30 20:49:12.736  INFO 4356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-07-30 20:49:12.766  INFO 4356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2020-07-30 20:49:13.153  INFO 4356 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@29707e54' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 20:49:13.159  INFO 4356 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-30 20:49:13.524  INFO 4356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-30 20:49:13.535  INFO 4356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-30 20:49:13.535  INFO 4356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-30 20:49:13.669  INFO 4356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-30 20:49:13.669  INFO 4356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2189 ms
+2020-07-30 20:49:13.906  INFO 4356 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-30 20:49:14.944  INFO 4356 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-30 20:49:15.736  INFO 4356 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-30 20:49:15.861  INFO 4356 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**'], []
+2020-07-30 20:49:15.913  INFO 4356 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44bfa047, org.springframework.security.web.context.SecurityContextPersistenceFilter@5e447681, org.springframework.security.web.header.HeaderWriterFilter@50e8bafe, org.springframework.security.web.authentication.logout.LogoutFilter@132e7e87, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@3187600f, com.codermy.myspringsecurityplus.security.filter.JwtAuthenticationTokenFilter@516638bc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@252226a2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19964a1f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2c9ff6a3, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@357c69d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3dc78fbf, org.springframework.security.web.session.SessionManagementFilter@6ef635d8, org.springframework.security.web.access.ExceptionTranslationFilter@4a717e06, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e778cf]
+2020-07-30 20:49:16.059  INFO 4356 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-30 20:49:16.089  INFO 4356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-30 20:49:16.171  INFO 4356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-30 20:49:16.916  INFO 4356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-30 20:49:16.918  INFO 4356 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-30 20:49:16.948  INFO 4356 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-30 20:49:17.029  INFO 4356 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-07-30 20:49:17.339  INFO 4356 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2020-07-30 20:49:17.360  INFO 4356 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2020-07-30 20:49:17.403  INFO 4356 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 6.599 seconds (JVM running for 7.921)
+2020-07-30 20:49:18.323  INFO 4356 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590467119,1590633471; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1593225960,1593257459,1593263690,1593353033; Hm_lvt_d4f243693dbfd2a57c866295005663e3=1595746501,1595841163,1595901317,1595931258; JSESSIONID=9520771543932B9673DBED71BA32551E] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-30 20:49:18.333  INFO 4356 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-30 20:49:18.333  INFO 4356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-30 20:49:18.342  INFO 4356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-07-30 20:49:25.961 ERROR 4356 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+org.springframework.security.authentication.AuthenticationServiceException: 验证码错误!
+	at com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter.doFilterInternal(VerifyCodeFilter.java:36) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.3.3.RELEASE.jar:5.3.3.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.36.jar:9.0.36]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+

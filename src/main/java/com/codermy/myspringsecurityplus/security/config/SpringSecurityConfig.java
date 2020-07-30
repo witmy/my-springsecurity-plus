@@ -2,6 +2,7 @@ package com.codermy.myspringsecurityplus.security.config;
 
 
 import com.codermy.myspringsecurityplus.security.UserDetailsServiceImpl;
+import com.codermy.myspringsecurityplus.security.filter.JwtAuthenticationTokenFilter;
 import com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -63,7 +63,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.headers().frameOptions().sameOrigin();
         http.addFilterBefore(verifyCodeFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
                 .antMatchers("/captcha").permitAll()//任何人都能访问这个请求
@@ -76,7 +75,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .rememberMe().rememberMeParameter("remember-me")
+                // 防止iframe 造成跨域
+                .and()
+                .headers()
+                .frameOptions()
+                .disable()
                 .and()
             .csrf().disable();//关闭csrf
+        http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
+
+
+    @Bean
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
+        return new JwtAuthenticationTokenFilter();
     }
 }
