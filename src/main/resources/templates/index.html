@@ -76,6 +76,7 @@
 				var pearAuth = layui.pearAuth;
 
 				var config = {
+					header:{"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU5NjI2OTk2NiwiZXhwIjoxNTk2ODc0NzY2fQ.lMOJ8pTVQVfKZ4jtLJfcR_udWMbMJ3KlD5l7C8bsxdb8DDPV4QrWSsVAXuF_qC5t-r1pRoZMv29zQiYLQdAtXA"},
 					keepLoad: 2000, // 主 页 加 载 过 度 时 长 可为 false
 					muiltTab: true, // 是 否 开 启 多 标 签 页 true 开启 false 关闭
 					control: false, // 是 否 开 启 多 系 统 菜 单 true 开启 false 关闭
@@ -84,7 +85,7 @@
 					data: '/api/index/?userId'+userId, // 菜 单 数 据 加 载 地 址
 					select: '0', // 默 认 选 中 菜 单 项
 					notice: 'PearAdmin/admin/data/notice.json', // 消 息 列 表 数 据
-					auth: 'PearAdmin/admin/data/permission.json' // 前端权限限制，false 关闭该功能
+					auth: false // 前端权限限制，false 关闭该功能
 				};
 
 				var setting = {

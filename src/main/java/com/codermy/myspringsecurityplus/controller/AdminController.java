@@ -1,14 +1,11 @@
 package com.codermy.myspringsecurityplus.controller;
 
 import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
-import com.codermy.myspringsecurityplus.entity.MyUser;
 import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +35,9 @@ public class AdminController {
         return menuService.getMenu(userId);
     }
 
-
+    // public Result<LoginUser> login(){
+    //     return
+    // }
     @GetMapping("/console")
     public String console(){
         return "console/console1";
@@ -59,7 +58,7 @@ public class AdminController {
         return "error/500";
     }
 
-    @PostMapping("/admin")
+    @GetMapping("/admin")
     public String admin(){
         return "index";
     }

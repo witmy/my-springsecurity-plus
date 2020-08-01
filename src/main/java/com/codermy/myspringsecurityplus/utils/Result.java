@@ -86,7 +86,7 @@ public class Result<T> implements Serializable {
         return this;
     }
     public Result jwt(String jwt){
-        this.setJwt(jwt);
+        this.jwt = jwt;
         return this;
     }
 }

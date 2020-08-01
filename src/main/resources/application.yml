@@ -55,3 +55,9 @@ mybatis:
 logging:
   file:
     path: src\main\resources\logger\ # logger文件夹需要提前生成
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: my-springsecurity-plus #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer ' #JWT负载中拿到开头

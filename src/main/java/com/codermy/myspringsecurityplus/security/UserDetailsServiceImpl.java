@@ -37,6 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private MenuDao menuDao;
+
     @Override
     public JwtUserDto loadUserByUsername(String userName) throws UsernameNotFoundException {
         MyUser user = userService.getUser(userName);//根据用户名获取用户
@@ -56,7 +57,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }//将用户所拥有的权限加入GrantedAuthority集合中
         JwtUserDto loginUser =new JwtUserDto(user,grantedAuthorities);
         return loginUser;
-
     }
 
 }

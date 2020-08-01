@@ -33,7 +33,7 @@
 			</div>
             <div class="layui-form-item">
 				<button style="background-color: #5FB878!important;" class="pear-btn pear-btn-primary login">
-					登 入 
+					登 入
 				</button>
 			</div>
 		</form>
@@ -43,9 +43,8 @@
 				var form = layui.form;
 				var element = layui.element;
 				var $ = layui.jquery;
-
-				$("body").on("click",".login",function(){
-					location.href="index"
+				$("body").on("click",".login",function(obj){
+					location.href="/api/admin"
 				})
 			})
 		</script>

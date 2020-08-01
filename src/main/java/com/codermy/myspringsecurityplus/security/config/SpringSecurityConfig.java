@@ -4,14 +4,19 @@ package com.codermy.myspringsecurityplus.security.config;
 import com.codermy.myspringsecurityplus.security.UserDetailsServiceImpl;
 import com.codermy.myspringsecurityplus.security.filter.JwtAuthenticationTokenFilter;
 import com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter;
+import com.codermy.myspringsecurityplus.security.handler.MyAuthenticationSuccessHandler;
+import com.codermy.myspringsecurityplus.security.handler.RestAuthenticationEntryPoint;
+import com.codermy.myspringsecurityplus.security.handler.RestfulAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -27,11 +32,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsServiceImpl userDetailsService;
     @Autowired
     private VerifyCodeFilter verifyCodeFilter;
-
+    @Autowired
+    MyAuthenticationSuccessHandler authenticationSuccessHandler;
+    @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Autowired
+    private RestfulAccessDeniedHandler accessDeniedHandler;
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12);
     }
+
     /**
      * 身份认证接口
      */
@@ -43,7 +56,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/PearAdmin/**");//放行静态资源
+        web.ignoring()
+                .antMatchers(HttpMethod.GET,
+                        "/swagger-resources/**",
+                        "/PearAdmin/**",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/swagger-ui.html",
+                        "/webjars/**",
+                        "/v2/**");//放行静态资源
     }
 
     /**
@@ -64,30 +86,38 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(verifyCodeFilter, UsernamePasswordAuthenticationFilter.class);
-        http.authorizeRequests()
+        http.csrf().disable()//关闭csrf
+                .sessionManagement()// 基于token，所以不需要session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint)//未登陆时返回 JSON 格式的数据给前端
+                .and()
+                .authorizeRequests()
                 .antMatchers("/captcha").permitAll()//任何人都能访问这个请求
                 .anyRequest().authenticated()
                 .and()
-            .formLogin()
+                .formLogin()
                 .loginPage("/login.html")//登录页面 不设限访问
                 .loginProcessingUrl("/login")//拦截的请求
-                .successForwardUrl("/api/admin")
+                .successHandler(authenticationSuccessHandler) // 登录成功
                 .permitAll()
                 .and()
-                .rememberMe().rememberMeParameter("remember-me")
+                .rememberMe()
                 // 防止iframe 造成跨域
                 .and()
                 .headers()
                 .frameOptions()
                 .disable()
-                .and()
-            .csrf().disable();//关闭csrf
-        http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+                .and();
+
+        // 禁用缓存
+        http.headers().cacheControl();
+
+        // 添加JWT拦截器
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler); // 无权访问 JSON 格式的数据
     }
 
 
-    @Bean
-    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
-        return new JwtAuthenticationTokenFilter();
-    }
 }
