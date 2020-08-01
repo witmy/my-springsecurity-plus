@@ -35,8 +35,8 @@
 2、[SpringSecurity权限管理系统实战—二、日志、接口文档等实现](https://blog.csdn.net/HYDCS/article/details/107284901)  
 3、[SpringSecurity权限管理系统实战—三、主要页面及接口实现](https://blog.csdn.net/HYDCS/article/details/107342644)    
 4、[SpringSecurity权限管理系统实战—四、整合SpringSecurity（上）](https://blog.csdn.net/HYDCS/article/details/107367064)  
-5、[SpringSecurity权限管理系统实战—五、整合SpringSecurity（下）](https://blog.csdn.net/HYDCS/article/details/107510905)
-
+5、[SpringSecurity权限管理系统实战—五、整合SpringSecurity（下）](https://blog.csdn.net/HYDCS/article/details/107510905)  
+6、[SpringSecurity权限管理系统实战——六、SpringSecurity整合jwt](https://blog.csdn.net/HYDCS/article/details/107732916)
 
 #### 赞赏
 请作者喝杯咖啡
