@@ -1,22 +1,17 @@
 package com.codermy.myspringsecurityplus.security;
 
-import com.alibaba.fastjson.JSONArray;
+
 import com.codermy.myspringsecurityplus.dao.MenuDao;
-import com.codermy.myspringsecurityplus.dto.MenuDto;
 import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
-import com.codermy.myspringsecurityplus.entity.MyMenu;
 import com.codermy.myspringsecurityplus.entity.MyUser;
 import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
-import com.codermy.myspringsecurityplus.service.RoleService;
 import com.codermy.myspringsecurityplus.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -39,13 +34,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private MenuDao menuDao;
 
     @Override
-    public JwtUserDto loadUserByUsername(String userName) throws UsernameNotFoundException {
+    public JwtUserDto loadUserByUsername(String userName){
         MyUser user = userService.getUser(userName);//根据用户名获取用户
         if (user == null ){
-            throw new UsernameNotFoundException("用户名不存在");//这个异常一定要抛
+            throw new BadCredentialsException("用户名或密码错误");//这个异常一定要抛
         }else if (user.getStatus().equals(MyUser.Status.LOCKED)) {
-            throw new LockedException("用户被锁定,请联系管理员");
+            throw new LockedException("用户被锁定,请联系管理员解锁");
         }
+
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         List<MenuIndexDto> list = menuDao.listByUserId(user.getId());
         List<String> collect = list.stream().map(MenuIndexDto::getPermission).collect(Collectors.toList());

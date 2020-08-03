@@ -42,6 +42,7 @@ public class SwaggerConfig {
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
+    private static final String DEFAULT_PATH = "/api";
 
     @Bean
     public Docket createRestApi() {
@@ -72,7 +73,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("my-springsecurity-plus-API文档")
                 .description("本文档描述了my-springsecurity-plus接口定义")
-                .version("1.0.5")
+                .version("1.0.7")
                 .build();
     }
 

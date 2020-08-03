@@ -33,13 +33,14 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
-        JwtUserDto userDetails = (JwtUserDto)authentication.getPrincipal();//拿到登录用户信息
-        String jwtToken = jwtUtils.generateToken(userDetails.getUsername());//生成token
-        Result result = Result.ok().message("登录成功").jwt(jwtToken);
-        System.out.println(JSON.toJSONString(result));
+        // JwtUserDto userDetails = (JwtUserDto)authentication.getPrincipal();//拿到登录用户信息
+        // String jwtToken = jwtUtils.generateToken(userDetails.getUsername());//生成token
+        Result result = Result.ok().message("登录成功");
         httpServletResponse.setCharacterEncoding("utf-8");//修改编码格式
         httpServletResponse.setContentType("application/json");
         httpServletResponse.getWriter().write(JSON.toJSONString(result));//输出结果
-        httpServletResponse.sendRedirect("/api/admin");//重定向到api/admin页面
+        // httpServletResponse.sendRedirect("/api/menu");//重定向到api/admin页面
+        // httpServletResponse.setStatus(302);
+        // httpServletResponse.setHeader("Authorization", "Bearer "+jwtToken);
     }
 }

@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -40,8 +42,24 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage());
         return Result.error().code(ResultCode.FORBIDDEN).message("没有权限，请联系管理员授权");
     }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public Result userNotFound(BadCredentialsException e)
+    {
+        log.error(e.getMessage());
+        return Result.error().code(ResultCode.FORBIDDEN).message("用户名或者密码错误");
+    }
+
+    @ExceptionHandler(LockedException.class)
+    public Result userLocked(LockedException e)
+    {
+        log.error(e.getMessage());
+        return Result.error().code(ResultCode.FORBIDDEN).message(e.getMessage());
+    }
+
     @ExceptionHandler(AuthenticationServiceException.class)
     public Result handleAuthenticationServiceException(AuthenticationServiceException e){
+        log.error(e.getMessage());
         return Result.error().message("验证码错误");
     }
 

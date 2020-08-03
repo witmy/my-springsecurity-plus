@@ -34,10 +34,7 @@ public class AdminController {
         Integer userId = jwtUserDto.getMyUser().getId();
         return menuService.getMenu(userId);
     }
-
-    // public Result<LoginUser> login(){
-    //     return
-    // }
+    
     @GetMapping("/console")
     public String console(){
         return "console/console1";
@@ -58,8 +55,4 @@ public class AdminController {
         return "error/500";
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "index";
-    }
 }

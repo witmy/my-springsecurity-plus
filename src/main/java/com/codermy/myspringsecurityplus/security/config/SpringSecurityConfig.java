@@ -4,6 +4,7 @@ package com.codermy.myspringsecurityplus.security.config;
 import com.codermy.myspringsecurityplus.security.UserDetailsServiceImpl;
 import com.codermy.myspringsecurityplus.security.filter.JwtAuthenticationTokenFilter;
 import com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter;
+import com.codermy.myspringsecurityplus.security.handler.MyAuthenticationFailureHandler;
 import com.codermy.myspringsecurityplus.security.handler.MyAuthenticationSuccessHandler;
 import com.codermy.myspringsecurityplus.security.handler.RestAuthenticationEntryPoint;
 import com.codermy.myspringsecurityplus.security.handler.RestfulAccessDeniedHandler;
@@ -16,7 +17,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -31,27 +31,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
     @Autowired
-    private VerifyCodeFilter verifyCodeFilter;
+    private VerifyCodeFilter verifyCodeFilter;//验证码拦截器
     @Autowired
-    MyAuthenticationSuccessHandler authenticationSuccessHandler;
+    MyAuthenticationSuccessHandler authenticationSuccessHandler;//登录成功逻辑
     @Autowired
-    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    private MyAuthenticationFailureHandler authenticationFailureHandler;//登录失败逻辑
     @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;//jwt拦截器
     @Autowired
-    private RestfulAccessDeniedHandler accessDeniedHandler;
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(12);
-    }
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;//无权限拦截器
+    @Autowired
+    private RestfulAccessDeniedHandler accessDeniedHandler;// 无权访问 JSON 格式的数据
 
-    /**
-     * 身份认证接口
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
 
 
     @Override
@@ -87,9 +78,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(verifyCodeFilter, UsernamePasswordAuthenticationFilter.class);
         http.csrf().disable()//关闭csrf
-                .sessionManagement()// 基于token，所以不需要session
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+                // .sessionManagement()// 基于token，所以不需要session
+                // .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                // .and()
                 .httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint)//未登陆时返回 JSON 格式的数据给前端
                 .and()
                 .authorizeRequests()
@@ -100,9 +91,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")//登录页面 不设限访问
                 .loginProcessingUrl("/login")//拦截的请求
                 .successHandler(authenticationSuccessHandler) // 登录成功
+                .failureHandler(authenticationFailureHandler) // 登录失败
                 .permitAll()
                 .and()
-                .rememberMe()
+                .rememberMe().rememberMeParameter("rememberme")
                 // 防止iframe 造成跨域
                 .and()
                 .headers()
@@ -114,9 +106,23 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
 
         // 添加JWT拦截器
-        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        // http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler); // 无权访问 JSON 格式的数据
+    }
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
+
+    /**
+     * 身份认证接口
+     */
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
 

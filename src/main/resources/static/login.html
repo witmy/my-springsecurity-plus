@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/PearAdmin/assets/login.css" />
 	</head>
 	<body background="PearAdmin/admin/images/background.svg" >
-	    <form class="layui-form" action="/login" method="post">
+	    <form class="layui-form" method="get">
 			<div class="layui-form-item">
 				<img class="logo" src="PearAdmin/admin/images/logo.png" />
 				<div class="title">M-S-P Admin</div>
@@ -18,21 +18,21 @@
 				</div>
 			</div>
             <div class="layui-form-item">
-				<input id="username" name="username" placeholder="用 户 名 : " type="text" hover class="layui-input" />
+				<input id="username" name="username" placeholder="用 户 名 : " type="text" hover class="layui-input" required lay-verify="username"/>
 			</div>
 			<div class="layui-form-item">
-				<input id="password" name="password" placeholder="密 码 : " type="password"  hover class="layui-input" />
+				<input id="password" name="password" placeholder="密 码 : " type="password"  hover class="layui-input" required lay-verify="password"/>
 			</div>
             <div class="layui-form-item">
-                <input id="captcha" name="captcha" placeholder="验 证 码:" type="text"  hover class="layui-verify" style="border: 1px solid #dcdfe6;">
-                <img src="/captcha" width="130px" height="44px" onclick="this.src=this.src+'?'+Math.random()" title="点击刷新"/>
+                <input id="captcha" name="captcha" placeholder="验 证 码:" type="text"  hover class="layui-verify" style="border: 1px solid #dcdfe6;" required lay-verify="captcha">
+                <img id="captchaImg" src="/captcha" width="130px" height="44px" onclick="this.src=this.src+'?'+Math.random()" title="点击刷新"/>
             </div>
 
 			<div class="layui-form-item">
-				<input type="checkbox" name="remember-me" title="记住密码" lay-skin="primary" checked>
+				<input type="checkbox" id="rememberme" name="rememberme" title="记住密码" lay-skin="primary" checked>
 			</div>
             <div class="layui-form-item">
-				<button style="background-color: #5FB878!important;" class="pear-btn pear-btn-primary login">
+				<button style="background-color: #5FB878!important;" class="pear-btn pear-btn-primary login" lay-submit lay-filter="formLogin">
 					登 入
 				</button>
 			</div>
@@ -43,9 +43,61 @@
 				var form = layui.form;
 				var element = layui.element;
 				var $ = layui.jquery;
-				$("body").on("click",".login",function(obj){
-					location.href="/api/admin"
+				// $("body").on("click",".login",function(obj){
+				// 	location.href="/api/admin"
+				// })
+				form.verify({
+					username: function(value) {
+						if (value.length <= 0 ) {
+							return '用户名不能为空';
+						}
+					},
+					password: function (value) {
+						if (value.length <= 0) {
+							return '密码不能为空';
+						}
+					},
+					captcha: function (value) {
+						if (value.length <= 0) {
+							return '验证码不能为空';
+						}
+						if (value.length !== 4) {
+							return '请输入正确格式的验证码';
+						}
+					}
 				})
+				form.on('submit(formLogin)', function() {
+					$.ajax({
+						url:'/login',
+						type:'post',
+						dataType:'text',
+						data:{
+							username:$('#username').val(),
+							password:$('#password').val(),
+							captcha:$('#captcha').val(),
+							rememberme:$('#rememberme').val()
+						},
+						success:function(result){
+							var restjson = JSON.parse(result)
+							if (restjson.success) {
+								// layui.data("token", {
+								// 	key: "Authorization",
+								// 	value: "Bearer "+ restjson.jwt
+								// });
+								layer.msg(restjson.msg,{icon:1,time:1000},function () {
+									location.href = "/";
+
+								});
+							}else {
+								layer.msg(restjson.msg,{icon:2,time:1000},function () {
+									$("#captchaImg").attr("src","/captcha" + "?" + Math.random());
+								});
+								return false;
+							}
+						}
+					})
+					return false;
+				});
 			})
 		</script>
 	</body>

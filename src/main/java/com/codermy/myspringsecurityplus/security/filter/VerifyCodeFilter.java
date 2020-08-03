@@ -33,12 +33,12 @@ public class VerifyCodeFilter extends OncePerRequestFilter {
             if (StringUtils.isEmpty(requestCaptcha)){
                 session.removeAttribute("captcha");//删除缓存里的验证码信息
                 response.getWriter().write(JSON.toJSONString(Result.error().message("验证码不能为空!")));
-                throw new AuthenticationServiceException("验证码不能为空!");
+                return;
             }
             if (!genCaptcha.toLowerCase().equals(requestCaptcha.toLowerCase())) {
                 session.removeAttribute("captcha");
                 response.getWriter().write(JSON.toJSONString(Result.error().message("验证码错误!")));
-                throw new AuthenticationServiceException("验证码错误!");
+                return;
             }
         }
         chain.doFilter(request, response);
