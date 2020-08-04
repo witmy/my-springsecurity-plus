@@ -47,7 +47,7 @@
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
-|      <img src="docs/images/1.png">      |    <img src="docs/images/2.png">       |
+|      <img src="docs/images/1.png" width="200px">      |    <img src="docs/images/2.png">       |
 |      <img src="docs/images/3.png">         |    <img src="docs/images/4.png">       |
 |      <img src="docs/images/5.png">       |    <img src="docs/images/6.png">       |
 |      <img src="docs/images/7.png">        |    <img src="docs/images/8.png">       |
