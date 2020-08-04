@@ -47,11 +47,11 @@
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
-|      <img src="docs/images/1.png">      |    <img src="docs/images/2.png">       |
-|      <img src="docs/images/3.png">         |    <img src="docs/images/4.png">       |
-|      <img src="docs/images/5.png">       |    <img src="docs/images/6.png">       |
-|      <img src="docs/images/7.png">        |    <img src="docs/images/8.png">       |
-|      <img src="docs/images/9.png">        |    <img src="docs/images/10.png">       |
+|      ![image text](./docs/images/login.png)     |    ![image text](./docs/images/index.png)       |
+|     ![image text](./docs/images/user.png)         |    ![image text](./docs/images/useredit.png)       |
+|      ![image text](./docs/images/role.png)        |    ![image text](./docs/images/roleedit.png)        |
+|     ![image text](./docs/images/menu.png)         |    ![image text](./docs/images/menuedit.png)        |
+|      ![image text](./docs/images/durid.png)         |    ![image text](docs/images/swagger.png)       |
 ### 赞赏
 请作者喝杯咖啡
 
