@@ -47,11 +47,11 @@
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
-|      ![image text](./docs/images/1.png)       |    ![image text](./docs/images/2.png)     |
-|      ![image text](./docs/images/3png)       |    ![image text](./docs/images/4.png)     |
-|      ![image text](./docs/images/5.png)       |    ![image text](./docs/images/6.png)     |
-|      ![image text](./docs/images/7.png)       |    ![image text](./docs/images/8.png)     |
-|      ![image text](./docs/images/9.png)       |    ![image text](./docs/images/10.png)     |
+|      ![image text](docs/images/1.png)       |    ![image text](docs/images/2.png)     |
+|      ![image text](docs/images/3.png)       |    ![image text](docs/images/4.png)     |
+|      ![image text](docs/images/5.png)       |    ![image text](docs/images/6.png)     |
+|      ![image text](docs/images/7.png)       |    ![image text](docs/images/8.png)     |
+|      ![image text](docs/images/9.png)       |    ![image text](docs/images/10.png)     |
 ### 赞赏
 请作者喝杯咖啡
 
