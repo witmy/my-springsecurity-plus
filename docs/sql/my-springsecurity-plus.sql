@@ -11,11 +11,31 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 15/07/2020 17:30:57
+ Date: 04/08/2020 16:12:25
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for my_log
+-- ----------------------------
+DROP TABLE IF EXISTS `my_log`;
+CREATE TABLE `my_log`  (
+  `id` int(21) NOT NULL COMMENT 'id值',
+  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `ip` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求ip',
+  `ip_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'ip来源',
+  `descrption` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作描述',
+  `browser` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '浏览器',
+  `time` bigint(20) NULL DEFAULT NULL COMMENT '执行时间',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '请求耗时',
+  `method` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '执行方法',
+  `param` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '参数',
+  `log_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '日志类型',
+  `exception_detail` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '异常详情',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for my_menu
@@ -33,33 +53,35 @@ CREATE TABLE `my_menu`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of my_menu
 -- ----------------------------
 INSERT INTO `my_menu` VALUES (1, 0, '工作空间', 'layui-icon layui-icon-console', '', '', 1, 0, '2020-07-13 20:14:26', '2020-07-14 14:38:28');
-INSERT INTO `my_menu` VALUES (2, 1, '控制后台', 'layui-icon layui-icon-console', 'console/console1', NULL, 2, 1, '2020-07-13 20:19:02', '2020-07-13 20:19:08');
+INSERT INTO `my_menu` VALUES (2, 1, '控制后台', 'layui-icon layui-icon-console', '/api/console', '', 2, 1, '2020-07-13 20:19:02', '2020-07-13 20:19:08');
 INSERT INTO `my_menu` VALUES (3, 0, '系统管理', 'layui-icon layui-icon-set-fill', '', '', 3, 0, '2020-07-10 09:33:00', '2020-07-12 21:03:22');
-INSERT INTO `my_menu` VALUES (4, 3, '用户管理', 'layui-icon layui-icon-username', '/api/user', 'user:list', 4, 1, '2020-07-10 09:33:33', '2020-07-13 09:30:12');
-INSERT INTO `my_menu` VALUES (5, 3, '角色管理', 'layui-icon layui-icon-user', '/api/role', 'role:list', 5, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
-INSERT INTO `my_menu` VALUES (6, 3, '菜单管理', 'layui-icon layui-icon-vercode', '/api/menu', 'menu:list', 6, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
+INSERT INTO `my_menu` VALUES (4, 3, '用户管理', 'layui-icon layui-icon-username', '/api/user/index', 'user:list', 4, 1, '2020-07-10 09:33:33', '2020-07-13 09:30:12');
+INSERT INTO `my_menu` VALUES (5, 3, '角色管理', 'layui-icon layui-icon-user', '/api/role/index', 'role:list', 5, 1, '2020-07-10 09:34:17', '2020-07-10 09:34:20');
+INSERT INTO `my_menu` VALUES (6, 3, '菜单管理', 'layui-icon layui-icon-vercode', '/api/menu/index', 'menu:list', 6, 1, '2020-07-10 09:34:50', '2020-07-10 09:34:53');
 INSERT INTO `my_menu` VALUES (7, 0, '系统监控', 'layui-icon layui-icon-console', '', '', 7, 0, '2020-07-10 09:35:20', '2020-07-12 20:58:31');
-INSERT INTO `my_menu` VALUES (8, 7, 'SQL监控', 'layui-icon layui-icon-chart', '/api/durid', NULL, 8, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
-INSERT INTO `my_menu` VALUES (9, 7, '接口文档', 'layui-icon layui-icon-chart', '/api/swagger', NULL, 9, 1, '2020-07-10 09:36:11', '2020-07-12 20:04:57');
+INSERT INTO `my_menu` VALUES (8, 7, 'SQL监控', 'layui-icon layui-icon-chart', '/druid/login', '', 8, 1, '2020-07-10 09:35:50', '2020-07-10 09:35:53');
+INSERT INTO `my_menu` VALUES (9, 7, '接口文档', 'layui-icon layui-icon-chart', '/swagger-ui.html', NULL, 9, 1, '2020-07-10 09:36:11', '2020-07-12 20:04:57');
 INSERT INTO `my_menu` VALUES (10, 0, '错误页面', 'layui-icon layui-icon-auz', NULL, NULL, 10, 0, '2020-07-14 13:31:16', '2020-07-14 13:31:24');
-INSERT INTO `my_menu` VALUES (11, 10, '403', 'layui-icon layui-icon-face-smile', '/403', NULL, 11, 1, '2020-07-14 13:36:47', '2020-07-14 13:36:52');
-INSERT INTO `my_menu` VALUES (12, 10, '404', 'layui-icon layui-icon-face-cry', '/404', NULL, 12, 1, '2020-07-14 13:37:22', '2020-07-14 13:37:25');
-INSERT INTO `my_menu` VALUES (13, 10, '500', 'layui-icon layui-icon-face-cry', '/500', NULL, 13, 1, '2020-07-14 13:38:09', '2020-07-14 13:38:11');
+INSERT INTO `my_menu` VALUES (11, 10, '403', 'layui-icon layui-icon-face-smile', '/api/403', NULL, 11, 1, '2020-07-14 13:36:47', '2020-07-14 13:36:52');
+INSERT INTO `my_menu` VALUES (12, 10, '404', 'layui-icon layui-icon-face-cry', '/api/404', NULL, 12, 1, '2020-07-14 13:37:22', '2020-07-14 13:37:25');
+INSERT INTO `my_menu` VALUES (13, 10, '500', 'layui-icon layui-icon-face-cry', '/api/500', NULL, 13, 1, '2020-07-14 13:38:09', '2020-07-14 13:38:11');
 INSERT INTO `my_menu` VALUES (14, 4, '用户新增', NULL, NULL, 'user:add', 4, 2, '2020-07-10 09:36:41', '2020-07-10 09:36:44');
 INSERT INTO `my_menu` VALUES (15, 4, '用户编辑', NULL, NULL, 'user:edit', 4, 2, '2020-07-10 09:37:16', '2020-07-10 09:37:18');
 INSERT INTO `my_menu` VALUES (16, 4, '用户删除', NULL, NULL, 'user:del', 4, 2, '2020-07-10 09:37:38', '2020-07-10 09:37:40');
 INSERT INTO `my_menu` VALUES (17, 5, '角色新增', NULL, NULL, 'role:add', 5, 2, '2020-07-10 09:38:02', '2020-07-10 09:38:05');
 INSERT INTO `my_menu` VALUES (18, 5, '角色编辑', NULL, NULL, 'role:edit', 5, 2, '2020-07-10 09:38:30', '2020-07-10 09:38:32');
 INSERT INTO `my_menu` VALUES (19, 5, '角色删除', NULL, NULL, 'role:del', 5, 2, '2020-07-10 09:38:51', '2020-07-10 09:38:54');
-INSERT INTO `my_menu` VALUES (20, 6, '菜单新增', NULL, NULL, 'meu:add', 6, 2, '2020-07-10 09:39:16', '2020-07-10 09:39:21');
+INSERT INTO `my_menu` VALUES (20, 6, '菜单新增', NULL, NULL, 'menu:add', 6, 2, '2020-07-10 09:39:16', '2020-07-10 09:39:21');
 INSERT INTO `my_menu` VALUES (21, 6, '菜单修改', NULL, NULL, 'menu:edit', 6, 2, '2020-07-10 09:39:46', '2020-07-10 09:39:48');
 INSERT INTO `my_menu` VALUES (22, 6, '菜单删除', NULL, NULL, 'menu:del', 6, 2, '2020-07-10 09:40:08', '2020-07-10 09:40:10');
+INSERT INTO `my_menu` VALUES (35, 7, '操作日志', 'layui-icon-group', '/api/logs/index', 'log:index', 7, 1, '2020-08-04 11:38:45', '2020-08-04 11:38:58');
+INSERT INTO `my_menu` VALUES (36, 7, '异常日志', 'layui-icon-face-cry', '/api/logs/error/index', 'errorLog:index', 7, 1, '2020-08-04 11:42:22', '2020-08-04 11:42:22');
 
 -- ----------------------------
 -- Table structure for my_role
@@ -78,8 +100,8 @@ CREATE TABLE `my_role`  (
 -- ----------------------------
 -- Records of my_role
 -- ----------------------------
-INSERT INTO `my_role` VALUES (1, 'ADMIN', '超级管理员，拥有所有权限', 1, '2020-07-10 09:40:35', '2020-07-15 10:03:18');
-INSERT INTO `my_role` VALUES (2, 'USER', '普通用户', 1, '2020-07-10 09:40:56', '2020-07-15 10:03:57');
+INSERT INTO `my_role` VALUES (1, 'ADMIN', '超级管理员，拥有所有权限', 1, '2020-07-10 09:40:35', '2020-08-04 11:42:56');
+INSERT INTO `my_role` VALUES (2, 'USER', '普通用户', 1, '2020-07-10 09:40:56', '2020-07-21 18:12:28');
 
 -- ----------------------------
 -- Table structure for my_role_menu
@@ -113,9 +135,13 @@ INSERT INTO `my_role_menu` VALUES (1, 16);
 INSERT INTO `my_role_menu` VALUES (1, 17);
 INSERT INTO `my_role_menu` VALUES (1, 18);
 INSERT INTO `my_role_menu` VALUES (1, 19);
+INSERT INTO `my_role_menu` VALUES (1, 20);
+INSERT INTO `my_role_menu` VALUES (1, 21);
+INSERT INTO `my_role_menu` VALUES (1, 22);
+INSERT INTO `my_role_menu` VALUES (1, 35);
+INSERT INTO `my_role_menu` VALUES (1, 36);
 INSERT INTO `my_role_menu` VALUES (2, 1);
 INSERT INTO `my_role_menu` VALUES (2, 2);
-INSERT INTO `my_role_menu` VALUES (2, 3);
 INSERT INTO `my_role_menu` VALUES (2, 4);
 INSERT INTO `my_role_menu` VALUES (2, 10);
 INSERT INTO `my_role_menu` VALUES (2, 11);
@@ -167,10 +193,10 @@ CREATE TABLE `my_user`  (
 INSERT INTO `my_user` VALUES (1, 'admin', '$2a$10$pAuzCLIe6Sl7kXfX6FEQ1uzM79V2njg.KtL9qawg9JkW7e1f417k2', '管理员', '13556336255', '1454564646@qq.com', 1, '2020-07-10 09:42:03', '2020-07-10 09:42:07');
 INSERT INTO `my_user` VALUES (2, 'test', '$2a$10$pAuzCLIe6Sl7kXfX6FEQ1uzM79V2njg.KtL9qawg9JkW7e1f417k2', '测试用户', '13556336256', '1454564646@163.com', 1, '2020-07-10 09:42:09', '2020-07-13 17:49:49');
 INSERT INTO `my_user` VALUES (3, 'test1', '$2a$10$exOfpFK2TNHnAdG/aaVTFeCDLihkg8JfD1qGWKjCOBdicxcQJax5W', '普通用户2', '13556336257', '1454564646@qq.com', 1, '2020-07-10 09:42:14', '2020-07-10 09:42:16');
-INSERT INTO `my_user` VALUES (4, 'test2', 'e3ceb5881a0a1fdaad01296d7554868d', '普通用户3', '13556336258', '1454564646@qq.com', 1, '2020-07-10 09:42:19', '2020-07-10 09:42:21');
-INSERT INTO `my_user` VALUES (5, 'test3', '1a100d2c0dab19c4430e7d73762b3423', '普通用户4', '13556336259', '1454564646@qq.com', 1, '2020-07-10 09:42:23', '2020-07-10 09:42:25');
+INSERT INTO `my_user` VALUES (4, 'test2', '$2a$10$RR665iMnfCuYGY0Af344U.Fy3XmGcgjkURENW/Zea/oAEhuiLyjO.', '普通用户3', '13556336258', '1454564646@qq.com', 1, '2020-07-10 09:42:19', '2020-07-10 09:42:21');
+INSERT INTO `my_user` VALUES (5, 'test3', '$2a$10$o0lZgmzReca24TP5viy/nOrPQty4jga1W.BG5SvgdeK9eprm.NoMa', '普通用户4', '13556336259', '1454564646@qq.com', 1, '2020-07-10 09:42:23', '2020-07-10 09:42:25');
 INSERT INTO `my_user` VALUES (6, 'test4', '$2a$10$jNU1gXN.wAPhq5vUmLrCoeyDJbF3ReSnYQ2IulJA99drcMs1w1Som', '封禁用户', '13556336250', '1454564646@qq.com', 0, '2020-07-10 09:42:27', '2020-07-13 17:54:11');
-INSERT INTO `my_user` VALUES (7, 'test5', '5b1b68a9abf4d2cd155c81a9225fd158', '封禁用户2', '13556336211', '1454564646@qq.com', 0, '2020-07-10 09:42:32', '2020-07-10 09:42:34');
-INSERT INTO `my_user` VALUES (8, 'test7', 'e10adc3949ba59abbe56e057f20f883e', '测试修改', '13556336212', '1454564646@qq.com', 1, '2020-07-10 09:42:36', '2020-07-13 17:06:26');
+INSERT INTO `my_user` VALUES (7, 'test5', '$2a$10$ADEBRX13Z9vvNxzdu/HiROaB1F7rYd5DHpE9UWeXtNOSbeB1tcWie', '封禁用户2', '13556336211', '1454564646@qq.com', 0, '2020-07-10 09:42:32', '2020-07-10 09:42:34');
+INSERT INTO `my_user` VALUES (8, 'test7', '$2a$10$2aLbMBdNottSq13J.tfIF.5IFgTcDlWwOQI7btckzsq3vl2KtWOV6', '测试修改', '13556336212', '1454564646@qq.com', 1, '2020-07-10 09:42:36', '2020-07-13 17:06:26');
 
 SET FOREIGN_KEY_CHECKS = 1;
