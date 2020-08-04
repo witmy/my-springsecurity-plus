@@ -44,7 +44,14 @@
 5、[SpringSecurity权限管理系统实战—五、整合SpringSecurity（下）](https://blog.csdn.net/HYDCS/article/details/107510905)  
 6、[SpringSecurity权限管理系统实战—六、SpringSecurity整合jwt](https://blog.csdn.net/HYDCS/article/details/107732916)  
 7、[SpringSecurity权限管理系统实战—七、处理一些问题](https://blog.csdn.net/HYDCS/article/details/107765898)
-
+### 相关截图
+|                        Admin端                         |                                                       |
+| :----------------------------------------------------: | :---------------------------------------------------: |
+|      ![image text](./docs/images/1.png)       |    ![image text](./docs/images/2.png)     |
+|      ![image text](./docs/images/3png)       |    ![image text](./docs/images/4.png)     |
+|      ![image text](./docs/images/5.png)       |    ![image text](./docs/images/6.png)     |
+|      ![image text](./docs/images/7.png)       |    ![image text](./docs/images/8.png)     |
+|      ![image text](./docs/images/9.png)       |    ![image text](./docs/images/10.png)     |
 ### 赞赏
 请作者喝杯咖啡
 
