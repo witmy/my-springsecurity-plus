@@ -1,8 +1,18 @@
 <div align="center">
-
   <h1 align="center">
     my-springsecurity-plus
   </h1>
+  <p align="center">
+    <a href="https://www.codermy.cn">
+      <img src="https://img.shields.io/badge/actor-codermy-brightgreen" alt="actor">
+    </a>
+    <a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">
+      <img src="https://img.shields.io/badge/jdk-1.8-yellowgreen" alt="jdk">
+    </a>
+    <a href="https://www.mit-license.org/">
+          <img src="https://img.shields.io/badge/License-MIT-brightgreen" alt="License">
+        </a>
+  </p>
 </div>
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
@@ -47,11 +57,11 @@
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
-|      ![image text](./docs/images/login.png)     |    ![image text](./docs/images/index.png)       |
-|     ![image text](./docs/images/user.png)         |    ![image text](./docs/images/useredit.png)       |
-|      ![image text](./docs/images/role.png)        |    ![image text](./docs/images/roleedit.png)        |
-|     ![image text](./docs/images/menu.png)         |    ![image text](./docs/images/menuedit.png)        |
-|      ![image text](./docs/images/durid.png)         |    ![image text](docs/images/swagger.png)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/login.PNG)     |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/index.PNG)       |
+|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/useredit.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/blob/master/docs/images/roleedit.PNG)        |
+|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menu.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menuedit.PNG)        |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/durid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
 ### 赞赏
 请作者喝杯咖啡
 
