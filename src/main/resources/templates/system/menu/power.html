@@ -58,7 +58,9 @@
         </script>
 
         <script type="text/html" id="power-type">
-            {{#if (d.type == '1') { }}
+            {{#if (d.type == '0') { }}
+            <span>目录</span>
+            {{# }else if(d.type == '1'){ }}
             <span>菜单</span>
             {{# }else if(d.type == '2'){ }}
             <span>按钮</span>

@@ -49,10 +49,13 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">类型</label>
+                    <label class="layui-form-label">
+                        <span style="color: red">*</span>类型
+                    </label>
                     <div class="layui-input-block">
-                        <input type="radio" name="type" value="1" title="菜单"  th:checked="${myMenu.type == 1}? 'true':'false'">
-                        <input type="radio" name="type" value="2" title="按钮" th:checked="${myMenu.type == 2}? 'true':'false'">
+                        <input type="radio" name="type" value="0" title="目录"  th:checked="${myMenu.type == 0}? 'true':'false'" lay-verify="radio">
+                        <input type="radio" name="type" value="1" title="菜单"  th:checked="${myMenu.type == 1}? 'true':'false'" lay-verify="radio">
+                        <input type="radio" name="type" value="2" title="按钮" th:checked="${myMenu.type == 2}? 'true':'false'" lay-verify="radio">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -131,7 +134,25 @@
             sort:  [
                 /^[1-9]\d*$/
             ,'只能是整数哦'
-        ]
+        ],
+            radio: function(value,item){
+                var $ = layui.$;
+                var verifyName=$(item).attr('name')
+                    , verifyType=$(item).attr('type')
+                    ,formElem=$(item).parents('.layui-form')//获取当前所在的form元素，如果存在的话
+                    ,verifyElem=formElem.find('input[name='+verifyName+']')//获取需要校验的元素
+                    ,isTrue= verifyElem.is(':checked')//是否命中校验
+                    ,focusElem = verifyElem.next().find('i.layui-icon');//焦点元素
+                if(!isTrue || !value){
+                    //定位焦点
+                    focusElem.css(verifyType=='radio'?{"color":"#FF5722"}:{"border-color":"#FF5722"});
+                    //对非输入框设置焦点
+                    focusElem.first().attr("tabIndex","1").css("outline","0").blur(function() {
+                        focusElem.css(verifyType=='radio'?{"color":""}:{"border-color":""});
+                    }).focus();
+                    return '必填项不能为空';
+                }
+            }
     });
         form.on('submit(user-save)', function(data){
             $.ajax({

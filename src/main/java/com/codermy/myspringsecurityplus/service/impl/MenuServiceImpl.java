@@ -3,6 +3,7 @@ package com.codermy.myspringsecurityplus.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.codermy.myspringsecurityplus.dao.MenuDao;
+import com.codermy.myspringsecurityplus.dao.RoleMenuDao;
 import com.codermy.myspringsecurityplus.dto.MenuDto;
 import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
@@ -25,6 +26,8 @@ import java.util.stream.Collectors;
 public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuDao menuDao;
+    @Autowired
+    private RoleMenuDao roleMenuDao;
     @Override
     public List<MyMenu> getMenuAll(String queryName,Integer queryType) {
 
@@ -44,12 +47,14 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public Result updateMenu(MyMenu menu) {
+        menu.setIcon("layui-icon "+menu.getIcon());
         return (menuDao.update(menu) > 0) ? Result.ok().message("修改成功") : Result.error().message("修改失败");
 
     }
 
     @Override
     public Result<MyMenu> save(MyMenu menu) {
+        menu.setIcon("layui-icon "+menu.getIcon());
         return (menuDao.save(menu) > 0) ? Result.ok().message("添加成功") : Result.error().message("添加失败");
 
     }
@@ -57,9 +62,22 @@ public class MenuServiceImpl implements MenuService {
     //如果这里删除了菜单树的父节点，把它的子节点一并删除
     @Override
     public Result delete(Integer id) {
-        menuDao.deleteById(id);
-        menuDao.deleteByParentId(id);
-        return Result.ok().message("删除成功");
+        Integer count = roleMenuDao.countRoleMenuByRoleId(id);
+        if (count == 0){
+            menuDao.deleteById(id);
+            List<Integer> list = menuDao.selectByParentId(id);
+            if(list.size()>0){
+                for (Integer parentId: list){
+                    menuDao.deleteByParentId(parentId);
+                }
+                menuDao.deleteByParentId(id);
+            }
+            return Result.ok().message("删除成功");
+        }
+        else {
+            return Result.error().message("已经有角色分配该菜单，无法删除");
+        }
+
     }
 
     @Override

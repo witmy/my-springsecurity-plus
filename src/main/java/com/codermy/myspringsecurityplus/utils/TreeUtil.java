@@ -31,9 +31,10 @@ public class TreeUtil {
         for (Integer item : collect) {// 遍历list2
             if (collect1.contains(item)) {// 如果存在这个数
                 MenuDto menuDto = new MenuDto();
-                menuDto = menuDtos.get(item-1);
+                int i = collect1.indexOf(item);
+                menuDto = menuDtos.get(i);
                 menuDto.setCheckArr("1");
-                menuDtos.set(item-1,menuDto);
+                menuDtos.set(i,menuDto);
             }
         }
         return menuDtos;

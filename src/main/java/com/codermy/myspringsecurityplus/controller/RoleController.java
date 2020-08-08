@@ -2,6 +2,7 @@ package com.codermy.myspringsecurityplus.controller;
 
 import com.codermy.myspringsecurityplus.dto.RoleDto;
 import com.codermy.myspringsecurityplus.entity.MyRole;
+import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.service.RoleService;
 import com.codermy.myspringsecurityplus.utils.PageTableRequest;
 import com.codermy.myspringsecurityplus.utils.Result;
@@ -30,10 +31,12 @@ public class RoleController {
     public String index(){
         return "system/role/role";
     }
+
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "分页返回角色列表")
     @PreAuthorize("hasAnyAuthority('role:list')")
+    @MyLog("查询角色")
     public Result roleList(PageTableRequest request,String queryName) {
         request.countOffset();
         return roleService.getFuzzyRolesByPage(request.getOffset(), request.getLimit(),queryName);
@@ -51,6 +54,7 @@ public class RoleController {
     @ResponseBody
     @ApiOperation(value = "修改角色")
     @PreAuthorize("hasAnyAuthority('role:edit')")
+    @MyLog("修改角色")
     public Result updateRole(@RequestBody RoleDto roleDto) {
         return roleService.update(roleDto);
     }
@@ -68,6 +72,7 @@ public class RoleController {
     @ResponseBody
     @ApiOperation(value = "添加角色")
     @PreAuthorize("hasAnyAuthority('role:add')")
+    @MyLog("添加角色")
     public Result saveRole(@RequestBody RoleDto roleDto) {
         return roleService.save(roleDto);
     }
@@ -76,6 +81,7 @@ public class RoleController {
     @ResponseBody
     @ApiOperation(value = "删除角色")
     @PreAuthorize("hasAnyAuthority('role:del')")
+    @MyLog("删除角色")
     public Result<MyRole> deleteRole(RoleDto roleDto) {
         return roleService.delete(roleDto.getId());
     }

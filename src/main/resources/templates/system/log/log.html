@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" content="text/html;charset=utf-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+</head>
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="userName" placeholder="" class="layui-input">
+                </div>
+
+                <button id="log-query" class="pear-btn pear-btn-md pear-btn-primary" lay-submit="" lay-filter="log-query">
+                    <i class="layui-icon layui-icon-search"></i>
+                    查询
+                </button>
+
+                <button type="reset" class="pear-btn pear-btn-md">
+                    <i class="layui-icon layui-icon-refresh"></i>
+                    重置
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table id="log-table" lay-filter="log-table"></table>
+    </div>
+</div>
+
+<script type="text/html" id="log-toolbar">
+    <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+        <i class="layui-icon layui-icon-delete"></i>
+        清空
+    </button>
+</script>
+
+<script type="text/html" id="log-bar">
+    <button class="pear-btn pear-btn-primary" lay-event="detail">详细信息</button>
+</script>
+
+<script type="text/html" id="log-createTime">
+    {{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
+</script>
+
+<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+<script>
+    layui.use(['table','form','jquery'],function () {
+        let table = layui.table;
+        let form = layui.form;
+        let $ = layui.jquery;
+        let MODULE_PATH = "operate/";
+        let cols = [
+            [
+                {title: '用户名', field: 'userName', align:'center', width:100},
+                {title: 'ip地址', field: 'ip', align:'center'},
+                {title: '描述', field: 'description', align:'center'},
+                {title: '浏览器', field: 'browser', align:'center'},
+                {title: '请求参数', field: 'params', align:'center',hide:true},
+                {title: '方法名', field: 'method', align:'center',hide:true},
+                {title: '请求耗时(ms)', field: 'time', align:'center'},
+                {title: '创建时间', field: 'createTime', align:'center',templet:'#log-createTime'},
+                {title: '操作', toolbar: '#log-bar', align:'center', width:130}
+            ]
+
+        ]
+        var tableIns =table.render({
+            elem: '#log-table',
+            url: '/api/log',
+            page: true ,
+            cols: cols ,
+            skin: 'line',
+            toolbar: '#log-toolbar',
+            defaultToolbar: [{
+                layEvent: 'refresh',
+                icon: 'layui-icon-refresh',
+            }, 'filter', 'print', 'exports']
+        });
+
+        table.on('tool(log-table)', function(obj){
+            if(obj.event === 'remove'){
+                window.remove(obj);
+            } else if(obj.event === 'detail'){
+                var data = obj.data;
+                layer.alert('请求参数：<br>' + JSON.stringify(data.params) + '<br>方法名: <br>'+JSON.stringify(data.method),{area:["600px","300px"]})
+
+            }
+        });
+
+        table.on('toolbar(log-table)', function(obj){
+            if(obj.event === 'add'){
+                window.add();
+            } else if(obj.event === 'refresh'){
+                window.refresh();
+            } else if(obj.event === 'batchRemove'){
+                window.batchRemove(obj);
+            }
+        });
+
+        form.on('submit(log-query)', function(data){
+            var formData = data.field;
+            var userName = formData.userName;
+            var	nickName=formData.nickName;
+            tableIns.reload({
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {//这里传参  向后台
+                    userName: userName
+                    //可传多个参数到后台...  ，分隔
+                }
+                , url: '/api/log'//后台做模糊搜索接口路径
+                , method: 'get'
+            });
+            return false;
+        });
+
+
+        window.remove = function(obj){
+            layer.confirm('确定要删除该用户', {icon: 3, title:'提示'}, function(index){
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: "/api/user?id="+obj.data['id'],
+                    dataType:'json',
+                    type:'delete',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                obj.del();
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                        }
+                    }
+                })
+            });
+        }
+
+        window.batchRemove = function(obj){
+            let data = table.checkStatus(obj.config.id).data;
+            if(data.length === 0){
+                layer.msg("未选中数据",{icon:3,time:1000});
+                return false;
+            }
+            let ids = "";
+            for(let i = 0;i<data.length;i++){
+                ids += data[i].id+",";
+            }
+            ids = ids.substr(0,ids.length-1);
+            layer.confirm('确定要删除这些用户', {icon: 3, title:'提示'}, function(index){
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: MODULE_PATH+"batchRemove/"+ids,
+                    dataType:'json',
+                    type:'delete',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                table.reload('log-table');
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                        }
+                    }
+                })
+            });
+        }
+
+        window.refresh = function(param){
+            table.reload('log-table');
+        }
+    })
+</script>
+</body>
+</html>

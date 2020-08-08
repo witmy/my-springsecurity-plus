@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.controller;
 
 import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
+import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import io.swagger.annotations.Api;

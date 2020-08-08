@@ -40,6 +40,9 @@ public interface MenuDao {
     @Delete("delete from my_menu where parent_id = #{parentId}")
     int deleteByParentId(Integer parentId);
 
+    @Select("select p.id from my_menu p where parent_id = #{parentId}")
+    List<Integer> selectByParentId(Integer parentId);
+
     @Select("select p.id,p.parent_id,p.name from my_menu p inner join my_role_menu rp on p.id = rp.menu_id where rp.role_id = #{roleId}")
     @Result(property = "title",column = "name")
     List<MenuDto> listByRoleId(Integer roleId);

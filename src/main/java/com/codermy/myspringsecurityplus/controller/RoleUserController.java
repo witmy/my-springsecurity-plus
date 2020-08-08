@@ -1,5 +1,6 @@
 package com.codermy.myspringsecurityplus.controller;
 
+import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.service.RoleUserService;
 import com.codermy.myspringsecurityplus.utils.Result;
 import io.swagger.annotations.Api;
@@ -26,6 +27,7 @@ public class RoleUserController {
     @ResponseBody
     @ApiOperation(value = "通过用户id返回用户角色")
     @PreAuthorize("hasAnyAuthority('user:list')")
+    @MyLog("查询用户角色")
     public Result getRoleUserByUserId(Integer userId) {
         return roleUserService.getMyRoleUserByUserId(userId);
     }

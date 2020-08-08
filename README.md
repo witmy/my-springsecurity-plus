@@ -59,7 +59,7 @@
 | :----------------------------------------------------: | :---------------------------------------------------: |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/login.PNG)     |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/index.PNG)       |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/useredit.PNG)       |
-|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/blob/master/docs/images/roleedit.PNG)        |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit.PNG)        |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menu.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menuedit.PNG)        |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/durid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
 ### 赞赏

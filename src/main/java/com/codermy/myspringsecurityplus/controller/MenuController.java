@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.codermy.myspringsecurityplus.dto.MenuDto;
 import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
 import com.codermy.myspringsecurityplus.entity.MyMenu;
+import com.codermy.myspringsecurityplus.exceptionhandler.MyException;
+import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.service.MenuService;
 import com.codermy.myspringsecurityplus.utils.Result;
 import com.codermy.myspringsecurityplus.utils.ResultCode;
@@ -37,7 +39,11 @@ public class MenuController {
     @ResponseBody
     @ApiOperation(value = "菜单列表")
     @PreAuthorize("hasAnyAuthority('menu:list')")
+    @MyLog("查询菜单")
     public Result getMenuAll(String queryName,Integer queryType){
+        if (0 == 0){
+            throw new MyException(1111,"测试异常");
+        }
         return Result.ok().data(menuService.getMenuAll(queryName,queryType)).code(ResultCode.TABLE_SUCCESS);
     }
 
@@ -45,6 +51,7 @@ public class MenuController {
     @ResponseBody
     @ApiOperation(value = "绘制菜单树")
     @PreAuthorize("hasAnyAuthority('menu:add','menu:edit')")
+    @MyLog("绘制菜单树")
     public Result buildMenuAll(){
         List<MenuDto> menuAll =menuService.buildMenuAll();
         return Result.ok().data(menuAll);
@@ -54,6 +61,7 @@ public class MenuController {
     @ResponseBody
     @ApiOperation(value = "通过id绘制菜单树")
     @PreAuthorize("hasAnyAuthority('role:add','role:edit')")
+    @MyLog("通过id绘制菜单树")
     public Result buildMenuAllByRoleId(@PathVariable Integer roleId){
         List<MenuDto> menuAll =menuService.buildMenuAllByRoleId(roleId);
         return Result.ok().data(menuAll);
@@ -71,6 +79,7 @@ public class MenuController {
     @ResponseBody
     @ApiOperation(value = "修改菜单")
     @PreAuthorize("hasAnyAuthority('menu:edit')")
+    @MyLog("修改菜单")
     public Result updateMenu(@RequestBody MyMenu menu) {
         return menuService.updateMenu(menu);
     }
@@ -88,6 +97,7 @@ public class MenuController {
     @ResponseBody
     @ApiOperation(value = "添加菜单")
     @PreAuthorize("hasAnyAuthority('menu:add')")
+    @MyLog("添加菜单")
     public Result<MyMenu> savePermission(@RequestBody MyMenu myMenu) {
         return menuService.save(myMenu);
     }
@@ -97,6 +107,7 @@ public class MenuController {
     @ResponseBody
     @ApiOperation(value = "删除菜单")
     @PreAuthorize("hasAnyAuthority('menu:del')")
+    @MyLog("删除菜单")
     public Result deleteMenu(Integer id) {
         return menuService.delete(id);
     }

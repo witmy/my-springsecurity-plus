@@ -3,6 +3,7 @@ package com.codermy.myspringsecurityplus.controller;
 import com.codermy.myspringsecurityplus.dto.UserDto;
 import com.codermy.myspringsecurityplus.dto.UserQueryDto;
 import com.codermy.myspringsecurityplus.entity.MyUser;
+import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.service.UserService;
 import com.codermy.myspringsecurityplus.utils.MD5;
 import com.codermy.myspringsecurityplus.utils.PageTableRequest;
@@ -35,6 +36,7 @@ public class UserController {
     @ResponseBody
     @ApiOperation(value = "用户列表")
     @PreAuthorize("hasAnyAuthority('user:list')")
+    @MyLog("查询用户")
     public Result<MyUser> userList(PageTableRequest pageTableRequest, UserQueryDto userQueryDto){
         pageTableRequest.countOffset();
         return userService.getAllUsersByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),userQueryDto);
@@ -52,6 +54,7 @@ public class UserController {
     @ResponseBody
     @ApiOperation(value = "添加用户")
     @PreAuthorize("hasAnyAuthority('user:add')")
+    @MyLog("添加用户")
     public Result<MyUser> saveUser(@RequestBody UserDto userDto){
         MyUser myUser = null;
         myUser = userService.getUserByPhone(userDto.getPhone());
@@ -74,6 +77,7 @@ public class UserController {
     @ResponseBody
     @ApiOperation(value = "修改用户")
     @PreAuthorize("hasAnyAuthority('user:edit')")
+    @MyLog("修改用户")
     public Result<MyUser> updateUser(@RequestBody UserDto userDto){
         MyUser tbUser = null;
         tbUser = userService.getUserByPhone(userDto.getPhone());
@@ -87,6 +91,7 @@ public class UserController {
     @ResponseBody
     @ApiOperation(value = "删除用户")
     @PreAuthorize("hasAnyAuthority('user:del')")
+    @MyLog("删除用户")
     public Result deleteUser(Integer id){
         int count = userService.deleteUser(id);
         if(count>0){
