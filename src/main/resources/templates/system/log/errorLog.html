@@ -65,7 +65,7 @@
                 {title: '浏览器', field: 'browser', align:'center'},
                 {title: '请求参数', field: 'params', align:'center',hide:true},
                 {title: '方法名', field: 'method', align:'center',hide:true},
-                {title: '异常详细', field: 'details', align:'center',hide:true},
+                {title: '详细信息', field: 'details', align:'center',hide:true},
                 {title: '创建时间', field: 'createTime', align:'center',templet:'#log-createTime'},
                 {title: '操作', toolbar: '#log-bar', align:'center', width:130}
             ]
@@ -84,19 +84,25 @@
             }, 'filter', 'print', 'exports']
         });
 
+
         table.on('tool(log-table)', function(obj){
             if(obj.event === 'remove'){
                 window.remove(obj);
             } else if(obj.event === 'detail'){
                 var data = obj.data;
-                layer.alert('请求参数：<br>' + JSON.stringify(data.params) +
-                    '<br>方法名: <br>'+JSON.stringify(data.method) +
-                    '<br>异常详细: <br>' +JSON.stringify(data.detail),
-                    {area: ['300px', '195px'],
-                     maxmin: true})
+                var errorDetail = JSON.stringify(data.exceptionDetail)
+                errorDetail = errorDetail.replace(/\\r\\n/g, '<br>')
+                errorDetail = errorDetail.replace(/\\tat/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
 
+                var index = layer.alert('请求参数：<br>' + JSON.stringify(data.params) +
+                    '<br>方法名: <br>'+JSON.stringify(data.method) +
+                    '<br>详细信息: <br>' +errorDetail,
+                    {area: ['320px', '195px'],
+                     maxmin: true})
+                layer.full(index);
             }
         });
+
 
         table.on('toolbar(log-table)', function(obj){
             if(obj.event === 'add'){
@@ -108,6 +114,28 @@
             }
         });
 
+        window.batchRemove = function(obj){
+            layer.confirm('该操作会删除所有日志，请谨慎操作', {icon: 3, title:'提示'}, function(index){
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: "/api/error/log",
+                    type:'delete',
+                    dataType:'json',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                obj.del();
+                                table.reload('log-table');
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                        }
+                    }
+                })
+            });
+        }
         form.on('submit(log-query)', function(data){
             var formData = data.field;
             var userName = formData.userName;

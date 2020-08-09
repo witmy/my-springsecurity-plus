@@ -41,9 +41,9 @@ public class MenuController {
     @PreAuthorize("hasAnyAuthority('menu:list')")
     @MyLog("查询菜单")
     public Result getMenuAll(String queryName,Integer queryType){
-        if (0 == 0){
-            throw new MyException(1111,"测试异常");
-        }
+        // if (0 == 0){
+        //     throw new MyException(1111,"测试异常");
+        // }
         return Result.ok().data(menuService.getMenuAll(queryName,queryType)).code(ResultCode.TABLE_SUCCESS);
     }
 

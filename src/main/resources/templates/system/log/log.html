@@ -123,50 +123,19 @@
         });
 
 
-        window.remove = function(obj){
-            layer.confirm('确定要删除该用户', {icon: 3, title:'提示'}, function(index){
+        window.batchRemove = function(obj){
+            layer.confirm('该操作会删除所有日志，请谨慎操作', {icon: 3, title:'提示'}, function(index){
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({
-                    url: "/api/user?id="+obj.data['id'],
-                    dataType:'json',
+                    url: "/api/log",
                     type:'delete',
+                    dataType:'json',
                     success:function(result){
                         layer.close(loading);
                         if(result.success){
                             layer.msg(result.msg,{icon:1,time:1000},function(){
                                 obj.del();
-                            });
-                        }else{
-                            layer.msg(result.msg,{icon:2,time:1000});
-                        }
-                    }
-                })
-            });
-        }
-
-        window.batchRemove = function(obj){
-            let data = table.checkStatus(obj.config.id).data;
-            if(data.length === 0){
-                layer.msg("未选中数据",{icon:3,time:1000});
-                return false;
-            }
-            let ids = "";
-            for(let i = 0;i<data.length;i++){
-                ids += data[i].id+",";
-            }
-            ids = ids.substr(0,ids.length-1);
-            layer.confirm('确定要删除这些用户', {icon: 3, title:'提示'}, function(index){
-                layer.close(index);
-                let loading = layer.load();
-                $.ajax({
-                    url: MODULE_PATH+"batchRemove/"+ids,
-                    dataType:'json',
-                    type:'delete',
-                    success:function(result){
-                        layer.close(loading);
-                        if(result.success){
-                            layer.msg(result.msg,{icon:1,time:1000},function(){
                                 table.reload('log-table');
                             });
                         }else{

@@ -61,3 +61,11 @@ jwt:
   secret: my-springsecurity-plus #JWT加解密使用的密钥
   expiration: 604800 #JWT的超期限时间(60*60*24*7)
   tokenHead: 'Bearer ' #JWT负载中拿到开头
+
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  pageSizeZero: true #pageSize=0 or RowBounds.Limit = 0的时候就不适用分页，但是返回对象还是PageInfo

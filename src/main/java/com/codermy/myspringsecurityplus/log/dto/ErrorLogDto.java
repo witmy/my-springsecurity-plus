@@ -19,7 +19,7 @@ public class ErrorLogDto implements Serializable {
 
     private String description;
 
-    private String detail;
+    private String exceptionDetail;
 
     private String method;
 

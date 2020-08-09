@@ -33,7 +33,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Result<MyRole> getFuzzyRolesByPage(Integer startPosition, Integer limit,String queryName) {
         List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(startPosition, limit, queryName);
-        return Result.ok().count(fuzzyRolesByPage.size()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
+        return Result.ok().count((long)fuzzyRolesByPage.size()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
     @Override

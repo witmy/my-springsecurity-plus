@@ -62,6 +62,8 @@
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit.PNG)        |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menu.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menuedit.PNG)        |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/durid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/log.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/logdetail.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlog.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlogdetail.PNG)       |
 ### 赞赏
 请作者喝杯咖啡
 

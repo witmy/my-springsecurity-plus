@@ -1,13 +1,17 @@
 package com.codermy.myspringsecurityplus.log.service.impl;
 
-import com.codermy.myspringsecurityplus.entity.MyRole;
+import cn.hutool.json.JSONObject;
+
 import com.codermy.myspringsecurityplus.log.dao.LogDao;
+import com.codermy.myspringsecurityplus.log.dto.ErrorLogDto;
 import com.codermy.myspringsecurityplus.log.dto.LogDto;
 import com.codermy.myspringsecurityplus.log.entity.MyLog;
 import com.codermy.myspringsecurityplus.log.service.MyLogService;
 import com.codermy.myspringsecurityplus.log.dto.LogQuery;
 import com.codermy.myspringsecurityplus.utils.Result;
 import com.codermy.myspringsecurityplus.utils.ResultCode;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +30,19 @@ public class MyLogServiceImpl implements MyLogService {
     @Autowired
     private LogDao logDao;
     @Override
-    public Result<LogDto> getFuzzyInfoLogByPage(Integer startPosition, Integer limit, LogQuery logQuery) {
-        List<LogDto> fuzzyLogByPage = logDao.getFuzzyLogByPage(startPosition, limit, logQuery);
-        return Result.ok().count(fuzzyLogByPage.size()).data(fuzzyLogByPage).code(ResultCode.TABLE_SUCCESS);
+    public Result<LogDto> getFuzzyInfoLogByPage(Integer offectPosition, Integer limit, LogQuery logQuery) {
+        Page page = PageHelper.offsetPage(offectPosition,limit);
+        List<LogDto> fuzzyLogByPage = logDao.getFuzzyLogByPage(logQuery);
+
+        return Result.ok().count(page.getTotal()).data(fuzzyLogByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
-
+    @Override
+    public Result<ErrorLogDto> getFuzzyErrorLogByPage(Integer offectPosition, Integer limit, LogQuery logQuery) {
+        Page page = PageHelper.offsetPage(offectPosition,limit);
+        List<ErrorLogDto> fuzzyErrorLogByPage = logDao.getFuzzyErrorLogByPage(logQuery);
+        return Result.ok().count(page.getTotal()).data(fuzzyErrorLogByPage).code(ResultCode.TABLE_SUCCESS);
+    }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -57,7 +68,15 @@ public class MyLogServiceImpl implements MyLogService {
         }
         assert log != null;
         log.setIp(ip);
-
+        String loginPath = "login";
+        if(loginPath.equals(signature.getName())){
+            try {
+                assert argValues != null;
+                userName = new JSONObject(argValues[0]).get("userName").toString();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
         log.setMethod(methodName);
         log.setUserName(userName);
         log.setParams(params.toString() + " }");
@@ -66,12 +85,14 @@ public class MyLogServiceImpl implements MyLogService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void delAllByError() {
-
+        logDao.delAllByInfo("ERROR");
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void delAllByInfo() {
-
+        logDao.delAllByInfo("INFO");
     }
 }

@@ -1,8 +1,6 @@
 package com.codermy.myspringsecurityplus.log.aspect;
 
-import com.codermy.myspringsecurityplus.log.entity.MyErrorLog;
 import com.codermy.myspringsecurityplus.log.entity.MyLog;
-import com.codermy.myspringsecurityplus.log.service.MyErrorLogService;
 import com.codermy.myspringsecurityplus.log.service.MyLogService;
 import com.codermy.myspringsecurityplus.log.utils.LogUtils;
 import com.codermy.myspringsecurityplus.log.utils.RequestHolder;
@@ -26,8 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 public class LogAspect {
     @Autowired
     private MyLogService logService;
-    @Autowired
-    private MyErrorLogService errorLogService;
 
     ThreadLocal<Long> currentTime = new ThreadLocal<>();
     /**
@@ -47,7 +43,7 @@ public class LogAspect {
         Object result;
         currentTime.set(System.currentTimeMillis());
         result = joinPoint.proceed();
-        MyLog log = new MyLog(System.currentTimeMillis() - currentTime.get());
+        MyLog log = new MyLog("INFO",System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
         HttpServletRequest request = RequestHolder.getHttpServletRequest();
         logService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request),joinPoint, log);
@@ -62,10 +58,10 @@ public class LogAspect {
      */
     @AfterThrowing(pointcut = "logPoinCut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        MyErrorLog log = new MyErrorLog();
+        MyLog log = new MyLog("ERROR",System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
-        log.setDetail(LogUtils.getStackTrace(e));
+        log.setExceptionDetail(LogUtils.getStackTrace(e));
         HttpServletRequest request = RequestHolder.getHttpServletRequest();
-        errorLogService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request), (ProceedingJoinPoint)joinPoint, log);
+        logService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request), (ProceedingJoinPoint)joinPoint, log);
     }
 }

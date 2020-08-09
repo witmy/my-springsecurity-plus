@@ -11,6 +11,9 @@ import java.util.List;
  */
 @Data
 public class LogQuery {
+
     private String userName;
+
+    private String logType;
     // private List<Timestamp> createTime;
 }

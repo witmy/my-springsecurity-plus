@@ -7,12 +7,28 @@
         SELECT t.user_name,t.ip,t.params,t.description,t.browser,t.time,t.method,t.create_time
         FROM my_log t
         <where>
+            <if test="logQuery.logType != null and logQuery.logType  != ''">
+                AND t.type = #{logQuery.logType}
+            </if>
             <if test="logQuery.userName != null and logQuery.userName != ''">
                 AND t.user_name like CONCAT('%', #{logQuery.userName}, '%')
             </if>
         </where>
-        ORDER BY t.create_time asc
-        LIMIT #{startPosition}, #{limit}
+        ORDER BY t.create_time desc
+    </select>
+
+    <select id="getFuzzyErrorLogByPage" resultType="com.codermy.myspringsecurityplus.log.dto.ErrorLogDto">
+        SELECT t.user_name,t.ip,t.params,t.description,t.browser,t.exception_detail,t.method,t.create_time
+        FROM my_log t
+        <where>
+            <if test="logQuery.logType != null and logQuery.logType  != ''">
+                AND t.type = #{logQuery.logType}
+            </if>
+            <if test="logQuery.userName != null and logQuery.userName != ''">
+                AND t.user_name like CONCAT('%', #{logQuery.userName}, '%')
+            </if>
+        </where>
+        ORDER BY t.create_time desc
     </select>
 
 </mapper>

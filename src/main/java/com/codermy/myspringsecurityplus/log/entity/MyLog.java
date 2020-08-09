@@ -27,6 +27,11 @@ public class MyLog implements Serializable {
     /** 请求ip */
     private String ip;
 
+    /** 异常详细  */
+    private String ExceptionDetail;
+
+    /** 异常类型 */
+    private String type;
     // /** 地址 */
     // private String ipAddress;
     /** 参数*/
@@ -41,7 +46,8 @@ public class MyLog implements Serializable {
     /** 创建日期 */
     private Date createTime = new Date();
 
-    public MyLog( Long time) {
+    public MyLog( String type,Long time) {
+        this.type = type;
         this.time = time;
     }
 

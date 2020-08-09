@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result<MyUser> getAllUsersByPage(Integer startPosition, Integer limit, UserQueryDto userQueryDto) {
         List<MyUser> fuzzyUserByPage = userDao.getFuzzyUserByPage(startPosition, limit, userQueryDto);
-        return Result.ok().count(fuzzyUserByPage.size()).data(fuzzyUserByPage).code(ResultCode.TABLE_SUCCESS);
+        return Result.ok().count((long)fuzzyUserByPage.size()).data(fuzzyUserByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
 

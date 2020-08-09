@@ -25,7 +25,7 @@ public class Result<T> implements Serializable {
     private String msg;
 
     @ApiModelProperty(value = "总数")
-    private Integer count;
+    private Long count;
 
     @ApiModelProperty(value = "返回数据")
     private List<T> data = new ArrayList<T>();
@@ -81,7 +81,7 @@ public class Result<T> implements Serializable {
         this.data.addAll(list);
         return this;
     }
-    public Result count(Integer count){
+    public Result count(Long count){
         this.count = count;
         return this;
     }
