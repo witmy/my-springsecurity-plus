@@ -12,7 +12,6 @@
                 AND t.name like CONCAT('%', #{queryName}, '%')
             </if>
         </where>
-        limit #{startPosition}, #{limit}
     </select>
 
     <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">

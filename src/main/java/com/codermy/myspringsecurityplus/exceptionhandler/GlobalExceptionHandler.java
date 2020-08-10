@@ -21,14 +21,26 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    //指定处理什么异常
+
+
+    /**
+     * 指定处理什么异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(Exception.class)
     public Result error(Exception e){
         log.error(e.getMessage());
         e.printStackTrace();
         return Result.error().message("执行了全局异常");
     }
-    //自定义异常
+
+
+    /**
+     *  自定义异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(MyException.class)
     public Result error(MyException e){
         log.error(e.getMessage());

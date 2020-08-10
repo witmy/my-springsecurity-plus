@@ -16,7 +16,6 @@
             </if>
         </where>
         ORDER BY t.id
-        LIMIT #{startPosition}, #{limit}
     </select>
 
 

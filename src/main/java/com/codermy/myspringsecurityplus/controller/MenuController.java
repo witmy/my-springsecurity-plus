@@ -102,7 +102,12 @@ public class MenuController {
         return menuService.save(myMenu);
     }
 
-    //todo 批量删除
+
+    /**
+     * todo 批量删除
+     * @param id
+     * @return
+     */
     @DeleteMapping
     @ResponseBody
     @ApiOperation(value = "删除菜单")

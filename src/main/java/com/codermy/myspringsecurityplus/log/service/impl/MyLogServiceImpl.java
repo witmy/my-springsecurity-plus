@@ -29,11 +29,11 @@ import java.util.List;
 public class MyLogServiceImpl implements MyLogService {
     @Autowired
     private LogDao logDao;
+
     @Override
     public Result<LogDto> getFuzzyInfoLogByPage(Integer offectPosition, Integer limit, LogQuery logQuery) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
         List<LogDto> fuzzyLogByPage = logDao.getFuzzyLogByPage(logQuery);
-
         return Result.ok().count(page.getTotal()).data(fuzzyLogByPage).code(ResultCode.TABLE_SUCCESS);
     }
 

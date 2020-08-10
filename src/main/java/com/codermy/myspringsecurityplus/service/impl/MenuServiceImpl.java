@@ -59,7 +59,13 @@ public class MenuServiceImpl implements MenuService {
 
     }
 
-    //如果这里删除了菜单树的父节点，把它的子节点一并删除
+
+
+    /**
+     * 如果这里删除了菜单树的父节点，把它的子节点一并删除
+     * @param id
+     * @return
+     */
     @Override
     public Result delete(Integer id) {
         Integer count = roleMenuDao.countRoleMenuByRoleId(id);

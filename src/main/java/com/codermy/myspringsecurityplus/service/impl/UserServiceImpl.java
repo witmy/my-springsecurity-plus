@@ -9,6 +9,8 @@ import com.codermy.myspringsecurityplus.entity.MyUser;
 import com.codermy.myspringsecurityplus.service.UserService;
 import com.codermy.myspringsecurityplus.utils.Result;
 import com.codermy.myspringsecurityplus.utils.ResultCode;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +27,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RoleUserDao roleUserDao;
     @Override
-    public Result<MyUser> getAllUsersByPage(Integer startPosition, Integer limit, UserQueryDto userQueryDto) {
-        List<MyUser> fuzzyUserByPage = userDao.getFuzzyUserByPage(startPosition, limit, userQueryDto);
-        return Result.ok().count((long)fuzzyUserByPage.size()).data(fuzzyUserByPage).code(ResultCode.TABLE_SUCCESS);
+    public Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, UserQueryDto userQueryDto) {
+        Page page = PageHelper.offsetPage(offectPosition,limit);
+        List<MyUser> fuzzyUserByPage = userDao.getFuzzyUserByPage(userQueryDto);
+        return Result.ok().count(page.getTotal()).data(fuzzyUserByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
 

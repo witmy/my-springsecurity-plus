@@ -10,7 +10,7 @@ import com.codermy.myspringsecurityplus.utils.Result;
  * @createTime 2020/7/10
  */
 public interface UserService {
-    Result<MyUser> getAllUsersByPage(Integer startPosition, Integer limit, UserQueryDto userQueryDto);
+    Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, UserQueryDto userQueryDto);
 
     MyUser getUserById(Integer id);
 

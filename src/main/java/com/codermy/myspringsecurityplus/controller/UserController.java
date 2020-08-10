@@ -5,7 +5,7 @@ import com.codermy.myspringsecurityplus.dto.UserQueryDto;
 import com.codermy.myspringsecurityplus.entity.MyUser;
 import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.service.UserService;
-import com.codermy.myspringsecurityplus.utils.MD5;
+import com.codermy.myspringsecurityplus.utils.Md5;
 import com.codermy.myspringsecurityplus.utils.PageTableRequest;
 import com.codermy.myspringsecurityplus.utils.Result;
 import io.swagger.annotations.Api;
@@ -61,7 +61,7 @@ public class UserController {
         if(myUser !=null && !(myUser.getId().equals(userDto.getId())) ){
             return Result.error().code(20001).message("手机号已存在");
         }
-        userDto.setPassword(MD5.crypt("123456"));
+        userDto.setPassword(Md5.crypt("123456"));
         return userService.save(userDto,userDto.getRoleId());
     }
 

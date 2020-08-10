@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author codermy
+ * @createTime 2020/7/10
+ */
 @Data
 public class PageTableRequest implements Serializable {
 

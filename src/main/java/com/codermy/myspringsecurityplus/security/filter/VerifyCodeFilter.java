@@ -22,16 +22,19 @@ import java.io.IOException;
 public class VerifyCodeFilter extends OncePerRequestFilter {
 
     private String defaultFilterProcessUrl = "/login";
+    private String method = "POST";
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-        if ("POST".equalsIgnoreCase(request.getMethod()) && defaultFilterProcessUrl.equals(request.getServletPath())) {
+        if (method.equalsIgnoreCase(request.getMethod()) && defaultFilterProcessUrl.equals(request.getServletPath())) {
             // 登录请求校验验证码，非登录请求不用校验
             HttpSession session = request.getSession();
             String requestCaptcha = request.getParameter("captcha");
-            String genCaptcha = (String) request.getSession().getAttribute("captcha");//验证码的信息存放在seesion种，具体看EasyCaptcha官方解释
+            //验证码的信息存放在seesion种，具体看EasyCaptcha官方解释
+            String genCaptcha = (String) request.getSession().getAttribute("captcha");
             response.setContentType("application/json;charset=UTF-8");
             if (StringUtils.isEmpty(requestCaptcha)){
-                session.removeAttribute("captcha");//删除缓存里的验证码信息
+                //删除缓存里的验证码信息
+                session.removeAttribute("captcha");
                 response.getWriter().write(JSON.toJSONString(Result.error().message("验证码不能为空!")));
                 return;
             }

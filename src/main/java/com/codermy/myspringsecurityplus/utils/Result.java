@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 统一返回结果的类
  * @author codermy
  * @createTime 2020/5/15
  */
-//统一返回结果的类
 @Data
 public class Result<T> implements Serializable {
 
@@ -32,18 +32,20 @@ public class Result<T> implements Serializable {
 
     @ApiModelProperty(value = "token数据")
     private String jwt;
-    //把构造方法私有
+
+
+    /**
+     * 把构造方法私有
+     */
     private Result() {}
 
-    public static Result table_sucess() {
-        Result r = new Result();
-        r.setSuccess(true);
-        r.setCode(ResultCode.TABLE_SUCCESS);
-        r.setMsg("成功");
-        return r;
-    }
 
-    //成功静态方法
+
+
+    /**
+     * 成功静态方法
+     * @return
+     */
     public static Result ok() {
         Result r = new Result();
         r.setSuccess(true);
@@ -52,7 +54,11 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-    //失败静态方法
+
+    /**
+     * 失败静态方法
+     * @return
+     */
     public static Result error() {
         Result r = new Result();
         r.setSuccess(false);

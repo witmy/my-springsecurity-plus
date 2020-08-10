@@ -9,6 +9,8 @@ import com.codermy.myspringsecurityplus.entity.MyRoleUser;
 import com.codermy.myspringsecurityplus.service.RoleService;
 import com.codermy.myspringsecurityplus.utils.Result;
 import com.codermy.myspringsecurityplus.utils.ResultCode;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,9 +33,10 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public Result<MyRole> getFuzzyRolesByPage(Integer startPosition, Integer limit,String queryName) {
-        List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(startPosition, limit, queryName);
-        return Result.ok().count((long)fuzzyRolesByPage.size()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
+    public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit,String queryName) {
+        Page page = PageHelper.offsetPage(offectPosition,limit);
+        List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(queryName);
+        return Result.ok().count(page.getTotal()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
     @Override
