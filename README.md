@@ -17,8 +17,16 @@
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
 ### 介绍
-这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统
+这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。  
+十分适合新手练习上手,项目文档从零开始，十分详细。
 
+### 系统功能（已完成）
+- 用户管理：提供用户的相关配置
+- 角色管理：对权限与菜单进行分配
+- 菜单管理：已实现菜单动态路由
+- 系统日志：记录用户操作日志与异常日志
+- SQL监控：采用druid 监控数据库访问性能
+- 接口管理：方便统一查看管理接口
 ### 技术选型
 1、SpringBoot  
 2、MyBatis    
@@ -28,23 +36,7 @@
 6、Swagger    
 8、Redis  
 9、JWT  
-10、[Pear Admin Layui](https://gitee.com/Jmysy/Pear-Admin-Layui)  
-等
-### 快速使用
-
-- 下载项目
- 
-- 导入idea
- 
-- 导入docs文件夹下sql文件到数据库
- 
-- 修改数据库配置文件的路径，用户名等信息
- 
-- 运行
-
-### 说明
-1、本项目尚未完善，仍在开发中  
-2、CSDN博客同步更新项目文档。
+10、Pear Admin Layui
 
 ### 系列文章
 1、[SpringSecurity权限管理系统实战—一、项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107249376)  
@@ -54,6 +46,13 @@
 5、[SpringSecurity权限管理系统实战—五、整合SpringSecurity（下）](https://blog.csdn.net/HYDCS/article/details/107510905)  
 6、[SpringSecurity权限管理系统实战—六、SpringSecurity整合jwt](https://blog.csdn.net/HYDCS/article/details/107732916)  
 7、[SpringSecurity权限管理系统实战—七、处理一些问题](https://blog.csdn.net/HYDCS/article/details/107765898)
+
+### 快速使用
+- 下载项目
+- 导入idea
+- 导入docs文件夹下sql文件到数据库
+- 修改数据库配置文件的路径，用户名等信息
+- 运行
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
