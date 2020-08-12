@@ -17,10 +17,9 @@
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
 ### 介绍
-这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。  
-十分适合新手练习上手,项目文档从零开始，十分详细。
+这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。十分适合新手练习上手,项目文档从零开始，十分详细。
 
-### 系统功能（已完成）
+### 系统功能
 - 用户管理：提供用户的相关配置
 - 角色管理：对权限与菜单进行分配
 - 菜单管理：已实现菜单动态路由
