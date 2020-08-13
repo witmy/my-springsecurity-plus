@@ -12,6 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MyException extends  RuntimeException {
-    private Integer code;//状态码
-    private String  msg;//异常信息
+    /**
+     * 状态码
+     */
+    private Integer code;
+    /**
+     * 异常信息
+     */
+    private String  msg;
 }

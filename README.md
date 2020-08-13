@@ -17,7 +17,7 @@
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
 ### 介绍
-这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。十分适合新手练习上手,项目文档从零开始，十分详细。
+这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。无任何重度依赖，非常适合新手练习上手,项目文档从零开始，十分详细。
 
 ### 系统功能
 - 用户管理：提供用户的相关配置
@@ -44,7 +44,8 @@
 4、[SpringSecurity权限管理系统实战—四、整合SpringSecurity（上）](https://blog.csdn.net/HYDCS/article/details/107367064)  
 5、[SpringSecurity权限管理系统实战—五、整合SpringSecurity（下）](https://blog.csdn.net/HYDCS/article/details/107510905)  
 6、[SpringSecurity权限管理系统实战—六、SpringSecurity整合jwt](https://blog.csdn.net/HYDCS/article/details/107732916)  
-7、[SpringSecurity权限管理系统实战—七、处理一些问题](https://blog.csdn.net/HYDCS/article/details/107765898)
+7、[SpringSecurity权限管理系统实战—七、处理一些问题](https://blog.csdn.net/HYDCS/article/details/107765898)  
+8、[SpringSecurity权限管理系统实战—八、AOP记录用户、异常日志](https://blog.csdn.net/HYDCS/article/details/107965522)
 
 ### 快速使用
 - 下载项目
@@ -59,7 +60,7 @@
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/useredit.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit.PNG)        |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menu.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menuedit.PNG)        |
-|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/durid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/druid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/log.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/logdetail.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlog.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlogdetail.PNG)       |
 ### 赞赏

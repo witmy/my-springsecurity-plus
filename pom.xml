@@ -41,6 +41,10 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -95,6 +99,7 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
+        <!--aop-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
@@ -105,19 +110,18 @@
             <artifactId>UserAgentUtils</artifactId>
             <version>1.21</version>
         </dependency>
-        <!--ip2region-->
-<!--        <dependency>-->
-<!--            <groupId>org.lionsoul</groupId>-->
-<!--            <artifactId>ip2region</artifactId>-->
-<!--            <version>1.7.2</version>-->
-<!--        </dependency>-->
-
+        <!--ip2region，这是根据ip查地址的工具，有兴趣自己可以了解-->
+        <!-- <dependency>-->
+        <!-- <groupId>org.lionsoul</groupId>-->
+        <!-- <artifactId>ip2region</artifactId>-->
+        <!-- <version>1.7.2</version>-->
+        <!-- </dependency>-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.13</version>
         </dependency>
-
+        <!--hutool工具-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>

@@ -28,8 +28,10 @@ public class TreeUtil {
         // }
         List<Integer> collect = listByRoleId.stream().map(MenuDto::getId).collect(Collectors.toList());
         List<Integer> collect1 = menuDtos.stream().map(MenuDto::getId).collect(Collectors.toList());
-        for (Integer item : collect) {// 遍历list2
-            if (collect1.contains(item)) {// 如果存在这个数
+        // 遍历list2
+        for (Integer item : collect) {
+            // 如果存在这个数
+            if (collect1.contains(item)) {
                 MenuDto menuDto = new MenuDto();
                 int i = collect1.indexOf(item);
                 menuDto = menuDtos.get(i);

@@ -41,8 +41,10 @@ public class LogAspect {
     @Around("logPoinCut()")
     public Object saveSysLog(ProceedingJoinPoint joinPoint)throws Throwable{
         Object result;
+        //记录方法的执行时间
         currentTime.set(System.currentTimeMillis());
         result = joinPoint.proceed();
+        //定义日志类型
         MyLog log = new MyLog("INFO",System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
         HttpServletRequest request = RequestHolder.getHttpServletRequest();

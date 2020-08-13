@@ -21,7 +21,8 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        httpServletResponse.setCharacterEncoding("utf-8");//修改编码格式
+        //修改编码格式
+        httpServletResponse.setCharacterEncoding("utf-8");
         httpServletResponse.setContentType("application/json");
 
         if (e instanceof BadCredentialsException){

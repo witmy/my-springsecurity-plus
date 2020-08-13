@@ -32,8 +32,10 @@ public class MyLog implements Serializable {
 
     /** 异常类型 */
     private String type;
+
     // /** 地址 */
     // private String ipAddress;
+
     /** 参数*/
     private String params;
 

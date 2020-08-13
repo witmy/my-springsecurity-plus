@@ -19,7 +19,8 @@ import java.io.IOException;
 public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        httpServletResponse.setCharacterEncoding("utf-8");//修改编码格式
+        //修改编码格式
+        httpServletResponse.setCharacterEncoding("utf-8");
         httpServletResponse.setContentType("application/json");
         Result r = Result.ok().message("退出成功");
         httpServletResponse.getWriter().write(JSON.toJSONString(r));

@@ -36,9 +36,11 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         // JwtUserDto userDetails = (JwtUserDto)authentication.getPrincipal();//拿到登录用户信息
         // String jwtToken = jwtUtils.generateToken(userDetails.getUsername());//生成token
         Result result = Result.ok().message("登录成功");
-        httpServletResponse.setCharacterEncoding("utf-8");//修改编码格式
+        //修改编码格式
+        httpServletResponse.setCharacterEncoding("utf-8");
         httpServletResponse.setContentType("application/json");
-        httpServletResponse.getWriter().write(JSON.toJSONString(result));//输出结果
+        //输出结果
+        httpServletResponse.getWriter().write(JSON.toJSONString(result));
         // httpServletResponse.sendRedirect("/api/menu");//重定向到api/admin页面
         // httpServletResponse.setStatus(302);
         // httpServletResponse.setHeader("Authorization", "Bearer "+jwtToken);

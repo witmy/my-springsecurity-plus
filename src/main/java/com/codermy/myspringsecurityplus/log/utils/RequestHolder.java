@@ -11,6 +11,10 @@ import java.util.Objects;
  * @createTime 2020/8/4
  */
 public class RequestHolder {
+    /**
+     * 获取HttpServletRequest对象
+     * @return
+     */
     public static HttpServletRequest getHttpServletRequest() {
         return ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
     }

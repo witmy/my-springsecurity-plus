@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -29,14 +29,13 @@
 					<li class="layui-nav-item layui-hide-xs"><a href="https://gitee.com/witmy/my-springsecurity-plus" class="layui-icon layui-icon-website"></a></li>
 					<li class="layui-nav-item layui-hide-xs" id="headerNotice"></li>
 					<li class="layui-nav-item" lay-unselect="">
-						<a href="javascript:;"><img th:src="@{/PearAdmin/admin/images/avatar.jpg}" class="layui-nav-img">codermy</a>
+						<a href="javascript:;"><img th:src="@{/PearAdmin/admin/images/avatar.jpg}" class="layui-nav-img"><span sec:authentication="principal.MyUser.nickName"/></a>
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" class="pearson">个人信息</a></dd>
 							<dd><a href="javascript:;">安全配置</a></dd>
 							<dd><a href="/logout">注销登陆</a></dd>
 						</dl>
 					</li>
-
 					<li class="setting layui-nav-item"><a href="#" class="layui-icon layui-icon-more-vertical"></a></li>
 				</ul>
 			</div>
@@ -68,20 +67,18 @@
 		<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 		<script>
 			layui.use(['pearAdmin', 'jquery', 'pearSocial', 'layer'], function() {
-				var userId = localStorage.userId;
 				var pearAdmin = layui.pearAdmin;
 				var $ = layui.jquery;
 				var layer = layui.layer;
 				var pearSocial = layui.pearSocial;
 				var pearAuth = layui.pearAuth;
-
 				var config = {
 					keepLoad: 2000, // 主 页 加 载 过 度 时 长 可为 false
 					muiltTab: true, // 是 否 开 启 多 标 签 页 true 开启 false 关闭
 					control: false, // 是 否 开 启 多 系 统 菜 单 true 开启 false 关闭
 					theme: "dark-theme", // 默 认 主 题 样 式 dark-theme 默认主题 light-theme 亮主题
 					index: '/api/console', // 默 认 加 载 主 页
-					data: '/api/index/?userId'+userId, // 菜 单 数 据 加 载 地 址
+					data: '/api/index', // 菜 单 数 据 加 载 地 址
 					select: '0', // 默 认 选 中 菜 单 项
 					notice: 'PearAdmin/admin/data/notice.json', // 消 息 列 表 数 据
 					auth: false // 前端权限限制，false 关闭该功能

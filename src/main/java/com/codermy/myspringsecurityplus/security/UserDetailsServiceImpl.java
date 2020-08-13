@@ -35,9 +35,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public JwtUserDto loadUserByUsername(String userName){
-        MyUser user = userService.getUser(userName);//根据用户名获取用户
+        //根据用户名获取用户
+        MyUser user = userService.getUser(userName);
         if (user == null ){
-            throw new BadCredentialsException("用户名或密码错误");//这个异常一定要抛
+            throw new BadCredentialsException("用户名或密码错误");
         }else if (user.getStatus().equals(MyUser.Status.LOCKED)) {
             throw new LockedException("用户被锁定,请联系管理员解锁");
         }
