@@ -5,7 +5,7 @@
 <mapper namespace="com.codermy.myspringsecurityplus.dao.RoleDao">
 
     <select id="getFuzzyRolesByPage" resultType="com.codermy.myspringsecurityplus.entity.MyRole">
-        select t.id,t.name,t.description,t.status,t.create_time,t.update_time
+        select t.id,t.name,t.description,t.create_time,t.update_time
         from my_role t
         <where>
             <if test="queryName != null and queryName != ''">
@@ -15,9 +15,9 @@
     </select>
 
     <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">
-		insert into my_role(name, description, status, create_time, update_time)
+		insert into my_role(name, description, create_time, update_time)
 		values
-		(#{name}, #{description}, 1, now(), now())
+		(#{name}, #{description}, now(), now())
 	</insert>
 
     <update id="update">

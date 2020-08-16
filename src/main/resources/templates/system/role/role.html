@@ -48,10 +48,7 @@
 			<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
 			<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 		</script>
-		
-		<script type="text/html" id="role-status">
-			<input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
-		</script>
+
 
 		<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 		<script>
@@ -67,7 +64,6 @@
 		                {type:'checkbox'},
 		                {title: '角色名', field: 'name', align:'center', width:100},
 		                {title: '描述', field: 'description', align:'center'},
-		                {title: '是否可用', field: 'status', align:'center', templet:'#role-status'},
 		                {title: '操作', toolbar: '#role-bar', align:'center', width:195}
 		            ]
 		        ]

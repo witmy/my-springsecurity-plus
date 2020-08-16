@@ -28,7 +28,7 @@ public class MyLog implements Serializable {
     private String ip;
 
     /** 异常详细  */
-    private String ExceptionDetail;
+    private String exceptionDetail;
 
     /** 异常类型 */
     private String type;

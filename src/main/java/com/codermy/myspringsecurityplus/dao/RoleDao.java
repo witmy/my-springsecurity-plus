@@ -35,7 +35,7 @@ public interface RoleDao {
      * @param id
      * @return
      */
-    @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t where t.id = #{id}")
+    @Select("select t.id,t.name,t.description,t.create_time,t.update_time from my_role t where t.id = #{id}")
     MyRole getRoleById(Integer id);
 
     /**
@@ -64,6 +64,6 @@ public interface RoleDao {
      * 返回所有角色
      * @return
      */
-    @Select("select t.id,t.name,t.description,t.status,t.create_time,t.update_time from my_role t")
+    @Select("select t.id,t.name,t.description from my_role t")
     List<MyRole> getAllRoles();
 }
