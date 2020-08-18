@@ -1,4 +1,4 @@
-package com.codermy.myspringsecurityplus.log.Controller;
+package com.codermy.myspringsecurityplus.log.controller;
 
 
 import com.codermy.myspringsecurityplus.log.aop.MyLog;
