@@ -1,7 +1,7 @@
 package com.codermy.myspringsecurityplus.security.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.utils.Result;
+import com.codermy.myspringsecurityplus.common.utils.Result;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;

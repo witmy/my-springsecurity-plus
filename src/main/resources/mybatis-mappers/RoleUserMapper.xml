@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.codermy.myspringsecurityplus.dao.RoleUserDao">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.RoleUserDao">
     <update id="updateMyRoleUser">
         update my_role_user t
         <set>

@@ -1,8 +1,7 @@
 package com.codermy.myspringsecurityplus.security.filter;
 
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.utils.Result;
-import org.springframework.security.authentication.AuthenticationServiceException;
+import com.codermy.myspringsecurityplus.common.utils.Result;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;

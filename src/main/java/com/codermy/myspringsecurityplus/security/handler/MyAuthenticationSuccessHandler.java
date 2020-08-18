@@ -1,9 +1,8 @@
 package com.codermy.myspringsecurityplus.security.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
 import com.codermy.myspringsecurityplus.security.utils.JwtUtils;
-import com.codermy.myspringsecurityplus.utils.Result;
+import com.codermy.myspringsecurityplus.common.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.codermy.myspringsecurityplus.dao.RoleMenuDao">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.RoleMenuDao">
 
     <insert id="save">
         insert into my_role_menu(role_id, menu_id) values

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.codermy.myspringsecurityplus.dao.RoleDao">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.RoleDao">
 
-    <select id="getFuzzyRolesByPage" resultType="com.codermy.myspringsecurityplus.entity.MyRole">
+    <select id="getFuzzyRolesByPage" resultType="com.codermy.myspringsecurityplus.admin.entity.MyRole">
         select t.id,t.name,t.description,t.create_time,t.update_time
         from my_role t
         <where>
@@ -14,7 +14,7 @@
         </where>
     </select>
 
-    <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">
+    <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">
 		insert into my_role(name, description, create_time, update_time)
 		values
 		(#{name}, #{description}, now(), now())

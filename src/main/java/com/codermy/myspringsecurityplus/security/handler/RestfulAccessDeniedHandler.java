@@ -1,7 +1,7 @@
 package com.codermy.myspringsecurityplus.security.handler;
 
 import com.alibaba.druid.support.json.JSONUtils;
-import com.codermy.myspringsecurityplus.utils.Result;
+import com.codermy.myspringsecurityplus.common.utils.Result;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;

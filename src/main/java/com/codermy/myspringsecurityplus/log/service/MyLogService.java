@@ -1,11 +1,10 @@
 package com.codermy.myspringsecurityplus.log.service;
 
-import com.codermy.myspringsecurityplus.entity.MyRole;
 import com.codermy.myspringsecurityplus.log.dto.ErrorLogDto;
 import com.codermy.myspringsecurityplus.log.dto.LogDto;
 import com.codermy.myspringsecurityplus.log.dto.LogQuery;
 import com.codermy.myspringsecurityplus.log.entity.MyLog;
-import com.codermy.myspringsecurityplus.utils.Result;
+import com.codermy.myspringsecurityplus.common.utils.Result;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 

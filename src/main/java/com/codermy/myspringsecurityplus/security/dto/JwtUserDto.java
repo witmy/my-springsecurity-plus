@@ -1,14 +1,12 @@
 package com.codermy.myspringsecurityplus.security.dto;
 
-import com.codermy.myspringsecurityplus.entity.MyUser;
+import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

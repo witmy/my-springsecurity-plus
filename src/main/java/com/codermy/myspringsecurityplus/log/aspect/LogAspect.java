@@ -4,7 +4,7 @@ import com.codermy.myspringsecurityplus.log.entity.MyLog;
 import com.codermy.myspringsecurityplus.log.service.MyLogService;
 import com.codermy.myspringsecurityplus.log.utils.LogUtils;
 import com.codermy.myspringsecurityplus.log.utils.RequestHolder;
-import com.codermy.myspringsecurityplus.utils.SecurityUtils;
+import com.codermy.myspringsecurityplus.common.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

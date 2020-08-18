@@ -1,11 +1,11 @@
 package com.codermy.myspringsecurityplus.security;
 
 
-import com.codermy.myspringsecurityplus.dao.MenuDao;
-import com.codermy.myspringsecurityplus.dto.MenuIndexDto;
-import com.codermy.myspringsecurityplus.entity.MyUser;
+import com.codermy.myspringsecurityplus.admin.dao.MenuDao;
+import com.codermy.myspringsecurityplus.admin.dto.MenuIndexDto;
+import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
-import com.codermy.myspringsecurityplus.service.UserService;
+import com.codermy.myspringsecurityplus.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,7 +13,6 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
