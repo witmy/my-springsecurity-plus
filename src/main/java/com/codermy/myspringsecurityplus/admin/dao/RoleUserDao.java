@@ -16,7 +16,7 @@ public interface RoleUserDao {
      * @param id
      * @return
      */
-    @Select("select * from my_role_user t where t.role_id = #{roleId}")
+    @Select("select * from my_role_user ru where ru.role_id = #{roleId}")
     List<MyRoleUser> listAllRoleUserByRoleId(Integer id);
 
 
@@ -26,7 +26,7 @@ public interface RoleUserDao {
      * @param userId
      * @return
      */
-    @Select("select * from my_role_user t where t.user_id = #{userId}")
+    @Select("select * from my_role_user ru where ru.user_id = #{userId}")
     List<MyRoleUser> getMyRoleUserByUserId(Integer userId);
 
     /**
@@ -34,7 +34,7 @@ public interface RoleUserDao {
      * @param intValue
      * @return
      */
-    @Select("select * from my_role_user t where t.user_id = #{userId}")
+    @Select("select * from my_role_user ru where ru.user_id = #{userId}")
     MyRoleUser getRoleUserByUserId(int intValue);
 
     /**

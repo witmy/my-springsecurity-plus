@@ -2,6 +2,7 @@ package com.codermy.myspringsecurityplus.common.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.codermy.myspringsecurityplus.admin.dto.DeptDto;
 import com.codermy.myspringsecurityplus.admin.dto.MenuDto;
 import com.codermy.myspringsecurityplus.admin.dto.MenuIndexDto;
 
@@ -21,7 +22,7 @@ public class TreeUtil {
      * @param menuDtos 返回的menutree
      * @return
      */
-    public static List<MenuDto> tree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos ){
+    public static List<MenuDto> menutree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos ){
         // if (listByRoleId == null & listByRoleId.size() ==0){
         //     throw
         // }
@@ -39,6 +40,26 @@ public class TreeUtil {
             }
         }
         return menuDtos;
+    }
+
+    public static List<DeptDto> deptTree(List<DeptDto> listById, List<DeptDto> lists ){
+        // if (listByRoleId == null & listByRoleId.size() ==0){
+        //     throw
+        // }
+        List<Integer> collect = listById.stream().map(DeptDto::getId).collect(Collectors.toList());
+        List<Integer> collect1 = lists.stream().map(DeptDto::getId).collect(Collectors.toList());
+        // 遍历list2
+        for (Integer item : collect) {
+            // 如果存在这个数
+            if (collect1.contains(item)) {
+                DeptDto deptDto = new DeptDto();
+                int i = collect1.indexOf(item);
+                deptDto = lists.get(i);
+                deptDto.setCheckArr("1");
+                lists.set(i,deptDto);
+            }
+        }
+        return lists;
     }
 
     public static void setMenuTree(Integer parentId, List<MenuIndexDto> menusAll, JSONArray array) {

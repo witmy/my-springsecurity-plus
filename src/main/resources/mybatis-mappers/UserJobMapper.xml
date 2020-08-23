@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.UserJobDao">
+    <insert id="batchUserJob">
+        insert into my_user_job(user_id, job_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.userId},#{item.jobId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteUserJobByUserId" parameterType="Integer">
+		delete from my_user_job where user_id=#{id}
+	</delete>
+</mapper>

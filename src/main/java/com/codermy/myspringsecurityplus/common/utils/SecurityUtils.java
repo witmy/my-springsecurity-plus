@@ -3,7 +3,9 @@ package com.codermy.myspringsecurityplus.common.utils;
 
 
 
+import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.codermy.myspringsecurityplus.common.exceptionhandler.MyException;
+import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,6 +46,20 @@ public class SecurityUtils {
         }
         WebAuthenticationDetails webDetails = (WebAuthenticationDetails) details;
         return webDetails.getRemoteAddress();
+    }
+
+    /**
+     * 获取系统用户
+     *
+     * @return 系统用户名称
+     */
+    public static JwtUserDto getCurrentUser() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+            throw new MyException(ResultCode.UNAUTHORIZED, "当前登录状态过期");
+        }
+        JwtUserDto userDetails = (JwtUserDto) authentication.getPrincipal();
+        return userDetails;
     }
 
 }

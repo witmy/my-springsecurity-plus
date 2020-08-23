@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.DeptDao">
+
+    <sql id="selectDeptVo">
+        select d.id,d.parent_id,d.name,d.sort,d.status,d.create_time,d.update_time
+        from my_dept d
+    </sql>
+
+    <select id="getFuzzyDept" resultType="com.codermy.myspringsecurityplus.admin.entity.MyDept">
+        <include refid="selectDeptVo"/>
+        <where>
+            <if test="name != null and name != ''">
+                AND d.name like CONCAT('%', #{name}, '%')
+            </if>
+            <if test="status != null and status != ''">
+                AND d.status = #{status}
+            </if>
+            ${params.dataScope}
+        </where>
+        order by d.sort
+    </select>
+
+
+    <select id="buildAll" resultType="com.codermy.myspringsecurityplus.admin.dto.DeptDto">
+        select d.id,d.parent_id,d.name as title
+            from my_dept d
+        <where>
+            ${params.dataScope}
+        </where>
+    </select>
+
+
+    <select id="selectDeptById" parameterType="integer" resultType="com.codermy.myspringsecurityplus.admin.entity.MyDept">
+		select d.id, d.parent_id, d.ancestors, d.name, d.status,
+			(select s.name from my_dept s where s.id = d.parent_id) parent_name
+		from my_dept d
+		where d.id = #{id}
+	</select>
+
+    <select id="checkDeptNameUnique" resultType="com.codermy.myspringsecurityplus.admin.entity.MyDept">
+        <include refid="selectDeptVo"/>
+        where name= #{name} and parent_id = #{parentId} limit 1
+    </select>
+
+    <select id="selectChildrenDeptById" parameterType="integer" resultType="com.codermy.myspringsecurityplus.admin.entity.MyDept">
+		select * from my_dept where find_in_set(#{id}, ancestors)
+	</select>
+
+    <select id="selectRoleDeptTree" parameterType="integer" resultType="com.codermy.myspringsecurityplus.admin.dto.DeptDto">
+		select d.id,d.parent_id,d.name as title
+		from my_dept d
+			left join my_role_dept rd on d.id = rd.dept_id
+		where rd.role_id = #{id}
+		order by d.parent_id
+	</select>
+
+    <update id="updateDeptChildren" parameterType="java.util.List">
+        update my_dept set ancestors =
+        <foreach collection="depts" item="item" index="index"
+                 separator=" " open="case dept_id" close="end">
+            when #{item.id} then #{item.ancestors}
+        </foreach>
+        where id in
+        <foreach collection="depts" item="item" index="index"
+                 separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </update>
+
+    <update id="updateDept">
+        update my_dept d
+        <set>
+            <if test="parentId != null and parentId != 0">parent_id = #{parentId},</if>
+            <if test="name != null and name != ''"> `name` = #{name},</if>
+            <if test="ancestors != null and ancestors != ''">ancestors = #{ancestors},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="status != null">status = #{status},</if>
+            update_time = #{updateTime}
+        </set>
+        where d.id = #{id}
+    </update>
+
+    <update id="updateDeptStatus" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyDept">
+        update my_dept
+        <set>
+            <if test="status != null and status != ''">status = #{status},</if>
+            update_time = #{updateTime}
+        </set>
+        where id in (${ancestors})
+    </update>
+
+    <select id="selectNormalChildrenDeptById" parameterType="integer" resultType="int">
+		select count(*) from my_dept where status = 1 and find_in_set(#{id}, ancestors)
+	</select>
+
+    <select id="selectDeptCount" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyDept" resultType="int">
+        select count(1) from my_dept
+        <where>
+            <if test="id != null and id != 0"> and id = #{id} </if>
+            <if test="parentId != null and parentId != 0"> and parent_id = #{parentId} </if>
+        </where>
+    </select>
+
+    <select id="checkDeptExistUser" parameterType="integer" resultType="int">
+		select count(1) from my_user where id = #{d}
+	</select>
+</mapper>

@@ -72,7 +72,7 @@
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="user-save">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="menu-save">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -125,6 +125,13 @@
                 console.log(d);
             }
         });
+        var param = dtree.getNowParam("dataTree");
+        formDate = $("#parentId");
+        dtree.on("node('dataTree')" ,function(obj){
+            var param = dtree.getNowParam("dataTree");
+            $("#parentId").val(param.nodeId);
+            formDate = $("#parentId");
+        });
         form.verify({
             name: function(value){
                 if(value.length < 2){
@@ -154,7 +161,7 @@
                 }
             }
     });
-        form.on('submit(user-save)', function(data){
+        form.on('submit(menu-save)', function(data){
             $.ajax({
                 url:'/api/menu',
                 data:JSON.stringify(data.field),

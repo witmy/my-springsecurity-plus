@@ -8,7 +8,8 @@ import lombok.Data;
  * @createTime 2020/7/13
  */
 @Data
-public class UserDto extends BaseEntity<Integer> {
+public class UserDto extends BaseEntity {
+    private Integer deptId;
     private String userName;
     private String nickName;
     private String password;
@@ -16,4 +17,7 @@ public class UserDto extends BaseEntity<Integer> {
     private String email;
     private Integer status;
     private Integer roleId;
+    /** 岗位组 */
+    private Integer[] jobIds;
+
 }

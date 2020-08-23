@@ -14,28 +14,20 @@ import java.util.List;
 public interface RoleDao {
 
 
-    /**
-     * 计算所有
-     * @return
-     */
-    @Select("select count(*) from my_role t")
-    Long countAllRoles();
-
-
 
     /**
      * 分页模糊查询权限
-     * @param queryName
+     * @param role
      * @return
      */
-    List<MyRole> getFuzzyRolesByPage(@Param("queryName") String queryName);
+    List<MyRole> getFuzzyRolesByPage(MyRole role);
 
     /**
      * 通过id查询角色
      * @param id
      * @return
      */
-    @Select("select t.id,t.name,t.description,t.create_time,t.update_time from my_role t where t.id = #{id}")
+    @Select("select r.id,r.name,r.data_scope,r.description,r.create_time,r.update_time from my_role r where r.id = #{id}")
     MyRole getRoleById(Integer id);
 
     /**
@@ -64,6 +56,6 @@ public interface RoleDao {
      * 返回所有角色
      * @return
      */
-    @Select("select t.id,t.name,t.description from my_role t")
+    @Select("select r.id,r.name,r.description from my_role r")
     List<MyRole> getAllRoles();
 }

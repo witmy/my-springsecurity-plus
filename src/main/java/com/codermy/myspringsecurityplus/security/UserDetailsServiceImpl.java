@@ -3,7 +3,11 @@ package com.codermy.myspringsecurityplus.security;
 
 import com.codermy.myspringsecurityplus.admin.dao.MenuDao;
 import com.codermy.myspringsecurityplus.admin.dto.MenuIndexDto;
+import com.codermy.myspringsecurityplus.admin.entity.MyRole;
+import com.codermy.myspringsecurityplus.admin.entity.MyRoleUser;
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
+import com.codermy.myspringsecurityplus.admin.service.RoleService;
+import com.codermy.myspringsecurityplus.admin.service.RoleUserService;
 import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
 import com.codermy.myspringsecurityplus.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,12 +34,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserService userService;
 
     @Autowired
+    private RoleUserService roleUserService;
+
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
     private MenuDao menuDao;
 
     @Override
     public JwtUserDto loadUserByUsername(String userName){
         //根据用户名获取用户
-        MyUser user = userService.getUser(userName);
+        MyUser user = userService.getUserByName(userName);
         if (user == null ){
             throw new BadCredentialsException("用户名或密码错误");
         }else if (user.getStatus().equals(MyUser.Status.LOCKED)) {
@@ -52,7 +62,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             }
         }//将用户所拥有的权限加入GrantedAuthority集合中
         JwtUserDto loginUser =new JwtUserDto(user,grantedAuthorities);
+        loginUser.setRoleInfo(getRoleInfo(user));
         return loginUser;
+    }
+
+
+    public List<MyRole> getRoleInfo(MyUser myUser) {
+        MyUser userByName = userService.getUserByName(myUser.getUserName());
+        List<MyRoleUser> roleUserByUserId = roleUserService.getMyRoleUserByUserId(userByName.getId());
+        List <MyRole> roleList = new ArrayList<>();
+        for (MyRoleUser roleUser:roleUserByUserId){
+            Integer roleId = roleUser.getRoleId();
+            MyRole roleById = roleService.getRoleById(roleId);
+            roleList.add(roleById);
+        }
+        return roleList;
     }
 
 }

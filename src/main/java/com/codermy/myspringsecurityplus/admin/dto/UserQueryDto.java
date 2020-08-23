@@ -14,4 +14,6 @@ public class UserQueryDto implements Serializable {
     private String nickName;
 
     private String userName;
+
+    private Integer deptId;
 }

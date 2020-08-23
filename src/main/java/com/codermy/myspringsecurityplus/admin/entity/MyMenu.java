@@ -7,7 +7,7 @@ import lombok.Data;
  * @createTime 2020/7/10
  */
 @Data
-public class MyMenu extends BaseEntity<Integer>{
+public class MyMenu extends BaseEntity{
 
     private static final long serialVersionUID = -6525908145032868815L;
     private Integer parentId;

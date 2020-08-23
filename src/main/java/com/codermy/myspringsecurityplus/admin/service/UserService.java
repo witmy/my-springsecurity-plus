@@ -14,10 +14,10 @@ public interface UserService {
      * 返回用户列表
      * @param offectPosition
      * @param limit
-     * @param userQueryDto
+     * @param myUser
      * @return
      */
-    Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, UserQueryDto userQueryDto);
+    Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, MyUser myUser);
 
     /**
      * 根据id返回用户信息
@@ -60,5 +60,5 @@ public interface UserService {
      * @param userName
      * @return
      */
-    MyUser getUser(String userName);
+    MyUser getUserByName(String userName);
 }

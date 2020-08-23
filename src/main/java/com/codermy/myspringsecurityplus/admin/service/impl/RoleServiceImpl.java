@@ -1,6 +1,8 @@
 package com.codermy.myspringsecurityplus.admin.service.impl;
 
+import com.codermy.myspringsecurityplus.admin.annotation.DataPermission;
 import com.codermy.myspringsecurityplus.admin.dao.RoleDao;
+import com.codermy.myspringsecurityplus.admin.dao.RoleDeptDao;
 import com.codermy.myspringsecurityplus.admin.dao.RoleMenuDao;
 import com.codermy.myspringsecurityplus.admin.dao.RoleUserDao;
 import com.codermy.myspringsecurityplus.admin.dto.RoleDto;
@@ -9,6 +11,7 @@ import com.codermy.myspringsecurityplus.admin.entity.MyRoleUser;
 import com.codermy.myspringsecurityplus.admin.service.RoleService;
 import com.codermy.myspringsecurityplus.common.utils.Result;
 import com.codermy.myspringsecurityplus.common.utils.ResultCode;
+import com.codermy.myspringsecurityplus.common.utils.UserConstants;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +32,16 @@ public class RoleServiceImpl implements RoleService {
     private RoleMenuDao roleMenuDao;
     @Autowired
     private RoleUserDao roleUserDao;
-
+    @Autowired
+    private RoleDeptDao roleDeptDao;
 
     @Override
+    @DataPermission(deptAlias = "d")
     public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit,String queryName) {
+        MyRole role = new MyRole();
+        role.setName(queryName);
         Page page = PageHelper.offsetPage(offectPosition,limit);
-        List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(queryName);
+        List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(role);
         return Result.ok().count(page.getTotal()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
@@ -63,7 +70,25 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    public Result authDataScope(RoleDto roleDto) {
+        if (roleDto.getDataScope().equals(UserConstants.DATA_SCOPE_CUSTOM)){
+            List<Integer> deptIds = roleDto.getDeptIds();
+            deptIds.remove(0L);
+            roleDeptDao.deleteRoleDept(roleDto.getId());
+            if (!CollectionUtils.isEmpty(deptIds)) {
+                roleDeptDao.save(roleDto.getId(), deptIds);
+            }
+            roleDao.update(roleDto);
+        }else {
+            roleDao.update(roleDto);
+            roleDeptDao.deleteRoleDept(roleDto.getId());
+        }
+        return Result.ok().message("更新成功");
+    }
+
+    @Override
     public Result save(RoleDto roleDto) {
+        roleDto.setDataScope("1");
         //1、先保存角色"
         roleDao.saveRole(roleDto);
         List<Integer> menuIds = roleDto.getMenuIds();
@@ -81,6 +106,7 @@ public class RoleServiceImpl implements RoleService {
         if(tbRoleUsers.size() <= 0){
             roleMenuDao.deleteRoleMenu(id);
             roleDao.delete(id);
+            roleDeptDao.deleteRoleDept(id);
             return Result.ok().message("删除成功");
         }
         return Result.error().message("该角色已经关联,无法删除");

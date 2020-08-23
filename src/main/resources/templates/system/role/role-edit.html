@@ -31,7 +31,7 @@
                     <label class="layui-form-label">菜单分配</label>
                     <div class="layui-input-block">
                         <input type="hidden" id="id" th:value="${MyRole.id}">
-                        <div style="width: 300px;background-color: white;border:1px solid black; "><ul id="dataTree" class="dtree" data-id="0"></ul></div>
+                        <ul id="dataTree" class="dtree" data-id="0"></ul>
                     </div>
                 </div>
             </div>
@@ -79,11 +79,6 @@
             }
         });
         form.on('submit(role-save)', function(data){
-            let params = dtree.getCheckbarNodesParam("dataTree");
-            if(params.length == 0){
-                layer.msg("请至少选择一个节点",{icon:2});
-                flag = false;
-            }
             var paramJsonArr = Dtree.getCheckbarJsonArrParam();
             var ids = paramJsonArr["nodeId"]
             var datas = data.field

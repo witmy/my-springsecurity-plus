@@ -25,10 +25,10 @@ layui.define(['table', 'jquery', 'element'], function(exports) {
 			theme: opt.theme,
 			data: opt.data ? opt.data : [],
 			change: opt.change ? opt.change : function() {
-				console.log("切换")
+
 			},
 			done: opt.done ? opt.done : function() {
-				console.log("菜单渲染成功");
+
 			}
 		}
 

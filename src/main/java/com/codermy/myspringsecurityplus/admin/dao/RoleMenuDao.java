@@ -12,11 +12,11 @@ import java.util.List;
 public interface RoleMenuDao {
     /**
      * 通过id删除rolemenu
-     * @param id
+     * @param roleId
      * @return
      */
     @Delete("delete from my_role_menu where role_id = #{roleId}")
-    int deleteRoleMenu(Integer id);
+    int deleteRoleMenu(Integer roleId);
 
     /**
      * 新建角色与menu的联系

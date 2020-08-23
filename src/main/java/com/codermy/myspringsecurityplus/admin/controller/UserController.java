@@ -3,6 +3,8 @@ package com.codermy.myspringsecurityplus.admin.controller;
 import com.codermy.myspringsecurityplus.admin.dto.UserDto;
 import com.codermy.myspringsecurityplus.admin.dto.UserQueryDto;
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
+import com.codermy.myspringsecurityplus.admin.service.DeptService;
+import com.codermy.myspringsecurityplus.admin.service.JobService;
 import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.admin.service.UserService;
 import com.codermy.myspringsecurityplus.common.utils.Md5;
@@ -26,7 +28,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private JobService jobService;
     @GetMapping("/index")
     @PreAuthorize("hasAnyAuthority('user:list')")
     public String index(){
@@ -37,16 +40,17 @@ public class UserController {
     @ApiOperation(value = "用户列表")
     @PreAuthorize("hasAnyAuthority('user:list')")
     @MyLog("查询用户")
-    public Result<MyUser> userList(PageTableRequest pageTableRequest, UserQueryDto userQueryDto){
+    public Result<MyUser> userList(PageTableRequest pageTableRequest, MyUser myUser){
         pageTableRequest.countOffset();
-        return userService.getAllUsersByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),userQueryDto);
+        return userService.getAllUsersByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),myUser);
     }
 
     @GetMapping("/add")
     @ApiOperation(value = "添加用户页面")
     @PreAuthorize("hasAnyAuthority('user:add')")
     public String addUser(Model model){
-        model.addAttribute("MyUser",new MyUser());
+        model.addAttribute("myUser",new MyUser());
+        model.addAttribute("jobs",jobService.selectJobAll());
         return "/system/user/user-add";
     }
 
@@ -69,7 +73,8 @@ public class UserController {
     @ApiOperation(value = "修改用户界面")
     @PreAuthorize("hasAnyAuthority('user:edit')")
     public String editUser(Model model, MyUser tbUser){
-        model.addAttribute("MyUser",userService.getUserById(tbUser.getId()));
+        model.addAttribute("myUser",userService.getUserById(tbUser.getId()));
+        model.addAttribute("jobs",jobService.selectJobsByUserId(tbUser.getId()));
         return "/system/user/user-edit";
     }
 

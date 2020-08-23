@@ -1,5 +1,6 @@
 package com.codermy.myspringsecurityplus.admin.controller;
 
+import com.codermy.myspringsecurityplus.admin.entity.MyRoleUser;
 import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.admin.service.RoleUserService;
 import com.codermy.myspringsecurityplus.common.utils.Result;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @author codermy
@@ -29,6 +32,11 @@ public class RoleUserController {
     @PreAuthorize("hasAnyAuthority('user:list')")
     @MyLog("查询用户角色")
     public Result getRoleUserByUserId(Integer userId) {
-        return roleUserService.getMyRoleUserByUserId(userId);
+        List<MyRoleUser> tbRoleUser =roleUserService.getMyRoleUserByUserId(userId);
+        if(tbRoleUser != null){
+            return Result.ok().data(tbRoleUser);
+        }else{
+            return Result.error();
+        }
     }
 }

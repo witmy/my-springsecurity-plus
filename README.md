@@ -17,7 +17,10 @@
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
 ### 介绍
-这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。无任何重度依赖，非常适合新手练习上手,项目文档从零开始，十分详细。
+这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。无任何重度依赖，非常适合新手练习上手,项目文档从零开始，十分详细。  
+**希望各位小伙伴能够多多star支持，您的点赞就是我维护的动力**
+
+
 
 ### 系统功能
 - 用户管理：提供用户的相关配置
@@ -26,6 +29,8 @@
 - 系统日志：记录用户操作日志与异常日志
 - SQL监控：采用druid 监控数据库访问性能
 - 接口管理：方便统一查看管理接口
+- 部门管理：配置系统用户所属部门组织。
+- 岗位管理：配置系统用户所属担任职务。
 ### 技术选型
 1、SpringBoot  
 2、MyBatis    
@@ -59,13 +64,24 @@
 - **后台登录：** 用户：admin和test，密码：123456。其余的，若用户名是test1(2)，则密码是六个1(2)，依次类推
 - **Druid：** 用户：admin，密码：admin
 
+### 将来要做的事
+- [x] 部门管理  
+- [x] 岗位管理
+- [ ] 定时任务
+- [ ] 在线用户
+- [ ] 字典管理
+- [ ] 定时任务
+- [ ] 服务监控
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/login.PNG)     |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/index.PNG)       |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/useredit.PNG)       |
-|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit.PNG)        |
+|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user2.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit2.PNG)        |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menu.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menuedit.PNG)        |
+|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/dept.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/deptedit.PNG)        |
+|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/job.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/jobedit.PNG)        |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/druid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/log.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/logdetail.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlog.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlogdetail.PNG)       |

@@ -49,15 +49,31 @@ public class RoleController {
         return "system/role/role-edit";
     }
 
+    @GetMapping(value = "/edit/dataScope")
+    @ApiOperation(value = "修改角色页面")
+    @PreAuthorize("hasAnyAuthority('role:edit')")
+    public String editRoleDataScope(Model model, MyRole role) {
+        model.addAttribute("MyRole",roleService.getRoleById(role.getId()));
+        return "system/role/role-dataScope";
+    }
+
     @PutMapping
     @ResponseBody
     @ApiOperation(value = "修改角色")
     @PreAuthorize("hasAnyAuthority('role:edit')")
     @MyLog("修改角色")
     public Result updateRole(@RequestBody RoleDto roleDto) {
+
         return roleService.update(roleDto);
     }
 
+    @PutMapping(value = "/authDataScope")
+    @ResponseBody
+    @ApiOperation(value = "修改角色数据权限")
+    public Result updateauthDataScope(@RequestBody RoleDto roleDto) {
+
+        return roleService.authDataScope(roleDto);
+    }
 
     @GetMapping(value = "/add")
     @ApiOperation(value = "添加角色页面")

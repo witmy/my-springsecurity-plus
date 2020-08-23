@@ -87,7 +87,7 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuDto> buildMenuAllByRoleId(Integer roleId) {
         List<MenuDto> listByRoleId = menuDao.listByRoleId(roleId);
         List<MenuDto> permissionDtos = menuDao.buildAll();
-        List<MenuDto> tree = TreeUtil.tree(listByRoleId, permissionDtos);
+        List<MenuDto> tree = TreeUtil.menutree(listByRoleId, permissionDtos);
         return tree;
     }
 

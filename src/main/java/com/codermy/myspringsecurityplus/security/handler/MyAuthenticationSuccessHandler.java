@@ -40,8 +40,6 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         httpServletResponse.setContentType("application/json");
         //输出结果
         httpServletResponse.getWriter().write(JSON.toJSONString(result));
-        // httpServletResponse.sendRedirect("/api/menu");//重定向到api/admin页面
-        // httpServletResponse.setStatus(302);
-        // httpServletResponse.setHeader("Authorization", "Bearer "+jwtToken);
+
     }
 }

@@ -1,12 +1,13 @@
 package com.codermy.myspringsecurityplus.security.dto;
 
+import com.codermy.myspringsecurityplus.admin.entity.MyRole;
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,13 +16,14 @@ import java.util.stream.Collectors;
  * @createTime 2020/7/16
  */
 @Data
-@AllArgsConstructor
 public class JwtUserDto implements UserDetails {
 
     /**
      * 用户数据
      */
     private MyUser myUser;
+
+    private List<MyRole> roleInfo;
     /**
      * 用户权限的集合
      */
@@ -90,5 +92,25 @@ public class JwtUserDto implements UserDetails {
     @Override
     public boolean isEnabled() {
         return myUser.getStatus() == 1 ? true : false;
+    }
+
+    /**
+     * 判断是否为admin用户
+     * @return
+     */
+    public boolean isAdmin()
+    {
+        return isAdmin(this.myUser.getId());
+    }
+
+    public static boolean isAdmin(Integer userId)
+    {
+        return userId != null && 1L == userId;
+    }
+
+
+    public JwtUserDto(MyUser myUser, List<GrantedAuthority> authorities) {
+        this.myUser = myUser;
+        this.authorities = authorities;
     }
 }

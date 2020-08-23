@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.JobDao">
+    <sql id="selectJobVo">
+        select j.id,j.name,j.sort,j.status,j.create_time,j.update_time
+        from my_job j
+    </sql>
+
+    <select id="getFuzzyJob" resultType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
+        <include refid="selectJobVo"/>
+        <where>
+            <if test="queryName != null and queryName != ''">
+                AND j.name like CONCAT('%', #{queryName}, '%')
+            </if>
+            <if test="queryStatus!= null and queryStatus != ''">
+                AND j.status = #{queryStatus}
+            </if>
+        </where>
+        order by j.sort
+    </select>
+
+
+    <select id="checkJobNameUnique" parameterType="String" resultType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
+        <include refid="selectJobVo"/>
+        where j.name= #{name} limit 1
+    </select>
+
+
+    <delete id="deleteJobByIds" parameterType="integer">
+        delete from my_job where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectJobsByUserId" parameterType="integer" resultType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
+		SELECT j.id, j.name,j.status
+		FROM my_user u
+			 LEFT JOIN my_user_job uj ON u.id = uj.user_id
+			 LEFT JOIN my_job j ON uj.job_id = j.id
+		WHERE uj.user_id = #{userId}
+	</select>
+
+    <select id="selectJobAll" resultType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
+        <include refid="selectJobVo"/>
+    </select>
+</mapper>

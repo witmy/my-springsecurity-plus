@@ -5,23 +5,32 @@
 <mapper namespace="com.codermy.myspringsecurityplus.admin.dao.UserDao">
 
     <select id="getFuzzyUserByPage" resultType="com.codermy.myspringsecurityplus.admin.entity.MyUser">
-        SELECT t.id,t.user_name,t.password,t.nick_name,t.phone,t.email,t.status,t.create_time,t.update_time
-        FROM my_user t
+        SELECT u.id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time
+        FROM my_user u
+        left join my_dept d on u.dept_id = d.id
         <where>
-            <if test="userQueryDto.nickName != null and userQueryDto.nickName != ''">
-                AND t.nick_name like CONCAT('%', #{userQueryDto.nickName}, '%')
+            <if test="nickName != null and nickName != ''">
+                AND u.nick_name like CONCAT('%', #{nickName}, '%')
             </if>
-            <if test="userQueryDto.userName != null and userQueryDto.userName != ''">
-                AND t.user_name like CONCAT('%', #{userQueryDto.userName}, '%')
+            <if test="userName != null and userName != ''">
+                AND u.user_name like CONCAT('%', #{userName}, '%')
+            </if>
+            <if test="deptId != null and deptId != ''">
+                AND (u.dept_id = #{deptId} OR u.dept_id IN ( SELECT e.id FROM my_dept e WHERE FIND_IN_SET(#{deptId},ancestors) ))
             </if>
         </where>
-        ORDER BY t.id
+        <!-- 数据范围过滤 -->
+        ${params.dataScope}
+        ORDER BY u.id
     </select>
 
 
     <update id="updateUser">
-        update my_user t
+        update my_user u
         <set>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
             <if test="userName != null">
                 user_name = #{userName},
             </if>
@@ -39,6 +48,6 @@
             </if>
             update_time = #{updateTime}
         </set>
-        where t.id = #{id}
+        where u.id = #{id}
     </update>
 </mapper>

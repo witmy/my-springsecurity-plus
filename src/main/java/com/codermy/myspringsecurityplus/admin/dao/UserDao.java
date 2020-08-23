@@ -18,10 +18,10 @@ public interface UserDao {
 
     /**
      * 分页返回所有用户
-     * @param userQueryDto
+     * @param myUser
      * @return
      */
-     List<MyUser> getFuzzyUserByPage( @Param("userQueryDto") UserQueryDto userQueryDto);
+     List<MyUser> getFuzzyUserByPage( MyUser myUser);
 
     //计算所有用户数量
     // @Select("select count(*) from My_user")
@@ -33,7 +33,7 @@ public interface UserDao {
      * @param id
      * @return
      */
-    @Select("select t.id,t.user_name,t.password,t.nick_name,t.phone,t.email,t.status,t.create_time,t.update_time from my_user t where t.id = #{id}")
+    @Select("select u.id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.id = #{id}")
     MyUser getUserById(Integer id);
 
     /**
@@ -41,7 +41,7 @@ public interface UserDao {
      * @param phone
      * @return
      */
-    @Select("select t.id,t.user_name,t.password,t.nick_name,t.phone,t.email,t.status,t.create_time,t.update_time from my_user t where t.phone = #{phone}")
+    @Select("select u.id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.phone = #{phone}")
     MyUser getUserByPhone(String phone);
 
     /**
@@ -59,7 +59,7 @@ public interface UserDao {
      * @return
      */
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into my_user(user_name, password, nick_name, phone, email, status, create_time, update_time) values(#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())")
+    @Insert("insert into my_user(dept_id,user_name, password, nick_name, phone, email, status, create_time, update_time) values(#{deptId},#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())")
     int save(UserDto userDto);
 
     /**

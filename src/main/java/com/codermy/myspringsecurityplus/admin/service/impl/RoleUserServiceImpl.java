@@ -18,12 +18,8 @@ public class RoleUserServiceImpl implements RoleUserService {
     @Autowired
     private RoleUserDao roleUserDao;
     @Override
-    public Result getMyRoleUserByUserId(Integer userId) {
-        List<MyRoleUser> tbRoleUser = roleUserDao.getMyRoleUserByUserId(userId);
-        if(tbRoleUser != null){
-            return Result.ok().data(tbRoleUser);
-        }else{
-            return Result.error();
-        }
+    public List<MyRoleUser> getMyRoleUserByUserId(Integer userId) {
+       return roleUserDao.getMyRoleUserByUserId(userId);
+
     }
 }

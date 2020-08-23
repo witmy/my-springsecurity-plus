@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8" content="text/html;charset=utf-8">
+	<meta charset="utf-8">
 	<title></title>
 	<link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
 	<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+	<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
+	<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+	<style>
+		#deptTree{
+			width: 100% !important;
+			height: -webkit-calc(100vh - 130px);
+			height: -moz-calc(100vh - 130px);
+			height: calc(100vh - 130px);
+		}
+	</style>
 </head>
 <body class="pear-container">
 <div class="layui-card">
@@ -32,9 +42,22 @@
 		</form>
 	</div>
 </div>
-<div class="layui-card">
-	<div class="layui-card-body">
-		<table id="user-table" lay-filter="user-table"></table>
+<div class="layui-row layui-col-space15">
+	<div class="layui-col-md3">
+		<div class="layui-card">
+			<div class="layui-card-body">
+				<div id="organizationContent" style="overflow: auto">
+					<ul id="deptTree" class="dtree" data-id="0"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layui-col-md9">
+		<div class="layui-card">
+			<div class="layui-card-body">
+				<table id="user-table" lay-filter="user-table"></table>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -50,26 +73,27 @@
 </script>
 
 <script type="text/html" id="user-bar">
-	<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
-	<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
+	<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
+			class="layui-icon layui-icon-edit"></i></button>
+	<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i
+			class="layui-icon layui-icon-delete"></i></button>
 </script>
-
 <script type="text/html" id="user-status">
 	<input type="checkbox"  name="status"  value="{{d.status}}" lay-skin="switch" lay-text="启用|禁用"  mid={{d.id}}  lay-filter="user-status" {{ d.status == '1' ? 'checked' : '' }}>
 </script>
-
-
 <script type="text/html" id="user-createTime">
 	{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
 </script>
-
 <script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 <script>
-	layui.use(['table','form','jquery'],function () {
+	layui.use(['table', 'form', 'jquery', 'dtree'], function () {
 		let table = layui.table;
 		let form = layui.form;
 		let $ = layui.jquery;
+		let dtree = layui.dtree;
+
 		let MODULE_PATH = "operate/";
+
 		let cols = [
 			[
 				{type:'checkbox'},
@@ -82,6 +106,21 @@
 				{title: '操作', toolbar: '#user-bar', align:'center', width:130}
 			]
 		]
+
+		var DTree = dtree.render({
+			elem: "#deptTree",
+			initLevel: "2", //默认展开层级为1
+			line: true, // 有线树
+			dataStyle: "layuiStyle",
+			skin: "laySimple",
+			response:{message:"msg",statusCode:200},
+			dataFormat: "list",  //配置data的风格为list
+			method: 'get',
+			url:"/api/dept/build",
+			checkbar: false,  //开启复选框
+			// url: "/PearAdmin/admin/data/organizationtree.json",
+
+		});
 
 		var tableIns =table.render({
 			elem: '#user-table',
@@ -96,24 +135,38 @@
 			}, 'filter', 'print', 'exports']
 		});
 
-		table.on('tool(user-table)', function(obj){
-			if(obj.event === 'remove'){
+		// 绑定节点点击事件
+		dtree.on("node(deptTree)", function (obj) {
+			tableIns.reload({
+				page: {
+					curr: 1 //重新从第 1 页开始
+				}
+				, where: {//这里传参  向后台
+					deptId: obj.param.nodeId
+					//可传多个参数到后台...  ，分隔
+				}
+				, url: '/api/user'//后台做模糊搜索接口路径
+				, method: 'get'
+			});
+		});
+
+		table.on('tool(user-table)', function (obj) {
+			if (obj.event === 'remove') {
 				window.remove(obj);
-			} else if(obj.event === 'edit'){
-				window .edit(obj);
+			} else if (obj.event === 'edit') {
+				window.edit(obj);
 			}
 		});
 
-		table.on('toolbar(user-table)', function(obj){
-			if(obj.event === 'add'){
+		table.on('toolbar(user-table)', function (obj) {
+			if (obj.event === 'add') {
 				window.add();
-			} else if(obj.event === 'refresh'){
+			} else if (obj.event === 'refresh') {
 				window.refresh();
-			} else if(obj.event === 'batchRemove'){
+			} else if (obj.event === 'batchRemove') {
 				window.batchRemove(obj);
 			}
 		});
-
 		form.on('submit(user-query)', function(data){
 			var formData = data.field;
 			var userName = formData.userName;
@@ -133,27 +186,23 @@
 			return false;
 		});
 
-		form.on('switch(user-status)', function(obj){
-			layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
-		});
-
-		window.add = function(){
+		window.add = function () {
 			layer.open({
 				type: 2,
 				title: '新增',
 				shade: 0.1,
-				area: ['500px', '500px'],
+				area: ['600px', '600px'],
 				content:  '/api/user/add'
 			});
 		}
 
-		window.edit = function(obj){
+		window.edit = function (obj) {
 			var data = obj.data;
 			layer.open({
 				type: 2,
 				title: '修改',
 				shade: 0.1,
-				area: ['500px', '500px'],
+				area: ['600px', '600px'],
 				content:  '/api/user/edit/?id='+data.id
 			});
 		}
@@ -180,39 +229,51 @@
 			});
 		}
 
-		window.batchRemove = function(obj){
+		window.batchRemove = function (obj) {
 			let data = table.checkStatus(obj.config.id).data;
-			if(data.length === 0){
-				layer.msg("未选中数据",{icon:3,time:1000});
+			if (data.length === 0) {
+				layer.msg("未选中数据", {
+					icon: 3,
+					time: 1000
+				});
 				return false;
 			}
 			let ids = "";
-			for(let i = 0;i<data.length;i++){
-				ids += data[i].id+",";
+			for (let i = 0; i < data.length; i++) {
+				ids += data[i].organizationId + ",";
 			}
-			ids = ids.substr(0,ids.length-1);
-			layer.confirm('确定要删除这些用户', {icon: 3, title:'提示'}, function(index){
+			ids = ids.substr(0, ids.length - 1);
+			layer.confirm('确定要删除这些用户', {
+				icon: 3,
+				title: '提示'
+			}, function (index) {
 				layer.close(index);
 				let loading = layer.load();
 				$.ajax({
-					url: MODULE_PATH+"batchRemove/"+ids,
-					dataType:'json',
-					type:'delete',
-					success:function(result){
+					url: MODULE_PATH + "batchRemove/" + ids,
+					dataType: 'json',
+					type: 'delete',
+					success: function (result) {
 						layer.close(loading);
-						if(result.success){
-							layer.msg(result.msg,{icon:1,time:1000},function(){
+						if (result.success) {
+							layer.msg(result.msg, {
+								icon: 1,
+								time: 1000
+							}, function () {
 								table.reload('user-table');
 							});
-						}else{
-							layer.msg(result.msg,{icon:2,time:1000});
+						} else {
+							layer.msg(result.msg, {
+								icon: 2,
+								time: 1000
+							});
 						}
 					}
 				})
 			});
 		}
 
-		window.refresh = function(param){
+		window.refresh = function (param) {
 			table.reload('user-table');
 		}
 	})

@@ -32,6 +32,7 @@ public interface RoleService {
      */
     Result update(RoleDto roleDto);
 
+    Result authDataScope(RoleDto roleDto);
     /**
      * 新建角色
      * @param roleDto

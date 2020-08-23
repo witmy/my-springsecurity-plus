@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span style="color: red">*</span>部门名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" lay-verify="name" th:value="${myDept.name}" autocomplete="off" placeholder="请输入部门名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span style="color: red">*</span>排序</label>
+                    <div class="layui-input-block">
+                        <input type="text"  name="sort"  th:value="${myDept.sort}" lay-verify="sort" autocomplete="off" placeholder="请输入排序" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">部门状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="status" value="1"  title="正常" checked>
+                        <input type="radio" name="status" value="0"  title="停用">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        上级菜单
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="number" id="parentId" th:value="${myDept.parentId}" name="parentId"  lay-verify="parentId" style="display:none;width: 0px" autocomplete="off" class="layui-input">
+                        <ul id="dataTree" class="dtree" data-id="0" th:data-value="${myDept.parentId}"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="dept-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+<script>
+    layui.use(['dtree','form','jquery'],function(){
+        let form = layui.form;
+        let $ = layui.jquery;
+        let dtree = layui.dtree;
+        let formDate = null;
+        // 初始化树
+        dtree.render({
+            elem: "#dataTree",
+            initLevel: "1",
+            width: "100%",
+            method: 'get',
+            dataStyle: "layuiStyle",  //使用layui风格的数据格式
+            response:{message:"msg",statusCode:200},  //修改response中返回数据的定义
+            url: "/api/dept/build",
+            dataFormat: "list",  //配置data的风格为list
+            select: true, //指定下拉树模式
+            selectTips: "不选默认是顶级目录",
+            selectCardHeight: "150"
+        });
+
+        var param = dtree.getNowParam("dataTree");
+        formDate = $("#parentId");
+        dtree.on("node('dataTree')" ,function(obj){
+            var param = dtree.getNowParam("dataTree");
+            $("#parentId").val(param.nodeId);
+            formDate = $("#parentId");
+        });
+        form.verify({
+            name: function (value) {
+                if (value.length < 2) {
+                    return '部门名至少2个字符';
+                }
+            },
+            sort: [
+                /^[1-9]\d*$/
+                , '只能是整数哦'
+            ],
+        })
+        form.on('submit(dept-save)', function(data){
+            var permissionId = formDate;
+            var bs = data.field.parentId
+            data.field.parentId = Number (bs)
+            var json = JSON.stringify(data.field)
+            $.ajax({
+                url:'/api/dept',
+                data:json,
+                dataType:'json',
+                contentType:'application/json',
+                type:'post',
+                success:function(result){
+                    if(result.success){
+                        layer.msg(result.msg,{icon:1,time:1000},function(){
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.location.reload();
+                        });
+                    }else{
+                        layer.msg(result.msg,{icon:2,time:1000});
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

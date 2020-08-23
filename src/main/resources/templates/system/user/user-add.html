@@ -5,26 +5,29 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
     <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+    <link th:href="@{/PearAdmin/admin/css/pearSelect.css}" rel="stylesheet" />
 </head>
 <body>
 <form class="layui-form" action="">
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-                <input type="hidden" id="userId" name="id" th:value="${MyUser.id}">
+                <input type="hidden" id="userId" name="id" th:value="${myUser.id}">
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span style="color: red">*</span>用户名
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="userName" th:value="${MyUser.userName}" name="userName" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                        <input type="text" id="userName" th:value="${myUser.userName}" name="userName" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span style="color: red">*</span>昵称</label>
                     <div class="layui-input-block">
-                        <input type="text" id="nickName" th:value="${MyUser.nickName}" name="nickName" required="" placeholder="请输入昵称" lay-verify="nikename" autocomplete="off" class="layui-input">
+                        <input type="text" id="nickName" th:value="${myUser.nickName}" name="nickName" required="" placeholder="请输入昵称" lay-verify="nikename" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -32,7 +35,7 @@
                         <span style="color: red">*</span>手机
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="phone" th:value="${MyUser.phone}" name="phone" required="" lay-verify="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                        <input type="text" id="phone" th:value="${myUser.phone}" name="phone" required="" lay-verify="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -40,7 +43,7 @@
                         <span style="color: red">*</span>邮箱
                     </label>
                     <div class="layui-input-block">
-                        <input type="text"  name="email" th:value="${MyUser.email}"lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
+                        <input type="text"  name="email" th:value="${myUser.email}"lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -54,6 +57,21 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">角色</label>
                     <div class="layui-input-block show-role-container">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">部门</label>
+                    <div class="layui-input-block">
+                        <input type="number" id="deptId" th:value="${myUser.deptId}" name="deptId"  lay-verify="deptId" style="display:none;width: 0px" autocomplete="off" class="layui-input">
+                        <ul id="dataTree" class="dtree" data-id="0" th:data-value="${myUser.deptId}"></ul>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">岗位</label>
+                    <div class="layui-input-block">
+                        <select name="jobIds" id="jobIds" lay-filter="jobIds"  xm-select="jobIds" xm-select-skin="normal">
+                            <option th:each="job:${jobs}" th:value="${job.id}" th:text="${job.name}" th:selected="${job.flag}" th:disabled="${job.status == '1'}"></option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -74,11 +92,34 @@
 </form>
 <script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 <script>
-    layui.use(['form','jquery'],function(){
+    layui.use(['form','formSelects','dtree','jquery'],function(){
+
+        let formSelects = layui.formSelects;
         let form = layui.form;
         $ = layui.jquery;
+        let dtree = layui.dtree;
         getAllRole(function(){
             layui.form.render('radio')
+        });
+        // 初始化树
+        dtree.render({
+            elem: "#dataTree",
+            initLevel: "1",
+            width: "100%",
+            method: 'get',
+            dataStyle: "layuiStyle",  //使用layui风格的数据格式
+            response:{message:"msg",statusCode:200},  //修改response中返回数据的定义
+            url: "/api/dept/build",
+            dataFormat: "list",  //配置data的风格为list
+            select: true, //指定下拉树模式
+            selectCardHeight: "200",
+        });
+        var param = dtree.getNowParam("dataTree");
+        formDate = $("#deptId");
+        dtree.on("node('dataTree')" ,function(obj){
+            var param = dtree.getNowParam("dataTree");
+            $("#deptId").val(param.nodeId);
+            formDate = $("#deptId");
         });
         form.on('submit(user-save)', function(data){
             var rolelRadio = $("[name=roleId]:checked");
@@ -92,7 +133,9 @@
             });
             roleIds = roleIds.substr(0,roleIds.length-1);
             data.field.roleIds = roleIds;
-
+            var jobIds = data.field.jobIds;
+            var jobId = jobIds.split(",");
+            data.field.jobIds = jobId
             $.ajax({
                 url:'/api/user',
                 data:JSON.stringify(data.field),

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
+    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+</head>
+<body>
+<form class="layui-form">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        角色名
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" id="name" th:value="${MyRole.name}" readonly="true" name="name" required="" placeholder="请输入角色名" lay-verify="name" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色描述</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="description" th:value="${MyRole.description}" readonly="true" name="description" required="" lay-verify="description" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数据范围</label>
+                    <div class="layui-input-block">
+                        <select name="dataScope" id="dataScope" lay-filter="dataScope">
+                            <option value="1" th:field="*{MyRole.dataScope}">全部数据权限</option>
+                            <option value="2" th:field="*{MyRole.dataScope}">自定数据权限</option>
+                            <option value="3" th:field="*{MyRole.dataScope}">本部门数据权限</option>
+                            <option value="4" th:field="*{MyRole.dataScope}">本部门及以下数据权限</option>
+                            <option value="5" th:field="*{MyRole.dataScope}">仅本人数据权限</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="authDataScope" th:style="'display:' + @{(${MyRole.dataScope == '2' } ? 'block' : 'none')} + ''">
+                    <label class="layui-form-label">菜单分配</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" id="id" th:value="${MyRole.id}">
+                        <ul id="dataTree" class="dtree" data-id="0"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="role-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+<script>
+    layui.use(['dtree','form','jquery'],function(){
+        let form = layui.form;
+        let $ = layui.jquery;
+        let dtree = layui.dtree;
+        let roleId = $("#id").val();
+        let Dtree = null;
+        // 初始化树
+        Dtree = dtree.render({
+            elem: "#dataTree",
+            initLevel: "1",
+            width: "100%",
+            method: 'get',
+            dataStyle: "layuiStyle",  //使用layui风格的数据格式
+            response:{message:"msg",statusCode:200},  //修改response中返回数据的定义
+            url: "/api/dept/ebuild/"+roleId,
+            dataFormat: "list",  //配置data的风格为list
+            checkbar: true,  //开启复选框
+            checkbarType: "p-casc",
+        });
+        form.verify({
+            name: function(value){
+                if(value.length < 2){
+                    return '角色名至少2个字符';
+                }
+            }
+        });
+         form.on('select(dataScope)',function (data) {
+            if (data.value == 2){
+                $("#authDataScope").show();
+            }else {
+                $("#authDataScope").hide();
+            }
+        })
+
+        form.on('submit(role-save)', function(data){
+            var paramJsonArr = Dtree.getCheckbarJsonArrParam();
+            var ids = paramJsonArr["nodeId"]
+            var datas = data.field
+            datas['deptIds'] = ids
+            datas['id'] = roleId
+            console.log(JSON.stringify(datas))
+            $.ajax({
+                url:'/api/role/authDataScope',
+                data:JSON.stringify(datas),
+                dataType:'json',
+                contentType:'application/json',
+                type:'put',
+                success:function(result){
+                    if(result.success){
+                        layer.msg(result.msg,{icon:1,time:1000},function(){
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.location.reload();//刷新页面
+                        });
+                    }else{
+                        layer.msg(result.msg,{icon:2,time:1000});
+                    }
+                }
+            })
+            return false;
+        });
+
+    })
+
+</script>
+</body>
+</html>
