@@ -18,6 +18,7 @@
             <if test="status != null and status != ''">
                 AND d.status = #{status}
             </if>
+            <!-- 数据范围过滤 -->
             ${params.dataScope}
         </where>
         order by d.sort
@@ -28,6 +29,7 @@
         select d.id,d.parent_id,d.name as title
             from my_dept d
         <where>
+            <!-- 数据范围过滤 -->
             ${params.dataScope}
         </where>
     </select>

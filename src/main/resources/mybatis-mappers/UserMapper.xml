@@ -18,9 +18,9 @@
             <if test="deptId != null and deptId != ''">
                 AND (u.dept_id = #{deptId} OR u.dept_id IN ( SELECT e.id FROM my_dept e WHERE FIND_IN_SET(#{deptId},ancestors) ))
             </if>
+            <!-- 数据范围过滤 -->
+            ${params.dataScope}
         </where>
-        <!-- 数据范围过滤 -->
-        ${params.dataScope}
         ORDER BY u.id
     </select>
 

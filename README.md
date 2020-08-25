@@ -16,11 +16,12 @@
 </div>
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
-### 介绍
+### 前言
+由于我在学习SpringSecurity时，并没有找到一个完整的整合相关技术的博文或者视频，都是零散的知识或着收费挺高，所以本项目就诞生了。  
+
 这是一款基于SpringBoot+SpringSecurity的RBAC权限管理系统。原本只想着做成基于SpringSecurity的权限管理系统，但随着功能的增加感觉有些刹不住车了，之后可能会往后台管理系统方向发展。无任何重度依赖，非常适合新手练习上手,项目文档从零开始，十分详细。  
+
 **希望各位小伙伴能够多多star支持，您的点赞就是我维护的动力**
-
-
 
 ### 系统功能
 - 用户管理：提供用户的相关配置
@@ -50,7 +51,8 @@
 5、[SpringSecurity权限管理系统实战—五、整合SpringSecurity（下）](https://blog.csdn.net/HYDCS/article/details/107510905)  
 6、[SpringSecurity权限管理系统实战—六、SpringSecurity整合jwt](https://blog.csdn.net/HYDCS/article/details/107732916)  
 7、[SpringSecurity权限管理系统实战—七、处理一些问题](https://blog.csdn.net/HYDCS/article/details/107765898)  
-8、[SpringSecurity权限管理系统实战—八、AOP记录用户、异常日志](https://blog.csdn.net/HYDCS/article/details/107965522)
+8、[SpringSecurity权限管理系统实战—八、AOP记录用户、异常日志](https://blog.csdn.net/HYDCS/article/details/107965522)  
+9、[SpringSecurity权限管理系统实战—九、数据权限的配置](https://blog.csdn.net/HYDCS/article/details/108185976)  
 
 ### 快速使用
 - 下载项目
@@ -70,7 +72,6 @@
 - [ ] 定时任务
 - [ ] 在线用户
 - [ ] 字典管理
-- [ ] 定时任务
 - [ ] 服务监控
 ### 相关截图
 |                        Admin端                         |                                                       |

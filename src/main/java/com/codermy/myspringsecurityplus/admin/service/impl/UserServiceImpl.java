@@ -30,10 +30,13 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+
     @Autowired
     private RoleUserDao roleUserDao;
+
     @Autowired
     private UserJobDao userJobDao;
+
     @Override
     @DataPermission(deptAlias = "d", userAlias = "u")
     public Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, MyUser myUser) {

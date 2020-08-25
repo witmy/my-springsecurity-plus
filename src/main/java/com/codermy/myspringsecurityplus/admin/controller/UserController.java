@@ -28,13 +28,16 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @Autowired
     private JobService jobService;
+
     @GetMapping("/index")
     @PreAuthorize("hasAnyAuthority('user:list')")
     public String index(){
         return "system/user/user";
     }
+
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "用户列表")

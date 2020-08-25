@@ -32,11 +32,13 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
+    @DataPermission(deptAlias = "d")
     public List<DeptDto> buildDeptAll(DeptDto deptDto) {
         return deptDao.buildAll(deptDto);
     }
 
     @Override
+    @DataPermission(deptAlias = "d")
     public List<DeptDto> roleDeptTreeData(Integer roleId) {
         List<DeptDto> selectRoleDeptTree = deptDao.selectRoleDeptTree(roleId);
         DeptDto deptDto = new DeptDto();

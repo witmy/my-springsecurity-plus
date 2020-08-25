@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item" id="authDataScope" th:style="'display:' + @{(${MyRole.dataScope == '2' } ? 'block' : 'none')} + ''">
-                    <label class="layui-form-label">菜单分配</label>
+                    <label class="layui-form-label">数据权限</label>
                     <div class="layui-input-block">
                         <input type="hidden" id="id" th:value="${MyRole.id}">
                         <ul id="dataTree" class="dtree" data-id="0"></ul>

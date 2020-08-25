@@ -24,7 +24,6 @@ public abstract class BaseEntity implements Serializable {
 
     /** 请求参数 */
     private Map<String, Object> params;
-
     public Map<String, Object> getParams()
     {
         if (params == null)
@@ -33,5 +32,10 @@ public abstract class BaseEntity implements Serializable {
         }
         return params;
     }
+
+    public Map<String, Object> get1Params() {
+        return params;
+    }
+
 
 }
