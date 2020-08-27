@@ -15,11 +15,11 @@
         <include refid="selectRoleContactVo"/>
         <where>
             <if test="name != null and name != ''">
-                AND r.name like CONCAT('%', #{name}, '%')
+                 r.name like CONCAT('%', #{name}, '%')
             </if>
+            <!-- 数据范围过滤 -->
+            ${params.dataScope}
         </where>
-        <!-- 数据范围过滤 -->
-        ${params.dataScope}
     </select>
 
     <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">

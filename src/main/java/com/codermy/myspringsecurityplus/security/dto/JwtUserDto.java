@@ -94,19 +94,7 @@ public class JwtUserDto implements UserDetails {
         return myUser.getStatus() == 1 ? true : false;
     }
 
-    /**
-     * 判断是否为admin用户
-     * @return
-     */
-    public boolean isAdmin()
-    {
-        return isAdmin(this.myUser.getId());
-    }
 
-    public static boolean isAdmin(Integer userId)
-    {
-        return userId != null && 1L == userId;
-    }
 
 
     public JwtUserDto(MyUser myUser, List<GrantedAuthority> authorities) {

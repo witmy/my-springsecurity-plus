@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 public class MyLog implements Serializable {
 
-    private Long id;
+    private Long logId;
 
     /** 操作用户 */
     private String userName;

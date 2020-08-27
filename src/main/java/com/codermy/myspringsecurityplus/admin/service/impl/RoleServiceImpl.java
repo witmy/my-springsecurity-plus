@@ -37,11 +37,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @DataPermission(deptAlias = "d")
-    public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit,String queryName) {
-        MyRole role = new MyRole();
-        role.setName(queryName);
+    public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit,MyRole myRole) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
-        List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(role);
+        List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(myRole);
         return Result.ok().count(page.getTotal()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
 

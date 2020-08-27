@@ -70,7 +70,7 @@
                     <label class="layui-form-label">岗位</label>
                         <div class="layui-input-block">
                             <select name="jobIds" id="jobIds" lay-filter="jobIds" xm-select="jobIds" xm-select-skin="normal">
-                                <option th:each="job:${jobs}" th:value="${job.id}" th:text="${job.name}" th:selected="${job.flag}" th:disabled="${job.status == '1'}"></option>
+                                <option th:each="job:${jobs}" th:value="${job.jobId}" th:text="${job.jobName}" th:selected="${job.flag}" th:disabled="${job.status == '1'}"></option>
                             </select>
                         </div>
                 </div>

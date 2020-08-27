@@ -13,10 +13,10 @@ public interface RoleService {
      * 返回角色
      * @param startPosition
      * @param limit
-     * @param queryName
+     * @param myRole
      * @return
      */
-    Result<MyRole> getFuzzyRolesByPage(Integer startPosition, Integer limit,String queryName);
+    Result<MyRole> getFuzzyRolesByPage(Integer startPosition, Integer limit,MyRole myRole);
 
     /**
      * 通过id获得角色信息

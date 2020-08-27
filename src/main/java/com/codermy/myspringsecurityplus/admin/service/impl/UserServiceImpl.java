@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.admin.service.impl;
 
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
 import com.codermy.myspringsecurityplus.admin.annotation.DataPermission;
 import com.codermy.myspringsecurityplus.admin.dao.RoleUserDao;
 import com.codermy.myspringsecurityplus.admin.dao.UserDao;
@@ -11,12 +12,14 @@ import com.codermy.myspringsecurityplus.admin.entity.MyRoleUser;
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.codermy.myspringsecurityplus.admin.entity.MyUserJob;
 import com.codermy.myspringsecurityplus.admin.service.UserService;
+import com.codermy.myspringsecurityplus.common.exceptionhandler.MyException;
 import com.codermy.myspringsecurityplus.common.utils.Result;
 import com.codermy.myspringsecurityplus.common.utils.ResultCode;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.thymeleaf.util.ListUtils;
 
 import java.util.ArrayList;
@@ -45,10 +48,17 @@ public class UserServiceImpl implements UserService {
         return Result.ok().count(page.getTotal()).data(fuzzyUserByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
-
     @Override
     public MyUser getUserById(Integer id) {
         return userDao.getUserById(id);
+    }
+
+    @Override
+    public void checkUserAllowed(MyUser user) {
+        if (!StringUtils.isEmpty(user.getId()) && user.isAdmin())
+        {
+            throw new MyException(ResultCode.ERROR,"不允许操作超级管理员用户");
+        }
     }
 
     @Override
@@ -93,6 +103,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int deleteUser(Integer id) {
+        checkUserAllowed(new MyUser(id));
         roleUserDao.deleteRoleUserByUserId(id);
         userJobDao.deleteUserJobByUserId(id);
         return userDao.deleteUserById(id);

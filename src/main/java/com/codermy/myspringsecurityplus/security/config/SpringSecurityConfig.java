@@ -75,7 +75,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js",
                         "/swagger-ui.html",
                         "/webjars/**",
-                        "/v2/**");
+                        "/v2/**",
+                        "/druid/**");
     }
 
     /**

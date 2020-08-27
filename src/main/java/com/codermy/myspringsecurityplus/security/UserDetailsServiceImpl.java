@@ -60,7 +60,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority);
                 grantedAuthorities.add(grantedAuthority);
             }
-        }//将用户所拥有的权限加入GrantedAuthority集合中
+        }
+        //将用户所拥有的权限加入GrantedAuthority集合中
         JwtUserDto loginUser =new JwtUserDto(user,grantedAuthorities);
         loginUser.setRoleInfo(getRoleInfo(user));
         return loginUser;

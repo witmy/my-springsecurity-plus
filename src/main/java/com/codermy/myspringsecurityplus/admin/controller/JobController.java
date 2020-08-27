@@ -59,7 +59,7 @@ public class JobController {
     @MyLog("添加岗位")
     public Result saveJob(@RequestBody MyJob myJob){
         if (UserConstants.JOB_NAME_NOT_UNIQUE.equals(jobService.checkJobNameUnique(myJob))) {
-            return Result.error().message("新增岗位'" + myJob.getName() + "'失败，岗位名称已存在");
+            return Result.error().message("新增岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
         }
         jobService.insertJob(myJob);
         return Result.ok().message("添加成功");
@@ -69,7 +69,7 @@ public class JobController {
     @ApiOperation(value = "修改岗位页面")
     @PreAuthorize("hasAnyAuthority('job:edit')")
     public String editRole(Model model, MyJob job) {
-        model.addAttribute("MyJob",jobService.getJobById(job.getId()));
+        model.addAttribute("MyJob",jobService.getJobById(job.getJobId()));
         return "system/job/job-edit";
     }
 

@@ -2,6 +2,7 @@ package com.codermy.myspringsecurityplus.admin.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -11,6 +12,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString
+@NoArgsConstructor
 public class MyRole extends BaseEntity{
     private static final long serialVersionUID = -6525908145032868837L;
 
@@ -22,6 +24,22 @@ public class MyRole extends BaseEntity{
     private String description;
 
 
+    /**
+     * 判断是否为admin用户
+     * @return
+     */
+    public boolean isAdmin()
+    {
+        return isAdmin(this.getId());
+    }
 
+    public static boolean isAdmin(Integer roleId)
+    {
+        return roleId != null && 1L == roleId;
+    }
 
+    public MyRole(Integer roleId)
+    {
+        this.setId(roleId);
+    }
 }

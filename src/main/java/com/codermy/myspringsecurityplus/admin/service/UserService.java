@@ -27,6 +27,13 @@ public interface UserService {
     MyUser getUserById(Integer id);
 
     /**
+     * 校验用户是否允许操作
+     *
+     * @param user 用户信息
+     */
+    public void checkUserAllowed(MyUser user);
+
+    /**
      * 通过手机查询用户
      * @param phone
      * @return

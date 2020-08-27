@@ -76,7 +76,7 @@
         let cols = [
             [
                 {type:'checkbox'},
-                {title: '名称', field: 'name', align:'center', width:100},
+                {title: '名称', field: 'jobName', align:'center', width:100},
                 {field: 'sort', title: '排序',align:'center',},
                 {field: 'status', title: '是否可用',templet:'#job-status'},
                 {title: '创建时间', field: 'createTime', align:'center',templet:'#job-time'},
@@ -156,7 +156,7 @@
                 title: '修改',
                 shade: 0.1,
                 area: ['500px', '500px'],
-                content:  '/api/job/edit/?id='+data.id
+                content:  '/api/job/edit/?jobId='+data.jobId
             });
         }
 
@@ -165,7 +165,7 @@
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({
-                    url: "/api/job?ids="+obj.data['id'],
+                    url: "/api/job?ids="+obj.data['jobId'],
                     dataType:'json',
                     type:'delete',
                     success:function(result){
@@ -190,7 +190,7 @@
             }
             let ids = "";
             for(let i = 0;i<data.length;i++){
-                ids += data[i].id+",";
+                ids += data[i].jobId+",";
             }
             ids = ids.substr(0,ids.length-1);
             layer.confirm('确定删除这些岗位吗？', {icon: 3, title:'提示'}, function(index){

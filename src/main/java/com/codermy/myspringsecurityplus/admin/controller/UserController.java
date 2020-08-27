@@ -87,8 +87,8 @@ public class UserController {
     @PreAuthorize("hasAnyAuthority('user:edit')")
     @MyLog("修改用户")
     public Result<MyUser> updateUser(@RequestBody UserDto userDto){
-        MyUser tbUser = null;
-        tbUser = userService.getUserByPhone(userDto.getPhone());
+        MyUser tbUser = userService.getUserByPhone(userDto.getPhone());
+        userService.checkUserAllowed(tbUser);
         if(tbUser !=null && !(tbUser.getId().equals(userDto.getId())) ){
             return Result.error().message("手机号已存在");
         }

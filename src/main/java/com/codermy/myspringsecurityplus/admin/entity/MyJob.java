@@ -10,7 +10,9 @@ import lombok.Data;
 public class MyJob extends BaseEntity {
     private static final long serialVersionUID = 8925514045582234222L;
 
-    private String name;
+    private Integer jobId;
+
+    private String jobName;
 
     private Integer sort;
 

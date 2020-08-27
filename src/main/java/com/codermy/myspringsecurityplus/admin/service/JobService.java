@@ -39,10 +39,10 @@ public interface JobService {
 
     /**
      * 通过id获得岗位信息
-     * @param id
+     * @param jobId
      * @return
      */
-    MyJob getJobById(Integer id);
+    MyJob getJobById(Integer jobId);
 
     /**
      * 批量删除岗位信息
@@ -55,10 +55,10 @@ public interface JobService {
     /**
      * 通过岗位ID查询岗位使用数量
      *
-     * @param postId 岗位ID
+     * @param jobId 岗位ID
      * @return 结果
      */
-     int countUserJobtById(Integer postId);
+     int countUserJobtById(Integer jobId);
 
     /**
      * 查询所有岗位

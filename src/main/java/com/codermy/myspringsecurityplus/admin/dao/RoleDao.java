@@ -16,7 +16,7 @@ public interface RoleDao {
 
 
     /**
-     * 分页模糊查询权限
+     * 分页模糊查询角色
      * @param role
      * @return
      */

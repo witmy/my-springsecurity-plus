@@ -36,9 +36,9 @@ public class RoleController {
     @ApiOperation(value = "分页返回角色列表")
     @PreAuthorize("hasAnyAuthority('role:list')")
     @MyLog("查询角色")
-    public Result roleList(PageTableRequest request,String queryName) {
+    public Result roleList(PageTableRequest request,MyRole myRole) {
         request.countOffset();
-        return roleService.getFuzzyRolesByPage(request.getOffset(), request.getLimit(),queryName);
+        return roleService.getFuzzyRolesByPage(request.getOffset(), request.getLimit(),myRole);
     }
 
     @GetMapping(value = "/edit")

@@ -29,6 +29,7 @@ public class JobServiceImpl implements JobService {
     private JobDao jobDao;
     @Autowired
     private UserJobDao userJobDao;
+
     @Override
     public Result<MyJob> getJobAll(Integer offectPosition, Integer limit, JobQueryDto jobQueryDto) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
@@ -49,16 +50,16 @@ public class JobServiceImpl implements JobService {
      */
     @Override
     public String checkJobNameUnique(MyJob job) {
-        MyJob info = jobDao.checkJobNameUnique(job.getName());
-        if (ObjectUtil.isNotEmpty(info) && !info.getId().equals (job.getId())){
+        MyJob info = jobDao.checkJobNameUnique(job.getJobName());
+        if (ObjectUtil.isNotEmpty(info) && !info.getJobId().equals (job.getJobId())){
             return UserConstants.JOB_NAME_NOT_UNIQUE;
         }
         return UserConstants.JOB_NAME_UNIQUE;
     }
 
     @Override
-    public MyJob getJobById(Integer id) {
-        return jobDao.getJobById(id);
+    public MyJob getJobById(Integer jobId) {
+        return jobDao.getJobById(jobId);
     }
 
     @Override
@@ -67,15 +68,15 @@ public class JobServiceImpl implements JobService {
         for (Integer jobid:jobIds){
             MyJob job = getJobById(jobid);
             if (countUserJobtById(jobid)>0){
-                throw new MyException(ResultCode.ERROR,job.getName()+ "已分配,不能删除");
+                throw new MyException(ResultCode.ERROR,job.getJobName()+ "已分配,不能删除");
             }
         }
         return jobDao.deleteJobByIds(jobIds);
     }
 
     @Override
-    public int countUserJobtById(Integer postId) {
-        return userJobDao.countUserJobtById(postId);
+    public int countUserJobtById(Integer jobId) {
+        return userJobDao.countUserJobtById(jobId);
     }
 
     @Override
@@ -91,7 +92,7 @@ public class JobServiceImpl implements JobService {
         {
             for (MyJob userJob : userJobs)
             {
-                if (job.getId().equals(userJob.getId()))
+                if (job.getJobId().equals(userJob.getJobId()))
                 {
                     job.setFlag(true);
                     break;

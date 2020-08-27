@@ -93,13 +93,5 @@ public interface MenuDao {
      * @param userId
      * @return
      */
-    @Select("SELECT DISTINCT m.id,m.parent_id,m.name,m.icon,m.url,m.type,m.permission  " +
-            "FROM my_role_user ru " +
-            "INNER JOIN my_role_menu rm ON rm.role_id = ru.role_id " +
-            "LEFT JOIN my_menu m ON rm.menu_id = m.id " +
-            "WHERE " +
-            "ru.user_id = #{userId}")
-    @Result(property = "title",column = "name")
-    @Result(property = "href",column = "url")
     List<MenuIndexDto> listByUserId(@Param("userId")Integer userId);
 }
