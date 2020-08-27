@@ -203,7 +203,7 @@
 				title: '修改',
 				shade: 0.1,
 				area: ['600px', '600px'],
-				content:  '/api/user/edit/?id='+data.id
+				content:  '/api/user/edit/?userId='+data.userId
 			});
 		}
 
@@ -212,7 +212,7 @@
 				layer.close(index);
 				let loading = layer.load();
 				$.ajax({
-					url: "/api/user?id="+obj.data['id'],
+					url: "/api/user?userId="+obj.data['userId'],
 					dataType:'json',
 					type:'delete',
 					success:function(result){

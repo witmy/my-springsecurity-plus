@@ -14,7 +14,7 @@
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-                <input type="hidden" id="userId" name="id" th:value="${myUser.id}">
+                <input type="hidden" id="userId" name="userId" th:value="${myUser.userId}">
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span style="color: red">*</span>用户名
@@ -175,8 +175,8 @@
                 var html = "";
                 if(result.data && result.data.length > 0){
                     for(i in result.data){
-                        html += '<input type="radio"  name="roleId" value="'+result.data[i].id+'" title="'+result.data[i].name+'" >' +
-                            '<div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>'+result.data[i].name+'</div></div>';
+                        html += '<input type="radio"  name="roleId" value="'+result.data[i].roleId+'" title="'+result.data[i].roleName+'" >' +
+                            '<div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>'+result.data[i].roleName+'</div></div>';
                     }
                     $(".show-role-container").html(html);
                     callback();

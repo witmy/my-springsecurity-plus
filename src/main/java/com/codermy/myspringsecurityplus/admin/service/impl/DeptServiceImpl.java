@@ -60,8 +60,8 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public String checkDeptNameUnique(MyDept dept) {
-        MyDept info = deptDao.checkDeptNameUnique(dept.getName(),dept.getParentId());
-        if (ObjectUtil.isNotEmpty(info) && !info.getId().equals(dept.getId())){
+        MyDept info = deptDao.checkDeptNameUnique(dept.getDeptName(),dept.getParentId());
+        if (ObjectUtil.isNotEmpty(info) && !info.getDeptId().equals(dept.getDeptId())){
             return UserConstants.DEPT_NAME_NOT_UNIQUE;
         }
         return UserConstants.DEPT_NAME_UNIQUE;
@@ -69,24 +69,24 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public MyDept selectDeptById(Integer id) {
-        return deptDao.selectDeptById(id);
+    public MyDept selectDeptById(Integer deptId) {
+        return deptDao.selectDeptById(deptId);
     }
 
     @Override
-    public MyDept getDeptById(Integer id) {
-        return deptDao.getDeptById(id);
+    public MyDept getDeptById(Integer deptId) {
+        return deptDao.getDeptById(deptId);
     }
 
     @Override
     public int updateDept(MyDept dept) {
         MyDept parentInfo = deptDao.selectDeptById(dept.getParentId());
-        MyDept oldInfo = selectDeptById(dept.getId());
+        MyDept oldInfo = selectDeptById(dept.getDeptId());
         if(ObjectUtil.isNotEmpty(parentInfo) &&ObjectUtil.isNotEmpty(oldInfo)){
-            String newAncestors = parentInfo.getAncestors() + "," + parentInfo.getId();
+            String newAncestors = parentInfo.getAncestors() + "," + parentInfo.getDeptId();
             String oldAncestors = oldInfo.getAncestors();
             dept.setAncestors(newAncestors);
-            updateDeptChildren(dept.getId(), newAncestors, oldAncestors);
+            updateDeptChildren(dept.getDeptId(), newAncestors, oldAncestors);
         }
         int result =deptDao.updateDept(dept);
         if (UserConstants.DEPT_NORMAL.equals(dept.getStatus().toString()))
@@ -98,8 +98,8 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public int selectNormalChildrenDeptById(Integer id) {
-        return deptDao.selectNormalChildrenDeptById(id);
+    public int selectNormalChildrenDeptById(Integer deptId) {
+        return deptDao.selectNormalChildrenDeptById(deptId);
     }
 
     @Override
@@ -110,8 +110,8 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public boolean checkDeptExistUser(Integer id) {
-        int result = deptDao.checkDeptExistUser(id);
+    public boolean checkDeptExistUser(Integer deptId) {
+        int result = deptDao.checkDeptExistUser(deptId);
         return result > 0 ? true : false;
     }
 
@@ -142,7 +142,7 @@ public class DeptServiceImpl implements DeptService {
      */
     private void updateParentDeptStatus(MyDept dept)
     {
-        dept = deptDao.selectDeptById(dept.getId());;
+        dept = deptDao.selectDeptById(dept.getDeptId());;
         deptDao.updateDeptStatus(dept);
     }
 }

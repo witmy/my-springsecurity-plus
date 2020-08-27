@@ -45,7 +45,7 @@ public class RoleController {
     @ApiOperation(value = "修改角色页面")
     @PreAuthorize("hasAnyAuthority('role:edit')")
     public String editRole(Model model, MyRole role) {
-        model.addAttribute("MyRole",roleService.getRoleById(role.getId()));
+        model.addAttribute("MyRole",roleService.getRoleById(role.getRoleId()));
         return "system/role/role-edit";
     }
 
@@ -53,7 +53,7 @@ public class RoleController {
     @ApiOperation(value = "修改角色页面")
     @PreAuthorize("hasAnyAuthority('role:edit')")
     public String editRoleDataScope(Model model, MyRole role) {
-        model.addAttribute("MyRole",roleService.getRoleById(role.getId()));
+        model.addAttribute("MyRole",roleService.getRoleById(role.getRoleId()));
         return "system/role/role-dataScope";
     }
 
@@ -98,7 +98,7 @@ public class RoleController {
     @PreAuthorize("hasAnyAuthority('role:del')")
     @MyLog("删除角色")
     public Result<MyRole> deleteRole(RoleDto roleDto) {
-        return roleService.delete(roleDto.getId());
+        return roleService.delete(roleDto.getRoleId());
     }
 
     @GetMapping("/all")

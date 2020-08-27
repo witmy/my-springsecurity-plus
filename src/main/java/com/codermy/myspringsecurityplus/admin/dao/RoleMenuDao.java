@@ -20,10 +20,10 @@ public interface RoleMenuDao {
 
     /**
      * 新建角色与menu的联系
-     * @param id
+     * @param roleId
      * @param menuIds
      */
-    void save(@Param("roleId")Integer id,@Param("menuIds") List<Integer> menuIds);
+    void save(@Param("roleId")Integer roleId,@Param("menuIds") List<Integer> menuIds);
 
     /**
      * 通过role_id计算权限数量

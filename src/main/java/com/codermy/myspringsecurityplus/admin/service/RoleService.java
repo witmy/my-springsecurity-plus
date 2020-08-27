@@ -20,10 +20,10 @@ public interface RoleService {
 
     /**
      * 通过id获得角色信息
-     * @param id
+     * @param roleId
      * @return
      */
-    MyRole getRoleById(Integer id);
+    MyRole getRoleById(Integer roleId);
 
     /**
      * 更新角色
@@ -42,10 +42,10 @@ public interface RoleService {
 
     /**
      * 删除角色
-     * @param id
+     * @param roleId
      * @return
      */
-    Result<MyRole> delete(Integer id);
+    Result<MyRole> delete(Integer roleId);
 
     /**
      * 获取全部角色

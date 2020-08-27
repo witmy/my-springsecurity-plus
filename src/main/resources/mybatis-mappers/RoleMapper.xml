@@ -4,35 +4,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.codermy.myspringsecurityplus.admin.dao.RoleDao">
     <sql id="selectRoleContactVo">
-        select distinct r.id,r.name,r.data_scope,r.description,r.create_time,r.update_time
+        select distinct r.role_id,r.role_name,r.data_scope,r.description,r.create_time,r.update_time
         from my_role r
-	        left join my_role_user ru on ru.role_id = r.id
-	        left join my_user u on u.id = ru.user_id
-	        left join my_dept d on u.dept_id = d.id
+	        left join my_role_user ru on ru.role_id = r.role_id
+	        left join my_user u on u.user_id = ru.user_id
+	        left join my_dept d on u.dept_id = d.dept_id
     </sql>
 
     <select id="getFuzzyRolesByPage" resultType="com.codermy.myspringsecurityplus.admin.entity.MyRole">
         <include refid="selectRoleContactVo"/>
         <where>
-            <if test="name != null and name != ''">
-                 r.name like CONCAT('%', #{name}, '%')
+            <if test="roleName != null and roleName != ''">
+                 r.role_name like CONCAT('%', #{roleName}, '%')
             </if>
             <!-- 数据范围过滤 -->
             ${params.dataScope}
         </where>
     </select>
 
-    <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="id">
-		insert into my_role(name, description, create_time, update_time)
+    <insert id="saveRole" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyRole" flushCache="true" useGeneratedKeys="true" keyProperty="roleId">
+		insert into my_role(role_name, description, create_time, update_time)
 		values
-		(#{name}, #{description}, now(), now())
+		(#{roleName}, #{description}, now(), now())
 	</insert>
 
     <update id="update">
         update my_role r
         <set>
-            <if test="name != null">
-                `name` = #{name},
+            <if test="roleName != null">
+                `role_name` = #{roleName},
             </if>
             <if test="dataScope != null">
                 data_scope = #{dataScope},
@@ -42,7 +42,7 @@
             </if>
             update_time = #{updateTime}
         </set>
-        where r.id = #{id}
+        where r.role_id = #{roleId}
     </update>
 
 </mapper>

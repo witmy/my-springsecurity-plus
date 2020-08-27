@@ -30,7 +30,7 @@ public class AdminController {
     @ApiOperation(value = "通过用户id获取菜单")
     public List<MenuIndexDto> getMenu() {
         JwtUserDto jwtUserDto = (JwtUserDto)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Integer userId = jwtUserDto.getMyUser().getId();
+        Integer userId = jwtUserDto.getMyUser().getUserId();
         return menuService.getMenu(userId);
     }
     

@@ -53,7 +53,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        List<MenuIndexDto> list = menuDao.listByUserId(user.getId());
+        List<MenuIndexDto> list = menuDao.listByUserId(user.getUserId());
         List<String> collect = list.stream().map(MenuIndexDto::getPermission).collect(Collectors.toList());
         for (String authority : collect){
             if (!("").equals(authority) & authority !=null){
@@ -70,7 +70,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     public List<MyRole> getRoleInfo(MyUser myUser) {
         MyUser userByName = userService.getUserByName(myUser.getUserName());
-        List<MyRoleUser> roleUserByUserId = roleUserService.getMyRoleUserByUserId(userByName.getId());
+        List<MyRoleUser> roleUserByUserId = roleUserService.getMyRoleUserByUserId(userByName.getUserId());
         List <MyRole> roleList = new ArrayList<>();
         for (MyRoleUser roleUser:roleUserByUserId){
             Integer roleId = roleUser.getRoleId();

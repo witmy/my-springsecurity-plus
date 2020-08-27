@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 public class MyUser extends BaseEntity{
     private static final long serialVersionUID = -6525908145032868837L;
 
+    private Integer userId;
+
     private Integer deptId;
 
     private String userName;
@@ -43,7 +45,7 @@ public class MyUser extends BaseEntity{
      */
     public boolean isAdmin()
     {
-        return isAdmin(this.getId());
+        return isAdmin(this.getUserId());
     }
 
     public static boolean isAdmin(Integer userId)
@@ -53,6 +55,6 @@ public class MyUser extends BaseEntity{
 
     public MyUser(Integer userId)
     {
-        this.setId(userId);
+        this.setUserId(userId);
     }
 }

@@ -13,7 +13,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="name" placeholder="请输入部门名称" class="layui-input">
+                    <input type="text" name="deptName" placeholder="请输入部门名称" class="layui-input">
                 </div>
                 <label class="layui-form-label">状态</label>
                 <div class="layui-input-inline">
@@ -96,7 +96,7 @@
             cols: [
                 [
                     {type: 'radio'},
-                    {field: 'name', minWidth: 200, title: '名称'},
+                    {field: 'deptName', minWidth: 200, title: '名称'},
                     {field: 'sort', title: '排序'},
                     {field: 'status', title: '是否可用',templet:'#dept-status'},
                     {title: '创建时间', field: 'createTime', align:'center',templet:'#dept-time'},
@@ -166,16 +166,16 @@
                 title: '修改',
                 shade: 0.1,
                 area: ['450px', '500px'],
-                content: '/api/dept/edit/?id='+data.id
+                content: '/api/dept/edit/?deptId='+data.deptId
             });
         }
         window.remove = function(obj){
             var data = obj.data;
-            layer.confirm('确定删除吗,如果存在下级节点则一并删除，此操作不能撤销！', {icon: 3, title:'提示'}, function(index){
+            layer.confirm('确定删除吗,此操作不能撤销！', {icon: 3, title:'提示'}, function(index){
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({
-                    url: "/api/dept/?id=" + data.id,
+                    url: "/api/dept/?deptId=" + data.deptId,
                     dataType:'json',
                     type:'delete',
                     success:function(result){

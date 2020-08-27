@@ -18,7 +18,7 @@
                         <span style="color: red">*</span>角色名
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="name" th:value="${MyRole.name}" name="name" required="" placeholder="请输入角色名" lay-verify="name" autocomplete="off" class="layui-input">
+                        <input type="text" id="roleName" th:value="${MyRole.roleName}" name="roleName" required="" placeholder="请输入角色名" lay-verify="name" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -30,7 +30,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">菜单分配</label>
                     <div class="layui-input-block">
-                        <input type="hidden" id="id" th:value="${MyRole.id}">
+                        <input type="hidden" id="roleId" th:value="${MyRole.roleId}">
                         <ul id="dataTree" class="dtree" data-id="0"></ul>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
         let $ = layui.jquery;
         let dtree = layui.dtree;
         let Dtree = null;
-        let roleId = $("#id").val();
+        let roleId = $("#roleId").val();
         Dtree = dtree.render({
             elem: "#dataTree",
             initLevel: "1",
@@ -83,7 +83,7 @@
             var ids = paramJsonArr["nodeId"]
             var datas = data.field
             datas['menuIds'] = ids
-            datas['id'] = roleId
+            datas['roleId'] = roleId
             $.ajax({
                 url:'/api/role',
                 data:JSON.stringify(datas),

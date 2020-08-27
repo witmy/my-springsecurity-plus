@@ -63,7 +63,7 @@
 		        let cols = [
 		            [
 		                {type:'checkbox'},
-		                {title: '角色名', field: 'name', align:'center', width:100},
+		                {title: '角色名', field: 'roleName', align:'center', width:100},
 		                {title: '描述', field: 'description', align:'center'},
 		                {title: '操作', toolbar: '#role-bar', align:'center', width:195}
 		            ]
@@ -140,7 +140,7 @@
 		                title: '修改',
 		                shade: 0.1,
 		                area: ['500px', '600px'],
-						content: '/api/role/edit/?id='+data.id
+						content: '/api/role/edit/?roleId='+data.roleId
 		            });
 		        }
 				window.power = function(obj){
@@ -150,7 +150,7 @@
 						title: '修改',
 						shade: 0.1,
 						area: ['500px', '600px'],
-						content: '/api/role/edit/dataScope/?id='+data.id
+						content: '/api/role/edit/dataScope/?roleId='+data.roleId
 					});
 				}
 		
@@ -162,7 +162,7 @@
 		                $.ajax({
 		                    url: '/api/role',
 		                    dataType:'json',
-							data:{id:data.id},
+							data:{roleId:data.roleId},
 		                    type:'delete',
 		                    success:function(result){
 		                        layer.close(loading);

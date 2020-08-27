@@ -13,12 +13,12 @@
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-                <input type="text" id="id" th:value="${myDept.id}" name="id" style="display:none;" autocomplete="off" class="layui-input">
+                <input type="text" id="deptId" th:value="${myDept.deptId}" name="deptId" style="display:none;" autocomplete="off" class="layui-input">
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span style="color: red">*</span>部门名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="name" lay-verify="name" th:value="${myDept.name}" autocomplete="off" placeholder="请输入部门名" class="layui-input">
+                        <input type="text" name="deptName" lay-verify="deptName" th:value="${myDept.deptName}" autocomplete="off" placeholder="请输入部门名" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">

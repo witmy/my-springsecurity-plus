@@ -11,6 +11,8 @@ public class MyMenu extends BaseEntity{
 
     private static final long serialVersionUID = -6525908145032868815L;
 
+    private Integer id;
+
     private Integer parentId;
 
     private String name;

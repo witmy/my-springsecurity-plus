@@ -49,13 +49,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public MyUser getUserById(Integer id) {
-        return userDao.getUserById(id);
+    public MyUser getUserById(Integer userId) {
+        return userDao.getUserById(userId);
     }
 
     @Override
     public void checkUserAllowed(MyUser user) {
-        if (!StringUtils.isEmpty(user.getId()) && user.isAdmin())
+        if (!StringUtils.isEmpty(user.getUserId()) && user.isAdmin())
         {
             throw new MyException(ResultCode.ERROR,"不允许操作超级管理员用户");
         }
@@ -71,14 +71,14 @@ public class UserServiceImpl implements UserService {
         if (roleId!=null){
             userDao.updateUser(userDto);
             MyRoleUser myRoleUser = new MyRoleUser();
-            myRoleUser.setUserId(userDto.getId());
+            myRoleUser.setUserId(userDto.getUserId());
             myRoleUser.setRoleId(roleId);
-            if(roleUserDao.getRoleUserByUserId(userDto.getId())!=null){
+            if(roleUserDao.getRoleUserByUserId(userDto.getUserId())!=null){
                 roleUserDao.updateMyRoleUser(myRoleUser);
             }else {
                 roleUserDao.save(myRoleUser);
             }
-            userJobDao.deleteUserJobByUserId(userDto.getId());
+            userJobDao.deleteUserJobByUserId(userDto.getUserId());
             insertUserPost(userDto);
             return Result.ok().message("更新成功");
         }else {
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
             userDao.save(userDto);
             MyRoleUser myRoleUser = new MyRoleUser();
             myRoleUser.setRoleId(roleId);
-            myRoleUser.setUserId(userDto.getId().intValue());
+            myRoleUser.setUserId(userDto.getUserId().intValue());
             roleUserDao.save(myRoleUser);
             insertUserPost(userDto);
             return Result.ok().message("添加成功，初始密码123456");
@@ -102,11 +102,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int deleteUser(Integer id) {
-        checkUserAllowed(new MyUser(id));
-        roleUserDao.deleteRoleUserByUserId(id);
-        userJobDao.deleteUserJobByUserId(id);
-        return userDao.deleteUserById(id);
+    public int deleteUser(Integer userId) {
+        checkUserAllowed(new MyUser(userId));
+        roleUserDao.deleteRoleUserByUserId(userId);
+        userJobDao.deleteUserJobByUserId(userId);
+        return userDao.deleteUserById(userId);
     }
 
     @Override
@@ -131,7 +131,7 @@ public class UserServiceImpl implements UserService {
             for (Integer jobId : jobs)
             {
                 MyUserJob up = new MyUserJob();
-                up.setUserId(user.getId());
+                up.setUserId(user.getUserId());
                 up.setJobId(jobId);
                 list.add(up);
             }

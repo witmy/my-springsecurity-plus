@@ -58,10 +58,10 @@ public interface UserService {
 
     /**
      * 删除用户
-     * @param id
+     * @param userId
      * @return
      */
-    int deleteUser(Integer id);
+    int deleteUser(Integer userId);
     /**
      *  根据用户名查询用户
      * @param userName

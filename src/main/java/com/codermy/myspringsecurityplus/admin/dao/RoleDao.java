@@ -24,11 +24,11 @@ public interface RoleDao {
 
     /**
      * 通过id查询角色
-     * @param id
+     * @param roleId
      * @return
      */
-    @Select("select r.id,r.name,r.data_scope,r.description,r.create_time,r.update_time from my_role r where r.id = #{id}")
-    MyRole getRoleById(Integer id);
+    @Select("select r.role_id,r.role_name,r.data_scope,r.description,r.create_time,r.update_time from my_role r where r.role_id = #{roleId}")
+    MyRole getRoleById(Integer roleId);
 
     /**
      * 更新角色
@@ -46,16 +46,16 @@ public interface RoleDao {
 
     /**
      * 通过id删除角色
-     * @param id
+     * @param roleId
      * @return
      */
-    @Delete("delete from my_role where id = #{id}")
-    int delete(Integer id);
+    @Delete("delete from my_role where role_id = #{roleId}")
+    int delete(Integer roleId);
 
     /**
      * 返回所有角色
      * @return
      */
-    @Select("select r.id,r.name,r.description from my_role r")
+    @Select("select r.role_id,r.role_name,r.description from my_role r")
     List<MyRole> getAllRoles();
 }

@@ -16,7 +16,9 @@ import lombok.ToString;
 public class MyRole extends BaseEntity{
     private static final long serialVersionUID = -6525908145032868837L;
 
-    private String name;
+    private Integer roleId;
+
+    private String roleName;
 
     /** 数据范围（1：所有数据权限；2：自定义数据权限；3：本部门数据权限；4：本部门及以下数据权限） */
     private String dataScope;
@@ -30,7 +32,7 @@ public class MyRole extends BaseEntity{
      */
     public boolean isAdmin()
     {
-        return isAdmin(this.getId());
+        return isAdmin(this.getRoleId());
     }
 
     public static boolean isAdmin(Integer roleId)
@@ -40,6 +42,6 @@ public class MyRole extends BaseEntity{
 
     public MyRole(Integer roleId)
     {
-        this.setId(roleId);
+        this.setRoleId(roleId);
     }
 }

@@ -38,7 +38,7 @@
     <select id="selectJobsByUserId" parameterType="integer" resultType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
 		SELECT j.job_id, j.job_name,j.status
 		FROM my_user u
-			 LEFT JOIN my_user_job uj ON u.id = uj.user_id
+			 LEFT JOIN my_user_job uj ON u.user_id = uj.user_id
 			 LEFT JOIN my_job j ON uj.job_id = j.job_id
 		WHERE uj.user_id = #{userId}
 	</select>

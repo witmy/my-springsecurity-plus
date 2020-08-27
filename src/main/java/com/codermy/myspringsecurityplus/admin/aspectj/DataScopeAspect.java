@@ -119,24 +119,24 @@ public class DataScopeAspect {
             else if (DATA_SCOPE_CUSTOM.equals(dataScope))
             {
                 sqlString.append(StrUtil.format(
-                        " OR {}.id IN ( SELECT dept_id FROM my_role_dept WHERE role_id = {} ) ", deptAlias,
-                        role.getId()));
+                        " OR {}.dept_id IN ( SELECT dept_id FROM my_role_dept WHERE role_id = {} ) ", deptAlias,
+                        role.getRoleId()));
             }
             else if (DATA_SCOPE_DEPT.equals(dataScope))
             {
-                sqlString.append(StrUtil.format(" OR {}.id = {} ", deptAlias, user.getMyUser().getDeptId()));
+                sqlString.append(StrUtil.format(" OR {}.dept_id = {} ", deptAlias, user.getMyUser().getDeptId()));
             }
             else if (DATA_SCOPE_DEPT_AND_CHILD.equals(dataScope))
             {
                 sqlString.append(StrUtil.format(
-                        " OR {}.id IN ( SELECT id FROM my_dept WHERE id = {} or find_in_set( {} , ancestors ) )",
+                        " OR {}.dept_id IN ( SELECT dept_id FROM my_dept WHERE dept_id = {} or find_in_set( {} , ancestors ) )",
                         deptAlias, user.getMyUser().getDeptId(), user.getMyUser().getDeptId()));
             }
             else if (DATA_SCOPE_SELF.equals(dataScope))
             {
                 if (StrUtil.isNotBlank(userAlias))
                 {
-                    sqlString.append(StrUtil.format(" OR {}.id = {} ", userAlias, user.getMyUser().getId()));
+                    sqlString.append(StrUtil.format(" OR {}.user_id = {} ", userAlias, user.getMyUser().getUserId()));
                 }
                 else
                 {

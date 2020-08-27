@@ -53,10 +53,10 @@ public class RoleServiceImpl implements RoleService {
         List<Integer> menuIds = roleDto.getMenuIds();
         menuIds.remove(0L);
         //1、更新角色权限之前要删除该角色之前的所有权限
-        roleMenuDao.deleteRoleMenu(roleDto.getId());
+        roleMenuDao.deleteRoleMenu(roleDto.getRoleId());
         //2、判断该角色是否有赋予权限值，有就添加"
         if (!CollectionUtils.isEmpty(menuIds)) {
-            roleMenuDao.save(roleDto.getId(), menuIds);
+            roleMenuDao.save(roleDto.getRoleId(), menuIds);
         }
         //3、更新角色表
         int countData = roleDao.update(roleDto);
@@ -72,14 +72,14 @@ public class RoleServiceImpl implements RoleService {
         if (roleDto.getDataScope().equals(UserConstants.DATA_SCOPE_CUSTOM)){
             List<Integer> deptIds = roleDto.getDeptIds();
             deptIds.remove(0L);
-            roleDeptDao.deleteRoleDept(roleDto.getId());
+            roleDeptDao.deleteRoleDept(roleDto.getRoleId());
             if (!CollectionUtils.isEmpty(deptIds)) {
-                roleDeptDao.save(roleDto.getId(), deptIds);
+                roleDeptDao.save(roleDto.getRoleId(), deptIds);
             }
             roleDao.update(roleDto);
         }else {
             roleDao.update(roleDto);
-            roleDeptDao.deleteRoleDept(roleDto.getId());
+            roleDeptDao.deleteRoleDept(roleDto.getRoleId());
         }
         return Result.ok().message("更新成功");
     }
@@ -93,7 +93,7 @@ public class RoleServiceImpl implements RoleService {
         //移除0,permission id是从1开始
         //2、保存角色对应的所有权限
         if (!CollectionUtils.isEmpty(menuIds)) {
-            roleMenuDao.save(roleDto.getId(), menuIds);
+            roleMenuDao.save(roleDto.getRoleId(), menuIds);
         }
         return Result.ok().message("插入成功");
     }

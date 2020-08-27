@@ -9,14 +9,25 @@ import lombok.Data;
  */
 @Data
 public class UserDto extends BaseEntity {
+
+    private Integer userId;
+
     private Integer deptId;
+
     private String userName;
+
     private String nickName;
+
     private String password;
+
     private String phone;
+
     private String email;
+
     private Integer status;
+
     private Integer roleId;
+
     /** 岗位组 */
     private Integer[] jobIds;
 

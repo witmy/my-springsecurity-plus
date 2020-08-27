@@ -12,6 +12,8 @@ import java.io.Serializable;
 @Data
 public class DeptDto extends BaseEntity {
 
+    private Integer id;
+
     private Integer parentId;
 
     private String checkArr = "0";

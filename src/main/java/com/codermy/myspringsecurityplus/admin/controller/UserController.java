@@ -65,7 +65,7 @@ public class UserController {
     public Result<MyUser> saveUser(@RequestBody UserDto userDto){
         MyUser myUser = null;
         myUser = userService.getUserByPhone(userDto.getPhone());
-        if(myUser !=null && !(myUser.getId().equals(userDto.getId())) ){
+        if(myUser !=null && !(myUser.getUserId().equals(userDto.getUserId())) ){
             return Result.error().code(20001).message("手机号已存在");
         }
         userDto.setPassword(Md5.crypt("123456"));
@@ -76,8 +76,8 @@ public class UserController {
     @ApiOperation(value = "修改用户界面")
     @PreAuthorize("hasAnyAuthority('user:edit')")
     public String editUser(Model model, MyUser tbUser){
-        model.addAttribute("myUser",userService.getUserById(tbUser.getId()));
-        model.addAttribute("jobs",jobService.selectJobsByUserId(tbUser.getId()));
+        model.addAttribute("myUser",userService.getUserById(tbUser.getUserId()));
+        model.addAttribute("jobs",jobService.selectJobsByUserId(tbUser.getUserId()));
         return "/system/user/user-edit";
     }
 
@@ -89,7 +89,7 @@ public class UserController {
     public Result<MyUser> updateUser(@RequestBody UserDto userDto){
         MyUser tbUser = userService.getUserByPhone(userDto.getPhone());
         userService.checkUserAllowed(tbUser);
-        if(tbUser !=null && !(tbUser.getId().equals(userDto.getId())) ){
+        if(tbUser !=null && !(tbUser.getUserId().equals(userDto.getUserId())) ){
             return Result.error().message("手机号已存在");
         }
         return userService.updateUser(userDto,userDto.getRoleId());
@@ -100,8 +100,8 @@ public class UserController {
     @ApiOperation(value = "删除用户")
     @PreAuthorize("hasAnyAuthority('user:del')")
     @MyLog("删除用户")
-    public Result deleteUser(Integer id){
-        int count = userService.deleteUser(id);
+    public Result deleteUser(Integer userId){
+        int count = userService.deleteUser(userId);
         if(count>0){
             return Result.ok().message("删除成功");
         }else {

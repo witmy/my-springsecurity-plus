@@ -28,10 +28,10 @@ public interface DeptDao {
 
     /**
      * 校验部门名称
-     * @param name 岗位名称
+     * @param deptName 岗位名称
      * @return 结果
      */
-    MyDept checkDeptNameUnique(@Param("name")String name,@Param("parentId") Integer parentId);
+    MyDept checkDeptNameUnique(@Param("deptName")String deptName,@Param("parentId") Integer parentId);
 
 
     /**
@@ -39,22 +39,22 @@ public interface DeptDao {
      * @param dept 岗位信息
      * @return 结果
      */
-    @Insert("INSERT INTO my_dept(parent_id,ancestors,name,sort,status, create_time, update_time) values(#{parentId},#{ancestors},#{name},#{sort},#{status}, now(), now())")
+    @Insert("INSERT INTO my_dept(parent_id,ancestors,dept_name,sort,status, create_time, update_time) values(#{parentId},#{ancestors},#{deptName},#{sort},#{status}, now(), now())")
     int insertDept(MyDept dept);
     /**
      * 根据部门ID查询信息
-     * @param id 部门ID
+     * @param deptId 部门ID
      * @return 部门信息
      */
-    MyDept selectDeptById(Integer id);
+    MyDept selectDeptById(Integer deptId);
 
     /**
      * 通过id查询部门信息
-     * @param id
+     * @param deptId
      * @return
      */
-    @Select("select d.id,d.parent_id,d.ancestors,d.name,d.sort,d.status,d.create_time,d.update_time from my_dept d where d.id = #{id}")
-    MyDept getDeptById(Integer id);
+    @Select("select d.dept_id,d.parent_id,d.ancestors,d.dept_name,d.sort,d.status,d.create_time,d.update_time from my_dept d where d.dept_id = #{deptId}")
+    MyDept getDeptById(Integer deptId);
 
 
     /**
@@ -99,10 +99,10 @@ public interface DeptDao {
     /**
      * 根据ID查询所有子部门（正常状态）
      *
-     * @param id 部门ID
+     * @param deptId 部门ID
      * @return 子部门数
      */
-    int selectNormalChildrenDeptById(Integer id);
+    int selectNormalChildrenDeptById(Integer deptId);
     /**
      * 查询部门人数
      *
@@ -114,8 +114,8 @@ public interface DeptDao {
     /**
      * 查询部门是否存在用户
      *
-     * @param id 部门ID
+     * @param deptId 部门ID
      * @return 结果
      */
-    int checkDeptExistUser(Integer id);
+    int checkDeptExistUser(Integer deptId);
 }

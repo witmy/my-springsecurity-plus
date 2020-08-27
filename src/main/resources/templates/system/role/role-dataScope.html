@@ -18,7 +18,7 @@
                         角色名
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="name" th:value="${MyRole.name}" readonly="true" name="name" required="" placeholder="请输入角色名" lay-verify="name" autocomplete="off" class="layui-input">
+                        <input type="text" id="roleName" th:value="${MyRole.roleName}" readonly="true" name="name" required="" placeholder="请输入角色名" lay-verify="name" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -42,7 +42,7 @@
                 <div class="layui-form-item" id="authDataScope" th:style="'display:' + @{(${MyRole.dataScope == '2' } ? 'block' : 'none')} + ''">
                     <label class="layui-form-label">数据权限</label>
                     <div class="layui-input-block">
-                        <input type="hidden" id="id" th:value="${MyRole.id}">
+                        <input type="hidden" id="roleId" th:value="${MyRole.roleId}">
                         <ul id="dataTree" class="dtree" data-id="0"></ul>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
         let form = layui.form;
         let $ = layui.jquery;
         let dtree = layui.dtree;
-        let roleId = $("#id").val();
+        let roleId = $("#roleId").val();
         let Dtree = null;
         // 初始化树
         Dtree = dtree.render({
@@ -103,7 +103,7 @@
             var ids = paramJsonArr["nodeId"]
             var datas = data.field
             datas['deptIds'] = ids
-            datas['id'] = roleId
+            datas['roleId'] = roleId
             console.log(JSON.stringify(datas))
             $.ajax({
                 url:'/api/role/authDataScope',

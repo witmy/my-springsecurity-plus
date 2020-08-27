@@ -30,18 +30,18 @@ public interface UserDao {
     /**
      *
      * 通过id返回用户
-     * @param id
+     * @param userId
      * @return
      */
-    @Select("select u.id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.id = #{id}")
-    MyUser getUserById(Integer id);
+    @Select("select u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.user_id = #{userId}")
+    MyUser getUserById(Integer userId);
 
     /**
      * 通过手机返回用户
      * @param phone
      * @return
      */
-    @Select("select u.id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.phone = #{phone}")
+    @Select("select u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.phone = #{phone}")
     MyUser getUserByPhone(String phone);
 
     /**
@@ -58,17 +58,17 @@ public interface UserDao {
      * @param userDto
      * @return
      */
-    @Options(useGeneratedKeys = true, keyProperty = "id")
+    @Options(useGeneratedKeys = true, keyProperty = "userId")
     @Insert("insert into my_user(dept_id,user_name, password, nick_name, phone, email, status, create_time, update_time) values(#{deptId},#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())")
     int save(UserDto userDto);
 
     /**
      * 通过id删除用户
-     * @param id
+     * @param userId
      * @return
      */
-    @Delete("delete from my_user where id = #{userId}")
-    int deleteUserById(Integer id);
+    @Delete("delete from my_user where user_id = #{userId}")
+    int deleteUserById(Integer userId);
 
 
 
