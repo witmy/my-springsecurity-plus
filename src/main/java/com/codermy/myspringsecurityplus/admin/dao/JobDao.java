@@ -66,4 +66,12 @@ public interface JobDao {
      * @return 岗位列表
      */
     List<MyJob> selectJobAll();
+
+    /**
+     * 修改岗位信息
+     *
+     * @param myJob 岗位信息
+     * @return 结果
+     */
+    int updateJob(MyJob myJob);
 }

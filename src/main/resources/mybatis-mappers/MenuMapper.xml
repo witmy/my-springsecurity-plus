@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.codermy.myspringsecurityplus.admin.dao.MenuDao">
     <select id="getFuzzyMenu" resultType="com.codermy.myspringsecurityplus.admin.entity.MyMenu">
-        select m.id,m.parent_id,m.name,m.icon,m.url,m.permission,m.sort,m.type,m.create_time,m.update_time
+        select m.menu_id,m.parent_id,m.menu_name,m.icon,m.url,m.permission,m.sort,m.type,m.create_time,m.update_time
         from my_menu m
         <where>
             <if test="queryName != null and queryName != ''">
-                AND m.name like CONCAT('%', #{queryName}, '%')
+                AND m.menu_name like CONCAT('%', #{queryName}, '%')
             </if>
             <if test="queryType != null and queryType != ''">
                 AND m.type = #{queryType}
@@ -23,8 +23,8 @@
             <if test="parentId != null">
                 parent_id = #{parentId},
             </if>
-            <if test="name != null">
-                `name` = #{name},
+            <if test="menuName != null">
+                `menu_name` = #{menuName},
             </if>
             <if test="icon != null">
                 `icon` = #{icon},
@@ -43,14 +43,14 @@
             </if>
             update_time = #{updateTime}
         </set>
-        where m.id = #{id}
+        where m.menu_id = #{menuId}
     </update>
 
     <select id="listByUserId" resultType="com.codermy.myspringsecurityplus.admin.dto.MenuIndexDto">
-        SELECT DISTINCT m.id,m.parent_id,m.name as title,m.icon,m.url as href,m.type,m.permission
+        SELECT DISTINCT m.menu_id as id,m.parent_id,m.menu_name as title,m.icon,m.url as href,m.type,m.permission
             FROM my_role_user ru
         INNER JOIN my_role_menu rm ON rm.role_id = ru.role_id
-        LEFT JOIN my_menu m ON rm.menu_id = m.id
+        LEFT JOIN my_menu m ON rm.menu_id = m.menu_id
         <where>
             <if test="userId != null">
                 ru.user_id = #{userId}

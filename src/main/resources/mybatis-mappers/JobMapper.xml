@@ -46,4 +46,15 @@
     <select id="selectJobAll" resultType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
         <include refid="selectJobVo"/>
     </select>
+
+    <update id="updateJob" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyJob">
+        update my_job
+        <set>
+            <if test="jobName != null and jobName != ''">job_name = #{jobName},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="sort != null and sort != ''">sort = #{sort},</if>
+            update_time = #{updateTime}
+        </set>
+        where job_id = #{jobId}
+    </update>
 </mapper>

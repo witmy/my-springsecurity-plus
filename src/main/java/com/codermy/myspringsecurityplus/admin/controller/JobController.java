@@ -72,7 +72,18 @@ public class JobController {
         model.addAttribute("MyJob",jobService.getJobById(job.getJobId()));
         return "system/job/job-edit";
     }
-
+    @PutMapping
+    @ResponseBody
+    @ApiOperation(value = "修改岗位")
+    @PreAuthorize("hasAnyAuthority('job:edit')")
+    @MyLog("修改岗位")
+    public Result updateJob(@RequestBody MyJob myJob){
+        if (UserConstants.JOB_NAME_NOT_UNIQUE.equals(jobService.checkJobNameUnique(myJob))) {
+            return Result.error().message("修改岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
+        }
+        jobService.updateJob(myJob);
+        return Result.ok().message("修改岗位");
+    }
 
     @DeleteMapping
     @ResponseBody

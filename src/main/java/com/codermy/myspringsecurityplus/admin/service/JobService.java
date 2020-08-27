@@ -73,4 +73,12 @@ public interface JobService {
      * @return 岗位列表
      */
      List<MyJob> selectJobsByUserId(Integer userId);
+
+     /**
+      * 修改保存岗位信息
+      *
+      * @param myJob 岗位信息
+      * @return 结果
+      */
+    int updateJob(MyJob myJob);
 }

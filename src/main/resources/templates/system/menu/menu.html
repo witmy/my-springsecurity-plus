@@ -37,27 +37,24 @@
         </div>
         <div class="layui-card">
             <div class="layui-card-body">
-                <table id="power-table" lay-filter="power-table"></table>
+                <table id="menu-table" lay-filter="menu-table"></table>
             </div>
         </div>
 
-        <script type="text/html" id="power-toolbar">
+        <script type="text/html" id="menu-toolbar">
             <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
                 <i class="layui-icon layui-icon-add-1"></i>
                 新增
             </button>
-            <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
-                <i class="layui-icon layui-icon-delete"></i>
-                删除
-            </button>
+
         </script>
 
-        <script type="text/html" id="power-bar">
+        <script type="text/html" id="menu-bar">
             <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
             <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
         </script>
 
-        <script type="text/html" id="power-type">
+        <script type="text/html" id="menu-type">
             {{#if (d.type == '0') { }}
             <span>目录</span>
             {{# }else if(d.type == '1'){ }}
@@ -67,7 +64,7 @@
             {{# } }}
         </script>
 
-        <script type="text/html" id="power-status">
+        <script type="text/html" id="menu-status">
             <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="user-status" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
         </script>
 
@@ -89,27 +86,27 @@
                     treetable.render({
                         treeColIndex: 1,
                         treeSpid: 0,
-                        treeIdName: 'powerId',
+                        treeIdName: 'menuId',
                         treePidName: 'parentId',
                         skin:'line',
                         method:'post',
                         treeDefaultClose: true,
-                        toolbar:'#power-toolbar',
-                        elem: '#power-table',
+                        toolbar:'#menu-toolbar',
+                        elem: '#menu-table',
                         url: '/api/menu',
                         page: false,
                         cols: [
                             [
-                                {type: 'checkbox'},
-                                {field: 'name', minWidth: 200, title: '菜单标题'},
+                                {type: 'radio'},
+                                {field: 'menuName', minWidth: 200, title: '菜单标题'},
                                 {field: 'icon', title: '图标',templet:'#icon'},
-                                {field: 'type', title: '类型',templet:'#power-type'},
+                                {field: 'type', title: '类型',templet:'#menu-type'},
                                 {field: 'url', title: '路径'},
-                                {field: 'status', title: '是否可用',templet:'#power-status'},
+                                {field: 'status', title: '是否可用',templet:'#menu-status'},
                                 {field: 'permission', title: '权限标识'},
                                 {field: 'sort', title: '排序'},
                                 {field: 'createTime', title: '创建日期'},
-                                {title: '操作',templet: '#power-bar', width: 150, align: 'center'}
+                                {title: '操作',templet: '#menu-bar', width: 150, align: 'center'}
                             ]
                         ]
                     });
@@ -117,7 +114,7 @@
 
                 render();
 
-                table.on('tool(power-table)',function(obj){
+                table.on('tool(menu-table)',function(obj){
                     if (obj.event === 'remove') {
                         window.remove(obj);
                     } else if (obj.event === 'edit') {
@@ -126,13 +123,11 @@
                 })
 
 
-                table.on('toolbar(power-table)', function(obj){
+                table.on('toolbar(menu-table)', function(obj){
                     if(obj.event === 'add'){
                         window.add();
                     } else if(obj.event === 'refresh'){
                         window.refresh();
-                    } else if(obj.event === 'batchRemove'){
-                        window.batchRemove(obj);
                     }
                 });
 
@@ -140,7 +135,7 @@
                     var formData = data.field;
                     var name = formData.name;
                     var type = formData.type;
-                    table.reload(('power-table'),{ // table重载
+                    table.reload(('menu-table'),{ // table重载
                         where: {//这里传参  向后台
                             queryName: name,
                             queryType: type
@@ -168,7 +163,7 @@
                         title: '修改',
                         shade: 0.1,
                         area: ['450px', '500px'],
-                        content: '/api/menu/edit/?id='+data.id
+                        content: '/api/menu/edit/?menuId='+data.menuId
                     });
                 }
                 window.remove = function(obj){
@@ -177,7 +172,7 @@
                         layer.close(index);
                         let loading = layer.load();
                         $.ajax({
-                            url: "/api/menu/?id=" + data.id,
+                            url: "/api/menu/?menuId=" + data.menuId,
                             dataType:'json',
                             type:'delete',
                             success:function(result){

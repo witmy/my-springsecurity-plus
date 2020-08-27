@@ -31,7 +31,7 @@ public class MenuController {
     @PreAuthorize("hasAnyAuthority('menu:list')")
     @ApiOperation(value = "返回菜单页面")
     public String index(){
-        return "system/menu/power";
+        return "system/menu/menu";
     }
 
 
@@ -68,7 +68,7 @@ public class MenuController {
     @ApiOperation(value = "修改菜单页面")
     @PreAuthorize("hasAnyAuthority('menu:edit')")
     public String editPermission(Model model, MyMenu myMenu) {
-        model.addAttribute("myMenu",menuService.getMenuById(myMenu.getId()));
+        model.addAttribute("myMenu",menuService.getMenuById(myMenu.getMenuId()));
         return "system/menu/menu-edit";
     }
 
@@ -101,8 +101,7 @@ public class MenuController {
 
 
     /**
-     * todo 批量删除
-     * @param id
+     * @param menuId
      * @return
      */
     @DeleteMapping
@@ -110,8 +109,8 @@ public class MenuController {
     @ApiOperation(value = "删除菜单")
     @PreAuthorize("hasAnyAuthority('menu:del')")
     @MyLog("删除菜单")
-    public Result deleteMenu(Integer id) {
-        return menuService.delete(id);
+    public Result deleteMenu(Integer menuId) {
+        return menuService.delete(menuId);
     }
 
 }

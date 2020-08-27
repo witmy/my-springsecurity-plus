@@ -101,4 +101,9 @@ public class JobServiceImpl implements JobService {
         }
         return jobs;
     }
+
+    @Override
+    public int updateJob(MyJob myJob) {
+        return jobDao.updateJob(myJob);
+    }
 }

@@ -13,13 +13,13 @@
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-                <input type="text" id="id" th:value="${myMenu.id}" name="id" style="display:none;" autocomplete="off" class="layui-input">
+                <input type="text" id="menuId" th:value="${myMenu.menuId}" name="menuId" style="display:none;" autocomplete="off" class="layui-input">
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span style="color: red">*</span>菜单名
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" th:value="${myMenu.name}" name="name" lay-verify="name" autocomplete="off" placeholder="请输入菜单名" class="layui-input">
+                        <input type="text" th:value="${myMenu.menuName}" name="menuName" lay-verify="menuName" autocomplete="off" placeholder="请输入菜单名" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -133,7 +133,7 @@
             formDate = $("#parentId");
         });
         form.verify({
-            name: function(value){
+            menuName: function(value){
                 if(value.length < 2){
                     return '菜单名至少2个字符';
                 }
