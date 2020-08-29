@@ -118,6 +118,7 @@ public class DeptController {
         {
             return Result.error().message("部门存在用户,不允许删除");
         }
+        deptService.deleteDeptById(deptId);
         return Result.ok().message("删除成功");
     }
 

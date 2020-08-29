@@ -109,4 +109,8 @@
     <select id="checkDeptExistUser" parameterType="integer" resultType="int">
 		select count(1) from my_user where dept_id = #{deptId}
 	</select>
+
+    <delete id="deleteDeptById" parameterType="integer">
+		delete from my_dept where dept_id =#{deptId}
+	</delete>
 </mapper>

@@ -1,7 +1,6 @@
 package com.codermy.myspringsecurityplus.admin.dao;
 
-import com.codermy.myspringsecurityplus.admin.dto.UserDto;
-import com.codermy.myspringsecurityplus.admin.dto.UserQueryDto;
+
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import org.apache.ibatis.annotations.*;
 
@@ -41,26 +40,25 @@ public interface UserDao {
      * @param phone
      * @return
      */
-    @Select("select u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.phone = #{phone}")
-    MyUser getUserByPhone(String phone);
+    MyUser checkPhoneUnique(String phone);
 
     /**
      * 更新用户
-     * @param userDto
+     * @param myUser
      * @return
      */
-    int updateUser(UserDto userDto);
+    int updateUser(MyUser myUser);
 
 
 
     /**
      * 插入用户
-     * @param userDto
+     * @param myUser
      * @return
      */
     @Options(useGeneratedKeys = true, keyProperty = "userId")
     @Insert("insert into my_user(dept_id,user_name, password, nick_name, phone, email, status, create_time, update_time) values(#{deptId},#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())")
-    int save(UserDto userDto);
+    int save(MyUser myUser);
 
     /**
      * 通过id删除用户

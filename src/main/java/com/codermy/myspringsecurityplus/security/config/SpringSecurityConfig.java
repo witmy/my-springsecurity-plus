@@ -45,11 +45,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     private MyAuthenticationFailureHandler authenticationFailureHandler;
-    /**
-     * jwt拦截器
-     */
-    @Autowired
-    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+
     /**
      * 无权限拦截器
      */
@@ -132,8 +129,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         // 禁用缓存
         http.headers().cacheControl();
 
-        // 添加JWT拦截器
-        // http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
 
         // 无权访问 JSON 格式的数据
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);

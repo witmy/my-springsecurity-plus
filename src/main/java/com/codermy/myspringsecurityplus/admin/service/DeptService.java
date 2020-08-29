@@ -20,6 +20,7 @@ public interface DeptService {
 
     /**
      * 部门树
+     * @param deptDto
      * @return
      */
     List<DeptDto> buildDeptAll(DeptDto deptDto);
@@ -92,5 +93,13 @@ public interface DeptService {
      * @param deptId 部门ID
      * @return 结果 true 存在 false 不存在
      */
-    public boolean checkDeptExistUser(Integer deptId);
+     boolean checkDeptExistUser(Integer deptId);
+
+    /**
+     * 删除部门管理信息
+     *
+     * @param deptId 部门ID
+     * @return 结果
+     */
+     int deleteDeptById(Integer deptId);
 }

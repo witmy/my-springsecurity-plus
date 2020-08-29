@@ -36,6 +36,7 @@ public class MyUser extends BaseEntity{
         int VALID = 1;
     }
 
+    private Integer roleId;
     /** 岗位组 */
     private Integer[] jobIds;
 

@@ -1,5 +1,7 @@
 package com.codermy.myspringsecurityplus.common.utils;
 
+import com.codermy.myspringsecurityplus.admin.entity.MyUser;
+
 /**
  * 用户常量信息
  * @author codermy
@@ -13,6 +15,10 @@ public class UserConstants {
     /** 部门名称是否唯一的返回结果码 */
     public final static String DEPT_NAME_UNIQUE = "0";
     public final static String DEPT_NAME_NOT_UNIQUE = "1";
+
+    /** 手机号码是否唯一的返回结果 */
+    public final static String USER_PHONE_UNIQUE = "0";
+    public final static String USER_PHONE_NOT_UNIQUE = "1";
 
     /** 部门停用状态 */
     public static final String DEPT_DISABLE= "0";
@@ -49,4 +55,5 @@ public class UserConstants {
      * 数据权限过滤关键字
      */
     public static final String DATA_SCOPE = "dataScope";
+
 }

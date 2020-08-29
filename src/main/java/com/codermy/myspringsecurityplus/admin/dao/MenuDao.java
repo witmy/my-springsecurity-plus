@@ -58,7 +58,7 @@ public interface MenuDao {
 
     /**
      * 通过id删除菜单
-     * @param id
+     * @param menuId
      * @return
      */
     @Delete("delete from my_menu where menu_id = #{menuId}")

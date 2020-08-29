@@ -1,13 +1,13 @@
 package com.codermy.myspringsecurityplus.admin.service.impl;
 
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.codermy.myspringsecurityplus.admin.annotation.DataPermission;
 import com.codermy.myspringsecurityplus.admin.dao.RoleUserDao;
 import com.codermy.myspringsecurityplus.admin.dao.UserDao;
 import com.codermy.myspringsecurityplus.admin.dao.UserJobDao;
-import com.codermy.myspringsecurityplus.admin.dto.UserDto;
-import com.codermy.myspringsecurityplus.admin.dto.UserQueryDto;
+
 import com.codermy.myspringsecurityplus.admin.entity.MyRoleUser;
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.codermy.myspringsecurityplus.admin.entity.MyUserJob;
@@ -15,6 +15,7 @@ import com.codermy.myspringsecurityplus.admin.service.UserService;
 import com.codermy.myspringsecurityplus.common.exceptionhandler.MyException;
 import com.codermy.myspringsecurityplus.common.utils.Result;
 import com.codermy.myspringsecurityplus.common.utils.ResultCode;
+import com.codermy.myspringsecurityplus.common.utils.UserConstants;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,24 +63,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public MyUser getUserByPhone(String phone) {
-        return userDao.getUserByPhone(phone);
+    public String checkPhoneUnique(MyUser myUser) {
+        Integer userId = ObjectUtil.isEmpty(myUser.getUserId()) ? -1: myUser.getUserId();
+        MyUser info = userDao.checkPhoneUnique(myUser.getPhone());
+        if (ObjectUtil.isNotEmpty(info) && !info.getUserId().equals(userId))
+        {
+            return UserConstants.USER_PHONE_NOT_UNIQUE;
+        }
+        return UserConstants.USER_PHONE_UNIQUE;
     }
 
     @Override
-    public Result<MyUser> updateUser(UserDto userDto, Integer roleId) {
+    public Result<MyUser> updateUser(MyUser myUser, Integer roleId) {
         if (roleId!=null){
-            userDao.updateUser(userDto);
+            userDao.updateUser(myUser);
             MyRoleUser myRoleUser = new MyRoleUser();
-            myRoleUser.setUserId(userDto.getUserId());
+            myRoleUser.setUserId(myUser.getUserId());
             myRoleUser.setRoleId(roleId);
-            if(roleUserDao.getRoleUserByUserId(userDto.getUserId())!=null){
+            if(roleUserDao.getRoleUserByUserId(myUser.getUserId())!=null){
                 roleUserDao.updateMyRoleUser(myRoleUser);
             }else {
                 roleUserDao.save(myRoleUser);
             }
-            userJobDao.deleteUserJobByUserId(userDto.getUserId());
-            insertUserPost(userDto);
+            userJobDao.deleteUserJobByUserId(myUser.getUserId());
+            insertUserPost(myUser);
             return Result.ok().message("更新成功");
         }else {
             return Result.error().message("更新失败");
@@ -87,14 +94,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result<MyUser> save(UserDto userDto, Integer roleId) {
+    public int changeStatus(MyUser user) {
+        return userDao.updateUser(user);
+    }
+
+    @Override
+    public Result<MyUser> save(MyUser myUser, Integer roleId) {
         if(roleId!= null){
-            userDao.save(userDto);
+            userDao.save(myUser);
             MyRoleUser myRoleUser = new MyRoleUser();
             myRoleUser.setRoleId(roleId);
-            myRoleUser.setUserId(userDto.getUserId().intValue());
+            myRoleUser.setUserId(myUser.getUserId().intValue());
             roleUserDao.save(myRoleUser);
-            insertUserPost(userDto);
+            insertUserPost(myUser);
             return Result.ok().message("添加成功，初始密码123456");
         }
 
@@ -120,7 +132,7 @@ public class UserServiceImpl implements UserService {
      *
      * @param user 用户对象
      */
-    public void insertUserPost(UserDto user)
+    public void insertUserPost(MyUser user)
     {
         Integer[] jobs = user.getJobIds();
 

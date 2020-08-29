@@ -22,6 +22,7 @@ public interface DeptDao {
 
     /**
      * 部门树
+     * @param deptDto
      * @return
      */
     List<DeptDto> buildAll(DeptDto deptDto);
@@ -29,7 +30,8 @@ public interface DeptDao {
     /**
      * 校验部门名称
      * @param deptName 岗位名称
-     * @return 结果
+     * @param parentId
+     * @return
      */
     MyDept checkDeptNameUnique(@Param("deptName")String deptName,@Param("parentId") Integer parentId);
 
@@ -118,4 +120,12 @@ public interface DeptDao {
      * @return 结果
      */
     int checkDeptExistUser(Integer deptId);
+
+    /**
+     * 删除部门管理信息
+     *
+     * @param deptId 部门ID
+     * @return 结果
+     */
+    int deleteDeptById(Integer deptId);
 }

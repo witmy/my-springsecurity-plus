@@ -1,10 +1,11 @@
 package com.codermy.myspringsecurityplus.admin.controller;
 
-import com.codermy.myspringsecurityplus.admin.dto.UserDto;
-import com.codermy.myspringsecurityplus.admin.dto.UserQueryDto;
+
+
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
-import com.codermy.myspringsecurityplus.admin.service.DeptService;
+
 import com.codermy.myspringsecurityplus.admin.service.JobService;
+import com.codermy.myspringsecurityplus.common.utils.UserConstants;
 import com.codermy.myspringsecurityplus.log.aop.MyLog;
 import com.codermy.myspringsecurityplus.admin.service.UserService;
 import com.codermy.myspringsecurityplus.common.utils.Md5;
@@ -62,14 +63,12 @@ public class UserController {
     @ApiOperation(value = "添加用户")
     @PreAuthorize("hasAnyAuthority('user:add')")
     @MyLog("添加用户")
-    public Result<MyUser> saveUser(@RequestBody UserDto userDto){
-        MyUser myUser = null;
-        myUser = userService.getUserByPhone(userDto.getPhone());
-        if(myUser !=null && !(myUser.getUserId().equals(userDto.getUserId())) ){
-            return Result.error().code(20001).message("手机号已存在");
+    public Result<MyUser> saveUser(@RequestBody MyUser myUser){
+        if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
+            return Result.error().message("手机号已存在");
         }
-        userDto.setPassword(Md5.crypt("123456"));
-        return userService.save(userDto,userDto.getRoleId());
+        myUser.setPassword(Md5.crypt("123456"));
+        return userService.save(myUser,myUser.getRoleId());
     }
 
     @GetMapping("edit")
@@ -86,13 +85,28 @@ public class UserController {
     @ApiOperation(value = "修改用户")
     @PreAuthorize("hasAnyAuthority('user:edit')")
     @MyLog("修改用户")
-    public Result<MyUser> updateUser(@RequestBody UserDto userDto){
-        MyUser tbUser = userService.getUserByPhone(userDto.getPhone());
-        userService.checkUserAllowed(tbUser);
-        if(tbUser !=null && !(tbUser.getUserId().equals(userDto.getUserId())) ){
+    public Result updateUser(@RequestBody MyUser myUser){
+        MyUser userById = userService.getUserById(myUser.getUserId());
+        userService.checkUserAllowed(userById);
+        if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
+
             return Result.error().message("手机号已存在");
         }
-        return userService.updateUser(userDto,userDto.getRoleId());
+        return userService.updateUser(myUser,myUser.getRoleId());
+    }
+    /**
+     * 用户状态修改
+     */
+    @MyLog("修改用户状态")
+    @PutMapping("/changeStatus")
+    @ResponseBody
+    @ApiOperation(value = "修改用户状态")
+    @PreAuthorize("hasAnyAuthority('user:edit')")
+    public Result changeStatus(@RequestBody MyUser myUser)
+    {
+        userService.checkUserAllowed(myUser);
+        userService.changeStatus(myUser);
+        return Result.ok().message("修改成功");
     }
 
     @DeleteMapping

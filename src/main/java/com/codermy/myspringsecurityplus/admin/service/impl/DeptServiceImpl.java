@@ -115,6 +115,11 @@ public class DeptServiceImpl implements DeptService {
         return result > 0 ? true : false;
     }
 
+    @Override
+    public int deleteDeptById(Integer deptId) {
+        return deptDao.deleteDeptById(deptId);
+    }
+
     /**
      * 修改子元素关系
      *

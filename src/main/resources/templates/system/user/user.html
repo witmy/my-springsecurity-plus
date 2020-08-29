@@ -79,7 +79,7 @@
 			class="layui-icon layui-icon-delete"></i></button>
 </script>
 <script type="text/html" id="user-status">
-	<input type="checkbox"  name="status"  value="{{d.status}}" lay-skin="switch" lay-text="启用|禁用"  mid={{d.id}}  lay-filter="user-status" {{ d.status == '1' ? 'checked' : '' }}>
+	<input type="checkbox"  name="status"  value="{{d.userId}}" lay-skin="switch" lay-text="启用|禁用" mid="{{d.userId}}"  lay-filter="user-status" {{ d.status == '1' ? 'checked' : '' }}>
 </script>
 <script type="text/html" id="user-createTime">
 	{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
@@ -91,8 +91,6 @@
 		let form = layui.form;
 		let $ = layui.jquery;
 		let dtree = layui.dtree;
-
-		let MODULE_PATH = "operate/";
 
 		let cols = [
 			[
@@ -166,6 +164,34 @@
 			} else if (obj.event === 'batchRemove') {
 				window.batchRemove(obj);
 			}
+		});
+		form.on('switch(user-status)', function(obj) {
+			layer.confirm(obj.elem.checked ? '确定要启用该用户吗' : '确定要停用该用户吗', {icon: 3, title: '提示'}, function (index) {
+				layer.close(index);
+				var status = obj.elem.checked ? 1 : 0;
+				var data ={
+					userId: obj.value,
+					status: status
+				}
+				let loading = layer.load();
+				$.ajax({
+					url:'/api/user/changeStatus',
+					data:JSON.stringify(data),
+					dataType:'json',
+					contentType:'application/json',
+					type:'put',
+					success:function(result){
+						layer.close(loading);
+						if(result.success){
+							layer.msg(result.msg,{icon:1,time:1000},function(){
+								obj.del();
+							});
+						}else{
+							layer.msg(result.msg,{icon:2,time:1000});
+						}
+					}
+				})
+			});
 		});
 		form.on('submit(user-query)', function(data){
 			var formData = data.field;
@@ -250,7 +276,7 @@
 				layer.close(index);
 				let loading = layer.load();
 				$.ajax({
-					url: MODULE_PATH + "batchRemove/" + ids,
+					url:  "batchRemove/" + ids,
 					dataType: 'json',
 					type: 'delete',
 					success: function (result) {

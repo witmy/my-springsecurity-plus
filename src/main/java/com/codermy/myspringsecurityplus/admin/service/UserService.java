@@ -1,7 +1,6 @@
 package com.codermy.myspringsecurityplus.admin.service;
 
-import com.codermy.myspringsecurityplus.admin.dto.UserDto;
-import com.codermy.myspringsecurityplus.admin.dto.UserQueryDto;
+
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.codermy.myspringsecurityplus.common.utils.Result;
 
@@ -35,26 +34,34 @@ public interface UserService {
 
     /**
      * 通过手机查询用户
-     * @param phone
+     * @param user
      * @return
      */
-    MyUser getUserByPhone(String phone);
+    String checkPhoneUnique(MyUser user);
 
     /**
      * 更新用户
-     * @param userDto
+     * @param myUser
      * @param roleId
      * @return
      */
-    Result<MyUser> updateUser(UserDto userDto, Integer roleId);
+    Result<MyUser> updateUser(MyUser myUser, Integer roleId);
+
+    /**
+     * 用户状态修改
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    int changeStatus(MyUser user);
 
     /**
      * 新建用户
-     * @param userDto
+     * @param myUser
      * @param roleId
      * @return
      */
-    Result<MyUser> save(UserDto userDto, Integer roleId);
+    Result<MyUser> save(MyUser myUser, Integer roleId);
 
     /**
      * 删除用户

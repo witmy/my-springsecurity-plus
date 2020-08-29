@@ -24,6 +24,9 @@
         ORDER BY u.user_id
     </select>
 
+    <select id="checkPhoneUnique" parameterType="String" resultType="com.codermy.myspringsecurityplus.admin.entity.MyUser">
+		select u.user_id,u.phone from my_user u where u.phone = #{phone} limit 1
+	</select>
 
     <update id="updateUser">
         update my_user u
