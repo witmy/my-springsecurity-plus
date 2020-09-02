@@ -81,4 +81,11 @@ public interface JobService {
       * @return 结果
       */
     int updateJob(MyJob myJob);
+
+    /**
+     * 修改岗位状态
+     * @param myUser
+     * @return
+     */
+    int changeStatus(MyJob myUser);
 }

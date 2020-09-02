@@ -58,7 +58,7 @@
 </script>
 
 <script type="text/html" id="job-status">
-    <input type="checkbox"  name="status"  value="{{d.status}}" lay-skin="switch" lay-text="启用|禁用"  mid={{d.id}}  lay-filter="job-status" {{ d.status == '1' ? 'checked' : '' }}>
+    <input type="checkbox"  name="status"  value="{{d.jobId}}" lay-skin="switch" lay-text="启用|禁用" mid="{{d.jobId}}"  lay-filter="job-status" {{ d.status == '1' ? 'checked' : '' }}>
 </script>
 
 
@@ -115,7 +115,34 @@
                 window.batchRemove(obj);
             }
         });
-
+        form.on('switch(job-status)', function(obj) {
+            layer.confirm(obj.elem.checked ? '确定要启用该岗位吗' : '确定要停用该岗位吗', {icon: 3, title: '提示'}, function (index) {
+                layer.close(index);
+                var status = obj.elem.checked ? 1 : 0;
+                var data ={
+                    jobId: obj.value,
+                    status: status
+                }
+                let loading = layer.load();
+                $.ajax({
+                    url:'/api/job/changeStatus',
+                    data:JSON.stringify(data),
+                    dataType:'json',
+                    contentType:'application/json',
+                    type:'put',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                obj.del();
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                        }
+                    }
+                })
+            });
+        });
         form.on('submit(job-query)', function(data){
             var formData = data.field;
             var name = formData.name;
@@ -135,9 +162,6 @@
             return false;
         });
 
-        form.on('switch(job-status)', function(obj){
-            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
-        });
 
         window.add = function(){
             layer.open({

@@ -62,7 +62,7 @@ public class JobController {
             return Result.error().message("新增岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
         }
         jobService.insertJob(myJob);
-        return Result.ok().message("添加成功");
+        return Result.judge(jobService.insertJob(myJob),"添加岗位");
     }
 
     @GetMapping(value = "/edit")
@@ -81,8 +81,20 @@ public class JobController {
         if (UserConstants.JOB_NAME_NOT_UNIQUE.equals(jobService.checkJobNameUnique(myJob))) {
             return Result.error().message("修改岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
         }
-        jobService.updateJob(myJob);
-        return Result.ok().message("修改岗位");
+        return Result.judge(jobService.updateJob(myJob),"修改岗位");
+    }
+    /**
+     * 用户状态修改
+     */
+    @MyLog("修改岗位状态")
+    @PutMapping("/changeStatus")
+    @ResponseBody
+    @ApiOperation(value = "修改岗位状态")
+    @PreAuthorize("hasAnyAuthority('job:edit')")
+    public Result changeStatus(@RequestBody MyJob myJob)
+    {
+        int i = jobService.changeStatus(myJob);
+        return Result.judge(i,"修改");
     }
 
     @DeleteMapping

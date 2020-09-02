@@ -85,7 +85,7 @@ public interface MenuDao {
      * @param roleId
      * @return
      */
-    @Select("select m.menu_id,m.parent_id,m.menu_name from my_menu m inner join my_role_menu rm on m.id = rm.menu_id where rm.role_id = #{roleId}")
+    @Select("select m.menu_id,m.parent_id,m.menu_name from my_menu m inner join my_role_menu rm on m.menu_id = rm.menu_id where rm.role_id = #{roleId}")
     @Result(property = "title",column = "menu_name")
     @Result(property = "id",column = "menu_id")
     List<MenuDto> listByRoleId(Integer roleId);

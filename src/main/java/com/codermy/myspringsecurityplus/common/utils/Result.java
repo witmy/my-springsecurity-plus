@@ -67,6 +67,10 @@ public class Result<T> implements Serializable {
         return r;
     }
 
+    public static Result judge(int n,String msg){
+        return n > 0 ? ok().message(msg + "成功") : error().message(msg +"失败");
+    }
+
     public Result success(Boolean success){
         this.setSuccess(success);
         return this;

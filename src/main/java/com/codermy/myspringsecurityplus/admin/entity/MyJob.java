@@ -14,9 +14,9 @@ public class MyJob extends BaseEntity {
 
     private String jobName;
 
-    private Integer sort;
-
     private Integer status;
+
+    private Integer sort;
 
     /** 用户是否存在此岗位标识 默认不存在 */
     private boolean flag = false;

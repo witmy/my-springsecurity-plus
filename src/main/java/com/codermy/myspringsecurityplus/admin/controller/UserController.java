@@ -106,7 +106,7 @@ public class UserController {
     {
         userService.checkUserAllowed(myUser);
         userService.changeStatus(myUser);
-        return Result.ok().message("修改成功");
+        return Result.judge(userService.changeStatus(myUser),"修改成功");
     }
 
     @DeleteMapping
@@ -116,10 +116,6 @@ public class UserController {
     @MyLog("删除用户")
     public Result deleteUser(Integer userId){
         int count = userService.deleteUser(userId);
-        if(count>0){
-            return Result.ok().message("删除成功");
-        }else {
-            return Result.error().message("删除失败");
-        }
+        return Result.judge(count,"删除用户");
     }
 }

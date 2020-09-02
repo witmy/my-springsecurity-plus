@@ -73,8 +73,8 @@ public class DeptController {
         if (UserConstants.DEPT_NAME_NOT_UNIQUE.equals( deptService.checkDeptNameUnique(dept))) {
             return Result.error().message("新增岗位'" + dept.getDeptName() + "'失败，岗位名称已存在");
         }
-        deptService.insertDept(dept);
-        return Result.ok().message("添加成功");
+        int i = deptService.insertDept(dept);
+        return Result.judge(i,"添加");
     }
 
     @GetMapping(value = "/edit")
@@ -101,8 +101,8 @@ public class DeptController {
         {
             return Result.error().message("该部门包含未停用的子部门！");
         }
-        deptService.updateDept(dept);
-        return Result.ok().message("更新成功");
+        int i = deptService.updateDept(dept);
+        return Result.judge(i,"修改");
     }
 
     @DeleteMapping
@@ -118,8 +118,8 @@ public class DeptController {
         {
             return Result.error().message("部门存在用户,不允许删除");
         }
-        deptService.deleteDeptById(deptId);
-        return Result.ok().message("删除成功");
+        int i = deptService.deleteDeptById(deptId);
+        return Result.judge(i,"删除");
     }
 
     /**
