@@ -105,6 +105,19 @@ public class DeptController {
         return Result.judge(i,"修改");
     }
 
+    /**
+     * 用户状态修改
+     */
+    @MyLog("修改部门状态")
+    @PutMapping("/changeStatus")
+    @ResponseBody
+    @ApiOperation(value = "修改部门状态")
+    @PreAuthorize("hasAnyAuthority('dept:edit')")
+    public Result changeStatus(@RequestBody MyDept myDept)
+    {
+
+        return Result.judge(deptService.changeStatus(myDept),"修改");
+    }
     @DeleteMapping
     @ResponseBody
     @ApiOperation(value = "删除部门")

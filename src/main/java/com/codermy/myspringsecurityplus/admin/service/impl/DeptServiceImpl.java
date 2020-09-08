@@ -120,6 +120,11 @@ public class DeptServiceImpl implements DeptService {
         return deptDao.deleteDeptById(deptId);
     }
 
+    @Override
+    public int changeStatus(MyDept myDept) {
+        return deptDao.updateDept(myDept);
+    }
+
     /**
      * 修改子元素关系
      *

@@ -102,4 +102,10 @@ public interface DeptService {
      * @return 结果
      */
      int deleteDeptById(Integer deptId);
+    /**
+     * 修改部门状态
+     * @param myDept
+     * @return
+     */
+     int changeStatus(MyDept myDept);
 }

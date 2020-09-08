@@ -63,7 +63,7 @@
 
 
 <script type="text/html" id="dept-status">
-    <input type="checkbox"  name="status"  value="{{d.status}}" lay-skin="switch" lay-text="启用|禁用"  mid={{d.id}}  lay-filter="user-status" {{ d.status == '1' ? 'checked' : '' }}>
+    <input type="checkbox"  name="status"  value="{{d.deptId}}" lay-skin="switch" lay-text="启用|禁用" mid="{{d.deptId}}"  lay-filter="dept-status" {{ d.status == '1' ? 'checked' : '' }}>
 </script>
 
 <script type="text/html" id="icon">
@@ -125,7 +125,36 @@
                 treetable.foldAll("#dept-table");
             }
         });
-
+        form.on('switch(dept-status)', function(obj) {
+            layer.confirm(obj.elem.checked ? '确定要启用该部门吗' : '确定要停用该部门吗', {icon: 3, title: '提示'}, function (index) {
+                layer.close(index);
+                var status = obj.elem.checked ? 1 : 0;
+                var data ={
+                    deptId: obj.value,
+                    status: status
+                }
+                let loading = layer.load();
+                $.ajax({
+                    url:'/api/dept/changeStatus',
+                    data:JSON.stringify(data),
+                    dataType:'json',
+                    contentType:'application/json',
+                    type:'put',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                obj.del();
+                                layui.table.reload("dept-table");
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                            layui.table.reload("dept-table");
+                        }
+                    }
+                })
+            });
+        });
         form.on('submit(dept-query)', function(data){ //模糊查询方法
             var formData = data.field;
             var name = formData.name;
