@@ -3,10 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
-	<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
-	<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
-	<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+	<header th:replace="header::html"></header>
 	<style>
 		#deptTree{
 			width: 100% !important;
@@ -73,10 +70,8 @@
 </script>
 
 <script type="text/html" id="user-bar">
-	<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
-			class="layui-icon layui-icon-edit"></i></button>
-	<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i
-			class="layui-icon layui-icon-delete"></i></button>
+	<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
+	<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 </script>
 <script type="text/html" id="user-status">
 	<input type="checkbox"  name="status"  value="{{d.userId}}" lay-skin="switch" lay-text="启用|禁用" mid="{{d.userId}}"  lay-filter="user-status" {{ d.status == '1' ? 'checked' : '' }}>
@@ -84,7 +79,6 @@
 <script type="text/html" id="user-createTime">
 	{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
 </script>
-<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 <script>
 	layui.use(['table', 'form', 'jquery', 'dtree'], function () {
 		let table = layui.table;
@@ -148,7 +142,7 @@
 			});
 		});
 
-		table.on('tool(user-table)', function (obj) {
+		table.on('tool(user-table)', function(obj) {
 			if (obj.event === 'remove') {
 				window.remove(obj);
 			} else if (obj.event === 'edit') {
@@ -221,15 +215,14 @@
 				content:  '/api/user/add'
 			});
 		}
-
-		window.edit = function (obj) {
-			var data = obj.data;
+		window.edit = function(obj){
+			console.log(obj)
 			layer.open({
 				type: 2,
 				title: '修改',
 				shade: 0.1,
 				area: ['600px', '600px'],
-				content:  '/api/user/edit/?userId='+data.userId
+				content: '/api/user/edit/?userId='+ obj.data['userId']
 			});
 		}
 

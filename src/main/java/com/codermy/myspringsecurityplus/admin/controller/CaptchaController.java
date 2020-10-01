@@ -19,6 +19,6 @@ public class CaptchaController {
     @RequestMapping("/captcha")
     @ApiOperation(value = "验证码")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        CaptchaUtil.out(request, response);
+        CaptchaUtil.out(120, 45, 4, request, response);
     }
 }

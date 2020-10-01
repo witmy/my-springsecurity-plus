@@ -40,6 +40,12 @@ public class AdminController {
         return "console/console1";
     }
 
+    @GetMapping("/form/build")
+    @ApiOperation(value = "后台首页")
+    public String formBuild(){
+        return "system/form/index";
+    }
+
     @GetMapping("/403")
     @ApiOperation(value = "403页面")
     public String error403(){

@@ -46,7 +46,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyAuthenticationFailureHandler authenticationFailureHandler;
 
-
     /**
      * 无权限拦截器
      */
@@ -67,6 +66,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,
                         "/swagger-resources/**",
                         "/PearAdmin/**",
+                        "/component/**",
+                        "/admin/**",
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",

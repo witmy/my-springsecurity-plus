@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8" content="text/html;charset=utf-8">
     <title></title>
-    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
-    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
+    <header th:replace="header::html"></header>
 </head>
 <body class="pear-container">
 <div class="layui-card">
@@ -66,7 +65,6 @@
     {{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
 </script>
 
-<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 <script>
     layui.use(['table','form','jquery'],function () {
         let table = layui.table;

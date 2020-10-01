@@ -1,104 +1,102 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<link rel="stylesheet" href="/PearAdmin/admin/css/pearForm.css" />
-		<link rel="stylesheet" href="/PearAdmin/component/layui/css/layui.css" />
-		<link rel="stylesheet" href="/PearAdmin/admin/css/pearButton.css" />
-		<link rel="stylesheet" href="/PearAdmin/assets/login.css" />
-	</head>
-	<body background="PearAdmin/admin/images/background.svg" >
-	    <form class="layui-form" method="get">
-			<div class="layui-form-item">
-				<img class="logo" src="PearAdmin/admin/images/logo.png" />
-				<div class="title">M-S-P Admin</div>
-				<div class="desc">
-					Spring Security 权 限 管 理 系 统 实 战
-				</div>
-			</div>
-            <div class="layui-form-item">
-				<input id="username" name="username" placeholder="用 户 名 : " type="text" hover class="layui-input" required lay-verify="username"/>
-			</div>
-			<div class="layui-form-item">
-				<input id="password" name="password" placeholder="密 码 : " type="password"  hover class="layui-input" required lay-verify="password"/>
-			</div>
-            <div class="layui-form-item">
-                <input id="captcha" name="captcha" placeholder="验 证 码:" type="text"  hover class="layui-verify" style="border: 1px solid #dcdfe6;" required lay-verify="captcha">
-                <img id="captchaImg" src="/captcha" width="130px" height="44px" onclick="this.src=this.src+'?'+Math.random()" title="点击刷新"/>
-            </div>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>登 录</title>
+	<link rel="stylesheet" href="component/pear/css/pear.css" />
+	<link rel="stylesheet" href="admin/css/other/login.css" />
+</head>
+<!-- 代 码 结 构 -->
+<body background="admin/images/background2.svg" style="background-size: cover;">
+<form class="layui-form" action="javascript:void(0);">
+	<div class="layui-form-item">
+		<img class="logo" src="admin/images/logo.png" />
+		<div class="title">M-S-P Admin</div>
+		<div class="desc">
+			Spring Security 权 限 管 理 系 统 实 战
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<input id="username" name="username" placeholder="用 户 名 : " type="text" hover class="layui-input" required lay-verify="username"/>
+	</div>
+	<div class="layui-form-item">
+		<input id="password" name="password" placeholder="密 码 : " type="password"  hover class="layui-input" required lay-verify="password"/>
+	</div>
+	<div class="layui-form-item">
+		<input placeholder="验证码 : " name="captcha" id="captcha" hover class="code layui-input layui-input-inline"  required lay-verify="captcha" />
+		<img src="/captcha" class="captchaImage" id="captchaImage" onclick="this.src=this.src+'?'+Math.random()" title="点击刷新"/>
+	</div>
+	<div class="layui-form-item">
+		<input type="checkbox" id="rememberme" name="rememberme" title="记住密码" lay-skin="primary" checked>
+	</div>
+	<div class="layui-form-item">
+		<button class="pear-btn pear-btn-success login" lay-submit lay-filter="formLogin">
+			登 入
+		</button>
+	</div>
+</form>
+<script src="component/layui/layui.js"></script>
+<script>
+	layui.use(['form', 'element','jquery'], function() {
+		var form = layui.form;
+		var element = layui.element;
+		var $ = layui.jquery;
+		// $("body").on("click",".login",function(obj){
+		// 	location.href="/api/admin"
+		// })
+		form.verify({
+			username: function(value) {
+				if (value.length <= 0 ) {
+					return '用户名不能为空';
+				}
+			},
+			password: function (value) {
+				if (value.length <= 0) {
+					return '密码不能为空';
+				}
+			},
+			captcha: function (value) {
+				if (value.length <= 0) {
+					return '验证码不能为空';
+				}
+				if (value.length !== 4) {
+					return '请输入正确格式的验证码';
+				}
+			}
+		})
+		form.on('submit(formLogin)', function() {
+			$.ajax({
+				url:'/login',
+				type:'post',
+				dataType:'text',
+				data:{
+					username:$('#username').val(),
+					password:$('#password').val(),
+					captcha:$('#captcha').val(),
+					rememberme:$('#rememberme').val()
+				},
+				success:function(result){
+					var restjson = JSON.parse(result)
+					if (restjson.success) {
+						// layui.data("token", {
+						// 	key: "Authorization",
+						// 	value: "Bearer "+ restjson.jwt
+						// });
+						layer.msg(restjson.msg,{icon:1,time:1000},function () {
+							location.href = "/";
 
-			<div class="layui-form-item">
-				<input type="checkbox" id="rememberme" name="rememberme" title="记住密码" lay-skin="primary" checked>
-			</div>
-            <div class="layui-form-item">
-				<button style="background-color: #5FB878!important;" class="pear-btn pear-btn-primary login" lay-submit lay-filter="formLogin">
-					登 入
-				</button>
-			</div>
-		</form>
-		<script src="/PearAdmin/component/layui/layui.js" charset="utf-8"></script>
-		<script>
-			layui.use(['form', 'element','jquery'], function() {
-				var form = layui.form;
-				var element = layui.element;
-				var $ = layui.jquery;
-				// $("body").on("click",".login",function(obj){
-				// 	location.href="/api/admin"
-				// })
-				form.verify({
-					username: function(value) {
-						if (value.length <= 0 ) {
-							return '用户名不能为空';
-						}
-					},
-					password: function (value) {
-						if (value.length <= 0) {
-							return '密码不能为空';
-						}
-					},
-					captcha: function (value) {
-						if (value.length <= 0) {
-							return '验证码不能为空';
-						}
-						if (value.length !== 4) {
-							return '请输入正确格式的验证码';
-						}
+						});
+					}else {
+						layer.msg(restjson.msg,{icon:2,time:1000},function () {
+							$("#captchaImg").attr("src","/captcha" + "?" + Math.random());
+						});
+						return false;
 					}
-				})
-				form.on('submit(formLogin)', function() {
-					$.ajax({
-						url:'/login',
-						type:'post',
-						dataType:'text',
-						data:{
-							username:$('#username').val(),
-							password:$('#password').val(),
-							captcha:$('#captcha').val(),
-							rememberme:$('#rememberme').val()
-						},
-						success:function(result){
-							var restjson = JSON.parse(result)
-							if (restjson.success) {
-								// layui.data("token", {
-								// 	key: "Authorization",
-								// 	value: "Bearer "+ restjson.jwt
-								// });
-								layer.msg(restjson.msg,{icon:1,time:1000},function () {
-									location.href = "/";
-
-								});
-							}else {
-								layer.msg(restjson.msg,{icon:2,time:1000},function () {
-									$("#captchaImg").attr("src","/captcha" + "?" + Math.random());
-								});
-								return false;
-							}
-						}
-					})
-					return false;
-				});
+				}
 			})
-		</script>
-	</body>
+			return false;
+		});
+	})
+</script>
+</body>
 </html>

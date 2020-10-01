@@ -21,8 +21,6 @@ public class JwtUtils {
     private  Long expiration;
 
 
-
-
     /**
      * 创建token
      * @param username 用户名

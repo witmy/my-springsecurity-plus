@@ -3,32 +3,31 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearTab.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearTheme.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearLoad.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearFrame.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearAdmin.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearNotice.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearSocial.css}" />
-		<link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearMenu.css}" />
-
-		<style id="pearone-bg-color"></style>
+		<title>My SpringSecurity Plus</title>
+		<!-- 依 赖 样 式 -->
+		<link rel="stylesheet" th:href="@{/component/pear/css/pear.css}" />
+		<link rel="stylesheet" th:href="@{/admin/css/load.css}" />
+		<link rel="stylesheet" th:href="@{/admin/css/admin.css}" />
+		<!-- 主 题 更 换 -->
+		<style id="pearadmin-bg-color"></style>
 	</head>
+	<!-- 结 构 代 码 -->
 	<body class="layui-layout-body pear-admin">
-		<!-- 布局框架 -->
+		<!-- 布 局 框 架 -->
 		<div class="layui-layout layui-layout-admin">
 			<div class="layui-header">
+				<!-- 顶 部 左 侧 功 能 -->
 				<ul class="layui-nav layui-layout-left">
 					<li class="collaspe layui-nav-item"><a href="#" class="layui-icon layui-icon-shrink-right"></a></li>
-					<li class="refresh layui-nav-item"><a href="#" class="layui-icon layui-icon-refresh-1"></a></li>
+					<li class="refresh layui-nav-item"><a href="#" class="layui-icon layui-icon-refresh-1" loading=600></a></li>
 				</ul>
+				<!-- 顶 部 右 侧 菜 单 -->
 				<div id="control" class="layui-layout-control"></div>
 				<ul class="layui-nav layui-layout-right">
 					<li class="layui-nav-item layui-hide-xs"><a href="#" class="fullScreen layui-icon layui-icon-screen-full"></a></li>
 					<li class="layui-nav-item layui-hide-xs"><a href="https://gitee.com/witmy/my-springsecurity-plus" class="layui-icon layui-icon-website"></a></li>
 					<li class="layui-nav-item" lay-unselect="">
-						<a href="javascript:;"><img th:src="@{/PearAdmin/admin/images/avatar.jpg}" class="layui-nav-img"><span sec:authentication="principal.MyUser.nickName"/></a>
+						<a href="javascript:;"><img th:src="@{/admin/images/avatar.jpg}" class="layui-nav-img"><span sec:authentication="principal.MyUser.nickName"/></a>
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" class="pearson">个人信息</a></dd>
 							<dd><a href="/logout">注销登陆</a></dd>
@@ -37,11 +36,14 @@
 					<li class="setting layui-nav-item"><a href="#" class="layui-icon layui-icon-more-vertical"></a></li>
 				</ul>
 			</div>
+			<!-- 侧 边 区 域 -->
 			<div class="layui-side layui-bg-black">
+				<!-- 顶 部 图 标 -->
 				<div class="layui-logo">
-					<img class="logo" th:src="@{/PearAdmin/admin/images/logo.png}" />
+					<img class="logo" th:src="@{/admin/images/logo.png}" />
 					<span class="title">Plus Admin</span>
 				</div>
+				<!-- 侧 边 菜 单 -->
 				<div class="layui-side-scroll">
 					<div id="sideMenu"></div>
 				</div>
@@ -50,43 +52,20 @@
 				<div id="content"></div>
 			</div>
 		</div>
-        <!-- 移动端 遮盖层 -->
+		<!-- 遮 盖 层 -->
 		<div class="pear-cover"></div>
-        <!-- 初始加载 动画-->
+		<!-- 加 载 动 画-->
 		<div class="loader-main">
 			<div class="loader"></div>
 		</div>
-        <!-- 聊天组件 -->
-		<div id="social" class="layui-hide-xs"></div>
-        <!-- 移动端 的 收缩适配 -->
-		<div class="collaspe pe-collaspe layui-hide-sm">
-			<i class="layui-icon layui-icon-shrink-right"></i>
-		</div>
-		<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
+		<!-- 依 赖 脚 本 -->
+		<script th:src="@{/component/layui/layui.js}"></script>
+		<script th:src="@{/component/pear/pear.js}"></script>
 		<script>
-			layui.use(['pearAdmin', 'jquery', 'pearSocial', 'layer'], function() {
-				var pearAdmin = layui.pearAdmin;
-				var $ = layui.jquery;
-				var layer = layui.layer;
-				var pearSocial = layui.pearSocial;
-				var pearAuth = layui.pearAuth;
-				var config = {
-					keepLoad: 2000, // 主 页 加 载 过 度 时 长 可为 false
-					muiltTab: true, // 是 否 开 启 多 标 签 页 true 开启 false 关闭
-					control: false, // 是 否 开 启 多 系 统 菜 单 true 开启 false 关闭
-					theme: "dark-theme", // 默 认 主 题 样 式 dark-theme 默认主题 light-theme 亮主题
-					index: '/api/console', // 默 认 加 载 主 页
-					data: '/api/index', // 菜 单 数 据 加 载 地 址
-					select: '0', // 默 认 选 中 菜 单 项
-					auth: false // 前端权限限制，false 关闭该功能
-				};
+			layui.use(['admin'], function() {
+				var admin = layui.admin;
 
-				var setting = {
-					elem: 'social'
-				}
-
-				pearSocial.render(setting);
-				pearAdmin.render(config);
+				admin.render({currentUser:"admin"});
 			})
 		</script>
 	</body>

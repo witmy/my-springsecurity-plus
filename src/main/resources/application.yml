@@ -45,6 +45,12 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  # 热部署
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: WEB-INF/**
 #mybatis配置
 mybatis:
   type-aliases-package: com.codermy.myspringsecurityplus.entity

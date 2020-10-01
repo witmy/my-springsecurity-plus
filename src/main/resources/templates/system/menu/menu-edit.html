@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/PearAdmin/component/layui/css/layui.css}" />
-    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pearCommon.css}"/>
-    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/dtree.css}" />
-    <link rel="stylesheet" th:href="@{/PearAdmin/admin/css/pear-tree/font/dtreefont.css}"/>
+    <header th:replace="header::html"></header>
 </head>
 <body>
 <form class="layui-form" action="">
@@ -83,7 +80,6 @@
         </div>
     </div>
 </form>
-<script th:src="@{/PearAdmin/component/layui/layui.js}" charset="utf-8"></script>
 <script type="text/javascript">
 
     layui.use(['iconPicker','dtree','form','jquery'],function(){

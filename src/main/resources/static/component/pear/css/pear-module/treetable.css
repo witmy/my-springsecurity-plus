@@ -1,0 +1,9 @@
+.treeTable-icon  i:last-child{
+	display: none!important;
+}
+.layui-icon-triangle-d:before {  
+    content: "\e61a";
+}
+.treeTable-empty{
+	margin-left: 35px;
+}
