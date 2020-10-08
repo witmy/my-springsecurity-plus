@@ -81,7 +81,7 @@
 
 ### 交流群
 
-<img src="https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/qun.PNG" width="200" />
+<img src="https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/qun.jpg" width="200" />
 
 ### 相关截图
 |                        Admin端                         |                                                       |
