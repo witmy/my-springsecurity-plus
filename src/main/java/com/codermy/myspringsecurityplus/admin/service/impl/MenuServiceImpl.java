@@ -38,7 +38,6 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuDto> buildMenuAll() {
-
         return menuDao.buildAll();
     }
 
