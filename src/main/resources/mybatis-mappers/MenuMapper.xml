@@ -47,7 +47,7 @@
     </update>
 
     <select id="listByUserId" resultType="com.codermy.myspringsecurityplus.admin.dto.MenuIndexDto">
-        SELECT DISTINCT m.menu_id as id,m.parent_id,m.menu_name as title,m.icon,m.url as href,m.type,m.permission
+        SELECT DISTINCT m.menu_id as id,m.parent_id,m.menu_name as title,m.icon,m.url as href,m.type,m.permission,m.sort
             FROM my_role_user ru
         INNER JOIN my_role_menu rm ON rm.role_id = ru.role_id
         LEFT JOIN my_menu m ON rm.menu_id = m.menu_id
