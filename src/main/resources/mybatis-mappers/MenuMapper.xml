@@ -56,7 +56,7 @@
                 ru.user_id = #{userId}
             </if>
         </where>
-        ORDER BY m.sort
+        ORDER BY ifnull(m.sort,0)
     </select>
 
 </mapper>
