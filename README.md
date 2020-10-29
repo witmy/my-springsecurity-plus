@@ -15,7 +15,8 @@
   </p>
 </div>
 
-推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)
+推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)  
+项目相关的技术问题、缺陷报告、建议等信息请通过 [Issue](https://gitee.com/witmy/my-springsecurity-plus/issues/new) 发布
 ### 前言
 由于我在学习SpringSecurity时，并没有找到一个完整的整合相关技术的博文或者视频，都是零散的知识或着收费挺高，所以本项目就诞生了。  
 
