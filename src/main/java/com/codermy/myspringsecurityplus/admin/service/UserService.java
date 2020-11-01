@@ -40,6 +40,13 @@ public interface UserService {
     String checkPhoneUnique(MyUser user);
 
     /**
+     * 通过用户名查询用户
+     * @param user
+     * @return
+     */
+    String checkUserNameUnique(MyUser user);
+
+    /**
      * 更新用户
      * @param myUser
      * @param roleId

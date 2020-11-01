@@ -66,6 +66,9 @@ public class UserController {
         if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
             return Result.error().message("手机号已存在");
         }
+        if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))){
+            return Result.error().message("用户名已存在");
+        }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         myUser.setPassword(bCryptPasswordEncoder.encode("123456"));
         return userService.save(myUser,myUser.getRoleId());
@@ -91,6 +94,9 @@ public class UserController {
         if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
 
             return Result.error().message("手机号已存在");
+        }
+        if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))){
+            return Result.error().message("用户名已存在");
         }
         return userService.updateUser(myUser,myUser.getRoleId());
     }

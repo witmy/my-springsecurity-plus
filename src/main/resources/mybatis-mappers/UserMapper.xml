@@ -28,6 +28,10 @@
 		select u.user_id,u.phone from my_user u where u.phone = #{phone} limit 1
 	</select>
 
+    <select id="checkUsernameUnique" parameterType="String" resultType="com.codermy.myspringsecurityplus.admin.entity.MyUser">
+		select u.user_id,u.user_name from my_user u where u.user_name = #{userName} limit 1
+	</select>
+
     <update id="updateUser">
         update my_user u
         <set>

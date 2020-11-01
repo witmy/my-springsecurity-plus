@@ -74,6 +74,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String checkUserNameUnique(MyUser myUser) {
+        Integer userId = ObjectUtil.isEmpty(myUser.getUserId()) ? -1: myUser.getUserId();
+        MyUser info = userDao.checkUsernameUnique(myUser.getUserName());
+        if (ObjectUtil.isNotEmpty(info) && !info.getUserId().equals(userId))
+        {
+            return UserConstants.USER_NAME_NOT_UNIQUE;
+        }
+        return UserConstants.USER_NAME_UNIQUE;
+    }
+
+    @Override
     public Result<MyUser> updateUser(MyUser myUser, Integer roleId) {
         if (roleId!=null){
             userDao.updateUser(myUser);

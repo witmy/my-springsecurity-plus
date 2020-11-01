@@ -43,6 +43,12 @@ public interface UserDao {
     MyUser checkPhoneUnique(String phone);
 
     /**
+     * 通过用户名返回用户
+     * @param userName
+     * @return
+     */
+    MyUser checkUsernameUnique(String userName);
+    /**
      * 更新用户
      * @param myUser
      * @return
@@ -77,4 +83,6 @@ public interface UserDao {
      */
     @Select("select * from my_user t where t.user_name = #{userName}")
     MyUser getUser(String userName);
+
+
 }

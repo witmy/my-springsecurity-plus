@@ -12,6 +12,10 @@ public class UserConstants {
     public final static String JOB_NAME_UNIQUE = "0";
     public final static String JOB_NAME_NOT_UNIQUE = "1";
 
+    /** 用户名名称是否唯一的返回结果码 */
+    public final static String USER_NAME_UNIQUE = "0";
+    public final static String USER_NAME_NOT_UNIQUE = "1";
+
     /** 部门名称是否唯一的返回结果码 */
     public final static String DEPT_NAME_UNIQUE = "0";
     public final static String DEPT_NAME_NOT_UNIQUE = "1";
