@@ -16,7 +16,9 @@
 </div>
 
 推荐国内用户使用[gitee](https://gitee.com/witmy/my-springsecurity-plus)  
-项目相关的技术问题、缺陷报告、建议等信息请通过 [Issue](https://gitee.com/witmy/my-springsecurity-plus/issues/new) 发布
+项目相关的技术问题、缺陷报告、建议等信息请通过 [Issue](https://gitee.com/witmy/my-springsecurity-plus/issues/new) 发布  
+**阿里云双11特惠，单核2G服务器一年只需85，三年只需255，[点我直达](https://www.aliyun.com/1111/pintuan-share?ptCode=MTUzMzU3MzE3NjA4MDEwMXx8MTE0fDE%3D&userCode=1jur6wdu)**
+
 ### 前言
 由于我在学习SpringSecurity时，并没有找到一个完整的整合相关技术的博文或者视频，都是零散的知识或着收费挺高，所以本项目就诞生了。  
 
