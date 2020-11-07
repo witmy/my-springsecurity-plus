@@ -3,6 +3,7 @@ package com.codermy.myspringsecurityplus.admin.service.impl;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ObjectUtil;
 import com.codermy.myspringsecurityplus.admin.dao.DictDao;
+import com.codermy.myspringsecurityplus.admin.dao.DictDetailDao;
 import com.codermy.myspringsecurityplus.admin.entity.MyDict;
 import com.codermy.myspringsecurityplus.admin.entity.MyJob;
 import com.codermy.myspringsecurityplus.admin.service.DictService;
@@ -14,6 +15,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class DictServiceImpl implements DictService {
     @Autowired
     private DictDao dictDao;
 
+    @Autowired
+    private DictDetailDao dictDetailDao;
     @Override
     public Result<MyDict> getDictPage(Integer offectPosition, Integer limit, MyDict myDict) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
@@ -59,8 +63,12 @@ public class DictServiceImpl implements DictService {
     }
 
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public int deleteDictByIds(String ids)  throws MyException {
         Integer[] dictIds = Convert.toIntArray(ids);
+        for (Integer dictId : dictIds){
+            dictDetailDao.deleteDictDetailByDictId(dictId);
+        }
         return dictDao.deleteDictByIds(dictIds);
     }
 }

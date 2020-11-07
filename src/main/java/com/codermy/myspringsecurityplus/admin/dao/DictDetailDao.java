@@ -1,6 +1,7 @@
 package com.codermy.myspringsecurityplus.admin.dao;
 
 import com.codermy.myspringsecurityplus.admin.entity.MyDictDetail;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -32,7 +33,7 @@ public interface DictDetailDao {
      * @param id
      * @return
      */
-    @Select("select did.id,did.dict_id,did.label,did.sort,did.create_time,did.update_time from my_dict_detail did  where did.id = #{id}")
+    @Select("select did.id,did.dict_id,did.label,did.value,did.sort,did.create_time,did.update_time from my_dict_detail did  where did.id = #{id}")
     MyDictDetail getDictDetailById(Integer id);
 
     /**
@@ -50,4 +51,13 @@ public interface DictDetailDao {
      * @return 结果
      */
     int deleteDictDetailByIds(Integer[] dictDetailIds);
+
+    /**
+     *
+     * 根据字典id删除字典详情
+     * @param id
+     * @return
+     */
+    @Delete("DELETE from my_dict_detail where dict_id = #{dictId}")
+    int deleteDictDetailByDictId(Integer dictId);
 }

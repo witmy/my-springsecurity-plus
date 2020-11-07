@@ -106,9 +106,9 @@
 </script>
 
 <script type="text/html" id="dict-data-bar">
-    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="editData"><i class="layui-icon layui-icon-edit"></i>
+    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
-    <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="removeDate"><i class="layui-icon layui-icon-delete"></i>
+    <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 
@@ -291,34 +291,11 @@
             table.reload('dict-type-table');
         }
 
-        window.addData = function() {
-            layer.open({
-                type: 2,
-                title: '新增',
-                shade: 0.1,
-                area: ['500px', '450px'],
-                content: '/api/dictDetail/add?dictId=' + dictId
-            });
-        }
-
-        window.editData = function(obj) {
-            layer.open({
-                type: 2,
-                title: '修改',
-                shade: 0.1,
-                area: ['500px', '450px'],
-                content: '/api/dictDetail/edit?id='+data.id
-            });
-        }
-
-        window.removeData = function(obj) {
-            layer.msg("删除");
-        }
 
         table.on('tool(dict-data-table)', function(obj) {
             if (obj.event === 'remove') {
                 window.removeData(obj);
-            } else if (obj.event === 'editData') {
+            } else if (obj.event === 'edit') {
                 window.editData(obj);
             } else if (obj.event === 'details') {
                 window.details(obj);
@@ -331,22 +308,90 @@
             } else if (obj.event === 'refresh') {
                 window.refreshData();
             } else if (obj.event === 'batchRemove') {
-                layer.msg("批量删除")
+                window.batchRemoveData(obj)
             }
         });
 
         form.on('submit(dict-data-query)', function(data) {
-            data.field.typeCode = typeCode;
+            data.field.dictName = dictName;
             table.reload('dict-data-table', {
                 where: data.field
             })
             return false;
         });
+        window.addData = function() {
+            layer.open({
+                type: 2,
+                title: '新增',
+                shade: 0.1,
+                area: ['500px', '450px'],
+                content: '/api/dictDetail/add?dictId=' + dictId
+            });
+        }
 
-        form.on('switch(dict-data-status)', function(obj) {
-            layer.msg("切换状态");
-        });
+        window.editData = function(obj) {
+            var data = obj.data;
+            layer.open({
+                type: 2,
+                title: '修改',
+                shade: 0.1,
+                area: ['500px', '450px'],
+                content: '/api/dictDetail/edit?id='+data.id
+            });
+        }
 
+        window.removeData = function(obj) {
+            layer.confirm('确定删除吗？', {icon: 3, title:'提示'}, function(index){
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: "/api/dictDetail?ids="+obj.data['id'],
+                    dataType:'json',
+                    type:'delete',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                obj.del();
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                        }
+                    }
+                })
+            });
+        }
+        window.batchRemoveData = function(obj){
+            let data = table.checkStatus(obj.config.id).data;
+            if(data.length === 0){
+                layer.msg("未选中数据",{icon:3,time:1000});
+                return false;
+            }
+            let ids = "";
+            for(let i = 0;i<data.length;i++){
+                ids += data[i].id+",";
+            }
+            ids = ids.substr(0,ids.length-1);
+            layer.confirm('确定删除这些字典吗？', {icon: 3, title:'提示'}, function(index){
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: "/api/dictDetail?ids="+ids,
+                    dataType:'json',
+                    type:'delete',
+                    success:function(result){
+                        layer.close(loading);
+                        if(result.success){
+                            layer.msg(result.msg,{icon:1,time:1000},function(){
+                                table.reload('dict-data-table');
+                            });
+                        }else{
+                            layer.msg(result.msg,{icon:2,time:1000});
+                        }
+                    }
+                })
+            });
+        }
         window.refreshData = function() {
             table.reload('dict-data-table');
         }

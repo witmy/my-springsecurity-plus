@@ -52,4 +52,12 @@ public interface DictDetailService {
      * @throws MyException 异常
      */
     int deleteDictDetailByIds(String ids);
+
+    /**
+     *
+     * 根据字典id删除字典详情
+     * @param dictId
+     * @return
+     */
+    int deleteDictDetailByDictId(Integer dictId);
 }
