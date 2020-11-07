@@ -183,7 +183,7 @@
         }
 
         window.remove = function(obj){
-            layer.confirm('确定要删除该用户', {icon: 3, title:'提示'}, function(index){
+            layer.confirm('确定要删除该岗位吗？', {icon: 3, title:'提示'}, function(index){
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({

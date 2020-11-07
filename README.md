@@ -79,7 +79,7 @@
 - [x] 岗位管理
 - [ ] 定时任务
 - [ ] 在线用户
-- [ ] 字典管理
+- [x] 字典管理
 - [ ] 服务监控
 
 ### 交流群
@@ -98,6 +98,7 @@
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/job.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/jobedit.PNG)        |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/druid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/log.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/logdetail.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/dict.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/dictDetail.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlog.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/errorlogdetail.PNG)       |
 ### 赞赏
 请作者喝杯咖啡

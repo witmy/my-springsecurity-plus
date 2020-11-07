@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codermy.myspringsecurityplus.admin.dao.DictDetailDao">
+    <sql id="selectDictDetailVo">
+        select did.id,did.dict_id,did.label,did.value,did.sort
+        from my_dict_detail did
+    </sql>
+    
+    <select id="getDictDetail" parameterType="integer" resultType="com.codermy.myspringsecurityplus.admin.entity.MyDictDetail">
+        <include refid="selectDictDetailVo"/>
+        where did.dict_id = #{dictId}
+    </select>
+
+    <update id="updateDictDetail" parameterType="com.codermy.myspringsecurityplus.admin.entity.MyDictDetail">
+        update my_dict_detail
+        <set>
+            <if test="label != null and label != ''">label = #{label},</if>
+            <if test="value != null">value = #{value},</if>
+            <if test="sort != null and sort != ''">sort = #{sort},</if>
+            update_time = #{updateTime}
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDictDetailByIds" parameterType="integer">
+        delete from my_dict-detail where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

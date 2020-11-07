@@ -24,6 +24,10 @@ public class UserConstants {
     public final static String USER_PHONE_UNIQUE = "0";
     public final static String USER_PHONE_NOT_UNIQUE = "1";
 
+    /** 是否唯一的返回结果 */
+    public final static String UNIQUE = "0";
+    public final static String NOT_UNIQUE = "1";
+
     /** 部门停用状态 */
     public static final String DEPT_DISABLE= "0";
 

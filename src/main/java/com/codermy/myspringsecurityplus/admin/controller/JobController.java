@@ -61,7 +61,6 @@ public class JobController {
         if (UserConstants.JOB_NAME_NOT_UNIQUE.equals(jobService.checkJobNameUnique(myJob))) {
             return Result.error().message("新增岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
         }
-        jobService.insertJob(myJob);
         return Result.judge(jobService.insertJob(myJob),"添加岗位");
     }
 
