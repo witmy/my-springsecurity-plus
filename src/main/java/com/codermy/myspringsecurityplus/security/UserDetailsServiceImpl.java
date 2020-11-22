@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     private UserService userService;
 
@@ -44,14 +45,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public JwtUserDto loadUserByUsername(String userName){
-        //根据用户名获取用户
+        // 根据用户名获取用户
         MyUser user = userService.getUserByName(userName);
         if (user == null ){
             throw new BadCredentialsException("用户名或密码错误");
         }else if (user.getStatus().equals(MyUser.Status.LOCKED)) {
             throw new LockedException("用户被锁定,请联系管理员解锁");
         }
-
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         List<MenuIndexDto> list = menuDao.listByUserId(user.getUserId());
         List<String> collect = list.stream().map(MenuIndexDto::getPermission).collect(Collectors.toList());

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -34,6 +35,9 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
         // JwtUserDto userDetails = (JwtUserDto)authentication.getPrincipal();//拿到登录用户信息
         // String jwtToken = jwtUtils.generateToken(userDetails.getUsername());//生成token
+        HttpSession session = httpServletRequest.getSession();
+        //删除缓存里的验证码信息
+        session.removeAttribute("captcha");
         Result result = Result.ok().message("登录成功");
         //修改编码格式
         httpServletResponse.setCharacterEncoding("utf-8");

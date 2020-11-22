@@ -16,9 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @Api(tags = "系统：验证码")
 public class CaptchaController {
+
     @RequestMapping("/captcha")
     @ApiOperation(value = "验证码")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         CaptchaUtil.out(120, 45, 4, request, response);
     }
+
 }

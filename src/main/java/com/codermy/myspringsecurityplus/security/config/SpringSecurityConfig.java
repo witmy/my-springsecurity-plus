@@ -28,18 +28,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+
     /**
      * 验证码拦截器
      */
     @Autowired
     private VerifyCodeFilter verifyCodeFilter;
+
     /**
      * 登录成功逻辑
      */
     @Autowired
     MyAuthenticationSuccessHandler authenticationSuccessHandler;
+
     /**
      * 登录失败逻辑
      */
@@ -51,6 +55,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
     /**
      * 无权访问 JSON 格式的数据
      */
