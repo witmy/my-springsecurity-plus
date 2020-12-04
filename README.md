@@ -50,7 +50,7 @@
 6、Swagger    
 8、Redis  
 9、JWT  
-10、[Pear Admin Layui](https://gitee.com/Jmysy/Pear-Admin-Layui)
+10、[Pear Admin Layui](https://gitee.com/pear-admin/Pear-Admin-Layui)
 
 ### 系列文章
 1、[SpringSecurity权限管理系统实战—一、项目简介和开发环境准备](https://blog.csdn.net/HYDCS/article/details/107282166)  
