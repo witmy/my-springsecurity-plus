@@ -68,6 +68,7 @@
 - 导入idea
 - 导入docs文件夹下sql文件到数据库
 - 修改数据库配置文件的路径，用户名等信息
+- 在settings--plugins中搜索并安装lombok插件(Lombok 是一个编译时库，在Idea上有支持的插件，可用来帮助开发人员消除冗长的Java代码，例如实体中的setters和getters),否则编译不过。
 - 运行
 
 ### 项目中初始用户和密码
