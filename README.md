@@ -86,18 +86,19 @@
 
 ### 交流群
 
-<img src="https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/qun.jpg" width="200" />
+ ![image text](https://i.ibb.co/cDzJxC8/qun.jpg)   
+ 群号：718421613
 
 ### 相关截图
 |                        Admin端                         |                                                       |
 | :----------------------------------------------------: | :---------------------------------------------------: |
-|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/login.PNG)     |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/index.PNG)       |
+|      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/login.PNG)     |    ![image text](https://i.ibb.co/5h6xg6q/index.png)       |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/useredit.PNG)       |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/user2.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/role.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit.PNG)        |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/roleedit2.PNG)        |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menu.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/menuedit.PNG)        |
 |     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/dept.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/deptedit.PNG)        |
-|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/job.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/jobedit.PNG)        |
+|     ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/job.PNG)         |    ![image text](https://i.ibb.co/XpShYDV/jobedit.png)        |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/dict.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/dictDetail.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/druid.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/swagger.PNG)       |
 |      ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/log.PNG)         |    ![image text](https://gitee.com/witmy/my-springsecurity-plus/raw/master/docs/images/logdetail.PNG)       |

@@ -4,6 +4,7 @@ import com.codermy.myspringsecurityplus.admin.entity.MyRole;
 import com.codermy.myspringsecurityplus.admin.entity.MyUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
  * @createTime 2020/7/16
  */
 @Data
+@ToString
 public class JwtUserDto implements UserDetails {
 
     /**
@@ -93,8 +95,6 @@ public class JwtUserDto implements UserDetails {
     public boolean isEnabled() {
         return myUser.getStatus() == 1 ? true : false;
     }
-
-
 
 
     public JwtUserDto(MyUser myUser, List<GrantedAuthority> authorities) {

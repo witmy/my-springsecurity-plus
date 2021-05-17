@@ -1,104 +1,156 @@
-2020-11-22 19:35:53.712  INFO 17208 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 17208 (D:\鍚勭浠ｇ爜\java\寮�婧愰」鐩甛my-springsecurity-plus\target\classes started by HY in D:\鍚勭浠ｇ爜\java\寮�婧愰」鐩甛my-springsecurity-plus)
-2020-11-22 19:35:53.718  INFO 17208 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
-2020-11-22 19:35:53.797  INFO 17208 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-11-22 19:35:53.797  INFO 17208 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-11-22 19:35:55.941  INFO 17208 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-11-22 19:35:55.944  INFO 17208 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2020-11-22 19:35:56.023  INFO 17208 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 0 Redis repository interfaces.
-2020-11-22 19:35:56.679  INFO 17208 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@452a3bbe' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-11-22 19:35:56.687  INFO 17208 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-11-22 19:35:57.115  INFO 17208 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
-2020-11-22 19:35:57.123  INFO 17208 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-11-22 19:35:57.123  INFO 17208 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2020-11-22 19:35:57.215  INFO 17208 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-11-22 19:35:57.215  INFO 17208 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3417 ms
-2020-11-22 19:35:57.385  INFO 17208 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-11-22 19:35:58.183  INFO 17208 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-11-22 19:35:59.114  INFO 17208 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/component/**', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/admin/**', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
-2020-11-22 19:35:59.241  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html', GET], []
-2020-11-22 19:35:59.242  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
-2020-11-22 19:35:59.242  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/**', GET], []
-2020-11-22 19:35:59.242  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/druid/**', GET], []
-2020-11-22 19:35:59.285  INFO 17208 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20b433b3, org.springframework.security.web.context.SecurityContextPersistenceFilter@1ab8fd26, org.springframework.security.web.header.HeaderWriterFilter@7de29c7e, org.springframework.security.web.authentication.logout.LogoutFilter@2c06ebdc, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@389e6cdf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@63b5cbe3, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@775615e6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b3faafd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@122ab6a8, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@44c62b4a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@34730ea7, org.springframework.security.web.session.SessionManagementFilter@4b950fba, org.springframework.security.web.access.ExceptionTranslationFilter@1bdc6fd4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@26e409dd]
-2020-11-22 19:35:59.403  INFO 17208 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-11-22 19:35:59.434  INFO 17208 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-11-22 19:35:59.464  INFO 17208 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-11-22 19:36:00.290  INFO 17208 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
-2020-11-22 19:36:00.291  INFO 17208 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-11-22 19:36:00.303  INFO 17208 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-11-22 19:36:00.336  INFO 17208 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-11-22 19:36:00.524  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteDictUsingDELETE_1
-2020-11-22 19:36:00.536  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addJobUsingGET_1
-2020-11-22 19:36:00.540  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_1
-2020-11-22 19:36:00.541  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_1
-2020-11-22 19:36:00.546  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
-2020-11-22 19:36:00.571  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editPermissionUsingGET_1
-2020-11-22 19:36:00.573  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
-2020-11-22 19:36:00.582  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: savePermissionUsingPOST_1
-2020-11-22 19:36:00.583  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateMenuUsingPUT_1
-2020-11-22 19:36:00.592  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_2
-2020-11-22 19:36:00.594  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editRoleUsingGET_1
-2020-11-22 19:36:00.609  INFO 17208 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_2
-2020-11-22 19:36:00.636  INFO 17208 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 7.502 seconds (JVM running for 8.846)
-2020-11-22 19:36:24.483  INFO 17208 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-11-22 19:36:24.483  INFO 17208 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-11-22 19:36:24.490  INFO 17208 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
-2020-11-22 19:41:13.450  INFO 10040 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 10040 (D:\鍚勭浠ｇ爜\java\寮�婧愰」鐩甛my-springsecurity-plus\target\classes started by HY in D:\鍚勭浠ｇ爜\java\寮�婧愰」鐩甛my-springsecurity-plus)
-2020-11-22 19:41:13.453  INFO 10040 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
-2020-11-22 19:41:13.503  INFO 10040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-11-22 19:41:13.503  INFO 10040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-11-22 19:41:14.265  INFO 10040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-11-22 19:41:14.267  INFO 10040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2020-11-22 19:41:14.289  INFO 10040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
-2020-11-22 19:41:14.643  INFO 10040 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1e7e277c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-11-22 19:41:14.649  INFO 10040 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-11-22 19:41:14.896  INFO 10040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
-2020-11-22 19:41:14.903  INFO 10040 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-11-22 19:41:14.903  INFO 10040 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2020-11-22 19:41:14.979  INFO 10040 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-11-22 19:41:14.979  INFO 10040 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1476 ms
-2020-11-22 19:41:15.069  INFO 10040 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-11-22 19:41:15.645  INFO 10040 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-11-22 19:41:16.294  INFO 10040 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/component/**', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/admin/**', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/**', GET], []
-2020-11-22 19:41:16.381  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/druid/**', GET], []
-2020-11-22 19:41:16.421  INFO 10040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7102af16, org.springframework.security.web.context.SecurityContextPersistenceFilter@3a109e2c, org.springframework.security.web.header.HeaderWriterFilter@3078f, org.springframework.security.web.authentication.logout.LogoutFilter@3cfc7eda, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@741d6aef, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5dd97acf, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@520a26c6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6cb69155, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@167c4ceb, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@c3b3b42, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77ad0073, org.springframework.security.web.session.SessionManagementFilter@5c9f3fa4, org.springframework.security.web.access.ExceptionTranslationFilter@6602d225, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7f76a543]
-2020-11-22 19:41:16.525  INFO 10040 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-11-22 19:41:16.554  INFO 10040 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-11-22 19:41:16.582  INFO 10040 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2020-11-22 19:41:17.084  INFO 10040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
-2020-11-22 19:41:17.085  INFO 10040 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-11-22 19:41:17.096  INFO 10040 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-11-22 19:41:17.126  INFO 10040 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-11-22 19:41:17.268  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteDictUsingDELETE_1
-2020-11-22 19:41:17.274  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addJobUsingGET_1
-2020-11-22 19:41:17.277  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_1
-2020-11-22 19:41:17.278  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_1
-2020-11-22 19:41:17.282  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
-2020-11-22 19:41:17.301  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editPermissionUsingGET_1
-2020-11-22 19:41:17.302  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
-2020-11-22 19:41:17.308  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: savePermissionUsingPOST_1
-2020-11-22 19:41:17.308  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateMenuUsingPUT_1
-2020-11-22 19:41:17.317  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_2
-2020-11-22 19:41:17.318  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editRoleUsingGET_1
-2020-11-22 19:41:17.333  INFO 10040 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_2
-2020-11-22 19:41:17.358  INFO 10040 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 4.315 seconds (JVM running for 5.169)
-2020-11-22 19:41:20.067  INFO 10040 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-11-22 19:41:20.067  INFO 10040 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-11-22 19:41:20.073  INFO 10040 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2021-04-24 10:43:52.904  INFO 9504 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 9504 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2021-04-24 10:43:52.918  INFO 9504 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2021-04-24 10:43:53.053  INFO 9504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-24 10:43:53.053  INFO 9504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-24 10:43:56.921  INFO 9504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-24 10:43:56.926  INFO 9504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-24 10:43:57.008  INFO 9504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 0 Redis repository interfaces.
+2021-04-24 10:43:57.805  INFO 9504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4bbb41f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 10:43:57.817  INFO 9504 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 10:43:58.621  INFO 9504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-04-24 10:43:58.653  INFO 9504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-24 10:43:58.654  INFO 9504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-04-24 10:43:58.987  INFO 9504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-24 10:43:58.987  INFO 9504 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5934 ms
+2021-04-24 10:43:59.372  INFO 9504 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-04-24 10:44:01.303  INFO 9504 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-04-24 10:44:04.146  INFO 9504 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-24 10:44:04.450  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**', GET], []
+2021-04-24 10:44:04.450  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**', GET], []
+2021-04-24 10:44:04.450  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/component/**', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/admin/**', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
+2021-04-24 10:44:04.451  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/**', GET], []
+2021-04-24 10:44:04.452  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/druid/**', GET], []
+2021-04-24 10:44:04.576  INFO 9504 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5214868c, org.springframework.security.web.context.SecurityContextPersistenceFilter@23e0f0, org.springframework.security.web.header.HeaderWriterFilter@2b6ae432, org.springframework.security.web.authentication.logout.LogoutFilter@272b03ae, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@3b2b457d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69b8a521, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5c896b11, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17bc9e4f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6fae937f, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@a41de96, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@139f8855, org.springframework.security.web.session.SessionManagementFilter@1d97fdd9, org.springframework.security.web.access.ExceptionTranslationFilter@6d82d9f8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7040144f]
+2021-04-24 10:44:04.908  INFO 9504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-24 10:44:04.996  INFO 9504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-24 10:44:05.171  INFO 9504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-04-24 10:44:07.232  INFO 9504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-04-24 10:44:07.232  INFO 9504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-24 10:44:07.274  INFO 9504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-24 10:44:07.396  INFO 9504 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-24 10:44:07.828  INFO 9504 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-24 10:44:07.828  INFO 9504 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-24 10:44:07.856  INFO 9504 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 28 ms
+2021-04-24 10:44:07.859  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteDictUsingDELETE_1
+2021-04-24 10:44:07.881  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addJobUsingGET_1
+2021-04-24 10:44:07.887  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_1
+2021-04-24 10:44:07.891  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_1
+2021-04-24 10:44:07.904  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2021-04-24 10:44:07.964  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editPermissionUsingGET_1
+2021-04-24 10:44:07.968  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2021-04-24 10:44:07.982  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: savePermissionUsingPOST_1
+2021-04-24 10:44:07.985  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateMenuUsingPUT_1
+2021-04-24 10:44:08.014  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_2
+2021-04-24 10:44:08.022  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editRoleUsingGET_1
+2021-04-24 10:44:08.082  INFO 9504 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_2
+2021-04-24 10:44:08.268  INFO 9504 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 16.498 seconds (JVM running for 19.216)
+2021-04-24 10:46:07.418  INFO 9136 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 9136 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2021-04-24 10:46:07.422  INFO 9136 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2021-04-24 10:46:07.492  INFO 9136 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-24 10:46:07.492  INFO 9136 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-24 10:46:08.878  INFO 9136 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-24 10:46:08.882  INFO 9136 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-24 10:46:08.932  INFO 9136 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36ms. Found 0 Redis repository interfaces.
+2021-04-24 10:46:09.548  INFO 9136 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3f427361' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 10:46:09.557  INFO 9136 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 10:46:09.975  INFO 9136 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-04-24 10:46:09.991  INFO 9136 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-24 10:46:09.991  INFO 9136 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-04-24 10:46:10.108  INFO 9136 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-24 10:46:10.108  INFO 9136 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2616 ms
+2021-04-24 10:46:10.291  INFO 9136 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-04-24 10:46:11.383  INFO 9136 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-04-24 10:46:12.740  INFO 9136 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-24 10:46:12.953  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**', GET], []
+2021-04-24 10:46:12.954  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**', GET], []
+2021-04-24 10:46:12.954  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/component/**', GET], []
+2021-04-24 10:46:12.955  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/admin/**', GET], []
+2021-04-24 10:46:12.955  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
+2021-04-24 10:46:12.955  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
+2021-04-24 10:46:12.955  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
+2021-04-24 10:46:12.956  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html', GET], []
+2021-04-24 10:46:12.956  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
+2021-04-24 10:46:12.956  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/**', GET], []
+2021-04-24 10:46:12.956  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/druid/**', GET], []
+2021-04-24 10:46:13.025  INFO 9136 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73dec3c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@1468ae7b, org.springframework.security.web.header.HeaderWriterFilter@5d75ea22, org.springframework.security.web.authentication.logout.LogoutFilter@3f94f805, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@70bf07c0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1f7a28be, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7b5453a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a0608d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d8666c8, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@1e6cf92a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@431e42a9, org.springframework.security.web.session.SessionManagementFilter@7c8acee9, org.springframework.security.web.access.ExceptionTranslationFilter@7534bdd4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4d6dae81]
+2021-04-24 10:46:13.216  INFO 9136 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-24 10:46:13.259  INFO 9136 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-24 10:46:13.304  INFO 9136 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-04-24 10:46:14.141  INFO 9136 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-04-24 10:46:14.148  INFO 9136 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-24 10:46:14.165  INFO 9136 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-24 10:46:14.234  INFO 9136 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-24 10:46:14.262  INFO 9136 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-24 10:46:14.262  INFO 9136 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-24 10:46:14.274  INFO 9136 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2021-04-24 10:46:14.623  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteDictUsingDELETE_1
+2021-04-24 10:46:14.643  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addJobUsingGET_1
+2021-04-24 10:46:14.647  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_1
+2021-04-24 10:46:14.648  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_1
+2021-04-24 10:46:14.658  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2021-04-24 10:46:14.707  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editPermissionUsingGET_1
+2021-04-24 10:46:14.711  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2021-04-24 10:46:14.724  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: savePermissionUsingPOST_1
+2021-04-24 10:46:14.726  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateMenuUsingPUT_1
+2021-04-24 10:46:14.744  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_2
+2021-04-24 10:46:14.747  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editRoleUsingGET_1
+2021-04-24 10:46:14.777  INFO 9136 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_2
+2021-04-24 10:46:14.832  INFO 9136 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 8.095 seconds (JVM running for 9.843)
+2021-04-24 10:48:20.596  INFO 432 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Starting MySpringsecurityPlusApplication on LAPTOP-DG87IRPQ with PID 432 (D:\各种代码\java\开源项目\my-springsecurity-plus\target\classes started by HY in D:\各种代码\java\开源项目\my-springsecurity-plus)
+2021-04-24 10:48:20.599  INFO 432 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : The following profiles are active: dev
+2021-04-24 10:48:20.662  INFO 432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-24 10:48:20.665  INFO 432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-24 10:48:22.134  INFO 432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-24 10:48:22.139  INFO 432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-24 10:48:22.184  INFO 432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 Redis repository interfaces.
+2021-04-24 10:48:22.782  INFO 432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1c945f93' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 10:48:22.791  INFO 432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-24 10:48:23.228  INFO 432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2021-04-24 10:48:23.239  INFO 432 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-24 10:48:23.239  INFO 432 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-04-24 10:48:23.409  INFO 432 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-24 10:48:23.411  INFO 432 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2746 ms
+2021-04-24 10:48:23.562  INFO 432 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-04-24 10:48:24.751  INFO 432 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-04-24 10:48:25.934  INFO 432 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-24 10:48:26.110  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**', GET], []
+2021-04-24 10:48:26.110  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/PearAdmin/**', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/component/**', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/admin/**', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/**', GET], []
+2021-04-24 10:48:26.114  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/druid/**', GET], []
+2021-04-24 10:48:26.191  INFO 432 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e09df38, org.springframework.security.web.context.SecurityContextPersistenceFilter@31064af2, org.springframework.security.web.header.HeaderWriterFilter@196c8eae, org.springframework.security.web.authentication.logout.LogoutFilter@40e14a0b, com.codermy.myspringsecurityplus.security.filter.VerifyCodeFilter@16df9b4f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5fe795c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@52ba402c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@391285f2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@542c7144, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@18c861af, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74a87af6, org.springframework.security.web.session.SessionManagementFilter@79d21a47, org.springframework.security.web.access.ExceptionTranslationFilter@79d17fd3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6e4891fa]
+2021-04-24 10:48:26.364  INFO 432 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-24 10:48:26.415  INFO 432 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-24 10:48:26.457  INFO 432 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-04-24 10:48:27.310  INFO 432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2021-04-24 10:48:27.312  INFO 432 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-24 10:48:27.331  INFO 432 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-24 10:48:27.383  INFO 432 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-24 10:48:27.384  INFO 432 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-24 10:48:27.399  INFO 432 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2021-04-24 10:48:27.406  INFO 432 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-24 10:48:27.710  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteDictUsingDELETE_1
+2021-04-24 10:48:27.728  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addJobUsingGET_1
+2021-04-24 10:48:27.733  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_1
+2021-04-24 10:48:27.735  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_1
+2021-04-24 10:48:27.745  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2021-04-24 10:48:27.785  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editPermissionUsingGET_1
+2021-04-24 10:48:27.788  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2021-04-24 10:48:27.801  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: savePermissionUsingPOST_1
+2021-04-24 10:48:27.803  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateMenuUsingPUT_1
+2021-04-24 10:48:27.820  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteRoleUsingDELETE_2
+2021-04-24 10:48:27.824  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: editRoleUsingGET_1
+2021-04-24 10:48:27.859  INFO 432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_2
+2021-04-24 10:48:27.915  INFO 432 --- [restartedMain] c.c.m.MySpringsecurityPlusApplication    : Started MySpringsecurityPlusApplication in 7.969 seconds (JVM running for 9.485)
